@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/assistencia.css">
+    <title>Document</title>
+    <link rel="icon" type="png" href="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png">
+</head>
+
+<body>
+    <!-- ------------HEADER------------  -->
+    <!-- ------------HEADER------------  -->
+    <div class="header">
+        <div class="header-1">
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png" alt="">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="produtos.html">PRODUTOS</a>
+                <a href="assistencia.html">ASSISTÊNCIA TÉCNICA</a>
+                <a href="contatos.html">CONTATOS</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

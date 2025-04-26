@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>FM Notebooks</title>
+  <link rel="icon" type="png" href="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png">
+</head>
+
+<body>
+  <!-- ------------WHATSZAPP ----------- -->
+  <!-- ------------WHATSZAPP ---------- -->
+  <a href="https://wa.me/553492088233" target="_blank" class="whats-fixed">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
+  </a>
+  <!-- ------------HEADER------------  -->
+  <header class="header">
+    <div class="header-1">
+      <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png" alt="FM Notebooks">
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="produtos.html" class="active">PRODUTOS</a>
+        <a href="assistencia.html">ASSISTÊNCIA TÉCNICA</a>
+        <a href="contatos.html">CONTATOS</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+  <!-- -------------SLIDER------------- -->
+  <!-- -------------SLIDER------------- -->
+  <section class="slider">
+    <div class="interface">
+      <div class="slider-container">
+        <div class="slider-box ativo">
+          <img src="img/notebook.png" />
+          <div class="texto-slider">
+            <button><a href="#">Saiba Mais</a></button>
+          </div>
+        </div>
+        <div class="slider-box">
+          <img src="img/note-fones.jpg" alt="" />
+          <div class="texto-slider">
+            <button><a href="#">Saiba Mais</a></button>
+          </div>
+        </div>
+        <div class="slider-box">
+          <img src="img/notebook.png" alt="" />
+          <div class="texto-slider">
+            <button><a href="#">Saiba Mais</a></button>
+          </div>
+        </div>
+        <div class="slider-box">
+          <img src="img/note-fone.jpg" alt="" />
+          <div class="texto-slider">
+            <button><a href="#">Saiba Mais</a></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETAS -->
+      <!-- SETAS -->
+      <div class="setas">
+        <button id="anterior"><i class="bi bi-caret-left-fill"></i></button>
+        <button id="proxima"><i class="bi bi-caret-right-fill"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- -------------CARDS------------ -->
+  <!-- -------------CARDS------------ -->
+  <section class="produtos-cards">
+    <div class="produtos-cards-container">
+      <div class="produtos-cards-item">
+        <a href="produtos.html#notebooks">
+          <img src="img/notebook(2).png" alt="Notebook Premium">
+          <p>Notebook</p>
+        </a>
+      </div>
+      <div class="produtos-cards-item">
+        <a href="produtos.html#monitores">
+          <img src="img/monitor.jpg" alt="Notebook Premium">
+          <p>Monitores</p>
+        </a>
+      </div>
+      <div class="produtos-cards-item">
+        <a href="produtos.html#headphones">
+          <img src="img/headphone.jpg" alt="Notebook Premium">
+          <p>HeadPhones</p>
+        </a>
+      </div>
+      <div class="produtos-cards-item">
+        <a href="produtos.html#desktops">
+          <img src="img/desktop.jpg" alt="Notebook Premium">
+          <p>Desktops</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="slogan">
+    <div class="content-slogan"></div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
