@@ -765,7 +765,7 @@ body {
 .notebooks-content-cards-content{
     width: 400px;
     height: 600px;
-    border: 2px solid orange;
+    border: 2px solid  var(--cor-black);
     border-radius: 20px;
     transition: all 0.5s ease;
     padding: 20px;
@@ -774,6 +774,7 @@ body {
 
 .notebooks-content-cards-content:hover{
     transform: scale(1.02);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
 
 .notebooks-content-cards-content-text{
@@ -813,4 +814,185 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1200px) {
+    .content-slogan,
+    .produtos-1-destaque,
+    .notebooks-texto,
+    .notebooks-content-cards {
+        width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    .content-slogan {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .content-slogan-1,
+    .content-slogan-2 {
+        width: 100%;
+    }
+
+    .content-slogan h1 {
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    .produtos-1-destaque {
+        flex-direction: column;
+    }
+
+    .produtos-1-destaque-1,
+    .produtos-1-destaque-2 {
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .notebooks-content-cards {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .notebooks-content-cards-content {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slogan {
+        margin-top: 120px;
+    }
+
+    .content-slogan h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-slogan p {
+        font-size: 1rem;
+    }
+
+    .produtos-1-destaque-2 h1 {
+        font-size: 2rem;
+    }
+
+    .produtos-1-destaque-2 p {
+        font-size: 1rem;
+    }
+
+    .notebooks-texto h1 {
+        font-size: 2.5rem;
+    }
+
+    .notebooks-content-cards-content {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 500px;
+    }
+
+    .notebooks-content {
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    .notebooks-content-cards-content-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .notebooks-content-cards-content-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .slogan {
+        margin-top: 140px;
+    }
+
+    .content-slogan h1 {
+        font-size: 1.5rem;
+    }
+
+    .content-slogan p {
+        font-size: 0.9rem;
+    }
+
+    .produtos-1-destaque-2 h1 {
+        font-size: 1.8rem;
+    }
+
+    .produtos-1-destaque-2 p {
+        font-size: 0.9rem;
+    }
+
+    .notebooks-texto h1 {
+        font-size: 2rem;
+    }
+
+    .notebooks-content-cards-content {
+        min-height: 450px;
+    }
+
+    .notebooks-content-cards-content-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .notebooks-content-cards-content-text p {
+        font-size: 0.9rem;
+    }
+
+    .links-sub-header ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .links-sub-header ul li a {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .slogan {
+        margin-top: 160px;
+    }
+
+    .content-slogan h1 {
+        font-size: 1.3rem;
+    }
+
+    .content-slogan p {
+        font-size: 0.8rem;
+    }
+
+    .produtos-1-destaque-2 h1 {
+        font-size: 1.5rem;
+    }
+
+    .produtos-1-destaque-2 p {
+        font-size: 0.8rem;
+    }
+
+    .notebooks-texto h1 {
+        font-size: 1.8rem;
+    }
+
+    .notebooks-content-cards-content {
+        min-height: 400px;
+        padding: 15px;
+    }
+
+    .notebooks-content-cards-content-text h1 {
+        font-size: 1.3rem;
+    }
+
+    .notebooks-content-cards-content-text p {
+        font-size: 0.8rem;
+    }
 }
