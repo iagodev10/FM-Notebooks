@@ -187,23 +187,40 @@ body {
 
     .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-blue);
+        padding: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        height: auto;
     }
 
     .nav-links.active {
         display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: var(--cor-blue);
-        padding: 1rem;
+        align-items: center;
     }
 
     .nav-links a {
-        padding: 0.8rem 1.5rem;
         width: 100%;
-        justify-content: center;
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a::after {
+        display: none;
     }
 }
 
@@ -364,7 +381,28 @@ body {
 }
 
 
-
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 0;
+    background: white;
+  }
+  .categoria-card {
+    text-align: center;
+  }
+  .categoria-card img {
+    width: 150px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+  }
+  .categoria-card img:hover {
+    transform: scale(1.05);
+  }
+  .categoria-card p {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
 /* ---------------Footer -------------*/
 /* ---------------Footer -------------*/
 /* ---------------Footer -------------*/
