@@ -2,14 +2,44 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
   <title>Produtos - FM Notebooks</title>
-  <link rel="icon" type="png" href="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png">
-  <link rel="stylesheet" href="css/produtos.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/produtos.css" rel="stylesheet">
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/scrollreveal/scrollreveal.min.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/produtos.js"></script>
 </head>
 
 <body>
@@ -18,48 +48,64 @@
     <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
   </a>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-1">
-      <div class="menu-toggle">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="header-logo">
-        <a href="index.html">
-          <img src="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png" alt="FM Notebooks">
-        </a>
-      </div>
-      <nav class="nav-links">
-        <a href="produtos.html" class="active">PRODUTOS</a>
-        <a href="assistencia.html">ASSISTÊNCIA TÉCNICA</a>
-        <a href="contatos.html">CONTATOS</a>
-      </nav>
-    </div>
-
-    <!-- --------SUB-HEADER----- -->
-    <header class="sub-header">
-      <div class="links-sub-header">
-        <ul>
-          <li><a href="#">Notebooks</a></li>
-          <li><a href="#">Desktops</a></li>
-          <li><a href="#">Mouses</a></li>
-          <li><a href="#">Headphones</a></li>
-          <li><a href="#">Acessórios</a></li>
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-expanded="false">
+        <span class="fa fa-search" aria-hidden="true"></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">Sobre Nós</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="serviços.html">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="blog-grid.html">História</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Loja
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="property-single.html">Property Single</a>
+              <a class="dropdown-item" href="blog-single.html">Blog Single</a>
+              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
+              <a class="dropdown-item" href="agent-single.html">Agent Single</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contatos</a>
+          </li>
         </ul>
       </div>
-    </header>
-  </header>
-  <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    </div>
 
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-  </script>
+    <!-- Barra de Pesquisa -->
+    <div class="container">
+      <div id="busca">
+        <input type="text" id="input-busca" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
+        <i class="fa fa-search"></i>
+      </div>
+    </div>
+  </nav>
+  <!--/ Nav End /-->
+
+  <div id="resultado"></div>
 
   <!-- -------SLOGAN------- -->
   <section class="slogan">
@@ -74,7 +120,6 @@
     </div>
   </section>
 
-  <!-- -------PRODUTOS------- --> 
   <!-- -------PRODUTOS------- -->
   <section class="produtos-1">
     <div class="produtos-1-destaque">
@@ -88,7 +133,6 @@
     </div>
   </section>
 
-  
   <section class="categorias">
     <div class="categoria-card">
       <img src="img/Leonardo_Phoenix_10_Create_an_image_showcasing_cuttingedge_not_0.jpg" alt="Notebooks">
@@ -98,42 +142,28 @@
       <img src="img/desktop.jpg" alt="Teclados">
       <p>Teclados</p>
     </div>
-    <!-- Adicione mais cards -->
   </section>
 
-  <!-- Footer -->
-  <!-- <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Institucional</h4>
-                <ul>
-                    <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Trabalhe Conosco</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Atendimento</h4>
-                <ul>
-                    <li><a href="#">Central de Ajuda</a></li>
-                    <li><a href="#">Fale Conosco</a></li>
-                    <li><a href="#">Trocas e Devoluções</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Redes Sociais</h4>
-                <div class="social-links">
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 TechStore. Todos os direitos reservados.</p>
-        </div>
-    </footer> -->
-
-  <script src="js/menu.js"></script>
+  <script>
+    // Teste simples para verificar se o JavaScript está funcionando
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Página carregada');
+      const inputBusca = document.getElementById('input-busca');
+      const divResultado = document.getElementById('resultado');
+      
+      if (inputBusca && divResultado) {
+        console.log('Elementos encontrados');
+        
+        inputBusca.addEventListener('input', function() {
+          console.log('Digitando:', this.value);
+          divResultado.classList.add('active');
+          divResultado.innerHTML = '<div class="produto"><p>Teste de pesquisa: ' + this.value + '</p></div>';
+        });
+      } else {
+        console.error('Elementos não encontrados');
+      }
+    });
+  </script>
 </body>
 
 </html>
