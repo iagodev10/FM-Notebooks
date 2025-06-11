@@ -43,13 +43,25 @@
 	/*--/ Carousel owl /--*/
 	$('#carousel').owlCarousel({
 		loop: true,
-		margin: -1,
+		margin: 0,
 		items: 1,
 		nav: true,
-		navText: ['<i class="ion-ios-arrow-back" aria-hidden="true"></i>', '<i class="ion-ios-arrow-forward" aria-hidden="true"></i>'],
+		dots: true,
 		autoplay: true,
-		autoplayTimeout: 3000,
-		autoplayHoverPause: true
+		autoplayTimeout: 5000,
+		autoplayHoverPause: true,
+		navText: [
+			'<i class="fa fa-angle-left" aria-hidden="true"></i>',
+			'<i class="fa fa-angle-right" aria-hidden="true"></i>'
+		],
+		responsive: {
+			0: {
+				nav: false
+			},
+			768: {
+				nav: true
+			}
+		}
 	});
 
 	/*--/ Animate Carousel /--*/

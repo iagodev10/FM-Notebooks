@@ -9,12 +9,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
 
 body {
-    background-color: var(--cor-white);
+    background-color: var(--cor-white2);
     margin: 0;
     padding: 0;
     padding-top: 80px;
@@ -83,4 +83,274 @@ body {
   }
  
   
+
+/* Section cards de promoção */
+/* Section cards de promoção */
+
+.promocao{
+  width: 100%;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: var(--cor-white2);
+  display: flex;
+  justify-content: center;
+}
+
+.div-promocao{
+  margin: auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.div-promocao-1{
+  width: 50%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.div-promocao-1 img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.div-promocao-1 img:hover {
+  transform: scale(1.05);
+}
+
+.div-promocao-2 {
+  width: 50%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.div-promocao-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.div-promocao-2:hover img {
+  transform: scale(1.05);
+}
+
+/* ===========Produtos em destaque======== */
+.produtos-em-destaque{
+  width: 90%;
+  margin: auto;
+  background: var(--cor-white);
+  padding: 50px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.produtos-em-destaque h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+  text-align: center;
+}
+.produtos {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.produto {
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.produto:nth-child(6n) {
+  border-right: none;
+}
+.produto img {
+  width: 100%;
+  max-width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 25px auto 10px auto;
+  display: block;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+}
+.produto h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  margin: 0 10px 10px 10px;
+  min-height: 48px;
+}
+.preco {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+.preco-antigo {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.95rem;
+}
+.preco-novo {
+  color: var(--cor-blue);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+@media (max-width: 1400px) {
+  .produtos { grid-template-columns: repeat(4, 1fr); }
+  .produto:nth-child(4n) { border-right: none; }
+}
+@media (max-width: 1024px) {
+  .produtos { grid-template-columns: repeat(2, 1fr); }
+  .produto:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 600px) {
+  .produtos { grid-template-columns: 1fr; }
+  .produto { border-right: none; }
+}
+/* Botão ver tudo */
+.ver-tudo-btn {
+  display: block;
+  margin: 0 auto;
+  background: var(--cor-blue);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 40px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ver-tudo-btn:hover {
+  background: var(--cor-blue);
+}
+
+/* ==================CARROSSEL============== */
+/* ==================CARROSSEL============== */
+/* ==================CARROSSEL============== */
+.intro-carousel {
+    position: relative;
+    height: 800px;
+}
+
+.carousel-item-a {
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay-a {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.intro-body {
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+    margin-top: 150px;
+}
+
+.intro-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--cor-white);
+    margin-bottom: 2rem;
+}
+
+.intro-subtitle {
+    font-size: 1.8rem;
+    color: var(--cor-white);
+}
+
+.price-a {
+    color: var(--cor-white);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.price-a:hover {
+    color: var(--cor-blue);
+}
+
+/* Ajustes do Owl Carousel */
+.owl-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.owl-carousel .owl-nav button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5) !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50% !important;
+    transition: all 0.3s ease;
+}
+
+.owl-carousel .owl-nav button:hover {
+    background: var(--cor-blue) !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+    left: 20px;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    right: 20px;
+}
+
+.owl-carousel .owl-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.owl-carousel .owl-dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.owl-carousel .owl-dot.active {
+    background: var(--cor-blue) !important;
+}
 
