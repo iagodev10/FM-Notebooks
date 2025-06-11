@@ -279,7 +279,6 @@ body {
 
 .produto {
   border-right: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
   background: #fff;
   display: flex;
   flex-direction: column;
