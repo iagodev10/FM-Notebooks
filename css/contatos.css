@@ -234,3 +234,20 @@
       background: rgba(0, 0, 0, 0.1);
       
     }
+
+    /* ======= FOOTER ======= */
+    .footer {
+      width: 100%;
+      background: var(--cor-blue);
+      color: #fff;
+      text-align: center;
+      padding: 24px 0 16px 0;
+      margin-top: 60px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
