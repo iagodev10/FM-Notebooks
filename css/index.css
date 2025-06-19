@@ -1,9 +1,12 @@
+@import url('../assets/fonts/fonts.css');
+
 :root {
   --cor-black: #000;
   --cor-blue: #0052cc;
   --cor-white: #ffffff;
   --cor-white2: #f5f5f7;
   --cor-whats: #25d366;
+  --cor-linha-cinza: #dcdcdc;
 }
 
 * {
@@ -251,7 +254,7 @@ body {
 /* ===========PAGAMENTOS CARD======== */
 /* ===========PAGAMENTOS CARD======== */
 
-.pagamento-card{
+.pagamento-card {
   width: 80%;
   margin: auto;
   background-color: var(--cor-white2);
@@ -265,20 +268,37 @@ body {
 }
 
 .pague-item svg {
-    fill: #2563eb; 
-    width: 32px;
-    height: 32px;
-    margin-right: 15px;
-  }
-  .pague-item{
-    font-size: 1.3rem;
-    font-family: 'Montserrat', sans-serif;
-  }
+  fill: #2563eb;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+}
 
-  .pague-item p{
-    font-size: 15px;
-    color: gray;
-  }
+.pague-item {
+  font-size: 1.3rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pague-item p {
+  font-size: 15px;
+  color: gray;
+}
+
+.botao-vermais {
+  margin-left: 10px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-vermais:hover {
+  background-color: #1d4ed8;
+}
 
 /* ===========Produtos em destaque======== */
 .produtos-em-destaque {
@@ -410,11 +430,13 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
-.ver-tudo-btn a{
+
+.ver-tudo-btn a {
   color: var(--cor-white);
   text-decoration: none;
   border: none;
 }
+
 .ver-tudo-btn:hover {
   background: #003399;
 }
@@ -423,13 +445,14 @@ body {
 /* =============CATEGORIA============== */
 /* =============CATEGORIA============== */
 
-.cat{
+.cat {
   width: 300px;
   height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .categoria-produtos {
   width: 90%;
   margin: auto;
@@ -441,7 +464,7 @@ body {
   font-family: 'Montserrat';
 }
 
-.categoria-produtos h2{
+.categoria-produtos h2 {
   font-size: 2.2rem;
   font-weight: 600;
   letter-spacing: 1.2;
@@ -488,4 +511,150 @@ body {
   font-size: 1.4rem;
   color: var(--cor-black);
   text-align: center;
+}
+
+
+/* ==============PAGAMENTO MODAL================= */
+/* ==============PAGAMENTO MODAL================= */
+
+.modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999999999;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+}
+
+.conteudo-modal{
+  background-color: var(--cor-white2);
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 900px;
+  height: 800px;
+  overflow-y: auto;
+}
+
+.fechar{
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fechar:hover {
+  color: #000;
+}
+
+.conteudo-modal h2{
+  font-size: 1.6rem;
+  margin-left: 5%;
+  margin-bottom: 3%;
+}
+
+.mercado{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: space-evenly;
+}
+
+.linha-mercado{
+  width: 90%;
+  margin: 5% auto;
+}
+
+.credito{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 22px;
+   padding: 25px;
+}
+
+.credito-cred{
+  border: 1px solid var(--cor-linha-cinza);
+  display: flex;
+  width: 90%;
+  margin: auto;
+  flex-direction: column;
+}
+
+.card-credito{
+  border-radius: 50%;
+  border: 1px solid var(--cor-linha-cinza);
+}
+
+.card-credito img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.credito-cartoes{
+  display: flex;
+  flex-direction: column;
+}
+
+.credito-cartoes h4{
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.credito-cartoes span{
+  color: var(--cor-whats);
+}
+
+.credito-cartoes p{
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.cards{
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: left;
+  margin: auto 5%;
+  gap: 60px;
+}
+
+.pix{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  gap: 20px;
+}
+
+.pix-text{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pix-text h4{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.pix-text p{
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--cor-black);
+}
+
+.pix-text img{
+  width: 80px;
+  height: 80px;
 }

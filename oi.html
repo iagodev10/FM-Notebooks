@@ -5,100 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FM Notebooks - Produtos</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+    /* Fundo escuro por trás do modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,0.6);
+}
 
-    header {
-      background-color: #002147;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+/* Caixa branca no centro */
+.modal-conteudo {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
 
-    .produtos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
+/* Botão "X" para fechar */
+.fechar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.fechar:hover {
+  color: #000;
+}
 
-    .produto {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-    }
 
-    .produto img {
-      width: 100%;
-      max-height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .produto h3 {
-      margin: 15px 0 5px;
-      font-size: 18px;
-    }
-
-    .produto p {
-      color: #555;
-      font-size: 14px;
-    }
-
-    .whatsapp-fixo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      padding: 12px;
-      border-radius: 50%;
-      z-index: 999;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .whatsapp-fixo:hover {
-      transform: scale(1.1);
-    }
-
-    .whatsapp-fixo img {
-      width: 30px;
-      height: 30px;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>FM Notebooks - Produtos</h1>
-    <p>Confira os produtos disponíveis e entre em contato pelo WhatsApp</p>
-  </header>
+ <section id="pagamentos">
+  <h2>Formas de Pagamento</h2>
 
-  <section class="produtos">
-    <div class="produto">
-      <img src="https://via.placeholder.com/300x180" alt="Notebook">
-      <h3>Notebook Dell Inspiron</h3>
-      <p>Ideal para estudos e trabalho. Tela 15.6", SSD 256GB, 8GB RAM.</p>
-    </div>
-    <div class="produto">
-      <img src="https://via.placeholder.com/300x180" alt="Headset">
-      <h3>Headset Gamer RGB</h3>
-      <p>Confortável, som de qualidade e iluminação LED.</p>
-    </div>
-    <div class="produto">
-      <img src="https://via.placeholder.com/300x180" alt="Teclado Mecânico">
-      <h3>Teclado Mecânico ABNT2</h3>
-      <p>Switch blue, ideal para digitação e jogos. RGB personalizável.</p>
-    </div>
-  </section>
+  <div id="pagamento-resumido">
+    <p>Cartão de crédito, débito, Pix...</p>
+    <button onclick="abrirModal()">Ver mais</button>
+</div>
+<!-- Janela Modal -->
+<div id="modal-pagamento" class="modal">
+  <div class="modal-conteudo">
+    <span class="fechar" onclick="fecharModal()">&times;</span>
+    <h2>Meios de pagamento</h2>
+    <p>Pagar com o Mercado Pago é rápido, seguro e sem custo adicional.</p>
 
-  <a href="https://wa.me/553492088233?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos" class="whatsapp-fixo" target="_blank">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
-  </a>
+    <hr>
+
+    <p><strong>Cartões de crédito:</strong> em até 10x sem juros.</p>
+    <p><strong>Pix:</strong> pagamento instantâneo.</p>
+    <p><strong>Boleto bancário:</strong> disponível na finalização da compra.</p>
+
+    <!-- Aqui você pode adicionar ícones, imagens e mais detalhes -->
+  </div>
+</div>
+</section>
+<script>
+  function abrirModal() {
+    document.getElementById("modal-pagamento").style.display = "block";
+  }
+
+  function fecharModal() {
+    document.getElementById("modal-pagamento").style.display = "none";
+  }
+
+  // Fechar clicando fora do modal
+  window.onclick = function(event) {
+    const modal = document.getElementById("modal-pagamento");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
 </body>
 </html>

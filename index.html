@@ -184,6 +184,7 @@
           d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
         <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
       </svg> Pague Parcelado
+      <button onclick="MostraMais()" class="botao-vermais">Ver mais</button>
     </div>
     <div class="pague-a-vista pague-item">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack"
@@ -310,6 +311,95 @@
         <p>Teclados</p>
       </div>
   </section>
+
+
+  <!-- ============Pagamento Modal=================== -->
+  <!-- ============Pagamento Modal=================== -->
+
+  <section id="modal-pagamento" class="modal">
+    <div class="conteudo-modal">
+      <span class="fechar" onclick="MostraMenos()">&times;</span>
+      <h2>Meios de Pagamento</h2>
+      <div class="mercado">
+        <div class="icon-mercado">
+          <img src="img/mercado-pago.svg" alt="">
+        </div>
+        <div class="text-mercado">
+          Pagar com o <b>Mercado Pago</b> é escolher qualquer um destes meios. É rápido, seguro e não tem custo adicional.
+        </div>
+      </div>
+      <hr class="linha-mercado">
+
+      <div class="credito-cred">
+      <div class="credito">
+        <div class="card-credito">
+          <img src="img/credit-card.svg" alt="">
+        </div>
+        <div class="credito-cartoes">
+          <h4>Cartões de crédito em <span>até 10x sem juros</span></h4>
+          <p>Em produtos selecionados.</p>
+          <p>Aprovação imediata.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="cards-cart">
+          <img src="img/hipercad.svg" alt="">
+        </div>
+        <div class="cards-cart">
+          <img src="img/express.svg" alt="">
+        </div>
+        <div class="cards-cart">
+          <img src="img/elo.svg" alt="">
+        </div>
+        <div class="cards-cart">
+          <img src="img/visa.svg" alt="">
+        </div>
+        <div class="cards-cart">
+          <img src="img/master-card.svg" alt="">
+        </div>
+      </div>
+      </div>
+
+      <hr class="linha-mercado">
+
+      <div class="pix">
+        <div class="pix-img">
+          <img src="img/pix.svg" alt="">
+        </div>
+        <div class="pix-text">
+          <h4>Pix</h4>
+          <p>Você pode pagar a qualquer momento com seu código, sem custo adicional e o crédito é na hora.</p>
+          <p>Aprovação imediata.</p>
+          <img src="img/pix2.svg" alt="">
+        </div>
+      </div>
+
+      <hr class="linha-mercado">
+
+      
+
+    </div>
+  </section>
+
+  <!-- ============Pagamento Modal=================== -->
+
+  <script>
+
+    function MostraMais() {
+      document.getElementById("modal-pagamento").style.display = "block";
+    }
+
+    function MostraMenos() {
+      document.getElementById("modal-pagamento").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById("modal-pagamento");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 
   <!-- JavaScrnoteboooooo.jpg-->
   <script src="lib/jquery/jquery.min.js"></script>
