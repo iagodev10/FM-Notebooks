@@ -35,11 +35,11 @@
   <script src="lib/popper/popper.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
   <script src="contactform/contactform.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/produtos.js"></script>
+  <!-- <script src="js/main.js"></script>
+  <script src="js/produtos.js"></script> -->
 </head>
 
 <body>
@@ -108,7 +108,7 @@
   <div id="resultado"></div>
 
   <!-- -------SLOGAN------- -->
-  <section class="slogan">
+  <!-- <section class="slogan">
     <div class="content-slogan">
       <div class="content-slogan-1">
         <h1>FM Notebooks</h1>
@@ -118,52 +118,97 @@
         <img src="img/banner.png" alt="Slogan">
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- -------PRODUTOS------- -->
-  <section class="produtos-1">
-    <div class="produtos-1-destaque">
-      <div class="produtos-1-destaque-1">
-        <img src="img/monitor-produtoDestaque.png" alt="Monitor">
+  <!-- ==========PRODUTOS============ -->
+  <!-- ==========PRODUTOS============ -->
+
+  <h1 class="title-title">Todos os Produtos</h1>
+
+  <!-- -==========FILTRO============= -->
+  <aside class="filtro">
+    <h3>Filtrar</h3>
+    <hr class="linha-filtro">
+    <p>Categoria</p>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="todas" checked>
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">Todos</span>
+    </label>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="mochilas">
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">Mochilas</span>
+    </label>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="mousepads">
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">Mouse Pads</span>
+    </label>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="mouses">
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">Mouses</span>
+    </label>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="combos">
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">Combos</span>
+    </label>
+
+    <label class="label-filtro">
+      <input type="checkbox" class="input-checkbox" data-categoria="headphones">
+      <span class="custom-checkbox"></span>
+      <span class="texto-label">HeadPhones</span>
+    </label>
+  </aside>
+
+  <!-- MAIN -->
+  <!-- MAIN -->
+
+  <main id="resultado-div">
+    <div class="produtos" id="lista-produtos">
+      <!-- <div class="produto">
+        <img src="img/noteboooooo.jpg" alt="">
+        <h3>Notebook Dell Inspiron</h3>
+        <div class="preco">
+          <span>R$ 1200,00</span>
+        </div>
       </div>
-      <div class="produtos-1-destaque-2">
-        <h1>Monitor FM 27</h1>
-        <p>UltraSharp - Alta definição para produtividade e entretenimento.</p>
+
+      <div class="produto">
+        <img src="img/noteboooooo.jpg" alt="">
+        <h3>Notebook Dell Inspiron</h3>
+        <div class="preco">
+          <span>R$ 1200,00</span>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section class="categorias">
-    <div class="categoria-card">
-      <img src="img/Leonardo_Phoenix_10_Create_an_image_showcasing_cuttingedge_not_0.jpg" alt="Notebooks">
-      <p>Notebooks</p>
-    </div>
-    <div class="categoria-card">
-      <img src="img/desktop.jpg" alt="Teclados">
-      <p>Teclados</p>
-    </div>
-  </section>
+      <div class="produto">
+        <img src="img/noteboooooo.jpg" alt="">
+        <h3>Notebook Dell Inspiron</h3>
+        <div class="preco">
+          <span>R$ 1200,00</span>
+        </div>
+      </div>
 
-  <script>
-    // Teste simples para verificar se o JavaScript está funcionando
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Página carregada');
-      const inputBusca = document.getElementById('input-busca');
-      const divResultado = document.getElementById('resultado');
-      
-      if (inputBusca && divResultado) {
-        console.log('Elementos encontrados');
-        
-        inputBusca.addEventListener('input', function() {
-          console.log('Digitando:', this.value);
-          divResultado.classList.add('active');
-          divResultado.innerHTML = '<div class="produto"><p>Teste de pesquisa: ' + this.value + '</p></div>';
-        });
-      } else {
-        console.error('Elementos não encontrados');
-      }
-    });
-  </script>
+      <div class="produto">
+        <img src="img/noteboooooo.jpg" alt="">
+        <h3>Notebook Dell Inspiron</h3>
+        <div class="preco">
+          <span>R$ 1200,00</span>
+        </div>
+      </div> -->
+    </div>
+  </main>
+
+
+  <script src="js/filtro.js"></script>
 </body>
 
 </html>
