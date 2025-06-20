@@ -419,7 +419,6 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
-    border: 1px solid #e0e0e0;
     margin: auto;
 }
 
@@ -432,7 +431,7 @@ body {
     padding-bottom: 10px;
     border-bottom: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
 }
 
 
@@ -467,8 +466,10 @@ body {
   flex-direction: row;
   align-items: center;
   gap: 8px;
-  padding-left: 15px;
+  padding-left: 10%;
   margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 
@@ -500,6 +501,32 @@ body {
   .produto {
     border-right: none;
   }
+}
+
+
+/* Botão ver tudo */
+.ver-tudo-btn {
+  display: block;
+  margin: 0 auto;
+  background: var(--cor-blue);
+  color: var(--cor-white);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ver-tudo-btn a {
+  color: var(--cor-white);
+  text-decoration: none;
+  border: none;
+}
+
+.ver-tudo-btn:hover {
+  background: #003399;
 }
 
 /* ---------------Footer -------------*/

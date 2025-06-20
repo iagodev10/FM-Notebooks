@@ -64,7 +64,9 @@ function exibirProdutos() {
         div.innerHTML = `
             <img src="${produto.img}" alt="${produto.nome}">
             <h3>${produto.nome}</h3>
-            <div class="preco"><span>${produto.preco}</span></div>
+            <div class="preco"><span>${produto.preco}</span>
+            <button class="ver-tudo-btn"><a href="#">Ver Produto</a></button>
+            </div>
         `;
         resultado.appendChild(div);
     });
@@ -112,6 +114,22 @@ checkboxes.forEach(cb => {
         exibirProdutos();
     });
 });
+
+
+// ===========================
+// LER CATEGORIA DA URL
+// ===========================
+const urlParams = new URLSearchParams(window.location.search);
+const categoriaInicial = urlParams.get("categoria");
+
+if (categoriaInicial) {
+    categoriasAtivas = [categoriaInicial];
+    // Desmarcar todas e marcar só a correta
+    checkboxes.forEach(box => {
+        box.checked = (box.getAttribute("data-categoria") === categoriaInicial);
+    });
+}
+
 
 // ===========================
 // INICIALIZAR
