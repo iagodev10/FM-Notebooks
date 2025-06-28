@@ -103,7 +103,6 @@ body {
 
 .texto-service {
   margin: 100px 50px;
-  border: 2px solid yellow;
   text-align: center;
 }
 
@@ -145,55 +144,178 @@ body {
 }
 
 .in-container {
-  position: relative;
+  perspective: 1000px;
   flex: 0 0 calc((100% - 50px) / 2);
   height: 320px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  background: #000;
 }
 
-.in-container:hover {
-  transform: scale(1);
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
 }
 
-.in-container img {
+.in-container:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
 }
 
-.in-container:hover img {
-  transform: scale(1.05);
-}
-
-.in-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 30%, rgba(0, 0, 0, 0.7) 100%);
-
-  z-index: 1;
-  pointer-events: none;
-}
-
-.in-container p {
+.card-front p {
   position: absolute;
   z-index: 2;
   bottom: 30px;
   left: 30px;
   margin: 0;
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  line-height: 1.2;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-  max-width: 70%;
-  white-space: nowrap;
+  max-width: 80%;
 }
+
+.card-back {
+  background-color: #1a1a1a;
+  color: #a0d8ef;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Alterado para space-around */
+  align-items: center;
+  padding: 30px; /* Aumentado o padding */
+  text-align: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+
+.card-text {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
+.card-back h3 {
+  font-size: 1.8rem; /* Aumentado o tamanho da fonte */
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px; /* Aumentado o margin-bottom */
+  color: #ffffff;
+}
+
+.card-back p {
+  font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+  line-height: 1.4;
+  margin: 0;
+  color: #a0d8ef;
+  position: static;
+  z-index: auto;
+  bottom: auto;
+  left: auto;
+  max-width: 100%;
+}
+
+.card-back button {
+  align-self: center;
+  padding: 12px 25px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+/* Efeito do botão */
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+ .card-back {
+  background-color: #1a1a1a;
+  color: #a0d8ef;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Alterado para space-around */
+  align-items: center;
+  padding: 30px; /* Aumentado o padding */
+  text-align: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
+
+.card-back h3 {
+  font-size: 1.8rem; /* Aumentado o tamanho da fonte */
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px; /* Aumentado o margin-bottom */
+  color: #ffffff;
+}
+
+.card-back p {
+  font-size: 1.1rem; /* Aumentado o tamanho da fonte */
+  line-height: 1.4;
+  margin: 0;
+  color: #a0d8ef;
+  position: static;
+  z-index: auto;
+  bottom: auto;
+  left: auto;
+  max-width: 100%;
+}
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 70%);
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -207,7 +329,26 @@ body {
 
   .in-container {
     flex: 0 0 100%;
-    height: 250px;
+    height: 280px;
+  }
+
+  .card-back {
+    padding: 15px;
+  }
+
+  .card-back h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .card-back p {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .card-back button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   .in-container p {

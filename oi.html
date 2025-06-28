@@ -6,85 +6,63 @@
   <title>FM Notebooks - Produtos</title>
   <style>
     /* Fundo escuro por trás do modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
+..in-container {
+  perspective: 1000px;
+}
+
+.card-inner {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  background-color: rgba(0,0,0,0.6);
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
 }
 
-/* Caixa branca no centro */
-.modal-conteudo {
-  background-color: #fff;
-  margin: 10% auto;
+.in-container:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  background: #111;
+  color: #fff;
+  transform: rotateY(180deg);
   padding: 20px;
-  border-radius: 12px;
-  max-width: 500px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
-/* Botão "X" para fechar */
-.fechar {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.fechar:hover {
-  color: #000;
-}
 
 
   </style>
 </head>
 <body>
- <section id="pagamentos">
-  <h2>Formas de Pagamento</h2>
-
-  <div id="pagamento-resumido">
-    <p>Cartão de crédito, débito, Pix...</p>
-    <button onclick="abrirModal()">Ver mais</button>
-</div>
-<!-- Janela Modal -->
-<div id="modal-pagamento" class="modal">
-  <div class="modal-conteudo">
-    <span class="fechar" onclick="fecharModal()">&times;</span>
-    <h2>Meios de pagamento</h2>
-    <p>Pagar com o Mercado Pago é rápido, seguro e sem custo adicional.</p>
-
-    <hr>
-
-    <p><strong>Cartões de crédito:</strong> em até 10x sem juros.</p>
-    <p><strong>Pix:</strong> pagamento instantâneo.</p>
-    <p><strong>Boleto bancário:</strong> disponível na finalização da compra.</p>
-
-    <!-- Aqui você pode adicionar ícones, imagens e mais detalhes -->
+ <div class="in-container">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="img/Formatação-de-computador.jpg" alt="Formatação Completa">
+      <p>Formatação <br> Completa</p>
+    </div>
+    <div class="card-back">
+      <p>Formatamos seu computador com backup, otimização e reinstalação do sistema.</p>
+    </div>
   </div>
 </div>
-</section>
-<script>
-  function abrirModal() {
-    document.getElementById("modal-pagamento").style.display = "block";
-  }
 
-  function fecharModal() {
-    document.getElementById("modal-pagamento").style.display = "none";
-  }
-
-  // Fechar clicando fora do modal
-  window.onclick = function(event) {
-    const modal = document.getElementById("modal-pagamento");
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>
 
 </body>
 </html>
