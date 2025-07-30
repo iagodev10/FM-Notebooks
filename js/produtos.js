@@ -38,14 +38,4 @@ busca.addEventListener("input", () => {
     const filtrados = produtos.filter(p =>
         p.nome.toLowerCase().includes(termo)
     );
-
-    filtrados.forEach(produto => {
-        const div = document.createElement("div")
-        div.className = "produto";
-        div.innerText = `
-        <h3>${produto.nome}</h3>
-          <p>${produto.descricao}</p>
-          `;
-        resultado.appendChild(div);
-    })
 });
