@@ -5,45 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FM Notebooks - Produtos</title>
   <style>
-    /* Fundo escuro por trás do modal */
-..in-container {
-  perspective: 1000px;
-}
-
-.card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.in-container:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.card-front {
-  z-index: 2;
-}
-
-.card-back {
-  background: #111;
-  color: #fff;
-  transform: rotateY(180deg);
-  padding: 20px;
+ .diferencial {
+  padding: 50px 20px;
   text-align: center;
+  background: #f8f8f8;
+}
+.diferencial h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.diferencial .subtitulo {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #555;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.card p {
+  color: #666;
+  font-size: 1rem;
 }
 
 
@@ -51,17 +54,33 @@
   </style>
 </head>
 <body>
- <div class="in-container">
-  <div class="card-inner">
-    <div class="card-front">
-      <img src="img/Formatação-de-computador.jpg" alt="Formatação Completa">
-      <p>Formatação <br> Completa</p>
+<section class="diferencial">
+  <h2>Nosso Diferencial</h2>
+  <p class="subtitulo">Por que escolher a FM Notebooks?</p>
+  <div class="cards">
+    <div class="card">
+      <img src="img/note-fone.jpg" alt="Assistência Técnica">
+      <h3>Assistência Técnica Especializada</h3>
+      <p>Equipe treinada e peças de qualidade garantida.</p>
     </div>
-    <div class="card-back">
-      <p>Formatamos seu computador com backup, otimização e reinstalação do sistema.</p>
+    <div class="card">
+      <img src="img/note-fone.jpg" alt="Produtos Selecionados">
+      <h3>Produtos Selecionados</h3>
+      <p>Notebooks e acessórios de marcas confiáveis.</p>
+    </div>
+    <div class="card">
+      <img src="img/note-fone.jpg" alt="Suporte Personalizado">
+      <h3>Suporte Personalizado</h3>
+      <p>Atendimento próximo pelo WhatsApp.</p>
+    </div>
+    <div class="card">
+      <img src="img/note-fone.jpg" alt="Garantia de Confiança">
+      <h3>Garantia de Confiança</h3>
+      <p>Transparência e compromisso com você.</p>
     </div>
   </div>
-</div>
+</section>
+
 
 
 </body>
