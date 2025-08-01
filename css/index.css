@@ -250,8 +250,10 @@ body {
 .div-promocao-2 img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* mostra a imagem inteira sem cortar */
-  background-color: #fff; /* evita bordas pretas e destaca melhor a imagem */
+  object-fit: contain;
+  /* mostra a imagem inteira sem cortar */
+  background-color: #fff;
+  /* evita bordas pretas e destaca melhor a imagem */
   transition: transform 0.3s ease;
 }
 
@@ -428,7 +430,7 @@ body {
 
 /* From Uiverse.io by Codecite */
 .btn {
-   --fancy-button-gradient-0: var(--cor-blue);
+  --fancy-button-gradient-0: var(--cor-blue);
   --fancy-button-gradient-50: var(--cor-blue);
   --fancy-button-gradient-100: #6eafff;
   font-weight: 500;
@@ -544,8 +546,8 @@ body {
 }
 
 .btn a {
-  color: inherit; 
-  text-decoration: none; 
+  color: inherit;
+  text-decoration: none;
   width: 100%;
   height: 100%;
 }
@@ -777,13 +779,13 @@ body {
 .redes {
   width: 100%;
   display: flex;
-  align-items: stretch; 
+  align-items: stretch;
   flex-wrap: wrap;
   margin: auto;
   padding: 30px 0;
   margin-bottom: 100px;
   margin-top: 100px;
-  height: 450px; 
+  height: 450px;
 }
 
 .redes-texto {
@@ -798,7 +800,7 @@ body {
   justify-content: center;
 }
 
-.redes-texto p{
+.redes-texto p {
   font-size: 20px;
   color: var(--cor-white2);
 }
@@ -823,13 +825,13 @@ body {
 .botao-fm:hover {
   background-color: #20c05a;
   transform: scale(1.03);
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .redes-img {
   width: 50%;
   height: 100%;
-  background-color: var(--cor-black); 
+  background-color: var(--cor-black);
   position: relative;
   overflow: hidden;
 }
@@ -842,4 +844,98 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+
+/* <!-- ============= MARCAS QUE TRABALHAMOS========================== --> */
+
+.marcas {
+  width: 100%;
+  padding: 40px 0;
+  background: #f8f8f8;
+  text-align: center;
+  overflow: hidden;
+}
+
+.marcas h2 {
+  font-size: 1.5rem;
+  color: var(--cor-blue);
+  margin-bottom: 40px;
+}
+
+.marcas-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marcas-track {
+  display: flex;
+  width: max-content;
+  animation: slide 20s linear infinite;
+  gap: 30px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.marcas-track img {
+  width: 120px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+  flex-grow: 0;
+  transition: transform 0.3s;
+  display: block;
+  margin: 0;
+}
+
+.marcas-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 15px));
+  }
+}
+
+/* TABLET (≥768px) */
+@media (min-width: 768px) {
+  .marcas h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .marcas-track {
+    gap: 40px;
+  }
+
+  .marcas-track img {
+    width: 150px;
+    height: 75px;
+  }
+}
+
+/* DESKTOP (≥1024px) */
+@media (min-width: 1024px) {
+  .marcas {
+    padding: 60px 0;
+  }
+
+  .marcas h2 {
+    font-size: 2.5rem;
+  }
+
+  .marcas-track {
+    gap: 50px;
+  }
+
+  .marcas-track img {
+    width: 180px;
+    height: 90px;
+  }
 }

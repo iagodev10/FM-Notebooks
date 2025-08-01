@@ -1,87 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FM Notebooks - Produtos</title>
   <style>
- .diferencial {
-  padding: 50px 20px;
-  text-align: center;
-  background: #f8f8f8;
-}
-.diferencial h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-.diferencial .subtitulo {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #555;
-}
-.cards {
+    .diferencial-hero {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 80px 20px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-.card {
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+.diferencial-img img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
-.card:hover {
-  transform: translateY(-5px);
-}
-.card img {
-  width: 60px;
-  margin-bottom: 15px;
-}
-.card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-.card p {
-  color: #666;
-  font-size: 1rem;
+.diferencial-img img:hover {
+  transform: scale(1.03);
 }
 
+.diferencial-texto {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.diferencial-texto h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cor-blue, #0057ff);
+  margin-bottom: 20px;
+}
+
+.diferencial-texto p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.botao {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 30px;
+  background: var(--cor-blue, #0057ff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.botao:hover {
+  background: #003bb3;
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .diferencial-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .diferencial-texto {
+    background: transparent;
+    box-shadow: none;
+  }
+}
 
 
   </style>
 </head>
+
 <body>
-<section class="diferencial">
-  <h2>Nosso Diferencial</h2>
-  <p class="subtitulo">Por que escolher a FM Notebooks?</p>
-  <div class="cards">
-    <div class="card">
-      <img src="img/note-fone.jpg" alt="Assistência Técnica">
-      <h3>Assistência Técnica Especializada</h3>
-      <p>Equipe treinada e peças de qualidade garantida.</p>
-    </div>
-    <div class="card">
-      <img src="img/note-fone.jpg" alt="Produtos Selecionados">
-      <h3>Produtos Selecionados</h3>
-      <p>Notebooks e acessórios de marcas confiáveis.</p>
-    </div>
-    <div class="card">
-      <img src="img/note-fone.jpg" alt="Suporte Personalizado">
-      <h3>Suporte Personalizado</h3>
-      <p>Atendimento próximo pelo WhatsApp.</p>
-    </div>
-    <div class="card">
-      <img src="img/note-fone.jpg" alt="Garantia de Confiança">
-      <h3>Garantia de Confiança</h3>
-      <p>Transparência e compromisso com você.</p>
-    </div>
+
+
+<section class="diferencial-hero">
+  <div class="diferencial-img">
+    <img src="img/note-fones.jpg" alt="Técnico consertando notebook">
+  </div>
+  <div class="diferencial-texto">
+    <h2>Nosso Compromisso</h2>
+    <p>
+      Comprometidos com a excelência, entregamos reparos precisos e produtos tecnológicos de confiança,
+      oferecendo eficiência e qualidade em cada serviço.
+    </p>
+    <a href="#servicos" class="botao">Saiba Mais</a>
   </div>
 </section>
 
 
 
+
+
+
+
+
 </body>
+
 </html>
