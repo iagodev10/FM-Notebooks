@@ -446,9 +446,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 10px;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: clamp(15px, 3vw, 20px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.produto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
+  border-color: var(--cor-blue);
 }
 
 .produto:hover {
@@ -841,6 +849,11 @@ body {
   transform: translate(-50%, -50%) scale(1.1);
 }
 
+.categoria:hover {
+  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
+  background-color: #f0f8ff;
+}
+
 .cat p {
   margin-top: auto;
   font-size: 1.4rem;
@@ -1087,15 +1100,15 @@ body {
     margin-top: 120px;
     margin-bottom: 120px;
   }
-  
+
   .redes-texto h2 {
     font-size: 3rem;
   }
-  
+
   .redes-texto p {
     font-size: 22px;
   }
-  
+
   .botao-fm {
     padding: 18px 32px;
     font-size: 20px;
@@ -1109,11 +1122,11 @@ body {
     margin-top: 110px;
     margin-bottom: 110px;
   }
-  
+
   .redes-texto h2 {
     font-size: 2.8rem;
   }
-  
+
   .redes-texto p {
     font-size: 21px;
   }
@@ -1126,15 +1139,15 @@ body {
     margin-top: 100px;
     margin-bottom: 100px;
   }
-  
+
   .redes-texto h2 {
     font-size: 2.4rem;
   }
-  
+
   .redes-texto p {
     font-size: 19px;
   }
-  
+
   .botao-fm {
     padding: 15px 26px;
     font-size: 17px;
@@ -1386,50 +1399,55 @@ body {
   }
 }
 
-/* <!-- ============= MARCAS QUE TRABALHAMOS========================== --> */
-
+/* ==================MARCAS - 80% LARGURA============== */
 .marcas {
   width: 100%;
-  padding: 40px 0;
+  padding: clamp(30px, 6vw, 60px) 0;
   background: #f8f8f8;
   text-align: center;
   overflow: hidden;
+
 }
 
 .marcas h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   color: var(--cor-blue);
-  margin-bottom: 40px;
+  margin-bottom: clamp(30px, 6vw, 40px);
+  font-weight: 600;
+  margin-bottom: 50px;
 }
 
 .marcas-container {
   overflow: hidden;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
 }
 
 .marcas-track {
   display: flex;
   width: max-content;
-  animation: slide 20s linear infinite;
-  gap: 30px;
+  animation: slide 25s linear infinite;
+  gap: clamp(20px, 4vw, 50px);
   align-items: center;
   flex-wrap: nowrap;
 }
 
 .marcas-track img {
-  width: 120px;
-  height: 60px;
+  width: clamp(100px, 15vw, 180px);
+  height: clamp(50px, 8vw, 90px);
   object-fit: contain;
   flex-shrink: 0;
-  flex-grow: 0;
-  transition: transform 0.3s;
-  display: block;
-  margin: 0;
+  transition: transform 0.3s ease;
+  filter: grayscale(100%);
+  opacity: 0.7;
 }
 
 .marcas-track img:hover {
   transform: scale(1.1);
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 @keyframes slide {
@@ -1438,43 +1456,163 @@ body {
   }
 
   100% {
-    transform: translateX(calc(-50% - 15px));
+    transform: translateX(calc(-50% - 25px));
   }
 }
 
-/* TABLET (≥768px) */
+@media (max-width: 768px) {
+  .marcas-container {
+    width: 90%;
+  }
+}
+
+
+/* ==================FOOTER================================ */
+/* ==================FOOTER================================ */
+
+footer {
+  background: #1e2a38;
+  color: #ecf0f1;
+  padding: 60px 20px 40px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+/* Brand */
+.footer-brand img {
+  width: 160px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Section Titles */
+.footer-nav h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.footer-nav h4::after,
+.footer-contact h4::after,
+.footer-social h4::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background: #0d6efd;
+  display: block;
+  margin-top: 6px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0d6efd;
+}
+
+/* Contact */
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.footer-contact li i {
+  margin-right: 8px;
+  color: #0d6efd;
+}
+
+/* Social */
+.footer-social-icons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.footer-social-icons a {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #ecf0f1;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  background: #0d6efd;
+  transform: translateY(-4px);
+}
+
+/* Copyright */
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 50px;
+  padding-top: 20px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Responsivo */
 @media (min-width: 768px) {
-  .marcas h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
+  .footer-content {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    text-align: left;
+    align-items: start;
   }
 
-  .marcas-track {
-    gap: 40px;
+  .footer-brand p {
+    margin: 0;
   }
 
-  .marcas-track img {
-    width: 150px;
-    height: 75px;
-  }
-}
-
-/* DESKTOP (≥1024px) */
-@media (min-width: 1024px) {
-  .marcas {
-    padding: 60px 0;
-  }
-
-  .marcas h2 {
-    font-size: 2.5rem;
-  }
-
-  .marcas-track {
-    gap: 50px;
-  }
-
-  .marcas-track img {
-    width: 180px;
-    height: 90px;
+  .footer-social h4::after,
+  .footer-contact h4::after,
+  .footer-nav h4::after {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

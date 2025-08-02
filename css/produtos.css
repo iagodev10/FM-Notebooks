@@ -317,7 +317,7 @@ body {
     .filtro {
         display: none;
     }
-    
+
     #toggle-filtro {
         display: block !important;
     }
@@ -328,11 +328,11 @@ body {
     .filtro {
         display: block !important;
     }
-    
+
     #toggle-filtro {
         display: none !important;
     }
-    
+
     /* Garantir que a palavra "Filtrar" seja bem visível */
     .filtro h3 {
         font-size: 1.4rem;
@@ -352,28 +352,28 @@ body {
         grid-template-columns: repeat(3, 1fr);
         gap: 35px;
     }
-    
+
     .filtro {
         width: 300px;
         top: 200px;
         height: calc(100vh - 200px);
     }
-    
+
     #resultado-div {
         margin-left: 320px;
         padding: 30px 50px;
         margin-top: 40px;
     }
-    
+
     .title-title {
         font-size: 2.5rem;
         margin: 220px 0 40px 0;
     }
-    
+
     #busca {
         width: 400px;
     }
-    
+
     .filtro h3 {
         font-size: 1.5rem;
         font-weight: 600;
@@ -390,19 +390,19 @@ body {
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
     }
-    
+
     .filtro {
         width: 280px;
         top: 190px;
         height: calc(100vh - 190px);
     }
-    
+
     #resultado-div {
         margin-left: 300px;
         padding: 25px 35px;
         margin-top: 40px;
     }
-    
+
     .filtro h3 {
         font-size: 1.4rem;
         font-weight: 600;
@@ -419,28 +419,28 @@ body {
         grid-template-columns: repeat(3, 1fr);
         gap: 25px;
     }
-    
+
     .filtro {
         width: 260px;
         top: 180px;
         height: calc(100vh - 180px);
     }
-    
+
     #resultado-div {
         margin-left: 280px;
         padding: 20px 30px;
         margin-top: 40px;
     }
-    
+
     .title-title {
         font-size: 1.8rem;
         margin: 200px 0 25px 0;
     }
-    
+
     #busca {
         width: 320px;
     }
-    
+
     .filtro h3 {
         font-size: 1.3rem;
         font-weight: 600;
@@ -456,11 +456,11 @@ body {
     .navbar-default {
         padding: 15px 0;
     }
-    
+
     .navbar-default .navbar-brand {
         font-size: 1.5rem;
     }
-    
+
     .filtro {
         position: relative;
         width: 100%;
@@ -475,7 +475,7 @@ body {
         border: 1px solid rgba(0, 82, 204, 0.1);
         padding: 30px;
     }
-    
+
     .filtro h3 {
         font-size: 1.4rem;
         font-weight: 700;
@@ -486,7 +486,7 @@ body {
         padding-bottom: 12px;
         position: relative;
     }
-    
+
     .filtro h3::after {
         content: "";
         position: absolute;
@@ -498,7 +498,7 @@ body {
         background: linear-gradient(90deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
         border-radius: 2px;
     }
-    
+
     .label-filtro {
         background: var(--cor-white);
         padding: 12px 15px;
@@ -508,68 +508,68 @@ body {
         transition: all 0.3s ease;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
-    
+
     .label-filtro:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0.1) 100%);
         transform: translateX(5px);
         box-shadow: 0 4px 15px rgba(0, 82, 204, 0.15);
     }
-    
+
     #resultado-div {
         margin-left: 0;
         padding: 20px 25px;
     }
-    
+
     .produtos {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     .title-title {
         font-size: 1.6rem;
         margin: 120px 0 20px 0;
     }
-    
+
     #busca {
         width: 280px;
         margin: 15px auto;
     }
-    
+
     .produto {
         padding: 15px;
     }
-    
+
     .produto img {
         max-width: 180px;
         height: 180px;
     }
-    
+
     .produto h3 {
         font-size: 0.9rem;
         min-height: 38px;
     }
-    
+
     .preco {
         font-size: 1.1rem;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 8px 18px;
         font-size: 0.9rem;
     }
-    
+
     .whats-fixed {
         width: 55px;
         height: 55px;
         bottom: 15px;
         right: 15px;
     }
-    
+
     .whats-fixed img {
         width: 28px;
         height: 28px;
     }
-    
+
     #toggle-filtro {
         padding: 12px 25px;
         font-size: 1rem;
@@ -584,16 +584,16 @@ body {
     .navbar-default {
         padding: 12px 0;
     }
-    
+
     .navbar-default .navbar-brand {
         font-size: 1.3rem;
     }
-    
+
     .navbar-default .navbar-nav .nav-link {
         margin: 0 8px;
         font-size: 0.9rem;
     }
-    
+
     .filtro {
         position: relative;
         width: 100%;
@@ -608,7 +608,7 @@ body {
         background: linear-gradient(145deg, var(--cor-white) 0%, #f8f9fa 100%);
         border: 1px solid rgba(0, 82, 204, 0.08);
     }
-    
+
     .filtro h3 {
         font-size: 1.3rem;
         font-weight: 700;
@@ -619,7 +619,7 @@ body {
         padding-bottom: 10px;
         position: relative;
     }
-    
+
     .filtro h3::after {
         content: "";
         position: absolute;
@@ -631,7 +631,7 @@ body {
         background: linear-gradient(90deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
         border-radius: 1px;
     }
-    
+
     .label-filtro {
         background: var(--cor-white);
         padding: 10px 12px;
@@ -641,81 +641,81 @@ body {
         transition: all 0.3s ease;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
-    
+
     .label-filtro:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0.1) 100%);
         transform: translateX(3px);
         box-shadow: 0 3px 12px rgba(0, 82, 204, 0.12);
     }
-    
+
     #resultado-div {
         margin-left: 0;
         padding: 15px 20px;
     }
-    
+
     .produtos {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
-    
+
     .title-title {
         font-size: 1.4rem;
         margin: 110px 0 15px 0;
     }
-    
+
     #busca {
         width: 250px;
         margin: 12px auto;
     }
-    
+
     #input-busca {
         padding: 12px 18px;
         font-size: 0.9rem;
     }
-    
+
     .produto {
         padding: 12px;
     }
-    
+
     .produto img {
         max-width: 140px;
         height: 140px;
         margin-bottom: 10px;
     }
-    
+
     .produto h3 {
         font-size: 0.85rem;
         min-height: 36px;
         margin-bottom: 8px;
     }
-    
+
     .preco {
         font-size: 1rem;
         margin-bottom: 12px;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 7px 15px;
         font-size: 0.85rem;
     }
-    
+
     .label-filtro {
         font-size: 0.9rem;
         margin-bottom: 12px;
     }
-    
+
     .whats-fixed {
         width: 50px;
         height: 50px;
         bottom: 12px;
         right: 12px;
     }
-    
+
     .whats-fixed img {
         width: 25px;
         height: 25px;
     }
-    
+
     #toggle-filtro {
         padding: 14px 28px;
         font-size: 0.95rem;
@@ -730,16 +730,16 @@ body {
     .navbar-default {
         padding: 10px 0;
     }
-    
+
     .navbar-default .navbar-brand {
         font-size: 1.2rem;
     }
-    
+
     .navbar-default .navbar-nav .nav-link {
         margin: 0 6px;
         font-size: 0.85rem;
     }
-    
+
     .filtro {
         position: relative;
         width: 100%;
@@ -754,7 +754,7 @@ body {
         background: linear-gradient(145deg, var(--cor-white) 0%, #f8f9fa 100%);
         border: 1px solid rgba(0, 82, 204, 0.06);
     }
-    
+
     .filtro h3 {
         font-size: 1.2rem;
         font-weight: 700;
@@ -765,7 +765,7 @@ body {
         padding-bottom: 8px;
         position: relative;
     }
-    
+
     .filtro h3::after {
         content: "";
         position: absolute;
@@ -777,7 +777,7 @@ body {
         background: linear-gradient(90deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
         border-radius: 1px;
     }
-    
+
     .label-filtro {
         background: var(--cor-white);
         padding: 8px 10px;
@@ -787,7 +787,7 @@ body {
         transition: all 0.3s ease;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
     }
-    
+
     .label-filtro:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0.1) 100%);
         transform: translateX(2px);
@@ -803,71 +803,71 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
-    
+
     .title-title {
         font-size: 1.3rem;
         margin: 100px 0 12px 0;
     }
-    
+
     #busca {
         width: 220px;
         margin: 10px auto;
     }
-    
+
     #input-busca {
         padding: 10px 16px;
         font-size: 0.85rem;
     }
-    
+
     .produto {
         padding: 10px;
     }
-    
+
     .produto img {
         max-width: 120px;
         height: 120px;
         margin-bottom: 8px;
     }
-    
+
     .produto h3 {
         font-size: 0.8rem;
         min-height: 32px;
         margin-bottom: 6px;
     }
-    
+
     .preco {
         font-size: 0.9rem;
         margin-bottom: 10px;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
-    
+
     .label-filtro {
         font-size: 0.85rem;
         margin-bottom: 10px;
     }
-    
+
     .custom-checkbox {
         width: 16px;
         height: 16px;
         margin-right: 8px;
     }
-    
+
     .whats-fixed {
         width: 45px;
         height: 45px;
         bottom: 10px;
         right: 10px;
     }
-    
+
     .whats-fixed img {
         width: 22px;
         height: 22px;
     }
-    
+
     #toggle-filtro {
         padding: 12px 24px;
         font-size: 0.9rem;
@@ -882,16 +882,16 @@ body {
     .navbar-default {
         padding: 8px 0;
     }
-    
+
     .navbar-default .navbar-brand {
         font-size: 1.1rem;
     }
-    
+
     .navbar-default .navbar-nav .nav-link {
         margin: 0 4px;
         font-size: 0.8rem;
     }
-    
+
     .filtro {
         position: relative;
         width: 100%;
@@ -906,7 +906,7 @@ body {
         background: linear-gradient(145deg, var(--cor-white) 0%, #f8f9fa 100%);
         border: 1px solid rgba(0, 82, 204, 0.05);
     }
-    
+
     .filtro h3 {
         font-size: 1.1rem;
         font-weight: 700;
@@ -917,7 +917,7 @@ body {
         padding-bottom: 6px;
         position: relative;
     }
-    
+
     .filtro h3::after {
         content: "";
         position: absolute;
@@ -929,7 +929,7 @@ body {
         background: linear-gradient(90deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
         border-radius: 1px;
     }
-    
+
     .label-filtro {
         background: var(--cor-white);
         padding: 6px 8px;
@@ -939,87 +939,87 @@ body {
         transition: all 0.3s ease;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
     }
-    
+
     .label-filtro:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0.1) 100%);
         transform: translateX(1px);
         box-shadow: 0 1px 6px rgba(0, 82, 204, 0.08);
     }
-    
+
     #resultado-div {
         margin-left: 0;
         padding: 10px 12px;
     }
-    
+
     .produtos {
         grid-template-columns: 1fr;
         gap: 15px;
     }
-    
+
     .title-title {
         font-size: 1.2rem;
         margin: 90px 0 10px 0;
     }
-    
+
     #busca {
         width: 200px;
         margin: 8px auto;
     }
-    
+
     #input-busca {
         padding: 8px 14px;
         font-size: 0.8rem;
     }
-    
+
     .produto {
         padding: 12px;
     }
-    
+
     .produto img {
         max-width: 140px;
         height: 140px;
         margin-bottom: 10px;
     }
-    
+
     .produto h3 {
         font-size: 0.9rem;
         min-height: 36px;
         margin-bottom: 8px;
     }
-    
+
     .preco {
         font-size: 1rem;
         margin-bottom: 12px;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 8px 16px;
         font-size: 0.85rem;
     }
-    
+
     .label-filtro {
         font-size: 0.8rem;
         margin-bottom: 8px;
     }
-    
+
     .custom-checkbox {
         width: 15px;
         height: 15px;
         margin-right: 6px;
     }
-    
+
     .whats-fixed {
         width: 45px;
         height: 45px;
         bottom: 10px;
         right: 10px;
     }
-    
+
     .whats-fixed img {
         width: 22px;
         height: 22px;
     }
-    
+
     #toggle-filtro {
         padding: 6px 14px;
         font-size: 0.8rem;
@@ -1031,16 +1031,16 @@ body {
     .navbar-default {
         padding: 6px 0;
     }
-    
+
     .navbar-default .navbar-brand {
         font-size: 1rem;
     }
-    
+
     .navbar-default .navbar-nav .nav-link {
         margin: 0 3px;
         font-size: 0.75rem;
     }
-    
+
     .filtro {
         position: relative;
         width: 100%;
@@ -1055,7 +1055,7 @@ body {
         background: linear-gradient(145deg, var(--cor-white) 0%, #f8f9fa 100%);
         border: 1px solid rgba(0, 82, 204, 0.04);
     }
-    
+
     .filtro h3 {
         font-size: 1rem;
         font-weight: 700;
@@ -1066,7 +1066,7 @@ body {
         padding-bottom: 5px;
         position: relative;
     }
-    
+
     .filtro h3::after {
         content: "";
         position: absolute;
@@ -1078,7 +1078,7 @@ body {
         background: linear-gradient(90deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
         border-radius: 1px;
     }
-    
+
     .label-filtro {
         background: var(--cor-white);
         padding: 5px 6px;
@@ -1088,87 +1088,87 @@ body {
         transition: all 0.3s ease;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01);
     }
-    
+
     .label-filtro:hover {
         background: linear-gradient(135deg, rgba(0, 82, 204, 0.05) 0%, rgba(0, 82, 204, 0.1) 100%);
         transform: translateX(1px);
         box-shadow: 0 1px 4px rgba(0, 82, 204, 0.06);
     }
-    
+
     #resultado-div {
         margin-left: 0;
         padding: 8px 10px;
     }
-    
+
     .produtos {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-    
+
     .title-title {
         font-size: 1.1rem;
         margin: 80px 0 8px 0;
     }
-    
+
     #busca {
         width: 180px;
         margin: 6px auto;
     }
-    
+
     #input-busca {
         padding: 6px 12px;
         font-size: 0.75rem;
     }
-    
+
     .produto {
         padding: 10px;
     }
-    
+
     .produto img {
         max-width: 120px;
         height: 120px;
         margin-bottom: 8px;
     }
-    
+
     .produto h3 {
         font-size: 0.85rem;
         min-height: 32px;
         margin-bottom: 6px;
     }
-    
+
     .preco {
         font-size: 0.9rem;
         margin-bottom: 10px;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
-    
+
     .label-filtro {
         font-size: 0.75rem;
         margin-bottom: 6px;
     }
-    
+
     .custom-checkbox {
         width: 14px;
         height: 14px;
         margin-right: 5px;
     }
-    
+
     .whats-fixed {
         width: 40px;
         height: 40px;
         bottom: 8px;
         right: 8px;
     }
-    
+
     .whats-fixed img {
         width: 20px;
         height: 20px;
     }
-    
+
     #toggle-filtro {
         padding: 10px 20px;
         font-size: 0.85rem;
@@ -1183,26 +1183,26 @@ body {
     .navbar-default {
         padding: 5px 0;
     }
-    
+
     .title-title {
         margin: 70px 0 8px 0;
         font-size: 1.1rem;
     }
-    
+
     .filtro {
         padding: 10px;
     }
-    
+
     .filtro h3 {
         font-size: 0.9rem;
         margin-bottom: 6px;
     }
-    
+
     .label-filtro {
         margin-bottom: 6px;
         font-size: 0.8rem;
     }
-    
+
     .produto {
         padding: 8px;
     }
@@ -1212,35 +1212,35 @@ body {
         height: 100px;
         margin-bottom: 6px;
     }
-    
+
     .produto h3 {
         font-size: 0.8rem;
         min-height: 28px;
         margin-bottom: 4px;
     }
-    
+
     .preco {
         font-size: 0.85rem;
         margin-bottom: 8px;
     }
-    
+
     .produto .ver-tudo-btn {
         padding: 5px 10px;
         font-size: 0.75rem;
     }
-    
+
     .whats-fixed {
         width: 35px;
         height: 35px;
         bottom: 6px;
         right: 6px;
     }
-    
+
     .whats-fixed img {
         width: 18px;
         height: 18px;
     }
-    
+
     #toggle-filtro {
         padding: 8px 16px;
         font-size: 0.8rem;
@@ -1255,19 +1255,19 @@ body {
     .produto {
         transition: none;
     }
-    
+
     .produto:hover {
         transform: none;
     }
-    
+
     .navbar-default .navbar-nav .nav-link {
         transition: none;
     }
-    
+
     .label-filtro {
         transition: none;
     }
-    
+
     .produto .ver-tudo-btn {
         transition: none;
     }
@@ -1278,11 +1278,11 @@ body {
     .produto {
         border: 2px solid var(--cor-black);
     }
-    
+
     .filtro {
         border: 2px solid var(--cor-black);
     }
-    
+
     .custom-checkbox {
         border-width: 3px;
     }
@@ -1290,6 +1290,7 @@ body {
 
 /* =================== IMPRESSÃO =================== */
 @media print {
+
     .navbar-default,
     .filtro,
     .produto .ver-tudo-btn,
@@ -1298,21 +1299,21 @@ body {
     #toggle-filtro {
         display: none;
     }
-    
+
     .produtos {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
-    
+
     .produto {
         border: 1px solid #ccc;
         box-shadow: none;
     }
-    
+
     .title-title {
         margin: 20px 0;
     }
-    
+
     #resultado-div {
         margin-left: 0;
         padding: 0;
@@ -1324,24 +1325,24 @@ body {
     .produto:hover {
         transform: none;
     }
-    
+
     .produto .ver-tudo-btn {
         min-height: 44px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .label-filtro {
         min-height: 44px;
         display: flex;
         align-items: center;
     }
-    
+
     #toggle-filtro {
         min-height: 44px;
     }
-    
+
     #input-busca {
         min-height: 44px;
     }
@@ -1356,20 +1357,170 @@ body {
         --cor-gray: #cccccc;
         --cor-linha-cinza: #444444;
     }
-    
+
     .produto {
         background: var(--cor-white);
         color: var(--cor-black);
     }
-    
+
     .filtro {
         background: var(--cor-white);
         color: var(--cor-black);
     }
-    
+
     #input-busca {
         background: var(--cor-white);
         color: var(--cor-black);
         border-color: var(--cor-linha-cinza);
+    }
+}
+
+/* ==================FOOTER================================ */
+/* ==================FOOTER================================ */
+
+footer {
+    background: #1e2a38;
+    color: #ecf0f1;
+    padding: 60px 20px 40px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+/* Brand */
+.footer-brand img {
+    width: 160px;
+    margin-bottom: 12px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Section Titles */
+.footer-nav h4,
+.footer-contact h4,
+.footer-social h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.footer-nav h4::after,
+.footer-contact h4::after,
+.footer-social h4::after {
+    content: '';
+    width: 30px;
+    height: 3px;
+    background: #0d6efd;
+    display: block;
+    margin-top: 6px;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #0d6efd;
+}
+
+/* Contact */
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.footer-contact li i {
+    margin-right: 8px;
+    color: #0d6efd;
+}
+
+/* Social */
+.footer-social-icons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.footer-social-icons a {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+    background: #0d6efd;
+    transform: translateY(-4px);
+}
+
+/* Copyright */
+.footer-copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 50px;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        text-align: left;
+        align-items: start;
+    }
+
+    .footer-brand p {
+        margin: 0;
+    }
+
+    .footer-social h4::after,
+    .footer-contact h4::after,
+    .footer-nav h4::after {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

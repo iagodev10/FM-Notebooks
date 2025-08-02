@@ -1608,117 +1608,152 @@ body {
   }
 }
 
-/* ======= FOOTER ======= */
-.footer {
-  width: 100%;
-  background: linear-gradient(135deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
-  color: #fff;
-  text-align: center;
-  padding: 30px 0 20px 0;
-  margin-top: 80px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  box-shadow: 0 -4px 20px rgba(0, 82, 204, 0.2);
+/* ==================FOOTER================================ */
+/* ==================FOOTER================================ */
+
+footer {
+  background: #1e2a38;
+  color: #ecf0f1;
+  padding: 60px 20px 40px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
 }
 
 .footer-content {
-  max-width: 900px;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+/* Brand */
+.footer-brand img {
+  width: 160px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  max-width: 320px;
   margin: 0 auto;
-  padding: 0 20px;
+  line-height: 1.5;
 }
 
-/* =================== RESPONSIVIDADE FOOTER =================== */
-
-/* =================== DESKTOP GRANDE (1400px+) =================== */
-@media (min-width: 1400px) {
-  .footer {
-    padding: 35px 0 25px 0;
-    margin-top: 100px;
-    font-size: 1.2rem;
-  }
+/* Section Titles */
+.footer-nav h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  position: relative;
 }
 
-/* =================== DESKTOP MÉDIO (1200px - 1399px) =================== */
-@media (max-width: 1399px) and (min-width: 1200px) {
-  .footer {
-    padding: 32px 0 22px 0;
-    margin-top: 90px;
-    font-size: 1.15rem;
-  }
+.footer-nav h4::after,
+.footer-contact h4::after,
+.footer-social h4::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background: #0d6efd;
+  display: block;
+  margin-top: 6px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* =================== DESKTOP PEQUENO (992px - 1199px) =================== */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .footer {
-    padding: 30px 0 20px 0;
-    margin-top: 80px;
-    font-size: 1.1rem;
-  }
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* =================== TABLET LANDSCAPE (768px - 991px) =================== */
-@media (max-width: 991px) and (min-width: 768px) {
-  .footer {
-    padding: 28px 0 18px 0;
-    margin-top: 70px;
-    font-size: 1rem;
-  }
-  
+.footer-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0d6efd;
+}
+
+/* Contact */
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.footer-contact li i {
+  margin-right: 8px;
+  color: #0d6efd;
+}
+
+/* Social */
+.footer-social-icons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.footer-social-icons a {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #ecf0f1;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  background: #0d6efd;
+  transform: translateY(-4px);
+}
+
+/* Copyright */
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 50px;
+  padding-top: 20px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
   .footer-content {
-    padding: 0 15px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    text-align: left;
+    align-items: start;
   }
-}
 
-/* =================== TABLET PORTRAIT (576px - 767px) =================== */
-@media (max-width: 767px) and (min-width: 576px) {
-  .footer {
-    padding: 25px 0 15px 0;
-    margin-top: 60px;
-    font-size: 0.95rem;
+  .footer-brand p {
+    margin: 0;
   }
-  
-  .footer-content {
-    padding: 0 12px;
-  }
-}
 
-/* =================== MOBILE GRANDE (480px - 575px) =================== */
-@media (max-width: 575px) and (min-width: 480px) {
-  .footer {
-    padding: 22px 0 12px 0;
-    margin-top: 50px;
-    font-size: 0.9rem;
-  }
-  
-  .footer-content {
-    padding: 0 10px;
-  }
-}
-
-/* =================== MOBILE MÉDIO (375px - 479px) =================== */
-@media (max-width: 479px) and (min-width: 375px) {
-  .footer {
-    padding: 20px 0 10px 0;
-    margin-top: 45px;
-    font-size: 0.85rem;
-  }
-  
-  .footer-content {
-    padding: 0 8px;
-  }
-}
-
-/* =================== MOBILE PEQUENO (320px - 374px) =================== */
-@media (max-width: 374px) {
-  .footer {
-    padding: 18px 0 8px 0;
-    margin-top: 40px;
-    font-size: 0.8rem;
-  }
-  
-  .footer-content {
-    padding: 0 6px;
+  .footer-social h4::after,
+  .footer-contact h4::after,
+  .footer-nav h4::after {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

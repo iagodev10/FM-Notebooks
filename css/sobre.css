@@ -1,478 +1,415 @@
 @import url('../assets/fonts/fonts.css');
 
 :root {
-    --cor-black: #000;
-    --cor-blue: #0052cc;
-    --cor-white: #ffffff;
-    --cor-white2: #f5f5f7;
-    --cor-whats: #25d366;
-    --cor-linha-cinza: #dcdcdc;
+  --cor-black: #000;
+  --cor-blue: #0052cc;
+  --cor-white: #ffffff;
+  --cor-white2: #f5f5f7;
+  --cor-whats: #25d366;
+  --cor-linha-cinza: #dcdcdc;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
 }
 
 body {
-    background-color: var(--cor-white2);
-    margin: 0;
-    padding: 0;
-    padding-top: 80px;
+  background-color: var(--cor-white2);
+  margin: 0;
+  padding: 0;
+  padding-top: 70px;
+  overflow-x: hidden;
 }
 
 .whats-fixed {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px;
-    background-color: var(--cor-whats);
-    border-radius: 50%;
-    z-index: 99999999999999;
-    width: 60px;
-    height: 60px;
-    transition: all 0.3s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px;
+  background-color: var(--cor-whats);
+  border-radius: 50%;
+  z-index: 99999999999999;
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
 .whats-fixed img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .whats-fixed:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
-
-
-
 
 /*-----------------HEADER------------------*/
 /*-----------------HEADER------------------*/
 
 .navbar-default {
-    background-color: #fff;
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease-in-out;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--cor-white);
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-default .navbar-brand {
-    font-size: 2.3rem;
-    font-weight: bold;
-    color: #000;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: var(--cor-black);
 }
 
 .navbar-default .navbar-nav .nav-link {
-    color: #000;
-    font-weight: 500;
-    margin: 0 15px;
-    transition: color 0.3s;
+  color: var(--cor-black);
+  font-weight: 500;
+  margin: 0 15px;
+  transition: color 0.3s;
 }
 
 .navbar-default .navbar-nav .nav-link:hover {
-    color: var(--cor-blue);
+  color: var(--cor-blue);
 }
 
 .navbar-toggler span {
-    display: block;
-    height: 3px;
-    width: 25px;
-    background-color: #000;
-    margin: 5px 0;
+  display: block;
+  height: 3px;
+  width: 25px;
+  background-color: var(--cor-black);
+  margin: 5px 0;
 }
 
 .nav-item {
   font-size: 1.3rem;
 }
 
-
-/* <!-- ================SOBRE==================== --> */
-
+/* SOBRE SECTION */
 .sobre {
-    width: 100%;
-    height: 70vh;
-    position: relative;
-    background-image: url(../img/quem_somos.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/* 
- .sobre-img{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
-
- .sobre-img img{
-   max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
- } */
-
-/* <!-- ================QUEM SOMOS - PRIMEIRO TEXTO================= --> */
-
-/* -------- BASE (MOBILE FIRST) -------- */
-.quem-somos {
-    width: 100%;
-    padding: 40px 20px;
-    background: #f8f8f8;
-    display: flex;
-    justify-content: center;
-}
-
-.quem-somos-divide {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.quem-somos-divide-img {
-    width: 100%;
-    height: auto;
-}
-
-.quem-somos-divide-img img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.quem-somos-divide-texto {
-    width: 100%;
-    font-size: clamp(1rem, 2.5vw, 1.8rem);
-    line-height: 1.8;
-    color: #333;
-    text-align: center;
-    padding: 0 10px;
-}
-
-/* -------- TABLETS (>= 768px) -------- */
-@media (min-width: 768px) {
-    .quem-somos-divide {
-        flex-direction: row;
-        max-width: 90%;
-        margin: auto;
-    }
-
-    .quem-somos-divide-img,
-    .quem-somos-divide-texto {
-        flex: 1 1 50%;
-        max-width: 50%;
-    }
-
-    .quem-somos-divide-texto {
-        text-align: left;
-        padding: 20px;
-    }
-}
-
-/* -------- DESKTOP (>= 1024px) -------- */
-@media (min-width: 1024px) {
-    .quem-somos {
-        padding: 80px 40px;
-    }
-
-    .quem-somos-divide {
-        max-width: 80%;
-    }
-
-    .quem-somos-divide-img {
-        height: 70vh;
-    }
-
-    .quem-somos-divide-img img {
-        height: 100%;
-    }
-
-    .quem-somos-divide-texto {
-        font-size: 1.8rem;
-        padding: 40px;
-        text-align: center;
-    }
-}
-
-
-/* <!-- ================QUEM SOMOS - O QUE FAZEMOS================= --> */
-
-.fazemos {
-    width: 80%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    line-height: 2;
-}
-
-.fazemos h1 {
-    font-size: 2rem;
-    color: var(--cor-blue);
-    margin-bottom: 20px;
-}
-
-.fazemos p {
-    font-size: 1.1rem;
-    text-align: center;
-    color: var(--cor-black);
-    margin-bottom: 40px;
-}
-
-.fazemos-vídeo {
-    width: 100%;
-    margin: auto;
-    height: 600px;
-}
-
-.fazemos-vídeo video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-@media (min-width: 768px) {
-
-    .fazemos h1 {
-        font-size: 2.5rem;
-    }
-
-    .fazemos p {
-        font-size: 1.6rem;
-    }
-
-}
-
-@media (min-width: 1024px) {
-
-    .fazemos h1 {
-        font-size: 3rem;
-    }
-
-    .fazemos p {
-        font-size: 1.8rem;
-    }
-
-}
-
-/* <!-- ================QUEM SOMOS - DIFERENCIAL================= --> */
-
-.diferente {
-    width: 100%;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    /* espaço antes do compromisso */
-    position: relative;
-    z-index: 1;
-    /* garante que fique acima do compromisso */
-}
-
-.diferente-titulo h1 {
-    font-size: 2rem;
-    color: var(--cor-blue);
-    text-align: center;
-}
-
-.diferente-card {
-    width: 80%;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: var(--cor-white);
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-}
-
-.icon {
-    margin-top: 22px;
-}
-
-.icon img {
-    width: 70px;
-    margin-bottom: 20px;
-}
-
-.diferente-cardcard {
-    width: 90%;
-    background-color: var(--cor-white);
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.diferente-cardcard h3 {
-    font-size: 1.5rem;
-    color: var(--cor-blue);
-    margin-top: 20px;
-}
-
-.diferente-cardcard p {
-    font-size: 1rem;
-    margin-top: 15px;
-    color: var(--cor-black);
-}
-
-.diferente-cardcard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-}
-
-.linha-dif {
-    width: 90%;
-    height: 1px;
-    background-color: var(--cor-linha-cinza);
-}
-
-@media (min-width: 768px) {
-    .diferente-titulo h1 {
-        font-size: 3rem;
-    }
-
-    .diferente-card {
-        width: 80%;
-        padding: 20px;
-    }
-
-    .icon img {
-        width: 90px;
-    }
-
-    .diferente-cardcard h3 {
-        font-size: 2rem;
-    }
-
-    .diferente-cardcard p {
-        font-size: 1.4rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .diferente-card {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 30px;
-        padding: 40px;
-    }
-
-    .linha-dif {
-        display: none;
-    }
-
-    .diferente-cardcard h3 {
-        font-size: 1.8rem;
-    }
-
-    .diferente-cardcard p {
-        font-size: 1.2rem;
-    }
-}
-
-/* <!-- ================QUEM SOMOS - NOSSO DIFERENCIAL================= --> */
-
-.compromisso {
-    width: 100%;
-    min-height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 20px;
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-    background-image: url("../img/fundo-compormisso.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.compromisso-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 1;
-}
-
-.compromisso-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    text-align: center;
-    color: #fff;
-    padding: 20px;
-}
-
-.compromisso-content h1 {
-    font-size: 2.6rem;
-    margin-bottom: 15px;
-    color: var(--cor-white2);
-}
-
-.compromisso-content p {
-    font-size: 1.4rem;
-    line-height: 1.6;
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
-    .compromisso {
-        background-attachment: scroll;
-        padding: 80px 30px;
-        min-height: auto;
-    }
-
-    .compromisso-content h2 {
-        font-size: 2.2rem;
-    }
-
-    .compromisso-content p {
-        font-size: 1.4rem;
-    }
+  width: 100%;
+  height: clamp(50vh, 70vh, 80vh);
+  position: relative;
+  background-image: url(../img/quem_somos.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @media (max-width: 768px) {
-    .compromisso {
-        background-attachment: scroll;
-        padding: 80px 20px;
-    }
-
-    .compromisso-content h2 {
-        font-size: 2rem;
-    }
-
-    .compromisso-content p {
-        font-size: 1rem;
-    }
+  .sobre {
+    background-attachment: scroll;
+    height: 50vh;
+  }
 }
 
+/* QUEM SOMOS SECTION */
+.quem-somos {
+  width: 100%;
+  padding: clamp(30px, 8vw, 80px) clamp(15px, 5vw, 40px);
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+}
 
+.quem-somos-divide {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 5vw, 40px);
+}
 
-/* ========REDES SOCIAS=========== */
-/* ========REDES SOCIAS=========== */
+.quem-somos-divide-img {
+  width: 100%;
+  height: auto;
+}
+
+.quem-somos-divide-img img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.quem-somos-divide-img img:hover {
+  transform: scale(1.02);
+}
+
+.quem-somos-divide-texto {
+  width: 100%;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  line-height: 1.8;
+  color: #333;
+  text-align: center;
+  padding: 0 clamp(10px, 3vw, 30px);
+}
+
+/* Tablets and up */
+@media (min-width: 768px) {
+  .quem-somos-divide {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .quem-somos-divide-img,
+  .quem-somos-divide-texto {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+
+  .quem-somos-divide-texto {
+    text-align: left;
+    padding: 0 30px;
+  }
+
+  .quem-somos-divide-img img {
+    height: clamp(300px, 50vh, 500px);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .quem-somos-divide-texto {
+    font-size: 1.6rem;
+    padding: 0 40px;
+  }
+}
+
+/* FAZEMOS SECTION */
+.fazemos {
+  width: min(90%, 1200px);
+  margin: clamp(40px, 8vw, 80px) auto;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.fazemos h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--cor-blue);
+  margin-bottom: clamp(15px, 4vw, 30px);
+  font-weight: 700;
+}
+
+.fazemos-p p {
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  text-align: center;
+  color: var(--cor-black);
+  margin-bottom: clamp(30px, 6vw, 50px);
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fazemos-vídeo {
+  width: 100%;
+  margin: auto;
+  height: clamp(250px, 50vh, 600px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.fazemos-vídeo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DIFERENTE SECTION - Mantendo larguras originais com efeitos melhorados */
+.diferente {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.diferente-titulo h1 {
+  font-size: 2rem;
+  color: var(--cor-blue);
+  text-align: center;
+}
+
+.diferente-card {
+  width: 80%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: var(--cor-white);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.icon {
+  margin-top: 22px;
+}
+
+.icon img {
+  width: 70px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.diferente-cardcard {
+  width: 90%;
+  background-color: var(--cor-white);
+  padding: 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.diferente-cardcard h3 {
+  font-size: 1.5rem;
+  color: var(--cor-blue);
+  margin-top: 20px;
+}
+
+.diferente-cardcard p {
+  font-size: 1rem;
+  margin-top: 15px;
+  color: var(--cor-black);
+}
+
+.diferente-cardcard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
+  border-color: var(--cor-blue);
+}
+
+.diferente-cardcard:hover .icon img {
+  transform: scale(1.1);
+}
+
+.linha-dif {
+  width: 90%;
+  height: 1px;
+  background-color: var(--cor-linha-cinza);
+}
+
+@media (min-width: 768px) {
+  .diferente-titulo h1 {
+    font-size: 3rem;
+  }
+
+  .diferente-card {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .icon img {
+    width: 90px;
+  }
+
+  .diferente-cardcard h3 {
+    font-size: 2rem;
+  }
+
+  .diferente-cardcard p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .diferente-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 40px;
+  }
+
+  .linha-dif {
+    display: none;
+  }
+
+  .diferente-cardcard h3 {
+    font-size: 1.8rem;
+  }
+
+  .diferente-cardcard p {
+    font-size: 1.2rem;
+  }
+}
+
+/* COMPROMISSO SECTION */
+.compromisso {
+  width: 100%;
+  min-height: clamp(400px, 70vh, 600px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(60px, 10vw, 120px) clamp(20px, 5vw, 40px);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  background-image: url("../img/fundo-compormisso.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.compromisso-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.compromisso-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  text-align: center;
+  color: #fff;
+  padding: clamp(20px, 5vw, 40px);
+}
+
+.compromisso-content h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: clamp(20px, 4vw, 30px);
+  color: var(--cor-white2);
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.compromisso-content p {
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .compromisso {
+    background-attachment: scroll;
+  }
+}
+
+/* ========REDES SOCIAS - MANTENDO ORIGINAL=========== */
 .redes {
   width: 100%;
   display: flex;
@@ -553,7 +490,7 @@ body {
   left: 0;
 }
 
-/* =================== RESPONSIVIDADE REDES SOCIAIS =================== */
+/* =================== RESPONSIVIDADE REDES SOCIAIS - MANTENDO ORIGINAL =================== */
 
 /* =================== DESKTOP GRANDE (1400px+) =================== */
 @media (min-width: 1400px) {
@@ -562,15 +499,15 @@ body {
     margin-top: 120px;
     margin-bottom: 120px;
   }
-  
+
   .redes-texto h2 {
     font-size: 3rem;
   }
-  
+
   .redes-texto p {
     font-size: 22px;
   }
-  
+
   .botao-fm {
     padding: 18px 32px;
     font-size: 20px;
@@ -584,11 +521,11 @@ body {
     margin-top: 110px;
     margin-bottom: 110px;
   }
-  
+
   .redes-texto h2 {
     font-size: 2.8rem;
   }
-  
+
   .redes-texto p {
     font-size: 21px;
   }
@@ -601,15 +538,15 @@ body {
     margin-top: 100px;
     margin-bottom: 100px;
   }
-  
+
   .redes-texto h2 {
     font-size: 2.4rem;
   }
-  
+
   .redes-texto p {
     font-size: 19px;
   }
-  
+
   .botao-fm {
     padding: 15px 26px;
     font-size: 17px;
@@ -858,5 +795,191 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .whats-fixed {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading animation for images */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img:not([src]) {
+  opacity: 0;
+}
+
+/* Focus styles for accessibility */
+.botao-fm:focus,
+.nav-link:focus {
+  outline: 2px solid var(--cor-blue);
+  outline-offset: 2px;
+}
+
+
+/* ==================FOOTER================================ */
+/* ==================FOOTER================================ */
+
+footer {
+  background: #1e2a38;
+  color: #ecf0f1;
+  padding: 60px 20px 40px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+/* Brand */
+.footer-brand img {
+  width: 160px;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Section Titles */
+.footer-nav h4,
+.footer-contact h4,
+.footer-social h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.footer-nav h4::after,
+.footer-contact h4::after,
+.footer-social h4::after {
+  content: '';
+  width: 30px;
+  height: 3px;
+  background: #0d6efd;
+  display: block;
+  margin-top: 6px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #0d6efd;
+}
+
+/* Contact */
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.footer-contact li i {
+  margin-right: 8px;
+  color: #0d6efd;
+}
+
+/* Social */
+.footer-social-icons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.footer-social-icons a {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #ecf0f1;
+  transition: all 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  background: #0d6efd;
+  transform: translateY(-4px);
+}
+
+/* Copyright */
+.footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 50px;
+  padding-top: 20px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    text-align: left;
+    align-items: start;
+  }
+
+  .footer-brand p {
+    margin: 0;
+  }
+
+  .footer-social h4::after,
+  .footer-contact h4::after,
+  .footer-nav h4::after {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
