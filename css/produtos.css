@@ -55,6 +55,37 @@ body {
     /* Azul só no hover */
 }
 
+@media (max-width: 374px) {
+    .navbar-default {
+        padding: 12px 10px;
+    }
+
+    .navbar-default .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .navbar-default .navbar-nav .nav-link {
+        font-size: 0.8rem;
+        margin: 0 3px;
+    }
+}
+
+@media (max-width: 479px) and (min-width: 375px) {
+    .navbar-default {
+        padding: 12px 0;
+
+    }
+
+    .navbar-default .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .navbar-default .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin: 0 4px;
+    }
+}
+
 /* =================== PESQUISA =================== */
 #busca {
     position: relative;
@@ -327,6 +358,7 @@ body {
 @media (min-width: 992px) {
     .filtro {
         display: block !important;
+        height: 600px;
     }
 
     #toggle-filtro {
@@ -1392,12 +1424,6 @@ footer {
     gap: 40px;
     grid-template-columns: 1fr;
     text-align: center;
-}
-
-/* Brand */
-.footer-brand img {
-    width: 160px;
-    margin-bottom: 12px;
 }
 
 .footer-brand p {

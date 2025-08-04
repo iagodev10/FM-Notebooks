@@ -90,6 +90,36 @@ body {
   font-size: 1.3rem;
 }
 
+@media (max-width: 374px) {
+  .navbar-default {
+    padding: 12px 10px;
+  }
+
+  .navbar-default .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 0.8rem;
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 479px) and (min-width: 375px) {
+  .navbar-default {
+    padding: 12px 10px;
+  }
+
+  .navbar-default .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin: 0 4px;
+  }
+}
+
 /* SOBRE SECTION */
 .sobre {
   width: 100%;
