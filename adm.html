@@ -14,9 +14,13 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <a href="#" class="active"><i class="fas fa-box"></i> Produtos</a>
-        <a href="#"><i class="fas fa-tags"></i> Promoções</a>
-        <a href="#"><i class="fas fa-cogs"></i> Adicionar ADM</a>
+        <button id="btn-produtos" class="active" onclick="mostrar('produtos')">
+            <i class="fas fa-box"></i> Produtos
+        </button>
+        <button id="btn-promocoes" onclick="mostrar('promocoes')">
+            <i class="fas fa-tags"></i> Promoções
+        </button>
+        <button><i class="fas fa-cogs"></i> Adicionar ADM</button>
     </aside>
 
     <!-- HEADER -->
@@ -32,10 +36,94 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main>
-        <h1>Painel Administrativo</h1>
-        <p>Conteúdo da página...</p>
+        <!-- Produtos -->
+        <section class="produtos-em-destaque">
+            <div class="produtos">
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Fitboot Inspire">
+                    <h3>Fitboot Inspire, tracker de frequência cardíaca</h3>
+                    <div class="preco">
+                        <span class="preco-antigo">R$ 600,00</span>
+                        <span class="preco-novo">R$ 585,00</span>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Notebook Gamer">
+                    <h3>Laptop para games JP 15.6'', 256 GB</h3>
+                    <div class="preco">
+                        <span class="preco-antigo">R$ 600,00</span>
+                        <span class="preco-novo">R$ 585,00</span>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Drone Quadcopter">
+                    <h3>Drone Quadcopter HKI Tech, câmera 360 e controle</h3>
+                    <div class="preco">
+                        <span class="preco-novo">R$ 600,00</span>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Smartphone Z Pixel Max">
+                    <h3>Smartphone Z Pixel Max 128 GB, desbloqueado</h3>
+                    <div class="preco">
+                        <span class="preco-antigo">R$ 600,00</span>
+                        <span class="preco-novo">R$ 585,00</span>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Headphone In-ear">
+                    <h3>Headphone In-ear wireless, cancelamento de ruído</h3>
+                    <div class="preco">
+                        <span class="preco-antigo">R$ 600,00</span>
+                        <span class="preco-novo">R$ 585,00</span>
+                    </div>
+                </div>
+                <div class="produto">
+                    <img src="img/noteboooooo.jpg" alt="Óculos VR Safay">
+                    <h3>Óculos VR Safay GEN 2, 256 GB, controladores de toque</h3>
+                    <div class="preco">
+                        <span class="preco-novo">R$ 600,00</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Promoções -->
+        <section id="promocoes" class="lista" style="display: none;">
+            <div class="div-promocao">
+                <div class="div-promocao-1">
+                    <img src="img/note-fones.jpg" alt="">
+                </div>
+                <div class="div-promocao-2">
+                    <img src="img/note-fones.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <script>
+        function mostrar(tipo) {
+            const produtos = document.getElementById("produtos");
+            const promocoes = document.getElementById("promocoes");
+
+            const btnProdutos = document.getElementById("btn-produtos");
+            const btnPromocoes = document.getElementById("btn-promocoes");
+
+            if (tipo === "produtos") {
+                produtos.style.display = "grid";
+                promocoes.style.display = "none";
+                btnProdutos.classList.add("active");
+                btnPromocoes.classList.remove("active");
+            } else {
+                produtos.style.display = "none";
+                promocoes.style.display = "grid";
+                btnProdutos.classList.remove("active");
+                btnPromocoes.classList.add("active");
+            }
+        }
+    </script>
 </body>
 
 </html>
