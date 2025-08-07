@@ -1,131 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Footer Profissional FM Notebooks</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administração - Loja</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-    .produto-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: transform 0.3s;
-}
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
 
-.produto-card:hover {
-  transform: scale(1.03);
-}
+    /* MENU LATERAL */
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
 
-.produto-card img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  margin-bottom: 12px;
-}
+    .sidebar button {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 15px 20px;
+      text-align: left;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-.produto-card h3 {
-  font-size: 18px;
-  margin: 8px 0;
-}
+    .sidebar button:hover {
+      background-color: #34495e;
+    }
 
-.descricao {
-  font-size: 14px;
-  color: #666;
-}
+    .sidebar .bottom {
+      padding: 0 20px;
+    }
 
-.preco {
-  font-size: 20px;
-  font-weight: bold;
-  color: #0e4b8c;
-  margin: 8px 0;
-}
+    .sidebar .bottom button {
+      background-color: #1abc9c;
+      border-radius: 8px;
+      padding: 10px;
+      font-weight: bold;
+    }
 
-.botoes-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    /* CONTEÚDO PRINCIPAL */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
 
-.btn-adicionar,
-.btn-detalhes {
-  padding: 10px;
-  border: none;
-  background-color: #0e4b8c;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-}
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
 
-.btn-detalhes {
-  background-color: #333;
-}
+    .top-bar input {
+      width: 60%;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
 
+    /* GRID DE PRODUTOS/PROMOÇÕES */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
 
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 200px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.2s;
+    }
 
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      font-size: 16px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 60px;
+      }
+
+      .sidebar button {
+        font-size: 0;
+        padding: 15px;
+      }
+
+      .main-content {
+        padding: 10px;
+      }
+
+      .top-bar input {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="produto-card">
-  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
-  <h3>Notebook XYZ</h3>
-  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
-  <p class="preco">R$ 3.499,00</p>
-  <div class="botoes-card">
-    <button class="btn-adicionar">Adicionar ao Carrinho</button>
-    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
-  </div>
-</div>
-  <div class="produto-card">
-  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
-  <h3>Notebook XYZ</h3>
-  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
-  <p class="preco">R$ 3.499,00</p>
-  <div class="botoes-card">
-    <button class="btn-adicionar">Adicionar ao Carrinho</button>
-    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
-  </div>
-</div>
-  <div class="produto-card">
-  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
-  <h3>Notebook XYZ</h3>
-  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
-  <p class="preco">R$ 3.499,00</p>
-  <div class="botoes-card">
-    <button class="btn-adicionar">Adicionar ao Carrinho</button>
-    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
-  </div>
-</div>
-  <div class="produto-card">
-  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
-  <h3>Notebook XYZ</h3>
-  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
-  <p class="preco">R$ 3.499,00</p>
-  <div class="botoes-card">
-    <button class="btn-adicionar">Adicionar ao Carrinho</button>
-    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
-  </div>
-</div>
-  <div class="produto-card">
-  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
-  <h3>Notebook XYZ</h3>
-  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
-  <p class="preco">R$ 3.499,00</p>
-  <div class="botoes-card">
-    <button class="btn-adicionar">Adicionar ao Carrinho</button>
-    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
-  </div>
-</div>
 
+  <!-- MENU LATERAL -->
+  <aside class="sidebar">
+    <div>
+      <button>Filtros</button>
+      <button>Promoções</button>
+      <button>Produtos</button>
+    </div>
+    <div class="bottom">
+      <button>Adicionar Adm</button>
+    </div>
+  </aside>
 
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="main-content">
+    <!-- BARRA DE PESQUISA -->
+    <div class="top-bar">
+      <input type="text" placeholder="Pesquisar...">
+    </div>
+
+    <!-- LISTA DE PRODUTOS OU PROMOÇÕES -->
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/200x130" alt="Produto">
+        <h4>Nome do Produto</h4>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/200x130" alt="Produto">
+        <h4>Nome do Produto</h4>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/200x130" alt="Produto">
+        <h4>Nome do Produto</h4>
+      </div>
+      <!-- Adicione mais cards se quiser -->
+    </div>
+  </main>
 
 </body>
 </html>

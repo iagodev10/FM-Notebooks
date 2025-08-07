@@ -54,23 +54,22 @@ body {
 /*-----------------HEADER------------------*/
 
 .navbar-default {
-  background-color: #fff;
+  background-color: var(--cor-white);
   padding: 20px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease-in-out;
   display: flex;
   flex-direction: column;
-  z-index: 1000;
 }
 
 .navbar-default .navbar-brand {
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #000;
+  color: var(--cor-black);
 }
 
 .navbar-default .navbar-nav .nav-link {
-  color: #000;
+  color: var(--cor-black);
   font-weight: 500;
   margin: 0 15px;
   transition: color 0.3s;
@@ -84,12 +83,43 @@ body {
   display: block;
   height: 3px;
   width: 25px;
-  background-color: #000;
+  background-color: var(--cor-black);
   margin: 5px 0;
 }
 
 .nav-item {
-  font-size: 1.3rem;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 479px) and (min-width: 375px) {
+  .navbar-default {
+    padding: 12px 10px;
+
+  }
+
+  .navbar-default .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 1rem;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 374px) {
+  .navbar-default {
+    padding: 12px 10px;
+  }
+
+  .navbar-default .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 0.8rem;
+    margin: 0 3px;
+  }
 }
 
 /* ==============PRIMEIRO================= */

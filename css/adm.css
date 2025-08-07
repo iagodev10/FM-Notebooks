@@ -1,0 +1,122 @@
+@import url('../assets/fonts/fonts.css');
+
+:root {
+    --cor-black: #000;
+    --cor-blue: #0052cc;
+    --cor-white: #ffffff;
+    --cor-white2: #f5f5f7;
+    --cor-whats: #25d366;
+    --cor-linha-cinza: #dcdcdc;
+    --sidebar-width: 240px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--cor-white2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--cor-white);
+    border-right: 1px solid var(--cor-linha-cinza);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    z-index: 99;
+}
+
+.sidebar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #444;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: var(--cor-white2);
+    color: var(--cor-blue);
+    font-weight: bold;
+}
+
+.admin-header {
+    height: 60px;
+    background-color: var(--cor-white);
+    border-bottom: 1px solid var(--cor-linha-cinza);
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cor-black);
+}
+
+.logo span {
+    color: var(--cor-black);
+    font-weight: 500;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 8px 24px 8px 42px;
+    border-radius: 20px;
+    border: 1px solid var(--cor-linha-cinza);
+    background-color: var(--cor-white2);
+    font-size: 1rem;
+    color: var(--cor-black);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-box i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: var(--cor-black);
+    pointer-events: none;
+}
+
+main {
+    margin-left: var(--sidebar-width);
+    padding: 90px 30px 30px 30px;
+    width: 100%;
+}
