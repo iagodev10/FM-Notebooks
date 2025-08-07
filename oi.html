@@ -10,47 +10,63 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-    :root {
-      --primary: #1e2a38;
-      --secondary: #0d6efd;
-      --text-light: #ecf0f1;
-      --icon-bg: rgba(255, 255, 255, 0.1);
-    }
-
-    .vitrine-simples {
-  padding: 30px 10px;
-  background-color: #fff;
-  overflow-x: auto;
+    .produto-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s;
 }
 
-.container-img-cards {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+.produto-card:hover {
+  transform: scale(1.03);
 }
 
-.container-img-cards a {
-  flex: 0 0 auto;
-  width: 250px; /* ou 100% no mobile com @media */
-  scroll-snap-align: start;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
-
-.container-img-cards a:hover {
-  transform: scale(1.05);
-}
-
-.container-img-cards img {
+.produto-card img {
   width: 100%;
-  aspect-ratio: 7 / 8; 
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+.produto-card h3 {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.descricao {
+  font-size: 14px;
+  color: #666;
+}
+
+.preco {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0e4b8c;
+  margin: 8px 0;
+}
+
+.botoes-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-adicionar,
+.btn-detalhes {
+  padding: 10px;
+  border: none;
+  background-color: #0e4b8c;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-detalhes {
+  background-color: #333;
 }
 
 
@@ -58,36 +74,57 @@
   </style>
 </head>
 <body>
-  <section class="vitrine-simples">
-  <div class="container-img-cards">
-
-    <a href="https://wa.me/SEUNUMERO1" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 1">
-    </a>
-
-    <a href="https://wa.me/SEUNUMERO2" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 2">
-    </a>
-
-    <a href="https://wa.me/SEUNUMERO3" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 3">
-    </a>
-
-    <a href="https://wa.me/SEUNUMERO4" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 4">
-    </a>
-    <a href="https://wa.me/SEUNUMERO4" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 4">
-    </a>
-    <a href="https://wa.me/SEUNUMERO4" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 4">
-    </a>
-    <a href="https://wa.me/SEUNUMERO4" target="_blank">
-      <img src="img/note-fones.jpg" alt="Promoção 4">
-    </a>
-
+  <div class="produto-card">
+  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
+  <h3>Notebook XYZ</h3>
+  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
+  <p class="preco">R$ 3.499,00</p>
+  <div class="botoes-card">
+    <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
   </div>
-</section>
+</div>
+  <div class="produto-card">
+  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
+  <h3>Notebook XYZ</h3>
+  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
+  <p class="preco">R$ 3.499,00</p>
+  <div class="botoes-card">
+    <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
+  </div>
+</div>
+  <div class="produto-card">
+  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
+  <h3>Notebook XYZ</h3>
+  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
+  <p class="preco">R$ 3.499,00</p>
+  <div class="botoes-card">
+    <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
+  </div>
+</div>
+  <div class="produto-card">
+  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
+  <h3>Notebook XYZ</h3>
+  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
+  <p class="preco">R$ 3.499,00</p>
+  <div class="botoes-card">
+    <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
+  </div>
+</div>
+  <div class="produto-card">
+  <img src="img/produto-exemplo.jpg" alt="Notebook XYZ">
+  <h3>Notebook XYZ</h3>
+  <p class="descricao">Intel i5, 8GB RAM, SSD 256GB</p>
+  <p class="preco">R$ 3.499,00</p>
+  <div class="botoes-card">
+    <button class="btn-adicionar">Adicionar ao Carrinho</button>
+    <a href="detalhes.html?id=1" class="btn-detalhes">Ver Detalhes</a>
+  </div>
+</div>
+
 
 
 </body>
