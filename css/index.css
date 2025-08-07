@@ -1016,6 +1016,72 @@ body {
   height: 100%;
 }
 
+/* <!-- =============BENEFÍCIOS============== -->
+  <!-- =============BENEFÍCIOS============== --> */
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 60px 40px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 1300px;
+}
+
+.beneficio {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 30px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.beneficio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.beneficio i {
+  font-size: 50px;
+  color: #2a72d4;
+  margin-bottom: 15px;
+}
+
+.beneficio h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.beneficio p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .beneficios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .beneficios {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+}
+
+
 
 /* =============CATEGORIA============== */
 /* =============CATEGORIA============== */
@@ -1232,11 +1298,13 @@ body {
 
 .conteudo-modal {
   background-color: var(--cor-white2);
-  margin: 5% auto;
+  margin: 3% auto;
   padding: 20px;
   border-radius: 12px;
   max-width: 900px;
-  height: 800px;
+  width: 90%;
+  max-height: 90vh;
+  height: auto;
   overflow-y: auto;
 }
 
@@ -1246,6 +1314,7 @@ body {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
 .fechar:hover {
@@ -1254,62 +1323,57 @@ body {
 
 .conteudo-modal h2 {
   font-size: 1.6rem;
-  margin-left: 5%;
-  margin-bottom: 3%;
+  margin: 0 0 20px 5%;
 }
 
-.mercado {
+/* Seções internas */
+.mercado,
+.pix,
+.credito {
   width: 90%;
-  margin: auto;
+  margin: 20px auto;
   display: flex;
+  gap: 20px;
   align-items: center;
-  gap: 15px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .linha-mercado {
   width: 90%;
-  margin: 5% auto;
-}
-
-.credito {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 22px;
-  padding: 25px;
+  margin: 30px auto;
 }
 
 .credito-cred {
   border: 1px solid var(--cor-linha-cinza);
   display: flex;
+  flex-direction: column;
   width: 90%;
   margin: auto;
-  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
 }
 
 .card-credito {
   border-radius: 50%;
   border: 1px solid var(--cor-linha-cinza);
+  flex: 0 0 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-credito img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.credito-cartoes {
-  display: flex;
-  flex-direction: column;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .credito-cartoes h4 {
   font-size: 1.2rem;
   font-weight: 600;
-  text-align: left;
+  margin-bottom: 5px;
 }
 
 .credito-cartoes span {
@@ -1323,26 +1387,15 @@ body {
 
 .cards {
   display: flex;
-  padding: 20px;
-  align-items: center;
-  justify-content: left;
-  margin: auto 5%;
-  gap: 60px;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 10px 20px;
+  justify-content: center;
 }
 
-.pix {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: left;
-  gap: 20px;
-}
-
-.pix-text {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+.cards-cart img {
+  max-width: 60px;
+  height: auto;
 }
 
 .pix-text h4 {
@@ -1353,7 +1406,6 @@ body {
 .pix-text p {
   font-size: 0.9rem;
   margin: 0;
-  color: var(--cor-black);
 }
 
 .pix-text img {
@@ -1361,6 +1413,121 @@ body {
   height: 80px;
 }
 
+/* ---------------- RESPONSIVIDADE ---------------- */
+
+/* TELAS GRANDES (DESKTOP >= 1200px) */
+@media (min-width: 1200px) {
+  .conteudo-modal {
+    max-width: 900px;
+  }
+}
+
+/* TABLET (768px a 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .conteudo-modal {
+    max-width: 700px;
+  }
+
+  .credito,
+  .pix,
+  .mercado {
+    flex-wrap: wrap;
+  }
+
+  .cards {
+    gap: 40px;
+  }
+}
+
+/* CELULARES GRANDES (480px a 767px) */
+@media (max-width: 767px) and (min-width: 480px) {
+  .conteudo-modal {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .conteudo-modal h2 {
+    font-size: 1.4rem;
+  }
+
+  .credito,
+  .pix,
+  .mercado {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pix-text,
+  .credito-cartoes {
+    text-align: center;
+  }
+
+  .cards {
+    gap: 25px;
+  }
+
+  .pix-text img {
+    margin: 10px auto 0 auto;
+  }
+}
+
+/* CELULARES MÉDIOS/PEQUENOS (375px a 479px) */
+@media (max-width: 479px) and (min-width: 375px) {
+  .conteudo-modal {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  .conteudo-modal h2 {
+    font-size: 1.3rem;
+  }
+
+  .credito,
+  .pix,
+  .mercado {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .card-credito {
+    flex: 0 0 50px;
+    height: 50px;
+  }
+}
+
+/* CELULARES MUITO PEQUENOS (até 374px, ex: iPhone SE antigo) */
+@media (max-width: 374px) {
+  .conteudo-modal {
+    max-width: 95%;
+    padding: 8px;
+  }
+
+  .conteudo-modal h2 {
+    font-size: 1.2rem;
+  }
+
+  .fechar {
+    font-size: 22px;
+  }
+
+  .cards {
+    gap: 15px;
+  }
+
+  .cards-cart img {
+    max-width: 50px;
+  }
+
+  .pix-text img {
+    width: 60px;
+    height: 60px;
+  }
+}
 
 
 /* ========REDES SOCIAS=========== */
@@ -1753,6 +1920,148 @@ body {
   }
 }
 
+/* <!-- =======SIGA NOS=========== -->
+  <!-- =======SIGA NOS=========== --> */
+
+.siga-nos-nos {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.siga-nos-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.siga-nos-link:hover {
+  text-decoration: none;
+}
+
+.siga-nos-link h3 {
+  color: var(--cor-blue);
+  margin: 0;
+}
+
+.siga-nos-link i {
+  font-size: 2rem;
+  color: var(--cor-blue);
+  padding: 0;
+}
+
+.fmnotebooks {
+  color: gray;
+  margin-top: 10px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 479px) and (min-width: 375px) {
+  .siga-nos-nos {
+    padding: 20px;
+  }
+
+  .siga-nos-link h3 {
+    color: var(--cor-blue);
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .siga-nos-link i {
+    font-size: 1.6rem;
+    color: var(--cor-blue);
+    padding: 0;
+  }
+
+  .fmnotebooks {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 374px) {
+  .siga-nos-nos {
+    padding: 20px;
+  }
+
+  .siga-nos-link h3 {
+    color: var(--cor-blue);
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .siga-nos-link i {
+    font-size: 1.3rem;
+    color: var(--cor-blue);
+    padding: 0;
+  }
+
+  .fmnotebooks {
+    font-size: 0.90rem;
+  }
+}
+
+
+/* <!-- =======VITRINE DE OPORTUNIDADES=========== -->
+  <!-- =======VITRINE DE OPORTUNIDADES=========== --> */
+
+.vitrine {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.container-vitrine {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+.container-vitrine a {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 300px;
+  scroll-snap-align: start;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.container-vitrine a:hover {
+  transform: scale(1.03);
+}
+
+.container-vitrine img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 7 / 8;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container-vitrine a {
+    width: 220px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-vitrine a {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+/* ==================MARCAS - 80% LARGURA============== */
 /* ==================MARCAS - 80% LARGURA============== */
 .marcas {
   width: 100%;
