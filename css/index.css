@@ -90,22 +90,6 @@ body {
   font-size: 1.05rem;
 }
 
-@media (max-width: 479px) and (min-width: 375px) {
-  .navbar-default {
-    padding: 12px 10px;
-
-  }
-
-  .navbar-default .navbar-brand {
-    font-size: 1.4rem;
-  }
-
-  .navbar-default .navbar-nav .nav-link {
-    font-size: 1rem;
-    margin: 0 4px;
-  }
-}
-
 @media (max-width: 374px) {
   .navbar-default {
     padding: 12px 10px;
@@ -117,7 +101,44 @@ body {
 
   .navbar-default .navbar-nav .nav-link {
     font-size: 0.8rem;
-    margin: 0 3px;
+    text-align: center;
+    margin: 2%;
+  }
+}
+
+/* --- Dispositivos entre 375px e 479px --- */
+@media (min-width: 375px) and (max-width: 479px) {
+  .navbar-default {
+    padding: 12px 10px;
+  }
+
+  .navbar-default .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 1rem;
+    text-align: center;
+    margin: 2%;
+  }
+}
+
+/* --- Dispositivos até 767px (celulares maiores e tablets em modo retrato) --- */
+@media (min-width: 480px) and (max-width: 767px) {
+  .navbar-default {
+    align-items: center;
+  }
+
+  .navbar-default .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-default .navbar-nav .nav-link {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 2%;
   }
 }
 
