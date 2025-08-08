@@ -134,16 +134,19 @@
 
               <label>Imagem 1 (Obrigatória)</label>
               <input type="file" id="img1" required>
-              <div id="preview-img"></div>
+              <div id="preview-img1"></div>
 
               <label>Imagem 2</label>
               <input type="file" id="img2">
+              <div id="preview-img2"></div>
 
               <label>Imagem 3</label>
               <input type="file" id="img3">
+              <div id="preview-img3"></div>
 
               <label>Imagem 4</label>
               <input type="file" id="img4">
+              <div id="preview-img4"></div>
 
             </div>
           </form>
@@ -160,29 +163,40 @@
   </main>
 
   <script>
+    // =================MOSTRAR IMGS DOS PRODUTOS========================
 
-    document.getElementById("img1").addEventListener("change", function (event) {
-  const arquivo = event.target.files[0]; // Pega o arquivo escolhido
-  const preview = document.getElementById("preview-img");
-  preview.innerHTML = ""; // Limpa qualquer imagem anterior
+    function mostrarPreview(inputId, previewId) {
+      const input = document.getElementById(inputId);
+      const preview = document.getElementById(previewId);
 
-  if (arquivo) {
-    const reader = new FileReader();
+      input.addEventListener("change", function (event) {
+        const arquivo = event.target.files[0];
+        preview.innerHTML = ""; // Limpa a imagem anterior
 
-    reader.onload = function (e) {
-      const img = document.createElement("img");
-      img.src = e.target.result;
-      img.style.maxWidth = "100px"; 
-      img.style.maxHeight = "100px";
-      img.style.border = "1px solid #ccc";
-      img.style.borderRadius = "6px";
-      img.style.marginTop = "10px";
-      preview.appendChild(img); 
-    };
+        if (arquivo) {
+          const reader = new FileReader();
 
-    reader.readAsDataURL(arquivo); 
-  }
-});
+          reader.onload = function (e) {
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.style.maxWidth = "120px";
+            img.style.maxHeight = "120px";
+            img.style.border = "1px solid #ccc";
+            img.style.borderRadius = "6px";
+            img.style.marginTop = "10px";
+            preview.appendChild(img);
+          };
+
+          reader.readAsDataURL(arquivo);
+        }
+      });
+    }
+
+    // Chamando para cada imagem
+    mostrarPreview("img1", "preview-img1");
+    mostrarPreview("img2", "preview-img2");
+    mostrarPreview("img3", "preview-img3");
+    mostrarPreview("img4", "preview-img4");
 
 
     let produtosData = []
@@ -221,7 +235,7 @@
     function produtoAddMostrar() {
       document.getElementById('modo-produto').style.display = 'block';
     }
-    function fecharModal(){
+    function fecharModal() {
       document.getElementById('modo-produto').style.display = 'none';
     }
 
