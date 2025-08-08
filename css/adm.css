@@ -19,7 +19,7 @@
 
 body {
     background-color: var(--cor-white2);
-    margin: 0;
+    margin-left: var(--sidebar-width);
     padding: 0;
     display: flex;
 }

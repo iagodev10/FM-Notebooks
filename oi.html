@@ -1,174 +1,270 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Administração - Loja</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços - FM Notebooks</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
     body {
+      font-family: 'Roboto', sans-serif;
+      background: #f0f4ff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      scroll-behavior: smooth;
       display: flex;
-      height: 100vh;
-      background-color: #f9f9f9;
+      min-height: 100vh;
     }
 
-    /* MENU LATERAL */
-    .sidebar {
-      width: 220px;
-      background-color: #2c3e50;
-      color: #fff;
+    /* MENU LATERAL FIXO */
+    nav.menu-lateral {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background: #0041c4;
+      padding-top: 40px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 0;
+      gap: 15px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
-
-    .sidebar button {
-      background-color: transparent;
+    nav.menu-lateral a {
       color: #fff;
-      border: none;
-      padding: 15px 20px;
-      text-align: left;
-      width: 100%;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
+      text-decoration: none;
+      padding: 14px 24px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-left: 4px solid transparent;
+      transition: background-color 0.3s, border-color 0.3s;
     }
-
-    .sidebar button:hover {
-      background-color: #34495e;
-    }
-
-    .sidebar .bottom {
-      padding: 0 20px;
-    }
-
-    .sidebar .bottom button {
-      background-color: #1abc9c;
-      border-radius: 8px;
-      padding: 10px;
-      font-weight: bold;
+    nav.menu-lateral a:hover,
+    nav.menu-lateral a.active {
+      background-color: #002a80;
+      border-left-color: #ffd700;
+      color: #ffd700;
     }
 
     /* CONTEÚDO PRINCIPAL */
-    .main-content {
-      flex: 1;
-      padding: 20px;
+    main.content {
+      margin-left: 250px;
+      padding: 40px 60px;
+      max-width: 900px;
+      flex-grow: 1;
+      background: #fff;
+      box-sizing: border-box;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow-x: hidden;
     }
 
-    .top-bar {
-      display: flex;
-      justify-content: center;
+    main.content h1 {
+      color: #0041c4;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    main.content p.intro {
+      font-size: 1.3rem;
+      color: #555;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 50px;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section.servico {
+      margin-bottom: 70px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e3e8ff;
+      scroll-margin-top: 90px; /* espaço para o menu fixo */
+    }
+    section.servico:last-child {
+      border-bottom: none;
       margin-bottom: 30px;
     }
 
-    .top-bar input {
-      width: 60%;
-      padding: 10px 15px;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-
-    /* GRID DE PRODUTOS/PROMOÇÕES */
-    .card-grid {
+    section.servico h2 {
+      font-size: 2rem;
+      color: #002b80;
+      margin-bottom: 15px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    section.servico p {
+      font-size: 1.1rem;
+      color: #3a3a3a;
+      line-height: 1.5;
+      max-width: 720px;
     }
 
-    .card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 200px;
-      text-align: center;
-      padding: 15px;
-      transition: transform 0.2s;
+    /* Ícones simples com emojis - pode trocar depois */
+    .icon {
+      font-size: 36px;
+      color: #0041c4;
     }
 
-    .card:hover {
-      transform: scale(1.03);
+    /* BOTÃO FIXO DE CONTATO */
+    a.btn-contato {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #0041c4;
+      color: white;
+      padding: 16px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 65, 196, 0.5);
+      transition: background-color 0.3s ease;
+      z-index: 1001;
+    }
+    a.btn-contato:hover {
+      background-color: #002a80;
     }
 
-    .card img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .card h4 {
-      font-size: 16px;
-      color: #333;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 60px;
+    /* RESPONSIVO */
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
       }
-
-      .sidebar button {
-        font-size: 0;
-        padding: 15px;
+      nav.menu-lateral {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 0;
+        gap: 10px;
+        box-shadow: none;
       }
-
-      .main-content {
-        padding: 10px;
+      nav.menu-lateral a {
+        border-left: none;
+        padding: 10px 15px;
+        font-size: 1rem;
       }
-
-      .top-bar input {
-        width: 90%;
+      nav.menu-lateral a:hover,
+      nav.menu-lateral a.active {
+        border-left: none;
+        background-color: #003d99;
+        color: #ffd700;
+      }
+      main.content {
+        margin-left: 0;
+        padding: 20px 15px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      a.btn-contato {
+        right: 15px;
+        bottom: 15px;
+        padding: 14px 24px;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- MENU LATERAL -->
-  <aside class="sidebar">
-    <div>
-      <button>Filtros</button>
-      <button>Promoções</button>
-      <button>Produtos</button>
-    </div>
-    <div class="bottom">
-      <button>Adicionar Adm</button>
-    </div>
-  </aside>
+  <nav class="menu-lateral" id="menu">
+    <a href="#limpeza" class="active">Limpeza e Higienização</a>
+    <a href="#limpeza-gamer">Limpeza Notebooks Gamers</a>
+    <a href="#recuperacao-carcaça">Recuperação de Carcaça</a>
+    <a href="#recuperacao-dobradiça">Recuperação de Dobradiça</a>
+    <a href="#atualizacao-drivers">Atualização de Drivers</a>
+    <a href="#troca-tela">Troca de Tela</a>
+    <a href="#formatacao">Formatação</a>
+    <a href="#reparo-carcaça">Reparo de Carcaça</a>
+  </nav>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="main-content">
-    <!-- BARRA DE PESQUISA -->
-    <div class="top-bar">
-      <input type="text" placeholder="Pesquisar...">
-    </div>
+  <main class="content">
+    <h1>Serviços FM Notebooks</h1>
+    <p class="intro">
+      Na FM Notebooks, oferecemos serviços completos para cuidar do seu notebook, 
+      desde a limpeza e manutenção até reparos estruturais e atualizações técnicas. 
+      Confira abaixo todos os detalhes dos nossos serviços.
+    </p>
 
-    <!-- LISTA DE PRODUTOS OU PROMOÇÕES -->
-    <div class="card-grid">
-      <div class="card">
-        <img src="https://via.placeholder.com/200x130" alt="Produto">
-        <h4>Nome do Produto</h4>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x130" alt="Produto">
-        <h4>Nome do Produto</h4>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/200x130" alt="Produto">
-        <h4>Nome do Produto</h4>
-      </div>
-      <!-- Adicione mais cards se quiser -->
-    </div>
+    <section id="limpeza" class="servico">
+      <h2><span class="icon">🧹</span> Limpeza e Higienização de Notebook</h2>
+      <p>Removemos poeira, sujeira e resíduos acumulados para evitar superaquecimento e prolongar a vida útil do seu equipamento.</p>
+    </section>
+
+    <section id="limpeza-gamer" class="servico">
+      <h2><span class="icon">🎮</span> Limpeza e Higienização de Notebooks Gamers</h2>
+      <p>Procedimento especializado para notebooks gamers, garantindo alto desempenho com refrigeração adequada para uso intenso.</p>
+    </section>
+
+    <section id="recuperacao-carcaça" class="servico">
+      <h2><span class="icon">🔧</span> Recuperação de Carcaça</h2>
+      <p>Reparação e restauração da estrutura do seu notebook para corrigir rachaduras, arranhões e danos físicos.</p>
+    </section>
+
+    <section id="recuperacao-dobradiça" class="servico">
+      <h2><span class="icon">🔩</span> Recuperação de Dobradiça (Resinamento)</h2>
+      <p>Tratamento especializado para garantir o funcionamento perfeito das dobradiças, evitando quebras e folgas.</p>
+    </section>
+
+    <section id="atualizacao-drivers" class="servico">
+      <h2><span class="icon">💻</span> Atualização de Drivers</h2>
+      <p>Manutenção do software do seu notebook com as versões mais recentes dos drivers, garantindo estabilidade e compatibilidade.</p>
+    </section>
+
+    <section id="troca-tela" class="servico">
+      <h2><span class="icon">🖥️</span> Troca de Tela</h2>
+      <p>Substituição de telas danificadas por componentes originais, devolvendo a qualidade visual do seu aparelho.</p>
+    </section>
+
+    <section id="formatacao" class="servico">
+      <h2><span class="icon">🗂️</span> Formatação de Computadores</h2>
+      <p>Reinstalação do sistema operacional para eliminar vírus, erros e melhorar o desempenho geral do notebook.</p>
+    </section>
+
+    <section id="reparo-carcaça" class="servico">
+      <h2><span class="icon">🔨</span> Reparo de Carcaça</h2>
+      <p>Conserto de danos físicos na estrutura para restaurar a integridade e aparência do notebook.</p>
+    </section>
   </main>
+
+  <a href="https://wa.me/55SEUNUMERO" target="_blank" class="btn-contato" aria-label="Contato WhatsApp">
+    Solicite um Orçamento
+  </a>
+
+  <script>
+    // Ativar classe "active" no menu conforme scroll na página
+    const menuLinks = document.querySelectorAll('nav.menu-lateral a');
+    const sections = Array.from(menuLinks).map(link => document.querySelector(link.getAttribute('href')));
+
+    window.addEventListener('scroll', () => {
+      let scrollPos = window.scrollY || document.documentElement.scrollTop;
+      // Ajuste para compensar a altura do menu fixo
+      scrollPos += 100;
+
+      let currentIndex = sections.findIndex((section, i) => {
+        const nextSection = sections[i + 1];
+        if (!nextSection) return scrollPos >= section.offsetTop;
+        return scrollPos >= section.offsetTop && scrollPos < nextSection.offsetTop;
+      });
+
+      if(currentIndex === -1) currentIndex = 0;
+
+      menuLinks.forEach(link => link.classList.remove('active'));
+      if(menuLinks[currentIndex]) {
+        menuLinks[currentIndex].classList.add('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
