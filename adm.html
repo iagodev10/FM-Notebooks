@@ -22,6 +22,10 @@
       <i class="fas fa-tags"></i> Promoções
     </button>
     <button><i class="fas fa-cogs"></i> Adicionar ADM</button>
+
+    <button onclick="produtoAddMostrar()" id="btn-prod-add"><i class="fa fa-add"></i>Adicionar Produto</button>
+    <button onclick="promoAddMostrar()" id="btn-promo-add" style="display: none;"><i class="fa fa-add"></i>Adicionar
+      Promoção</button>
   </aside>
 
   <!-- HEADER -->
@@ -102,72 +106,166 @@
       </div>
     </section>
 
+    <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
+    <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
+
+    <section class="mod-prod" id="modo-produto">
+
+      <div class="div-mod-prod">
+        <span class="fechar" onclick="fecharModal()">&times;</span>
+        <h2>ADICIONAR NOVO PRODUTO</h2>
+
+        <div class="mod-prod-form">
+
+          <form action="/" id="form-produto-add">
+
+            <div class="descricoes-produto">
+              <label>Nome do Produto</label>
+              <input type="text" placeholder="Nome do Produto" id="nome-produto" required>
+
+              <label>Descrição</label>
+              <textarea id="desc-produto" rows="3" required></textarea>
+
+              <label>Preço</label>
+              <input type="number" id="preco-produto" step="0.01" required>
+            </div>
+
+            <div class="imgs-produto">
+
+              <label>Imagem 1 (Obrigatória)</label>
+              <input type="file" id="img1" required>
+              <div id="preview-img"></div>
+
+              <label>Imagem 2</label>
+              <input type="file" id="img2">
+
+              <label>Imagem 3</label>
+              <input type="file" id="img3">
+
+              <label>Imagem 4</label>
+              <input type="file" id="img4">
+
+            </div>
+          </form>
+
+        </div>
+        <button id="btn-salvar-prod" type="submit" onclick="salvarProduto()">Adicionar Produto</button>
+
+      </div>
+
+    </section>
+
+    </section>
+
   </main>
 
   <script>
-    let produtosData = [] 
-  
+
+    document.getElementById("img1").addEventListener("change", function (event) {
+  const arquivo = event.target.files[0]; // Pega o arquivo escolhido
+  const preview = document.getElementById("preview-img");
+  preview.innerHTML = ""; // Limpa qualquer imagem anterior
+
+  if (arquivo) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.style.maxWidth = "100px"; 
+      img.style.maxHeight = "100px";
+      img.style.border = "1px solid #ccc";
+      img.style.borderRadius = "6px";
+      img.style.marginTop = "10px";
+      preview.appendChild(img); 
+    };
+
+    reader.readAsDataURL(arquivo); 
+  }
+});
+
+
+    let produtosData = []
+
     function mostrar(tipo) {
       const produtos = document.getElementById("produtos")
       const promocoes = document.getElementById("promocoes")
-  
+
+      const btnProdAdd = document.getElementById("btn-prod-add")
+      const btnPromoAdd = document.getElementById("btn-promo-add")
+
       const btnProdutos = document.getElementById("btn-produtos")
       const btnPromocoes = document.getElementById("btn-promocoes")
-  
+
       if (tipo === "produtos") {
         produtos.style.display = "grid"
         promocoes.style.display = "none"
+
+        btnProdAdd.style.display = "block"
+        btnPromoAdd.style.display = "none"
+
         btnProdutos.classList.add("active")
         btnPromocoes.classList.remove("active")
+
       } else {
         produtos.style.display = "none"
         promocoes.style.display = "grid"
+        btnProdAdd.style.display = "none"
+        btnPromoAdd.style.display = "block"
         btnProdutos.classList.remove("active")
         btnPromocoes.classList.add("active")
       }
     }
-  
-  
+
+    // Função para mostrar o formulário de adicionar produto
+    function produtoAddMostrar() {
+      document.getElementById('modo-produto').style.display = 'block';
+    }
+    function fecharModal(){
+      document.getElementById('modo-produto').style.display = 'none';
+    }
+
+
     function renderizarProdutos(produtosFiltrados) {
       const englobprodutos = document.getElementById('englobprodutos')
       englobprodutos.innerHTML = ''
-  
+
       produtosFiltrados.forEach(produto => {
         const imgProd = document.createElement('img')
         imgProd.src = produto.urlImgProd1
         imgProd.alt = produto.nomeProd
-  
+
         const nomeProd = document.createElement('h3')
         nomeProd.innerText = produto.nomeProd
-  
+
         const divPreco = document.createElement('div')
         divPreco.className = 'preco'
-  
+
         const spanPreco = document.createElement('span')
         spanPreco.className = 'preco-novo'
         spanPreco.innerText = 'R$ ' + produto.precoProd
-  
+
         divPreco.appendChild(spanPreco)
-  
+
         const divProd = document.createElement('div')
         divProd.className = 'produto'
         divProd.appendChild(imgProd)
         divProd.appendChild(nomeProd)
         divProd.appendChild(divPreco)
-  
+
         englobprodutos.appendChild(divProd)
       })
     }
-  
+
     document.addEventListener('DOMContentLoaded', () => {
       const englobpromos = document.getElementById('promos')
       const inputBusca = document.getElementById('inputS')
-  
-    
+
+
       fetch('http://localhost:5090/produtos', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        })
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter produtos')
           return response.json()
@@ -177,12 +275,12 @@
           renderizarProdutos(produtosData)
         })
         .catch(error => console.error('Fetch error (produtos):', error))
-  
-     
+
+
       fetch('http://localhost:5090/promocoes', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        })
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter promocoes')
           return response.json()
@@ -191,7 +289,7 @@
           data.forEach(promo => {
             const imgPromo = document.createElement('img')
             imgPromo.src = promo.urlImgPromo
-  
+
             const divPromo = document.createElement('div')
             divPromo.className = 'div-promocao-1'
             divPromo.appendChild(imgPromo)
@@ -199,11 +297,11 @@
           })
         })
         .catch(error => console.error('Erro ao obter promocoes', error))
-  
-    
+
+
       inputBusca.addEventListener('input', (event) => {
         const termo = event.target.value.toLowerCase()
-  
+
         const produtosFiltrados = produtosData.filter(prod =>
           prod.nomeProd.toLowerCase().includes(termo)
         )
@@ -212,7 +310,7 @@
       })
     })
   </script>
-  
+
 </body>
 
 </html>
