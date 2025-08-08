@@ -98,7 +98,6 @@ nav {
 }
 
 .nav-list li {
-  letter-spacing: 3px;
   margin-left: 32px;
   font-size: 1rem;
 }
@@ -1384,14 +1383,14 @@ nav {
 .fechar {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .fechar:hover {
-  color: #000;
+  color: var(--cor-black);
 }
 
 .conteudo-modal h2 {
@@ -1585,7 +1584,7 @@ nav {
   }
 
   .fechar {
-    font-size: 22px;
+    font-size: 26px;
   }
 
   .cards {
