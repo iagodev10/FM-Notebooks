@@ -265,6 +265,7 @@ main {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .produto:hover {
@@ -543,6 +544,7 @@ main {
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
 }
 
 
@@ -671,4 +673,127 @@ main {
     .imgs-produto {
         width: 100%;
     }
+}
+
+
+/* ==========================JANELA PRODUTOS INFORMAÇÃO===================================== */
+
+.janela-produto {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.janela-div {
+    background-color: var(--cor-white);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1400px;
+    position: relative;
+    margin: auto;
+    padding: 25px 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.janela-div h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin-top: 10px;
+    color: var(--cor-blue);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.janela-descricao {
+    display: flex;
+    gap: 20px;
+    background-color: var(--cor-white2);
+    border: 2px solid var(--cor-blue);
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 6px;
+    flex-wrap: wrap;
+}
+
+.imagens-janela {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    flex: 1;
+    max-width: 50%;
+}
+
+.infos-janela{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.imagens-janela img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    object-fit: contain;
+    background: white;
+    padding: 5px;
+}
+
+.info-janela {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-janela p {
+    display: flex;
+    font-size: 1.3rem;
+    margin: 12px 0;
+    line-height: 1.5;
+    align-items: center;
+}
+
+.info-janela p strong {
+    flex-shrink: 0;
+    width: 180px; 
+    font-weight: 700;
+    color: var(--cor-blue);
+    margin-right: 20px;
+    text-align: right;
+}
+.info-janela p span {
+    flex: 1;
+    word-wrap: break-word;
+    text-align: left;
+    border-bottom: 2px solid var(--cor-blue);
+}
+
+.botoes-janela{
+    margin-top: 30px;
+    width: 50%;
+    margin: auto;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
 }
