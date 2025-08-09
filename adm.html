@@ -102,8 +102,9 @@
 
     <!-- Promoções -->
     <section id="promocoes" class="lista" style="display: none;">
+
       <div class="div-promocao" id="promos">
-        <div class="div-promocao-1">
+        <div class="div-promocao-1" onclick="Promocao(1)">
           <img src="img/note-fones.jpg" alt="">
         </div>
         <div class="div-promocao-1">
@@ -141,7 +142,20 @@
               <label>Estoque</label>
               <input type="number" id="estoque-produto" required placeholder="Estoque">
 
-
+              <label>Categoria</label>
+              <select id="categoria-produto" required>
+                <option value="">Selecione uma categoria</option>
+                <option value="carregadores">Carregadores</option>
+                <option value="combos">Combos</option>
+                <option value="diversos">Diversos</option>
+                <option value="fones-headset">Fones e Headset</option>
+                <option value="mochilas">Mochilas</option>
+                <option value="mouse">Mouse</option>
+                <option value="mouse-pad">Mouse Pad</option>
+                <option value="pendrive">Pendrive</option>
+                <option value="roteador-repetidores">Roteador e Repetidores</option>
+                <option value="servicos">Serviços</option>
+              </select>
 
             </div>
 
@@ -167,16 +181,80 @@
           </form>
 
         </div>
-        <button id="btn-salvar-prod" type="submit" onclick="salvarProduto()">Adicionar Produto</button>
+        <div class="botoes-janela">
+          <button id="btn-salvar-prod" type="submit" onclick="salvarProduto()">Adicionar Produto</button>
+          <button id="btn-salvar-prod" type="submit" onclick="cancelarProduto()">Cancelar</button>
+        </div>
 
       </div>
 
     </section>
 
+
+    <!-- ============================ATUALIZAR NOVA PROMOÇÃO======================================== -->
+    <!-- ============================ATUALIZAR NOVA PROMOÇÃO======================================== -->
+
+    <section class="mod-promo" id="modo-promo">
+
+      <div class="div-mod-promo">
+        <span class="fechar" id="fechar-promo" onclick="fecharModalPromo()">&times;</span>
+
+        <h2>ATUALIZAR PROMOÇÃO</h2>
+
+        <div class="promocao-div">
+          <h3>Imagem Atual</h3>
+
+          <div class="promocao-img">
+            <img src="img/mochilas/lenovo-casual-removebg-preview.png" alt="">
+          </div>
+
+        </div>
+
+
+        <div class="botoes-janela">
+          <button id="btn-salvar-prod" type="submit" onclick="atualizarPromocao()">Atualizar Promoção</button>
+          <button id="btn-salvar-prod" type="submit" onclick="excluirPromocao()">Excluir Promoção</button>
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- ==========================JANELA DO PRODUTO ESPECÍFICO=============================== -->
-    <!-- ==========================JANELA DO PRODUTO ESPECÍFICO=============================== -->
+    <!-- ============================ADICIONAR NOVA PROMOÇÃO======================================== -->
+    <!-- ============================ADICIONAR NOVA PROMOÇÃO======================================== -->
+
+    <section class="add-promo" id="adicionar-promo" style="display: none;">
+
+      <div class="div-add-promo">
+        <span class="fechar" id="fechar-promo" onclick="fecharAddPromo()">&times;</span>
+
+        <h2>ADICIONAR NOVA PROMOÇÃO</h2>
+
+        <div class="promocao-add">
+          <h3>Inserir Nova Imagem</h3>
+
+          <div class="promocao-img">
+
+            <input type="file" id="img-promo-add">
+            <div class="img-promo"></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="botoes-janela">
+          <button id="btn-salvar-prod" type="submit" onclick="adicionarPromocao()">Adicionar Promoção</button>
+          <button id="btn-salvar-prod" type="submit" onclick="cancelarPromocao()">Cancelar</button>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================ATUALIZAR PRODUTO ESPECÍFICO=============================== -->
+    <!-- ==========================ATUALIZAR PRODUTO ESPECÍFICO=============================== -->
 
     <section class="janela-produto" id="produto-janela">
       <div class="janela-div">
@@ -185,35 +263,69 @@
 
         <div class="infos-janela">
 
-        <div class="janela-descricao">
-        
-          <div class="imagens-janela">
-            <img id="img1" src="img/mochilas/kross-elegance.png" alt="">
-            <img id="img2" src="img/mochilas/redemption.png" alt="">
-            <img id="img3" src="img/mochilas/lenovo-casual.png" alt="">
-            <img id="img4" src="img/mochilas/lenovo-casual-removebg-preview.png" alt="">
+          <div class="janela-descricao">
+
+            <div class="imagens-janela">
+              <img id="img1" src="img/mochilas/kross-elegance.png" alt="">
+              <img id="img2" src="img/mochilas/redemption.png" alt="">
+              <img id="img3" src="img/mochilas/lenovo-casual.png" alt="">
+              <img id="img4" src="img/mochilas/lenovo-casual-removebg-preview.png" alt="">
+            </div>
+
+            <div class="info-janela">
+              <p><strong>Nome:</strong><span class="nome-do-produto">Mochila</span></p>
+              <p><strong>Descrição:</strong><span class="descricao-do-produto">Descrição</span></p>
+              <p><strong>Categoria:</strong><span class="categoria-do-produto">Mochilas</span></p>
+              <p><strong>Preço:</strong><span class="preco-do-produto">R$ 100,00</span></p>
+              <p><strong>Estoque:</strong><span class="estoque-do-produto">10</span></p>
+              <p><strong>Marca:</strong><span class="marca-do-produto">Lenovo</span></p>
+
+            </div>
+
           </div>
 
-          <div class="info-janela">
-            <p><strong>Nome:</strong><span class="nome-do-produto">Mochila</span></p>
-            <p><strong>Descrição:</strong><span class="descricao-do-produto">Descrição</span></p>
-            <p><strong>Categoria:</strong><span class="categoria-do-produto">Mochilas</span></p>
-            <p><strong>Preço:</strong><span class="preco-do-produto">R$ 100,00</span></p>
-            <p><strong>Estoque:</strong><span class="estoque-do-produto">10</span></p>
-            <p><strong>Marca:</strong><span class="marca-do-produto">Lenovo</span></p>
-          
-          </div> 
+        </div>
+
+        <div class="botoes-janela">
+          <button id="btn-salvar-prod" type="submit" onclick="">Atuaizar Produto</button>
+          <button id="btn-salvar-prod" type="submit" onclick="">Excluir Produto</button>
+        </div>
+
+      </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================ADICIONAR PROMOÇÃO ESPECÍFICA=============================== -->
+    <!-- ==========================ADICIONAR PROMOÇÃO ESPECÍFICA=============================== -->
+
+    <section class="janela-promocao" id="promocao-janela" style="display: none;">
+      <div class="janela-div">
+        <span class="fechar" onclick="fecharModalJanelaPromo()">&times;</span>
+        <h2>INFORMAÇÕES DA PROMOÇÃO</h2>
+
+        <div class="infos-janela">
+
+          <div class="janela-descricao">
+
+            <div class="imagens-janela">
+              <h3>Imagem Atual</h3>
+              <img id="img1" src="img/mochilas/kross-elegance.png" alt="">
+            </div>
 
           </div>
 
         </div>
 
-          <div class="botoes-janela">
-            <button id="btn-salvar-prod" type="submit" onclick="">Atuaizar Produto</button>
-            <button id="btn-salvar-prod" type="submit" onclick="">Excluir Produto</button>
-          </div>
+      </div>
 
-        </div>
+      <div class="botoes-janela">
+        <button id="btn-salvar-prod" type="submit" onclick="">Atuaizar Promoção</button>
+        <button id="btn-salvar-prod" type="submit" onclick="">Excluir Promoção</button>
+      </div>
+
+      </div>
 
       </div>
     </section>
@@ -293,12 +405,41 @@
     function produtoAddMostrar() {
       document.getElementById('modo-produto').style.display = 'block';
     }
+
+    function fecharModalPromo() {
+      document.getElementById('modo-promo').style.display = 'none';
+    }
+
+    function Promocao(id) {
+      document.getElementById('modo-promo').style.display = 'block';
+    }
+
+    function promoAddMostrar() {
+      document.getElementById('adicionar-promo').style.display = 'block';
+    }
+
+    function cancelarProduto() {
+      document.getElementById('modo-produto').style.display = 'none';
+      document.getElementById('form-produto-add').reset();
+      document.getElementById('preview-img1').innerHTML = '';
+      document.getElementById('preview-img2').innerHTML = '';
+      document.getElementById('preview-img3').innerHTML = '';
+      document.getElementById('preview-img4').innerHTML = '';
+    }
+
     function fecharModal() {
       document.getElementById('modo-produto').style.display = 'none';
     }
 
     function fecharModalJanela() {
       document.getElementById('produto-janela').style.display = 'none';
+    }
+
+    function promoAddMostrar() {
+      document.getElementById('adicionar-promo').style.display = 'block';
+    }
+    function fecharAddPromo() {
+      document.getElementById('adicionar-promo').style.display = 'none';
     }
 
 
