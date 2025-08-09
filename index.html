@@ -70,9 +70,9 @@
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="produtos.html">Loja</a></li>
-        <li><a href="sobre.html">Sobre Nós</a></li>
         <li><a href="servicos.html">Serviços</a></li>
         <li><a href="contatos.html">Contatos</a></li>
+        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
       </ul>
     </nav>
   </header>
@@ -153,43 +153,43 @@
   <!-- ==========Pagamentos========= -->
   <!-- ==========Pagamentos========= -->
 
-  <section class="pagamento-card">
+ <section class="pagamento-card">
+  <div class="pagamento-card-content">
+    
     <div class="pague-item">
-      Pagamento cômodo e seguro
-      <p>Mercado pago</p>
+      <div class="pague-item-content">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+          class="bi bi-credit-card" viewBox="0 0 16 16">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+          <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+        </svg>
+        <span>Parcele suas compras em até 12x sem juros</span>
+      </div>
     </div>
-    <div class="pague-parcelado pague-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-credit-card"
-        viewBox="0 0 16 16">
-        <path
-          d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
-        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-      </svg> Pague Parcelado
-      <button onclick="MostraMais()" class="botao-vermais">Ver mais</button>
+
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+          class="bi bi-percent" viewBox="0 0 16 16">
+          <path d="M13.442 2.558a1.5 1.5 0 1 0-2.121-2.121 1.5 1.5 0 0 0 2.121 2.121zM4.5 8a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 1a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm7 2a.5.5 0 0 0 .354-.854l-8-8a.5.5 0 1 0-.708.708l8 8A.5.5 0 0 0 11.5 11z"/>
+        </svg>
+        <span>Pague no PIX e garanta 12% de desconto</span>
+      </div>
     </div>
-    <div class="pague-a-vista pague-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-stack"
-        viewBox="0 0 16 16">
-        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-        <path
-          d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z" />
-      </svg> Pague à vista
-      <button onclick="MostraMais()" class="botao-vermais">Ver mais</button>
+
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+          class="bi bi-lock" viewBox="0 0 16 16">
+          <path d="M8 1a4 4 0 0 1 4 4v3h.5A1.5 1.5 0 0 1 14 9.5v5A1.5 1.5 0 0 1 12.5 16h-9A1.5 1.5 0 0 1 2 14.5v-5A1.5 1.5 0 0 1 3.5 8H4V5a4 4 0 0 1 4-4z"/>
+        </svg>
+        <span>Loja 100% segura com certificado SSL</span>
+      </div>
     </div>
-    <div class="pague-pix pague-item">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code-scan"
-        viewBox="0 0 16 16">
-        <path
-          d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z" />
-        <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z" />
-        <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z" />
-        <path
-          d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z" />
-        <path d="M12 9h2V8h-2z" />
-      </svg> Pague pelo pix
-      <button onclick="MostraMais()" class="botao-vermais">Ver mais</button>
-    </div>
-  </section>
+
+  </div>
+</section>
+
 
   <!-- Section cards de promoção -->
   <!-- Section cards de promoção -->
@@ -209,6 +209,7 @@
   <!-- Produtos em destaque -->
   <section class="produtos-em-destaque">
     <h2>Mais vendidos</h2>
+
     <div class="produtos">
       <div class="produto">
         <img src="img/noteboooooo.jpg" alt="Fitboot Inspire">
@@ -571,6 +572,27 @@
         modal.style.display = "none";
       }
     }
+
+
+    let currentIndex = 0;
+
+    function startCarousel() {
+      const container = document.querySelector('.pagamento-card-content');
+      const items = document.querySelectorAll('.pague-item');
+      const total = items.length;
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % total;
+        container.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.innerWidth <= 768) {
+        startCarousel();
+      }
+    });
+
   </script>
 
   <!-- JavaScrnoteboooooo.jpg-->
