@@ -61,45 +61,66 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.nav-list li a {
-  color: var(--cor-black);
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.nav-list li a:hover {
-  color: var(--cor-blue);
-}
-
 .logo {
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--cor-black);
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+  transition: color 0.3s;
 }
 
 .logo span {
   font-weight: 700;
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 20px;
-  height: 8vh;
+.logo:hover {
+  color: var(--cor-blue);
+  text-decoration: none;
 }
 
 .nav-list {
   list-style: none;
   display: flex;
   align-items: center;
+  gap: 48px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-list li {
-  margin-left: 32px;
   font-size: 1rem;
+}
+
+.nav-list li a {
+  color: var(--cor-black);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-list li a:hover {
+  color: var(--cor-blue);
+}
+
+/* Link carrinho dentro da lista */
+.nav-list li.nav-cart {
+  margin-left: 24px;
+}
+
+.nav-list li.nav-cart a {
+  font-size: 1.4rem;
+}
+
+
+.nav-list li.nav-cart a:hover {
+  color: var(--cor-blue);
+}
+
+/* Menu hamburguer - escondido no desktop */
+.mobile-menu {
+  display: none;
+  cursor: pointer;
 }
 
 .mobile-menu div {
@@ -110,44 +131,94 @@ nav {
   transition: 0.3s;
 }
 
-.mobile-menu {
-  cursor: pointer;
-  display: none;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 8vh;
+  position: relative;
 }
 
-@media(max-width: 999px) {
-  body {
-    overflow-x: hidden;
-  }
+/* RESPONSIVO */
+@media (max-width: 999px) {
 
-  .nav-list {
-    position: absolute;
-    top: 8vh;
-    right: 0;
-    width: 50vw;
-    height: 92vh;
-    background: var(--cor-white);
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .nav-list li {
-    margin-left: 0;
-    opacity: 0;
-  }
-
+  /* Exibe menu hambúrguer */
   .mobile-menu {
     display: block;
   }
 
+
+  /* Logo centralizado */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+  }
+
+  /* Lista de navegação estilo menu lateral */
+  .nav-list {
+    position: fixed;
+    top: 8vh;
+    right: 0;
+    width: 60vw;
+    height: 92vh;
+    background: var(--cor-white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  /* Links visíveis e com espaçamento no menu lateral */
+  .nav-list li {
+    margin: 16px 0;
+    opacity: 1 !important;
+  }
+
+  .nav-list li a {
+    font-size: 1.2rem;
+  }
+
+  /* Lista ativa (menu aberto) */
   .nav-list.active {
     transform: translateX(0);
   }
+
+  /* Oculta o link do carrinho dentro da lista */
+  .nav-list li.nav-cart {
+    display: none;
+  }
+
+  /* Ícone do carrinho fixo no header, canto direito */
+  nav::after {
+    content: '\f07a';
+    /* unicode ícone shopping-cart FontAwesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--cor-black);
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1100;
+  }
+
+  nav::after:hover {
+    color: var(--cor-blue);
+  }
 }
 
+/* Animação links menu */
 @keyframes navLinkFade {
   from {
     opacity: 0;
@@ -160,6 +231,7 @@ nav {
   }
 }
 
+/* Efeito do menu hambúrguer ativo */
 .mobile-menu.active .line1 {
   transform: rotate(-45deg) translate(-8px, 8px);
 }
@@ -172,13 +244,14 @@ nav {
   transform: rotate(45deg) translate(-5px, -7px);
 }
 
+/* Ajustes telas pequenas */
 @media (max-width: 374px) {
   .nav-list {
     width: 100vw;
   }
 
-  .nav-list li {
-    font-size: 0.9rem;
+  .nav-list li a {
+    font-size: 1rem;
   }
 
   .logo {
@@ -193,13 +266,13 @@ nav {
 }
 
 @media (max-width: 767px) and (min-width: 576px) {
-  .nav-list li {
+  .nav-list li a {
     font-size: 1.2rem;
   }
 }
 
 @media (max-width: 479px) and (min-width: 375px) {
-  .nav-list li {
+  .nav-list li a {
     font-size: 0.95rem;
   }
 
@@ -211,6 +284,7 @@ nav {
     width: 100vw;
   }
 }
+
 
 /* ==================CARROSSEL============== */
 /* ==================CARROSSEL============== */
@@ -554,10 +628,10 @@ nav {
   transform: skewX(20deg);
 }
 
-.pague-item svg {
-  fill: var(--cor-blue);
-  width: 32px;
-  height: 32px;
+.pague-item-content i {
+  font-size: 32px;
+  color: #007BFF;
+  margin-right: 10px;
   flex-shrink: 0;
 }
 
@@ -2245,7 +2319,14 @@ footer {
   text-align: center;
 }
 
-/* Brand */
+.footer-content-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+
 .footer-brand img {
   width: 160px;
   margin-bottom: 12px;
@@ -2259,7 +2340,6 @@ footer {
   line-height: 1.5;
 }
 
-/* Section Titles */
 .footer-nav h4,
 .footer-contact h4,
 .footer-social h4 {
@@ -2281,6 +2361,42 @@ footer {
   border-radius: 2px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.footer-content-call {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-content-call a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cor-white);
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-decoration: none;
+  background-color: var(--cor-blue);
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-content-call a:hover {
+  background-color: var(--cor-whats);
+  color: #fff;
+}
+
+.footer-content-call a i.fa-headset {
+  font-size: 1.4rem;
+  color: var(--cor-white);
+  transition: color 0.3s ease;
+}
+
+.footer-content-call a:hover i.fa-headset {
+  color: #fff;
 }
 
 /* Links */
@@ -2354,6 +2470,14 @@ footer {
   font-size: 0.85rem;
   opacity: 0.7;
   text-align: center;
+}
+
+.footer-extra-area{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 /* Responsivo */

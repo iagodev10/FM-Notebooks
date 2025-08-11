@@ -58,23 +58,25 @@
   <!-- ====================HEADER======================= -->
   <!-- ====================HEADER======================= -->
   <header>
-    <nav>
-      <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
 
+    <nav>
       <div class="mobile-menu">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
       </div>
 
+      <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
+
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="produtos.html">Loja</a></li>
         <li><a href="servicos.html">Serviços</a></li>
         <li><a href="contatos.html">Contatos</a></li>
-        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
       </ul>
     </nav>
+
   </header>
 
   <!--/ Carousel Star /-->
@@ -153,42 +155,47 @@
   <!-- ==========Pagamentos========= -->
   <!-- ==========Pagamentos========= -->
 
- <section class="pagamento-card">
-  <div class="pagamento-card-content">
-    
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-          class="bi bi-credit-card" viewBox="0 0 16 16">
-          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-          <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-        </svg>
-        <span>Parcele suas compras em até 12x sem juros</span>
-      </div>
-    </div>
+  <section class="pagamento-card">
+    <div class="pagamento-card-content">
 
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-          class="bi bi-percent" viewBox="0 0 16 16">
-          <path d="M13.442 2.558a1.5 1.5 0 1 0-2.121-2.121 1.5 1.5 0 0 0 2.121 2.121zM4.5 8a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 1a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm7 2a.5.5 0 0 0 .354-.854l-8-8a.5.5 0 1 0-.708.708l8 8A.5.5 0 0 0 11.5 11z"/>
-        </svg>
-        <span>Pague no PIX e garanta 12% de desconto</span>
+      <div class="pague-item" onclick="MostraMais()">
+        <div class="pague-item-content">
+          <i class="fa fa-shield-alt"></i>
+          <div>
+            <strong>Garantia Estendida</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
+              Segurança extra em seus produtos com planos exclusivos e confiáveis.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-          class="bi bi-lock" viewBox="0 0 16 16">
-          <path d="M8 1a4 4 0 0 1 4 4v3h.5A1.5 1.5 0 0 1 14 9.5v5A1.5 1.5 0 0 1 12.5 16h-9A1.5 1.5 0 0 1 2 14.5v-5A1.5 1.5 0 0 1 3.5 8H4V5a4 4 0 0 1 4-4z"/>
-        </svg>
-        <span>Loja 100% segura com certificado SSL</span>
+      <div class="pague-item" onclick="MostraMais()">
+        <div class="pague-item-content">
+          <i class="fa fa-credit-card"></i>
+          <div>
+            <strong>Parcelamento em 12x</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
+              Pague em até 12 parcelas sem juros no cartão de crédito.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
 
-  </div>
-</section>
+      <div class="pague-item" onclick="MostraMais()">
+        <div class="pague-item-content">
+          <i class="fa fa-tools"></i>
+          <div>
+            <strong>Assistência Técnica</strong>
+            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
+              Serviço autorizado para reparo e manutenção com alto padrão de qualidade.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 
   <!-- Section cards de promoção -->
@@ -433,6 +440,7 @@
         <img src="img/positivo-wordmark.svg" alt="Positivo" loading="lazy">
         <img src="img/hp-2.svg" alt="HP" loading="lazy">
         <img src="img/dell-2.svg" alt="Dell" loading="lazy">
+        <img src="img/" alt="Avell" loading="lazy">
         <!-- repete para criar o loop -->
         <img src="img/apple-11.svg" alt="Apple" loading="lazy">
         <img src="img/samsung-8.svg" alt="Samsung" loading="lazy">
@@ -449,9 +457,21 @@
 
   <footer>
     <div class="footer-content">
-      <div class="footer-brand">
-        <h4>FM Notebooks</h4>
-        <p>Sua loja de notebooks, acessórios e assistência técnica especializada.</p>
+
+      <div class="footer-content-brand">
+
+        <div class="footer-brand">
+          <h4>FM Notebooks</h4>
+          <p>Sua loja de notebooks, acessórios e assistência técnica especializada.</p>
+        </div>
+
+        <div class="footer-content-call">
+          <a href="https://wa.me/553492088233" target="_blank">
+            <i class="fa fa-headset"></i>
+            Fale Conosco
+          </a>
+        </div>
+
       </div>
 
       <div class="footer-nav">
@@ -481,6 +501,16 @@
           <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
+    </div>
+
+    <div class="footer-extra-area">
+
+      <div class="footer-extra-area-titulo">
+        <h3>Formas de Pagamento</h3>
+      </div>
+
+      <div class="footer-extra-area-content"></div>
+
     </div>
     <p class="footer-copyright">© 2025 FM Notebooks. Todos os direitos reservados.</p>
   </footer>
