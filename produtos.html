@@ -8,8 +8,6 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <!-- Favicons -->
   <link href="img/Captura_de_tela_2025-04-10_181325-removebg-preview.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -19,78 +17,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap CSS (mantive seus libs para compatibilidade) -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Libraries CSS -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
   <!-- Main Stylesheet -->
   <link href="css/produtos.css" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Overlay para fechar menus -->
+  <div id="overlay" class="overlay"></div>
+
   <!-- WhatsApp Fixo -->
-  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank">
+  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" aria-label="WhatsApp">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
   </a>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand" href="index.html">
-        <span style="font-weight:bold;">FM</span><span style="font-weight:normal;">Notebooks</span>
-      </a>
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="produtos.html">Loja</a></li>
-          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nós</a></li>
-          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
-          <li class="nav-item"><a class="nav-link" href="contatos.html">Contatos</a></li>
-        </ul>
-      </div>
-    </div>
+  <!-- HEADER / NAV -->
+  <header>
+    <nav class="site-nav">
+      <div class="nav-left">
+        <!-- Botão hambúrguer com ícone Font Awesome -->
+        <button class="mobile-menu" aria-label="Abrir menu">
+          <i class="fas fa-bars menu-icon"></i>
+          <i class="fas fa-times close-icon"></i>
+        </button>
 
-    <!-- Barra de Pesquisa -->
-    <div class="container">
-      <div id="busca">
-        <input type="text" id="input-busca" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
-        <i class="fa fa-search"></i>
+        <!-- Logo -->
+        <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
       </div>
-    </div>
-  </nav>
-  <!-- Navbar End -->
 
+      <!-- Barra de pesquisa - agora sempre dentro do header -->
+      <div id="busca" class="search-wrap" role="search">
+        <input id="input-busca" type="text" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </div>
+
+      <!-- Links -->
+      <ul class="nav-list" role="menu" aria-label="Menu principal">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Loja</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="contatos.html">Contatos</a></li>
+      </ul>
+
+      <!-- Ícone do carrinho -->
+      <a href="#" class="cart-icon" aria-label="Ir para o carrinho"><i class="fas fa-shopping-cart"></i></a>
+    </nav>
+  </header>
+
+  <!-- Conteúdo -->
   <div id="resultado"></div>
 
   <h1 class="title-title">Todos os Produtos</h1>
 
-  <!-- Botão para mobile -->
-  <button id="toggle-filtro" class="ver-tudo-btn" style="margin:20px auto; display:none;">
-    Mostrar Filtros
+  <!-- Botão para mobile (mostrar/ocultar filtro) -->
+  <button id="toggle-filtro" class="toggle-filtro-btn">
+    <i class="fas fa-filter"></i> Mostrar Filtros
   </button>
 
   <!-- Filtro -->
-  <aside class="filtro-fi">
-    <h3>Filtrar</h3>
+  <aside class="filtro-fi" aria-label="Filtros de produtos">
+    <div class="filtro-header">
+      <h3>Filtrar</h3>
+      <button class="close-filtro" aria-label="Fechar filtros">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
     <p class="filtro-fi-p">Categoria</p>
 
     <label class="label-filtro">
@@ -173,9 +171,7 @@
     <div class="produtos" id="lista-produtos"></div>
   </main>
 
-  <!-- ========================FOOTER================================ -->
-  <!-- ========================FOOTER================================ -->
-
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
@@ -209,49 +205,25 @@
           <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
           <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+        </ul>
       </div>
     </div>
     <p class="footer-copyright">© 2025 FM Notebooks. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- ===================================JS ===================================-->
+  <!-- SCRIPTS -->
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
   <script src="lib/popper/popper.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
-  <script src="contactform/contactform.js"></script>
+
+  <!-- filtro.js -->
   <script src="js/filtro.js"></script>
-  <script src="js/main.js"></script>
 
-  <script>
-    const toggleBtn = document.getElementById("toggle-filtro");
-    const filtro = document.querySelector(".filtro");
-
-    // Função para verificar se deve mostrar o botão toggle
-    function checkToggleButton() {
-      if (window.innerWidth <= 991) {
-        toggleBtn.style.display = "block";
-        filtro.style.display = "none";
-      } else {
-        toggleBtn.style.display = "none";
-        filtro.style.display = "block";
-      }
-    }
-
-    // Verificar na carga inicial
-    checkToggleButton();
-
-    // Verificar quando a janela é redimensionada
-    window.addEventListener('resize', checkToggleButton);
-
-    toggleBtn.addEventListener("click", () => {
-      filtro.style.display = filtro.style.display === "none" ? "block" : "none";
-      toggleBtn.textContent = filtro.style.display === "none" ? "Mostrar Filtros" : "Ocultar Filtros";
-    });
-  </script>
+  <!-- main-produtos.js corrigido -->
+  <script src="js/main-produtos.js"></script>
 </body>
 
 </html>
