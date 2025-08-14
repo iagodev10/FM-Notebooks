@@ -134,7 +134,7 @@ header {
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 0 20px;
   height: 8vh;
   position: relative;
@@ -146,6 +146,10 @@ nav {
   /* Exibe menu hambúrguer */
   .mobile-menu {
     display: block;
+    position: absolute;
+    left: 20px;
+    top: auto;
+    z-index: 1100;
   }
 
 
@@ -609,7 +613,7 @@ nav {
 
 .pague-item {
   font-size: 0.95rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding: 20px 30px;
   border: 2px solid var(--cor-blue);
   display: flex;
@@ -630,7 +634,7 @@ nav {
 
 .pague-item-content i {
   font-size: 32px;
-  color: #007BFF;
+  color: #007bff;
   margin-right: 10px;
   flex-shrink: 0;
 }
@@ -640,7 +644,7 @@ nav {
   white-space: nowrap;
 }
 
-/* ===== Mobile ===== */
+/* Carrossel de pagamentos apenas no mobile */
 @media (max-width: 768px) {
   .pagamento-card {
     background-color: var(--cor-white2);
@@ -2234,13 +2238,13 @@ nav {
 
 /* ==================MARCAS - 80% LARGURA============== */
 /* ==================MARCAS - 80% LARGURA============== */
+/* ======= MARCAS (full-bleed) ======= */
 .marcas {
   width: 100%;
   padding: clamp(30px, 6vw, 60px) 0;
   background: #f8f8f8;
   text-align: center;
   overflow: hidden;
-
 }
 
 .marcas h2 {
@@ -2248,57 +2252,50 @@ nav {
   color: var(--cor-blue);
   margin-bottom: clamp(30px, 6vw, 40px);
   font-weight: 600;
-  margin-bottom: 50px;
 }
 
+/* ocupa a tela inteira de ponta a ponta */
 .marcas-container {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
 }
 
+/* trilho contínuo sem “delay” */
 .marcas-track {
   display: flex;
-  width: max-content;
-  animation: slide 25s linear infinite;
-  gap: clamp(20px, 4vw, 50px);
   align-items: center;
-  flex-wrap: nowrap;
+  gap: clamp(28px, 4vw, 56px);
+  width: max-content;
+  animation: slideBrands 20s linear infinite;
+  will-change: transform;
 }
 
-.marcas-track img {
-  width: clamp(100px, 15vw, 180px);
-  height: clamp(50px, 8vw, 90px);
+/* todos logos (svg/png) do MESMO tamanho */
+.marcas-track img,
+.marcas-track svg {
+  width: 160px;
+  height: 64px;
+  flex: 0 0 auto;
   object-fit: contain;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-  filter: grayscale(100%);
-  opacity: 0.7;
-}
-
-.marcas-track img:hover {
-  transform: scale(1.1);
-  filter: grayscale(0%);
+  /* sem grayscale/opacidade para máxima legibilidade */
+  filter: none;
   opacity: 1;
 }
 
-@keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(calc(-50% - 25px));
-  }
+/* animação sem tranco (metade da faixa duplicada) */
+@keyframes slideBrands {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
+/* opcional: velocidade menor no mobile */
 @media (max-width: 768px) {
-  .marcas-container {
-    width: 90%;
-  }
+  .marcas-track { animation-duration: 24s; }
 }
+
 
 
 /* ==================FOOTER================================ */
@@ -2307,8 +2304,8 @@ nav {
 footer {
   background: #1e2a38;
   color: #ecf0f1;
-  padding: 60px 20px 40px;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  padding: 60px 20px 5px;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.11);
 }
 
 .footer-content {
@@ -2326,7 +2323,6 @@ footer {
   align-items: flex-start;
   gap: 30px;
 }
-
 
 .footer-brand img {
   width: 160px;
@@ -2353,7 +2349,7 @@ footer {
 .footer-nav h4::after,
 .footer-contact h4::after,
 .footer-social h4::after {
-  content: '';
+  content: "";
   width: 30px;
   height: 3px;
   background: #0d6efd;
@@ -2437,30 +2433,43 @@ footer {
   color: #0d6efd;
 }
 
-/* Social */
+/* Alinhando ícones de redes sociais usando imagens */
 .footer-social-icons {
   display: flex;
   gap: 12px;
   justify-content: center;
-  margin-top: 8px;
+  align-items: center;
 }
 
 .footer-social-icons a {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: #ecf0f1;
-  transition: all 0.3s ease;
+  color: white;
+  font-size: 18px;
+  transition: transform .2s ease, background .2s ease;
 }
 
 .footer-social-icons a:hover {
   background: #0d6efd;
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+
+.social-icon-img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: none;
+}
+
+.footer-social-icons a:hover .social-icon-img {
+  filter: none;
 }
 
 /* Copyright */
@@ -2473,12 +2482,60 @@ footer {
   text-align: center;
 }
 
-.footer-extra-area{
+/* Seção de formas de pagamento com título centralizado e divs para ícones */
+.footer-extra-area {
   width: 80%;
-  margin: auto;
+  margin: 40px auto 20px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-extra-area-titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-extra-area-titulo h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0;
+}
+
+.footer-extra-area-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.payment-icon-placeholder {
+  width: 50px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.payment-icon-placeholder:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.payment-icon-placeholder::before {
+  content: "";
+  width: 24px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
 }
 
 /* Responsivo */
@@ -2498,5 +2555,20 @@ footer {
   .footer-nav h4::after {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .footer-social-icons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-extra-area-content {
+    gap: 10px;
+  }
+
+  .payment-icon-placeholder {
+    width: 45px;
+    height: 28px;
   }
 }

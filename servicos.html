@@ -17,6 +17,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,159 +37,244 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/servicos.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: EstateAgency  ''
-    Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
+<body>
 
-<!-- WhatsApp Fixo -->
-<a href="https://wa.me/553492088233" class="whats-fixed" target="_blank">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
-</a>
+  <!-- WhatsApp Fixo -->
+  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
+  </a>
 
+  <div class="click-closed"></div>
 
-<!-- =======================SUB-HEADER====================== -->
-<!-- =======================SUB-HEADER====================== -->
+  <!-- ====================HEADER======================= -->
+  <header>
+    <nav>
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
 
-<aside class="sidebar">
-  <!-- Conteúdo da sidebar aqui -->
-</aside>
+      <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
 
-<header>
-  <nav>
-    <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Loja</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="contatos.html">Contatos</a></li>
+        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="mobile-menu">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
+  <!-- Banner Serviços -->
+  <section class="banner-servicos">
+    <div class="banner-content">
+      <h1>Nossos Serviços</h1>
+      <p>Assistência técnica especializada e confiável para seus equipamentos</p>
+      <div class="autorizado-avell">
+        <img src="img/avell.png" alt="Autorizado Avell">
+        <span>Assistência Técnica Autorizada Avell</span>
+      </div>
     </div>
+  </section>
 
-    <ul class="nav-list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="produtos.html">Loja</a></li>
-      <li><a href="sobre.html">Sobre Nós</a></li>
-      <li><a href="servicos.html">Serviços</a></li>
-      <li><a href="contatos.html">Contatos</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main style="margin-left: var(--sidebar-width); padding-top: 8vh;">
-  <!-- ============PRIMEIRO============== -->
-  <!-- ============PRIMEIRO============== -->
-
-  <section class="primeiro"></section>
-
-  <!-- ==========TEXTTO=============== -->
-  <!-- ==========TEXTTO=============== -->
-
-  <div class="texto-service">
-    <h1>SERVIÇOS</h1>
-  </div>
-
-  <!-- ===========CARDDS============== -->
-  <!-- ===========CARDDS============== -->
-
-  <section class="cardds">
-    <div class="conttainer">
-
-      <div class="contentt-conttainer">
-
-        <div class="in-container">
-          <div class="card-inner">
-            <!-- Frente -->
-            <div class="card-front">
-              <img src="img/Formatação-de-computador.jpg" alt="Formatação Completa">
-              <p>Formatação <br> Completa</p>
+  <!-- Serviços Principais -->
+  <section class="servicos-principais">
+    <div class="container">
+      <h2>Serviços Especializados</h2>
+      <div class="servicos-grid">
+        
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-broom"></i>
+          </div>
+          <h3>Limpeza e Higienização</h3>
+          <p>Limpeza completa interna e externa do seu notebook</p>
+          <div class="preco-servico">
+            <div class="preco-item">
+              <span class="tipo">Notebook Simples</span>
+              <span class="valor">R$ 100</span>
             </div>
-            <!-- Verso -->
-            <div class="card-back">
-              <div class="card-text">
-                <h3>Formatação Completa</h3>
-                <p>Formatamos seu computador com backup dos seus dados, instalação do sistema operacional, drivers e
-                  otimizações para melhorar o desempenho.</p>
-              </div>
-              <button class="boton-elegante">Explore</button>
+            <div class="preco-item">
+              <span class="tipo">Linha Gamer</span>
+              <span class="valor">R$ 250</span>
+            </div>
+            <div class="preco-item">
+              <span class="tipo">Avell</span>
+              <span class="valor">R$ 300</span>
             </div>
           </div>
         </div>
 
-        <div class="in-container">
-          <div class="card-inner">
-            <!-- Frente -->
-            <div class="card-front">
-              <img src="img/reparo-carcaca.png" alt="Formatação Completa">
-              <p>Reparo de <br> Carcaça</p>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-desktop"></i>
+          </div>
+          <h3>Troca de Tela</h3>
+          <p>Substituição de telas danificadas com peças originais</p>
+          <div class="preco-servico">
+            <div class="preco-item">
+              <span class="tipo">Notebook Simples</span>
+              <span class="valor">R$ 100</span>
             </div>
-            <!-- Verso -->
-            <div class="card-back">
-              <h3>Reparo de Carcaça</h3>
-              <p>Consertamos e substituímos peças da carcaça do seu notebook, como tampa, dobradiças e teclado,
-                garantindo
-                o perfeito funcionamento e aparência.</p>
-              <button class="boton-elegante">Explore</button>
+            <div class="preco-item">
+              <span class="tipo">Linha Gamer</span>
+              <span class="valor">R$ 130</span>
             </div>
           </div>
         </div>
 
-      </div>
-
-      <div class="contentt-conttainer">
-
-        <div class="in-container">
-          <div class="card-inner">
-            <!-- Frente -->
-            <div class="card-front">
-              <img src="img/limpeza-notebook.jpg" alt="Formatação Completa">
-              <p>Limpeza <br> Notebook <br> Comum</p>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Recuperação de Carcaças</h3>
+          <p>Reparo e restauração de carcaças danificadas</p>
+          <div class="preco-servico">
+            <div class="preco-item">
+              <span class="tipo">Resina Bottom/Top Cover</span>
+              <span class="valor">R$ 150</span>
             </div>
-            <!-- Verso -->
-            <div class="card-back">
-              <h3> Limpeza Notebook Comum</h3>
-              <p>Realizamos limpeza interna para remover poeira e sujeira, evitando superaquecimento e prolongando a
-                vida
-                útil do seu notebook.</p>
-              <button class="boton-elegante">Explore</button>
+            <div class="preco-item">
+              <span class="tipo">Notebook Simples</span>
+              <span class="valor">R$ 100</span>
             </div>
           </div>
         </div>
 
-        <div class="in-container">
-          <div class="card-inner">
-            <!-- Frente -->
-            <div class="card-front">
-              <img src="img/limpeza-gamer.jpg" alt="Formatação Completa">
-              <p>Higienização <br> Gamer</p>
+        <div class="servico-card">
+          <div class="servico-icon">
+            <i class="fas fa-download"></i>
+          </div>
+          <h3>Instalação de Sistemas Operacionais</h3>
+          <p>Formatação e instalação de Windows e outros sistemas</p>
+          <div class="preco-servico">
+            <div class="preco-item">
+              <span class="tipo">Formatação Simples</span>
+              <span class="valor">R$ 100</span>
             </div>
-            <!-- Verso -->
-            <div class="card-back">
-              <h3>Higienização Gamer</h3>
-              <p>Limpeza profunda e higienização especializada para notebooks gamers, incluindo troca de pasta térmica e
-                otimização do sistema de ventilação.</p>
-              <button class="boton-elegante">Explore</button>
+            <div class="preco-item">
+              <span class="tipo">Com Backup</span>
+              <span class="valor">R$ 130</span>
             </div>
           </div>
         </div>
 
       </div>
+    </div>
+  </section>
 
+  <!-- Serviços Adicionais -->
+  <section class="servicos-adicionais">
+    <div class="container">
+      <h2>Serviços Adicionais</h2>
+      <div class="servicos-lista">
+        
+        <div class="servico-item">
+          <div class="servico-info">
+            <i class="fas fa-file-word"></i>
+            <div>
+              <h4>Pacote Office (Instalação)</h4>
+              <p>Instalação completa do Microsoft Office</p>
+            </div>
+          </div>
+          <div class="servico-preco">R$ 50</div>
+        </div>
+
+        <div class="servico-item">
+          <div class="servico-info">
+            <i class="fas fa-wind"></i>
+            <div>
+              <h4>Limpeza com Nitrogênio Dell G5</h4>
+              <p>Limpeza especializada para notebooks Dell G5</p>
+            </div>
+          </div>
+          <div class="servico-preco">R$ 250</div>
+        </div>
+
+        <div class="servico-item">
+          <div class="servico-info">
+            <i class="fas fa-keyboard"></i>
+            <div>
+              <h4>Instalação e Reparo de Teclado</h4>
+              <p>Troca e reparo de teclados danificados</p>
+            </div>
+          </div>
+          <div class="servico-preco">R$ 180</div>
+        </div>
+
+        <div class="servico-item">
+          <div class="servico-info">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <h4>Instalação de Office Crackeado</h4>
+              <p>Instalação de versão alternativa do Office</p>
+            </div>
+          </div>
+          <div class="servico-preco">R$ 50</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Garantia e Qualidade -->
+  <section class="garantia-qualidade">
+    <div class="container">
+      <div class="garantia-content">
+        <div class="garantia-text">
+          <h2>Garantia e Qualidade</h2>
+          <p>Todos os nossos serviços possuem garantia e são realizados por técnicos especializados.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Técnicos certificados</li>
+            <li><i class="fas fa-check"></i> Peças originais</li>
+            <li><i class="fas fa-check"></i> Garantia de 90 dias</li>
+            <li><i class="fas fa-check"></i> Orçamento gratuito</li>
+          </ul>
+        </div>
+        <div class="garantia-img">
+          <img src="/placeholder.svg?height=300&width=400" alt="Técnico especializado">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="redes">
+    <div class="redes-texto">
+      <h2>Precisa de Assistência Técnica?</h2>
+      <p>Entre em contato conosco e faça seu orçamento sem compromisso.</p>
+      <a href="https://wa.me/553492088233" class="botao-fm" target="_blank">
+        Solicitar Orçamento
+      </a>
+    </div>
+    <div class="redes-img">
+      <img src="img/fundo-img.png" alt="">
     </div>
   </section>
 
   <!-- ========================FOOTER================================ -->
-  <!-- ========================FOOTER================================ -->
-
   <footer>
     <div class="footer-content">
-      <div class="footer-brand">
-        <h4>FM Notebooks</h4>
-        <p>Sua loja de notebooks, acessórios e assistência técnica especializada.</p>
+
+      <div class="footer-content-brand">
+        <div class="footer-brand">
+          <h4>FM Notebooks</h4>
+          <p>Sua loja de notebooks, acessórios e assistência técnica especializada.</p>
+          <div class="footer-info">
+            <p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+          </div>
+        </div>
+
+        <div class="footer-content-call">
+          <a href="https://wa.me/553492088233" target="_blank">
+            <i class="fa fa-headset"></i>
+            Fale Conosco
+          </a>
+        </div>
       </div>
 
       <div class="footer-nav">
@@ -212,30 +300,65 @@
       <div class="footer-social">
         <h4>Redes Sociais</h4>
         <div class="footer-social-icons">
-          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com" target="_blank">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-B0UYd82DMawfvlggh67h7Hk46itYtC.png" alt="Facebook" class="social-icon-img">
+          </a>
+          <a href="https://instagram.com" target="_blank">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-B0UYd82DMawfvlggh67h7Hk46itYtC.png" alt="Instagram" class="social-icon-img">
+          </a>
+          <a href="https://linkedin.com" target="_blank">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-B0UYd82DMawfvlggh67h7Hk46itYtC.png" alt="LinkedIn" class="social-icon-img">
+          </a>
         </div>
       </div>
     </div>
+
+    <div class="footer-extra-area">
+      <div class="footer-extra-area-titulo">
+        <h3>Formas de Pagamento</h3>
+      </div>
+      <div class="footer-extra-area-content">
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/visa-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/mastercard-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/elo-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/itau-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/mercadopago-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/picpay-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/bancointer-color.svg" alt="">
+        </div>
+        <div class="payment-icon-placeholder">
+          <img src="img/Formas de Pagamento/pix-color.svg" alt="">
+        </div>
+        
+      </div>
+    </div>
+    
     <p class="footer-copyright">© 2025 FM Notebooks. Todos os direitos reservados.</p>
   </footer>
 
-</main>
-<!-- JavaScrnoteboooooo.jpg-->
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/jquery/jquery-migrate.min.js"></script>
-<script src="lib/popper/popper.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/scrollreveal/scrollreveal.min.js"></script>
-<!-- Contact Form JavaScript File -->
-<script src="contactform/contactform.js"></script>
-
-<!-- Template Main Javascript File -->
-<script src="js/main.js"></script>
+  <!-- JavaScript Files -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/scrollreveal/scrollreveal.min.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
-
 </html>

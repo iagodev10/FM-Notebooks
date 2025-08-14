@@ -1,270 +1,460 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Serviços - FM Notebooks</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #f0f4ff;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      scroll-behavior: smooth;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* MENU LATERAL FIXO */
-    nav.menu-lateral {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100vh;
-      background: #0041c4;
-      padding-top: 40px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    nav.menu-lateral a {
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 24px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-left: 4px solid transparent;
-      transition: background-color 0.3s, border-color 0.3s;
-    }
-    nav.menu-lateral a:hover,
-    nav.menu-lateral a.active {
-      background-color: #002a80;
-      border-left-color: #ffd700;
-      color: #ffd700;
-    }
-
-    /* CONTEÚDO PRINCIPAL */
-    main.content {
-      margin-left: 250px;
-      padding: 40px 60px;
-      max-width: 900px;
-      flex-grow: 1;
-      background: #fff;
-      box-sizing: border-box;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      overflow-x: hidden;
-    }
-
-    main.content h1 {
-      color: #0041c4;
-      font-weight: 700;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    main.content p.intro {
-      font-size: 1.3rem;
-      color: #555;
-      text-align: center;
-      line-height: 1.5;
-      margin-bottom: 50px;
-      max-width: 850px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    section.servico {
-      margin-bottom: 70px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #e3e8ff;
-      scroll-margin-top: 90px; /* espaço para o menu fixo */
-    }
-    section.servico:last-child {
-      border-bottom: none;
-      margin-bottom: 30px;
-    }
-
-    section.servico h2 {
-      font-size: 2rem;
-      color: #002b80;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    section.servico p {
-      font-size: 1.1rem;
-      color: #3a3a3a;
-      line-height: 1.5;
-      max-width: 720px;
-    }
-
-    /* Ícones simples com emojis - pode trocar depois */
-    .icon {
-      font-size: 36px;
-      color: #0041c4;
-    }
-
-    /* BOTÃO FIXO DE CONTATO */
-    a.btn-contato {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #0041c4;
-      color: white;
-      padding: 16px 30px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0, 65, 196, 0.5);
-      transition: background-color 0.3s ease;
-      z-index: 1001;
-    }
-    a.btn-contato:hover {
-      background-color: #002a80;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 900px) {
-      body {
-        flex-direction: column;
-      }
-      nav.menu-lateral {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: center;
-        padding: 10px 0;
-        gap: 10px;
-        box-shadow: none;
-      }
-      nav.menu-lateral a {
-        border-left: none;
-        padding: 10px 15px;
-        font-size: 1rem;
-      }
-      nav.menu-lateral a:hover,
-      nav.menu-lateral a.active {
-        border-left: none;
-        background-color: #003d99;
-        color: #ffd700;
-      }
-      main.content {
-        margin-left: 0;
-        padding: 20px 15px;
-        border-radius: 0;
-        box-shadow: none;
-      }
-      a.btn-contato {
-        right: 15px;
-        bottom: 15px;
-        padding: 14px 24px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSolutions - Computer Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .service-card:hover .service-icon {
+            transform: translateY(-5px) scale(1.1);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-laptop-code text-2xl"></i>
+                    <span class="font-bold text-xl">TechSolutions</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="hover:text-blue-200">Home</a>
+                    <a href="#" class="hover:text-blue-200">Products</a>
+                    <a href="#" class="font-bold border-b-2 border-white">Services</a>
+                    <a href="#" class="hover:text-blue-200">About</a>
+                    <a href="#" class="hover:text-blue-200">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <nav class="menu-lateral" id="menu">
-    <a href="#limpeza" class="active">Limpeza e Higienização</a>
-    <a href="#limpeza-gamer">Limpeza Notebooks Gamers</a>
-    <a href="#recuperacao-carcaça">Recuperação de Carcaça</a>
-    <a href="#recuperacao-dobradiça">Recuperação de Dobradiça</a>
-    <a href="#atualizacao-drivers">Atualização de Drivers</a>
-    <a href="#troca-tela">Troca de Tela</a>
-    <a href="#formatacao">Formatação</a>
-    <a href="#reparo-carcaça">Reparo de Carcaça</a>
-  </nav>
-
-  <main class="content">
-    <h1>Serviços FM Notebooks</h1>
-    <p class="intro">
-      Na FM Notebooks, oferecemos serviços completos para cuidar do seu notebook, 
-      desde a limpeza e manutenção até reparos estruturais e atualizações técnicas. 
-      Confira abaixo todos os detalhes dos nossos serviços.
-    </p>
-
-    <section id="limpeza" class="servico">
-      <h2><span class="icon">🧹</span> Limpeza e Higienização de Notebook</h2>
-      <p>Removemos poeira, sujeira e resíduos acumulados para evitar superaquecimento e prolongar a vida útil do seu equipamento.</p>
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Professional Computer Services</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">From hardware repairs to software optimization, we've got your tech covered with expert care.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">
+                Book a Service
+            </button>
+        </div>
     </section>
 
-    <section id="limpeza-gamer" class="servico">
-      <h2><span class="icon">🎮</span> Limpeza e Higienização de Notebooks Gamers</h2>
-      <p>Procedimento especializado para notebooks gamers, garantindo alto desempenho com refrigeração adequada para uso intenso.</p>
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Comprehensive Services</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Deep Cleaning Service</h3>
+                    <p class="text-gray-600 mb-4">Professional cleaning of your computer components to remove dust and debris that can cause overheating and performance issues.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Complete dust removal from all components</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Thermal paste replacement</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Fan maintenance and lubrication</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$49.99</span>
+                        <span class="text-gray-500 ml-2">/service</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">System Formatting</h3>
+                    <p class="text-gray-600 mb-4">Complete system reset and fresh OS installation to restore your computer to peak performance.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Complete data backup (optional)</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Fresh OS installation (Windows, Linux, macOS)</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Driver installation and updates</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Essential software installation</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$79.99</span>
+                        <span class="text-gray-500 ml-2">/service</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Resin Application</h3>
+                    <p class="text-gray-600 mb-4">Protective resin coating for your motherboard and components to prevent corrosion and dust accumulation.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>High-quality protective resin application</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Component-level protection</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Dust and moisture resistance</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Improved thermal performance</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$129.99</span>
+                        <span class="text-gray-500 ml-2">/service</span>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Hardware Repair</h3>
+                    <p class="text-gray-600 mb-4">Expert diagnosis and repair of all hardware components including motherboards, GPUs, and power supplies.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Component-level diagnostics</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Soldering and PCB repair</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Power supply testing and repair</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$99.99</span>
+                        <span class="text-gray-500 ml-2">+ parts</span>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Virus Removal</h3>
+                    <p class="text-gray-600 mb-4">Complete malware and virus eradication with data protection and system optimization.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Deep system scan and malware removal</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Rootkit detection and removal</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Security optimization</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$69.99</span>
+                        <span class="text-gray-500 ml-2">/service</span>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden p-6 border border-gray-100">
+                    <div class="service-icon text-blue-600 text-5xl mb-6 text-center">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-gray-800">Performance Upgrade</h3>
+                    <p class="text-gray-600 mb-4">Custom hardware upgrades tailored to your specific needs and budget.</p>
+                    <ul class="mb-4 text-gray-700">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>RAM upgrades</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>SSD/HDD installation</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>GPU upgrades</span>
+                        </li>
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Cooling system improvements</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <span class="text-2xl font-bold text-blue-600">$49.99</span>
+                        <span class="text-gray-500 ml-2">+ parts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="recuperacao-carcaça" class="servico">
-      <h2><span class="icon">🔧</span> Recuperação de Carcaça</h2>
-      <p>Reparação e restauração da estrutura do seu notebook para corrigir rachaduras, arranhões e danos físicos.</p>
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose TechSolutions?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Certified Technicians</h3>
+                    <p class="text-gray-600">Our team consists of certified professionals with years of experience in computer repair and maintenance.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Quick Turnaround</h3>
+                    <p class="text-gray-600">Most services completed within 24 hours. We understand you need your device back quickly.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Warranty Protection</h3>
+                    <p class="text-gray-600">All our services come with a 90-day warranty. If issues persist, we'll fix it at no additional cost.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="recuperacao-dobradiça" class="servico">
-      <h2><span class="icon">🔩</span> Recuperação de Dobradiça (Resinamento)</h2>
-      <p>Tratamento especializado para garantir o funcionamento perfeito das dobradiças, evitando quebras e folgas.</p>
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What Our Customers Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl mr-4">JD</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">John D.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Had my gaming PC deep cleaned and resin applied. The difference in temperature and performance is incredible! Highly recommend their services."</p>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl mr-4">SM</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sarah M.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"My laptop was running so slow I was about to buy a new one. TechSolutions formatted it and now it's like new! Saved me hundreds of dollars."</p>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl mr-4">RT</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Robert T.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The resin application service is worth every penny. My computer components look brand new even after a year in my dusty workshop."</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="atualizacao-drivers" class="servico">
-      <h2><span class="icon">💻</span> Atualização de Drivers</h2>
-      <p>Manutenção do software do seu notebook com as versões mais recentes dos drivers, garantindo estabilidade e compatibilidade.</p>
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Optimize Your Computer?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Contact us today to schedule a service or get a free diagnostic for your device.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Now
+                </button>
+                <button class="bg-transparent border-2 border-white hover:bg-blue-700 font-bold py-3 px-8 rounded-full text-lg transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i> Email Us
+                </button>
+            </div>
+        </div>
     </section>
 
-    <section id="troca-tela" class="servico">
-      <h2><span class="icon">🖥️</span> Troca de Tela</h2>
-      <p>Substituição de telas danificadas por componentes originais, devolvendo a qualidade visual do seu aparelho.</p>
-    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-laptop-code mr-2"></i> TechSolutions
+                    </h3>
+                    <p class="text-gray-400">Your trusted partner for computer sales, repairs, and maintenance since 2010.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Computer Cleaning</a></li>
+                        <li><a href="#" class="hover:text-white">System Formatting</a></li>
+                        <li><a href="#" class="hover:text-white">Resin Application</a></li>
+                        <li><a href="#" class="hover:text-white">Hardware Repair</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#" class="hover:text-white">Products</a></li>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Tech Street, Silicon Valley, CA</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@techsolutions.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 TechSolutions. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <section id="formatacao" class="servico">
-      <h2><span class="icon">🗂️</span> Formatação de Computadores</h2>
-      <p>Reinstalação do sistema operacional para eliminar vírus, erros e melhorar o desempenho geral do notebook.</p>
-    </section>
-
-    <section id="reparo-carcaça" class="servico">
-      <h2><span class="icon">🔨</span> Reparo de Carcaça</h2>
-      <p>Conserto de danos físicos na estrutura para restaurar a integridade e aparência do notebook.</p>
-    </section>
-  </main>
-
-  <a href="https://wa.me/55SEUNUMERO" target="_blank" class="btn-contato" aria-label="Contato WhatsApp">
-    Solicite um Orçamento
-  </a>
-
-  <script>
-    // Ativar classe "active" no menu conforme scroll na página
-    const menuLinks = document.querySelectorAll('nav.menu-lateral a');
-    const sections = Array.from(menuLinks).map(link => document.querySelector(link.getAttribute('href')));
-
-    window.addEventListener('scroll', () => {
-      let scrollPos = window.scrollY || document.documentElement.scrollTop;
-      // Ajuste para compensar a altura do menu fixo
-      scrollPos += 100;
-
-      let currentIndex = sections.findIndex((section, i) => {
-        const nextSection = sections[i + 1];
-        if (!nextSection) return scrollPos >= section.offsetTop;
-        return scrollPos >= section.offsetTop && scrollPos < nextSection.offsetTop;
-      });
-
-      if(currentIndex === -1) currentIndex = 0;
-
-      menuLinks.forEach(link => link.classList.remove('active'));
-      if(menuLinks[currentIndex]) {
-        menuLinks[currentIndex].classList.add('active');
-      }
-    });
-  </script>
-
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button[class*="md:hidden"]');
+            const mobileMenu = document.querySelector('.md\\:flex');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('absolute');
+                mobileMenu.classList.toggle('top-16');
+                mobileMenu.classList.toggle('left-0');
+                mobileMenu.classList.toggle('right-0');
+                mobileMenu.classList.toggle('bg-blue-600');
+                mobileMenu.classList.toggle('p-4');
+                mobileMenu.classList.toggle('space-y-4');
+                mobileMenu.classList.toggle('space-x-8');
+                mobileMenu.classList.toggle('shadow-lg');
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
-</html>
+</html>+

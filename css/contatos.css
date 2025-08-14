@@ -1747,7 +1747,13 @@ footer {
   text-align: center;
 }
 
-/* Brand */
+.footer-content-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
 .footer-brand img {
   width: 160px;
   margin-bottom: 12px;
@@ -1761,7 +1767,6 @@ footer {
   line-height: 1.5;
 }
 
-/* Section Titles */
 .footer-nav h4,
 .footer-contact h4,
 .footer-social h4 {
@@ -1774,7 +1779,7 @@ footer {
 .footer-nav h4::after,
 .footer-contact h4::after,
 .footer-social h4::after {
-  content: '';
+  content: "";
   width: 30px;
   height: 3px;
   background: #0d6efd;
@@ -1783,6 +1788,42 @@ footer {
   border-radius: 2px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.footer-content-call {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-content-call a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cor-white);
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-decoration: none;
+  background-color: var(--cor-blue);
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-content-call a:hover {
+  background-color: var(--cor-whats);
+  color: #fff;
+}
+
+.footer-content-call a i.fa-headset {
+  font-size: 1.4rem;
+  color: var(--cor-white);
+  transition: color 0.3s ease;
+}
+
+.footer-content-call a:hover i.fa-headset {
+  color: #fff;
 }
 
 /* Links */
@@ -1822,11 +1863,12 @@ footer {
   color: #0d6efd;
 }
 
-/* Social */
+/* Alinhando ícones de redes sociais usando imagens */
 .footer-social-icons {
   display: flex;
   gap: 12px;
   justify-content: center;
+  align-items: center;
   margin-top: 8px;
 }
 
@@ -1838,14 +1880,22 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: #ecf0f1;
   transition: all 0.3s ease;
 }
 
 .footer-social-icons a:hover {
   background: #0d6efd;
   transform: translateY(-4px);
+}
+
+.social-icon-img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-social-icons a:hover .social-icon-img {
+  filter: brightness(0) invert(1);
 }
 
 /* Copyright */
@@ -1856,6 +1906,62 @@ footer {
   font-size: 0.85rem;
   opacity: 0.7;
   text-align: center;
+}
+
+/* Seção de formas de pagamento com título centralizado e divs para ícones */
+.footer-extra-area {
+  width: 80%;
+  margin: 40px auto 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-extra-area-titulo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-extra-area-titulo h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ecf0f1;
+  margin: 0;
+}
+
+.footer-extra-area-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.payment-icon-placeholder {
+  width: 50px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.payment-icon-placeholder:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.payment-icon-placeholder::before {
+  content: "";
+  width: 24px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
 }
 
 /* Responsivo */
@@ -1875,5 +1981,20 @@ footer {
   .footer-nav h4::after {
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .footer-social-icons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-extra-area-content {
+    gap: 10px;
+  }
+
+  .payment-icon-placeholder {
+    width: 45px;
+    height: 28px;
   }
 }
