@@ -9,7 +9,23 @@
   color: var(--cor-white);
   padding: 120px 20px 80px;
   text-align: center;
-  margin-top: 80px;
+  background-image: url("../img/photo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: -10;
+}
+
+.banner-servicos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--cor-black);
+  opacity: 0.2;
+  z-index: -9;
 }
 
 .banner-content h1 {
@@ -22,7 +38,6 @@
 .banner-content p {
   font-size: 1.2rem;
   margin-bottom: 40px;
-  opacity: 0.9;
 }
 
 .autorizado-avell {
@@ -30,7 +45,7 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--cor-white);
   padding: 15px 30px;
   border-radius: 50px;
   backdrop-filter: blur(10px);
@@ -40,13 +55,13 @@
 }
 
 .autorizado-avell img {
-  height: 40px;
-  filter: brightness(0) invert(1);
+  height: 60px;
 }
 
 .autorizado-avell span {
   font-weight: 600;
   font-size: 1rem;
+  color: var(--cor-black);
 }
 
 /* Serviços Principais */
@@ -332,5 +347,28 @@
 
   .servico-item {
     padding: 20px;
+  }
+
+  .autorizado-avell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: var(--cor-white);
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .autorizado-avell img {
+    height: 50px;
+  }
+
+  .autorizado-avell span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--cor-black);
   }
 }
