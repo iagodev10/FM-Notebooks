@@ -149,9 +149,6 @@
                 <option value="Havit">Havit</option>
               </select>
 
-              <label>Descrição</label>
-              <textarea id="desc_produto" rows="3" required placeholder="Descrição do Produto"></textarea>
-
               <label>Preço</label>
               <input type="number" id="preco_produto" step="0.01" required placeholder="R$">
 
@@ -169,6 +166,13 @@
                 <option value="roteador-repetidores">Roteador e Repetidores</option>
                 <option value="servicos">Serviços</option>
               </select>
+
+              <div class="container-desc">
+
+                <div class="container-descricao"></div>
+
+                <button onclick="adicionarTabela()">Adicionar Tabela</button>
+              </div>
 
             </div>
 
@@ -345,6 +349,58 @@
   </main>
 
   <script>
+
+
+    // ----------------------FUNÇÃO DE ADICIONAR A DESCRIÇÃO DO PRODUTO---------------------------------
+    function criarLinha() {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+    <td><input type="text" placeholder="Atributo Ex: Capacidade"></td>
+    <td><input type="text" placeholder="Valor Ex: 20 litros"></td>
+    <td style="text-align:center;">
+      <button class="btn btn-excluir" onclick="excluirLinha(this)">🗑</button>
+    </td>
+  `;
+      return tr;
+    }
+
+    function adicionarTabela() {
+      let div = document.createElement('div');
+      div.className = "tabela";
+
+      div.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <label><strong>Título da Tabela:</strong></label>
+      <button class="btn btn-excluir-tabela" onclick="excluirTabela(this)">Excluir Tabela</button>
+    </div>
+    <input type="text" placeholder="Digite o título" style="width:100%; margin-bottom:8px;">
+    <table>
+      <tbody></tbody>
+    </table>
+    <button class="btn" onclick="adicionarLinha(this)">Adicionar Linha</button>
+  `;
+
+      let tbody = div.querySelector('tbody');
+      tbody.appendChild(criarLinha());
+
+      document.querySelector('.container-descricao').appendChild(div);
+    }
+
+    function adicionarLinha(botao) {
+      let tbody = botao.previousElementSibling.querySelector("tbody");
+      tbody.appendChild(criarLinha());
+    }
+
+    function excluirLinha(botao) {
+      botao.closest("tr").remove();
+    }
+
+    function excluirTabela(botao) {
+      botao.closest(".tabela").remove();
+    }
+
+    window.onload = adicionarTabela;
+
     // Adionar novo produto
 
 
@@ -376,29 +432,29 @@
       formData.append('catProd', catProd)
 
       fetch('http://localhost:5090/add-prod', {
-          method: 'POST',
-          body: formData
-        })
+        method: 'POST',
+        body: formData
+      })
         .then(res => res.json())
         .then(data => console.log('Sucesso:', data))
         .catch(err => console.error('Erro:', err));
 
     }
-    
+
     // =================MOSTRAR IMGS DOS PRODUTOS========================
 
     function mostrarPreview(inputId, previewId) {
       const input = document.getElementById(inputId);
       const preview = document.getElementById(previewId);
 
-      input.addEventListener("change", function(event) {
+      input.addEventListener("change", function (event) {
         const arquivo = event.target.files[0];
         preview.innerHTML = ""; // Limpa a imagem anterior
 
         if (arquivo) {
           const reader = new FileReader();
 
-          reader.onload = function(e) {
+          reader.onload = function (e) {
             const img = document.createElement("img");
             img.src = e.target.result;
             img.style.maxWidth = "120px";
@@ -533,11 +589,11 @@
 
 
       fetch('http://localhost:5090/produtos', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter produtos')
           return response.json()
@@ -550,11 +606,11 @@
 
 
       fetch('http://localhost:5090/promocoes', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter promocoes')
           return response.json()
