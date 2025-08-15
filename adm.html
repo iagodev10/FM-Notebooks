@@ -199,8 +199,8 @@
 
         </div>
         <div class="botoes-janela">
-          <button id="btn-salvar-prod" type="submit" onclick="adicionarProduto()">Adicionar Produto</button>
-          <button id="btn-salvar-prod" type="submit" onclick="cancelarProduto()">Cancelar</button>
+          <button id="btn-salvar-prod" class="btn-salvar-prod" type="submit" onclick="adicionarProduto()">Adicionar Produto</button>
+          <button class="btn-salvar-prod" type="submit" onclick="cancelarProduto()">Cancelar</button>
         </div>
 
       </div>
@@ -229,8 +229,8 @@
 
 
         <div class="botoes-janela">
-          <button id="btn-salvar-prod" type="submit" onclick="atualizarPromocao()">Atualizar Promoção</button>
-          <button id="btn-salvar-prod" type="submit" onclick="excluirPromocao()">Excluir Promoção</button>
+          <button class="btn-salvar-prod" type="submit" onclick="atualizarPromocao()">Atualizar Promoção</button>
+          <button class="btn-salvar-prod" type="submit" onclick="excluirPromocao()">Excluir Promoção</button>
         </div>
 
       </div>
@@ -261,8 +261,8 @@
 
 
         <div class="botoes-janela">
-          <button id="btn-salvar-prod" type="submit" onclick="adicionarPromocao()">Adicionar Promoção</button>
-          <button id="btn-salvar-prod" type="submit" onclick="cancelarPromocao()">Cancelar</button>
+          <button class="btn-salvar-prod" type="submit" onclick="adicionarPromocao()">Adicionar Promoção</button>
+          <button class="btn-salvar-prod" type="submit" onclick="cancelarPromocao()">Cancelar</button>
         </div>
 
       </div>
@@ -283,18 +283,18 @@
           <div class="janela-descricao">
 
             <div class="imagens-janela">
-              <img id="img1" src="img/mochilas/kross-elegance.png" alt="">
-              <img id="img2" src="img/mochilas/redemption.png" alt="">
-              <img id="img3" src="img/mochilas/lenovo-casual.png" alt="">
-              <img id="img4" src="img/mochilas/lenovo-casual-removebg-preview.png" alt="">
+              <img id="img1Ex" src="*" alt="">
+              <img id="img2Ex" src="*" alt="">
+              <img id="img3Ex" src="*" alt="">
+              <img id="img4Ex" src="*" alt="">
             </div>
 
             <div class="info-janela">
-              <p><strong>Nome:</strong><span class="nome-do-produto">Mochila</span></p>
-              <p><strong>Descrição:</strong><span class="descricao-do-produto">Descrição</span></p>
-              <p><strong>Categoria:</strong><span class="categoria-do-produto">Mochilas</span></p>
-              <p><strong>Preço:</strong><span class="preco-do-produto">R$ 100,00</span></p>
-              <p><strong>Marca:</strong><span class="marca-do-produto">Lenovo</span></p>
+              <p><strong>Nome:</strong><span class="nome-do-produto" id="nomeProdEx">Mochila</span></p>
+              <p><strong>Descrição:</strong><span class="descricao-do-produto" id="descProdEx">Descrição</span></p>
+              <p><strong>Categoria:</strong><span class="categoria-do-produto" id="catProdEx">Mochilas</span></p>
+              <p><strong>Preço:</strong><span class="preco-do-produto" id="precoProdEx">R$ 100,00</span></p>
+              <p><strong>Marca:</strong><span class="marca-do-produto" id="marcaProdEx">Lenovo</span></p>
 
             </div>
 
@@ -303,8 +303,8 @@
         </div>
 
         <div class="botoes-janela">
-          <button id="btn-salvar-prod" type="submit" onclick="">Atuaizar Produto</button>
-          <button id="btn-salvar-prod" type="submit" onclick="">Excluir Produto</button>
+          <button class="btn-salvar-prod" type="submit" onclick="">Atuaizar Produto</button>
+          <button class="btn-salvar-prod" id="btnExcluir" type="submit">Excluir Produto</button>
         </div>
 
       </div>
@@ -337,8 +337,8 @@
       </div>
 
       <div class="botoes-janela">
-        <button id="btn-salvar-prod" type="submit" onclick="">Atuaizar Promoção</button>
-        <button id="btn-salvar-prod" type="submit" onclick="">Excluir Promoção</button>
+        <button class="btn-salvar-prod" type="submit" onclick="">Atuaizar Promoção</button>
+        <button class="btn-salvar-prod" type="submit" onclick="">Excluir Promoção</button>
       </div>
 
       </div>
@@ -349,7 +349,12 @@
   </main>
 
   <script>
+    document.getElementById('btnExcluir').addEventListener('click',excluirProd)
+    // GERADOR DO CÓDIGO DE ACESSO DO PRODUTO 
 
+    function gerarCodigoAcessoProd() {
+      return Math.random().toString(36).substring(2, 2 + 10);
+    }
 
     // ----------------------FUNÇÃO DE ADICIONAR A DESCRIÇÃO DO PRODUTO---------------------------------
     function criarLinha() {
@@ -406,7 +411,7 @@
 
 
     function adicionarProduto() {
-
+      console.log('chamou');
       const formData = new FormData();
 
       const nomeProd = document.getElementById('nome_produto').value
@@ -419,6 +424,7 @@
       const imgProd2 = document.getElementById('img2').files[0]
       const imgProd3 = document.getElementById('img3').files[0]
       const imgProd4 = document.getElementById('img4').files[0]
+      const chaveAcessProd = gerarCodigoAcessoProd()
 
       if (imgProd1) formData.append('imagem1', imgProd1)
       if (imgProd2) formData.append('imagem2', imgProd2)
@@ -430,13 +436,14 @@
       formData.append('descricaoProd', descProd)
       formData.append('precoProd', precoProd)
       formData.append('catProd', catProd)
+      formData.append('chaveAcessProd', chaveAcessProd)
 
       fetch('http://localhost:5090/add-prod', {
-        method: 'POST',
-        body: formData
-      })
+          method: 'POST',
+          body: formData
+        })
         .then(res => res.json())
-        .then(data => console.log('Sucesso:', data))
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block')
         .catch(err => console.error('Erro:', err));
 
     }
@@ -447,14 +454,14 @@
       const input = document.getElementById(inputId);
       const preview = document.getElementById(previewId);
 
-      input.addEventListener("change", function (event) {
+      input.addEventListener("change", function(event) {
         const arquivo = event.target.files[0];
         preview.innerHTML = ""; // Limpa a imagem anterior
 
         if (arquivo) {
           const reader = new FileReader();
 
-          reader.onload = function (e) {
+          reader.onload = function(e) {
             const img = document.createElement("img");
             img.src = e.target.result;
             img.style.maxWidth = "120px";
@@ -578,6 +585,9 @@
         divProd.appendChild(imgProd)
         divProd.appendChild(nomeProd)
         divProd.appendChild(divPreco)
+        divProd.addEventListener('click', Produto)
+        divProd.setAttribute('name', produto.chaveAcessProd)
+
 
         englobprodutos.appendChild(divProd)
       })
@@ -589,11 +599,11 @@
 
 
       fetch('http://localhost:5090/produtos', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter produtos')
           return response.json()
@@ -606,11 +616,11 @@
 
 
       fetch('http://localhost:5090/promocoes', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter promocoes')
           return response.json()
@@ -641,9 +651,79 @@
     })
 
     // ===================MOSTRAR INFORMAÇÕES DO PRODUTO ESPECÍFICO=============
-    function Produto(id) {
+    function Produto(e) {
+      const img1 = document.getElementById('img1Ex')
+      const img2 = document.getElementById('img2Ex')
+      const img3 = document.getElementById('img3Ex')
+      const img4 = document.getElementById('img4Ex')
+      const chave = e.currentTarget.getAttribute('name')
+      const nome = document.getElementById('nomeProdEx')
+      const descricao = document.getElementById('descProdEx')
+      const marca = document.getElementById('marcaProdEx')
+      const categoria = document.getElementById('catProdEx')
+      const preco = document.getElementById('precoProdEx')
+      const btnEx=document.getElementById('btnExcluir')
+
       document.getElementById('produto-janela').style.display = 'block';
+
+      fetch('http://localhost:5090/get-infos/' + chave, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          btnEx.setAttribute('name',data.chaveAcessProd)
+          nome.innerText = data.nomeProd
+          marca.innerText = data.marcaProd
+          categoria.innerText = data.catProd
+          preco.innerText = data.precoProd
+          descricao.innerText = data.descricaoProd
+          img1.src = data.urlImgProd1
+          if (data.urlImgProd2 != null) {
+            img2.src = data.urlImgProd2
+          } else {
+            img2.style.display = 'none'
+          }
+          if (data.urlImgProd3) {
+            img3.src = data.urlImgProd3
+          } else {
+            img3.style.display = 'none'
+          }
+          if (data.urlImgProd4) {
+            img4.src = data.urlImgProd4
+          } else {
+            img4.style.display = 'none'
+          }
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
     }
+
+    function excluirProd(e) {
+      const chave = e.currentTarget.getAttribute('name')
+
+      fetch('http://localhost:5090/delete-prod/' + chave, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao excluir produto')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalJanela()
+          window.location.href = window.location.href
+          console.log("Sucesso ao excluir produto")
+        })
+        .catch(error => console.error('Erro ao excluir produto', error))
+    }
+    
   </script>
 
 </body>

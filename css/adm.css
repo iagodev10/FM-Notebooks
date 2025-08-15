@@ -665,7 +665,7 @@ main {
 }
 
 
-#btn-salvar-prod {
+.btn-salvar-prod {
     display: block;
     margin: 20px auto 0;
     background-color: var(--cor-blue);
@@ -679,7 +679,7 @@ main {
     transition: background 0.3s;
 }
 
-#btn-salvar-prod:hover {
+.btn-salvar-prod:hover {
     background-color: #003a99;
 }
 
