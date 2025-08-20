@@ -223,15 +223,18 @@
 
           <div class="promocao-img">
             <input type="file" id="imgPromoAtt" required>
-            <div id="preview-imgPromoAtt"></div>
+            <div id="preview-imgPromoAtt">
+
+              <img src="*" id="imgPreviewPromo">
+            </div>
           </div>
 
         </div>
 
 
         <div class="botoes-janela">
-          <button class="btn-salvar-prod" type="submit" onclick="atualizarPromocao()">Atualizar Promoção</button>
-          <button class="btn-salvar-prod" type="submit" onclick="excluirPromocao()">Excluir Promoção</button>
+          <button class="btn-salvar-prod" id="btnSalvarAttPromo" onclick="atualizarPromo()" type="submit">Atualizar Promoção</button>
+          <button class="btn-salvar-prod" id="btnExcluirPromo" type="submit">Excluir Promoção</button>
         </div>
 
       </div>
@@ -263,7 +266,7 @@
 
         <div class="botoes-janela">
           <button class="btn-salvar-prod" type="submit" onclick="addPromo()">Adicionar Promoção</button>
-          <button class="btn-salvar-prod" type="submit" onclick="cancelarPromocao()">Cancelar</button>
+          <button class="btn-salvar-prod" type="submit" onclick="fecharAddPromo()">Cancelar</button>
         </div>
 
       </div>
@@ -352,6 +355,7 @@
   <script>
     document.getElementById('btnAtualizar').addEventListener('click',atualizarProd)
     document.getElementById('btnExcluir').addEventListener('click',excluirProd)
+    document.getElementById('btnExcluirPromo').addEventListener('click',excluirPromo)
     // GERADOR DO CÓDIGO DE ACESSO DO PRODUTO 
 
     function gerarCodigoAcessoProd() {
@@ -529,8 +533,30 @@
       document.getElementById('modo-promo').style.display = 'none';
     }
 
-    function Promocao(id) {
+    function Promocao(e) {
+
       document.getElementById('modo-promo').style.display = 'block';
+      const btnSalvar=document.getElementById('btnSalvarAttPromo')
+      const btnExcluir=document.getElementById('btnExcluirPromo')
+      const img1 = document.getElementById('imgPreviewPromo')
+      const chave = e.currentTarget.getAttribute('name')
+
+      fetch('http://localhost:5090/get-infos-promo/' + chave, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          btnSalvar.setAttribute('name',data.chaveAcessPromo)
+          btnExcluir.setAttribute('name',data.chaveAcessPromo)
+          img1.src = data.urlImgPromo
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
     }
 
     function promoAddMostrar() {
@@ -637,6 +663,7 @@
 
             const divPromo = document.createElement('div')
             divPromo.className = 'div-promocao-1'
+            divPromo.setAttribute('name',promo.chaveAcessPromo)
             divPromo.addEventListener('click',Promocao)
             divPromo.appendChild(imgPromo)
             englobpromos.appendChild(divPromo)
@@ -729,6 +756,24 @@
         })
         .catch(error => console.error('Erro ao excluir produto', error))
     }
+    function excluirPromo(e) {
+      console.log('///////');
+      const chave = e.currentTarget.getAttribute('name')
+
+      fetch('http://localhost:5090/delete-promo/' + chave, {
+          method: 'DELETE',
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao excluir promoção')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalPromo()
+          window.location.href = window.location.href
+          console.log("Sucesso ao excluir promção")
+        })
+        .catch(error => console.error('Erro ao excluir produto', error))
+    }
     
     function atualizarProd(){
       const formData = new FormData()
@@ -769,6 +814,30 @@
           fecharModalJanela()
           window.location.href = window.location.href
           console.log("Sucesso ao editar produto")
+        })
+        .catch(error => console.error('Erro ao editar produto', error))
+    
+    }
+    function atualizarPromo(){
+      const formData = new FormData()
+
+      const img=document.getElementById('imgPromoAtt').files[0]
+      const chave=document.getElementById('btnExcluirPromo').getAttribute('name')
+
+      formData.append('imagem',img)
+  
+      fetch('http://localhost:5090/atualizar-promo/' + chave, {
+          method: 'PUT',
+          body:formData
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao editar promoção')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalPromo()
+          window.location.href = window.location.href
+          console.log("Sucesso ao editar promoção")
         })
         .catch(error => console.error('Erro ao editar produto', error))
     
