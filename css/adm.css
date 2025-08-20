@@ -868,7 +868,10 @@ button.btn:hover,
     text-align: right;
 }
 
-.info-janela p span {
+.info-janela p input {
+    font-size: 1rem;
+    outline: none;
+    border: none;
     flex: 1;
     word-wrap: break-word;
     text-align: left;
