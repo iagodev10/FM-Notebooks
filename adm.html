@@ -454,7 +454,7 @@
         body: formData
       })
         .then(res => res.json())
-        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block')
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(),window.location.reload())
         .catch(err => console.error('Erro:', err));
 
     }
@@ -716,11 +716,11 @@
         })
         .then(data => {
           btnEx.setAttribute('name',data.chaveAcessProd)
-          nome.innerText = data.nomeProd
-          marca.innerText = data.marcaProd
-          categoria.innerText = data.catProd
-          preco.innerText = data.precoProd
-          descricao.innerText = data.descricaoProd
+          nome.value = data.nomeProd
+          marca.value = data.marcaProd
+          categoria.value = data.catProd
+          preco.value = data.precoProd
+          descricao.value = data.descricaoProd
           img1.src = data.urlImgProd1
           if (data.urlImgProd2 != null) {
             img2.src = data.urlImgProd2
