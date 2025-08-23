@@ -174,11 +174,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let filtroTexto = "";           // Texto atual de busca
     let categoriasAtivas = ["todas"]; // Categorias ativas
+    let marcasAtivas = [];
 
     // Elementos
     const busca = document.getElementById("input-busca");
     const resultado = document.getElementById("lista-produtos");
-    const checkboxes = document.querySelectorAll(".input-checkbox");
+    const checkboxesCategoria = document.querySelectorAll(".input-checkbox-categoria");
+    const checkboxesMarca = document.querySelectorAll(".input-checkbox-marca");
 
     // ===========================
     // FUNÇÃO DE EXIBIÇÃO
@@ -189,8 +191,14 @@ window.addEventListener("DOMContentLoaded", () => {
         const filtrados = produtos.filter(p => {
             const textoCombina = p.nome.toLowerCase().includes(filtroTexto.toLowerCase());
             const todasSelecionadas = categoriasAtivas.includes("todas");
+
+            //CATEGORIA
             const categoriaCombina = todasSelecionadas || categoriasAtivas.includes(p.categoria);
-            return textoCombina && categoriaCombina;
+
+            // MARCA
+            const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marca);
+
+            return textoCombina && categoriaCombina && marcaCombina;
         });
 
         if (filtrados.length === 0) {
@@ -202,11 +210,13 @@ window.addEventListener("DOMContentLoaded", () => {
             const div = document.createElement("div");
             div.className = "produto";
             div.innerHTML = `
-                <img src="${produto.img}" alt="${produto.nome}">
-                <h3>${produto.nome}</h3>
-                <div class="preco"><span>${produto.preco}</span></div>
-                <a href="detalhes.html?id=${produto.id}" class="ver-tudo-btn">Ver Detalhes</a>
-            `;
+        <a href="detalhes.html?id=${produto.id}" class="link-produto">
+            <img src="${produto.img}" alt="${produto.nome}">
+            <h3>${produto.nome}</h3>
+        </a>
+        <div class="preco"><span>${produto.preco}</span></div>
+        <a href="detalhes.html?id=${produto.id}" class="ver-tudo-btn">Ver Detalhes</a>
+    `;
             resultado.appendChild(div);
         });
     }
@@ -222,33 +232,60 @@ window.addEventListener("DOMContentLoaded", () => {
     // ===========================
     // CHECKBOXES DE CATEGORIA
     // ===========================
-    checkboxes.forEach(cb => {
+    checkboxesCategoria.forEach(cb => {
         cb.addEventListener("change", e => {
             const cat = e.target.getAttribute("data-categoria");
 
             if (cat === "todas" && e.target.checked) {
                 categoriasAtivas = ["todas"];
-                checkboxes.forEach(box => {
+                checkboxesCategoria.forEach(box => {
                     if (box.getAttribute("data-categoria") !== "todas") {
                         box.checked = false;
                     }
                 });
-            } else if (cat === "todas" && !e.target.checked) {
+            }
+            else if (cat === "todas" && !e.target.checked) {
                 categoriasAtivas = [];
-            } else {
+            }
+            else {
                 if (e.target.checked) {
                     categoriasAtivas.push(cat);
-                } else {
+                }
+                else {
                     categoriasAtivas = categoriasAtivas.filter(c => c !== cat);
                 }
+
                 if (categoriasAtivas.length > 0) {
-                    document.querySelector('.input-checkbox[data-categoria="todas"]').checked = false;
+                    const todasCheckbox = document.querySelector('.input-checkbox-categoria[data-categoria="todas"]');
+                    if (todasCheckbox) todasCheckbox.checked = false;
                     categoriasAtivas = categoriasAtivas.filter(c => c !== "todas");
                 }
                 if (categoriasAtivas.length === 0) {
                     categoriasAtivas = ["todas"];
-                    document.querySelector('.input-checkbox[data-categoria="todas"]').checked = true;
+                    const todasCheckbox = document.querySelector('.input-checkbox-categoria[data-categoria="todas"]');
+                    if (todasCheckbox) todasCheckbox.checked = true;
                 }
+            }
+
+            exibirProdutos();
+        });
+    });
+
+
+    // ===========================
+    // CHECKBOXES DE MARCA
+    // ===========================
+    checkboxesMarca.forEach(cb => {
+        cb.addEventListener("change", e => {
+            const marca = e.target.getAttribute("data-marca");
+
+            if (e.target.checked) {
+                if (!marcasAtivas.includes(marca)) {
+                    marcasAtivas.push(marca);
+                }
+            }
+            else {
+                marcasAtivas = marcasAtivas.filter(m => m !== marca);
             }
             exibirProdutos();
         });
