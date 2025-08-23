@@ -228,15 +228,20 @@
           <h3>Imagem Atual</h3>
 
           <div class="promocao-img">
-            <img src="img/mochilas/lenovo-casual-removebg-preview.png" alt="">
+            <input type="file" id="imgPromoAtt" required>
+            <div id="preview-imgPromoAtt">
+
+              <img src="*" id="imgPreviewPromo">
+            </div>
           </div>
 
         </div>
 
 
         <div class="botoes-janela">
-          <button class="btn-salvar-prod" type="submit" onclick="atualizarPromocao()">Atualizar Promoção</button>
-          <button class="btn-salvar-prod" type="submit" onclick="excluirPromocao()">Excluir Promoção</button>
+          <button class="btn-salvar-prod" id="btnSalvarAttPromo" onclick="atualizarPromo()" type="submit">Atualizar
+            Promoção</button>
+          <button class="btn-salvar-prod" id="btnExcluirPromo" type="submit">Excluir Promoção</button>
         </div>
 
       </div>
@@ -259,7 +264,7 @@
           <div class="promocao-img">
 
             <input type="file" id="img-promo-add">
-            <div class="img-promo"></div>
+            <div class="img-promo" id="img-promo-prev"></div>
 
           </div>
 
@@ -267,8 +272,8 @@
 
 
         <div class="botoes-janela">
-          <button class="btn-salvar-prod" type="submit" onclick="adicionarPromocao()">Adicionar Promoção</button>
-          <button class="btn-salvar-prod" type="submit" onclick="cancelarPromocao()">Cancelar</button>
+          <button class="btn-salvar-prod" type="submit" onclick="addPromo()">Adicionar Promoção</button>
+          <button class="btn-salvar-prod" type="submit" onclick="fecharAddPromo()">Cancelar</button>
         </div>
 
       </div>
@@ -296,11 +301,11 @@
             </div>
 
             <div class="info-janela">
-              <p><strong>Nome:</strong><span class="nome-do-produto" id="nomeProdEx">Mochila</span></p>
-              <p><strong>Descrição:</strong><span class="descricao-do-produto" id="descProdEx">Descrição</span></p>
-              <p><strong>Categoria:</strong><span class="categoria-do-produto" id="catProdEx">Mochilas</span></p>
-              <p><strong>Preço:</strong><span class="preco-do-produto" id="precoProdEx">R$ 100,00</span></p>
-              <p><strong>Marca:</strong><span class="marca-do-produto" id="marcaProdEx">Lenovo</span></p>
+              <p><strong>Nome:</strong><input class="nome-do-produto" id="nomeProdEx"></p>
+              <p><strong>Descrição:</strong><input class="descricao-do-produto" id="descProdEx"></p>
+              <p><strong>Categoria:</strong><input class="categoria-do-produto" id="catProdEx"></p>
+              <p><strong>Preço:</strong><input class="preco-do-produto" id="precoProdEx"></p>
+              <p><strong>Marca:</strong><input class="marca-do-produto" id="marcaProdEx"></p>
 
             </div>
 
@@ -309,7 +314,7 @@
         </div>
 
         <div class="botoes-janela">
-          <button class="btn-salvar-prod" type="submit" onclick="">Atuaizar Produto</button>
+          <button class="btn-salvar-prod" id="btnAtualizar" type="submit" onclick="">Atuaizar Produto</button>
           <button class="btn-salvar-prod" id="btnExcluir" type="submit">Excluir Produto</button>
         </div>
 
@@ -355,7 +360,7 @@
   </main>
 
   <script>
-    document.getElementById('btnExcluir').addEventListener('click', excluirProd)
+    document.getElementById('btnExcluir').addEventListener('click',excluirProd)
     // GERADOR DO CÓDIGO DE ACESSO DO PRODUTO 
 
     function gerarCodigoAcessoProd() {
@@ -418,7 +423,7 @@
 
     function adicionarProduto() {
       console.log('chamou');
-      const formData = new FormData();
+      const formData = new FormData()
 
       const nomeProd = document.getElementById('nome_produto').value
       const marcaProd = document.getElementById('marca_produto').value
@@ -484,6 +489,8 @@
     }
 
     // Chamando para cada imagem
+    mostrarPreview("imgPromoAtt", "preview-imgPromoAtt");
+    mostrarPreview("img-promo-add", "img-promo-prev");
     mostrarPreview("img1", "preview-img1");
     mostrarPreview("img2", "preview-img2");
     mostrarPreview("img3", "preview-img3");
@@ -531,8 +538,30 @@
       document.getElementById('modo-promo').style.display = 'none';
     }
 
-    function Promocao(id) {
+    function Promocao(e) {
+
       document.getElementById('modo-promo').style.display = 'block';
+      const btnSalvar = document.getElementById('btnSalvarAttPromo')
+      const btnExcluir = document.getElementById('btnExcluirPromo')
+      const img1 = document.getElementById('imgPreviewPromo')
+      const chave = e.currentTarget.getAttribute('name')
+
+      fetch('http://localhost:5090/get-infos-promo/' + chave, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          btnSalvar.setAttribute('name', data.chaveAcessPromo)
+          btnExcluir.setAttribute('name', data.chaveAcessPromo)
+          img1.src = data.urlImgPromo
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
     }
 
     function promoAddMostrar() {
@@ -562,6 +591,7 @@
 
     function fecharAddPromo() {
       document.getElementById('adicionar-promo').style.display = 'none';
+      return true
     }
 
 
@@ -638,6 +668,8 @@
 
             const divPromo = document.createElement('div')
             divPromo.className = 'div-promocao-1'
+            divPromo.setAttribute('name', promo.chaveAcessPromo)
+            divPromo.addEventListener('click', Promocao)
             divPromo.appendChild(imgPromo)
             englobpromos.appendChild(divPromo)
           })
@@ -683,7 +715,7 @@
           return response.json()
         })
         .then(data => {
-          btnEx.setAttribute('name', data.chaveAcessProd)
+          btnEx.setAttribute('name',data.chaveAcessProd)
           nome.innerText = data.nomeProd
           marca.innerText = data.marcaProd
           categoria.innerText = data.catProd
@@ -729,7 +761,7 @@
         })
         .catch(error => console.error('Erro ao excluir produto', error))
     }
-
+    
   </script>
 
 </body>
