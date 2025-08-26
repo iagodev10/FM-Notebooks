@@ -2,8 +2,22 @@
 // LISTA DE PRODUTOS COMPLETA
 // ===========================
 window.addEventListener("DOMContentLoaded", () => {
-    const produtos = [
+    fetch('http://localhost:5090/produtos',{
+        method: 'GET'
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          produtos=data
+          console.log(produtos);
+          exibirProdutos();
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
+    let produtos = [
         // Mochilas
+        /*
         {
             id: 1,
             nome: "Mochila Kross Elegance Clean Black",
@@ -169,6 +183,7 @@ window.addEventListener("DOMContentLoaded", () => {
             marca: "JBL",
             img: "img/headphones/jbl-520bt-white.png"
         }
+        */
     ];
 
 
@@ -187,16 +202,18 @@ window.addEventListener("DOMContentLoaded", () => {
     // ===========================
     function exibirProdutos() {
         resultado.innerHTML = "";
-
+        console.log('aoba');
         const filtrados = produtos.filter(p => {
-            const textoCombina = p.nome.toLowerCase().includes(filtroTexto.toLowerCase());
+            
+            console.log(p,"olha o filtro");
+            const textoCombina = p.nomeProd.toLowerCase().includes(filtroTexto.toLowerCase());
             const todasSelecionadas = categoriasAtivas.includes("todas");
 
             //CATEGORIA
-            const categoriaCombina = todasSelecionadas || categoriasAtivas.includes(p.categoria);
+            const categoriaCombina = todasSelecionadas || categoriasAtivas.includes(p.catProd);
 
             // MARCA
-            const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marca);
+            const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marcaProd);
 
             return textoCombina && categoriaCombina && marcaCombina;
         });
@@ -210,13 +227,14 @@ window.addEventListener("DOMContentLoaded", () => {
             const div = document.createElement("div");
             div.className = "produto";
             div.innerHTML = `
-        <a href="detalhes.html?id=${produto.id}" class="link-produto">
-            <img src="${produto.img}" alt="${produto.nome}">
-            <h3>${produto.nome}</h3>
+        <a href="detalhes.html?id=${produto.idProd}" class="link-produto">
+            <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}">
+            <h3>${produto.nomeProd}</h3>
         </a>
-        <div class="preco"><span>${produto.preco}</span></div>
-        <a href="detalhes.html?id=${produto.id}" class="ver-tudo-btn">Ver Detalhes</a>
-    `;
+        <div class="preco"><span>R$ ${produto.precoProd}</span></div>
+        <a href="detalhes.html?id=${produto.idProd}" class="ver-tudo-btn">Ver Detalhes</a>
+    `;  
+            console.log(div);
             resultado.appendChild(div);
         });
     }
