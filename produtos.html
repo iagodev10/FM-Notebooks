@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- Bootstrap CSS (mantive seus libs para compatibilidade) -->
+  <!-- Bootstrap CSS -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -30,43 +30,37 @@
 
 <body>
   <!-- Overlay para fechar menus -->
-  <div id="overlay" class="overlay"></div>
+  <div class="click-closed"></div>
 
   <!-- WhatsApp Fixo -->
   <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" aria-label="WhatsApp">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
   </a>
 
-  <!-- HEADER / NAV -->
+  <!-- HEADER / NAV baseado no index -->
   <header>
-    <nav class="site-nav">
-      <div class="nav-left">
-        <!-- Botão hambúrguer com ícone Font Awesome -->
-        <button class="mobile-menu" aria-label="Abrir menu">
-          <i class="fas fa-bars menu-icon"></i>
-          <i class="fas fa-times close-icon"></i>
-        </button>
-
-        <!-- Logo -->
-        <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
+    <nav>
+      <div class="mobile-menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
       </div>
 
-      <!-- Barra de pesquisa - agora sempre dentro do header -->
-      <div id="busca" class="search-wrap" role="search">
+      <a href="index.html" class="logo"><span>FM</span>Notebooks</a>
+
+      <!-- Barra de pesquisa integrada -->
+      <div class="search-wrap" role="search">
         <input id="input-busca" type="text" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
         <i class="fa fa-search" aria-hidden="true"></i>
       </div>
 
-      <!-- Links -->
-      <ul class="nav-list" role="menu" aria-label="Menu principal">
+      <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="produtos.html">Loja</a></li>
         <li><a href="servicos.html">Serviços</a></li>
         <li><a href="contatos.html">Contatos</a></li>
+        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
       </ul>
-
-      <!-- Ícone do carrinho -->
-      <a href="#" class="cart-icon" aria-label="Ir para o carrinho"><i class="fas fa-shopping-cart"></i></a>
     </nav>
   </header>
 
@@ -196,9 +190,7 @@
     <div class="produtos" id="lista-produtos"></div>
   </main>
 
-  <!-- ========================FOOTER================================ -->
-  <!-- ========================FOOTER================================ -->
-
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
 
@@ -247,9 +239,6 @@
           <a href="https://www.instagram.com/fmnotebooks.ofc/" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
           </a>
-          <!-- <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a> -->
         </div>
 
       </div>
@@ -302,7 +291,7 @@
   <!-- filtro.js -->
   <script src="js/filtro.js"></script>
 
-  <!-- main-produtos.js corrigido -->
+  <!-- main-produtos.js -->
   <script src="js/main-produtos.js"></script>
 </body>
 
