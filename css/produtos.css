@@ -68,11 +68,11 @@ header {
 
 .logo span {
   font-weight: 700;
-  color: var(--cor-blue);
+  color: var(--cor-black);
 }
 
 .logo:hover {
-  color: var(--cor-blue);
+  color: var(--cor-black);
   text-decoration: none;
 }
 
@@ -80,7 +80,7 @@ header {
 .search-wrap {
   position: relative;
   flex: 1;
-  max-width: 400px;
+  max-width: 350px;
   margin: 0 20px;
 }
 
@@ -165,6 +165,8 @@ nav {
   padding: 0 20px;
   height: 8vh;
   position: relative;
+  width: 80%;
+  margin: auto;
 }
 
 /* =================== OVERLAY =================== */
