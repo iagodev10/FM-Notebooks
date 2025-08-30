@@ -123,7 +123,6 @@ body {
 }
 
 main {
-    margin-left: var(--sidebar-width);
     padding: 90px 30px 30px 30px;
     width: 100%;
 }
@@ -131,10 +130,11 @@ main {
 /* Estilo da seção */
 .lista {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* exatamente 3 por linha */
     gap: 20px;
     padding: 100px 40px 40px;
 }
+
 
 /* ==================Section cards de promoção =======================*/
 /* =================Section cards de promoção ========================*/
@@ -529,6 +529,215 @@ main {
         font-weight: 700;
         font-size: 0.95rem;
     }
+}
+
+
+/* <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================-->
+    <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================--> */
+
+.produtos-em-promocao{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-white);
+    height: 100vh;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-remove {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-add {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-add:hover {
+    background-color: #229954;
+    transform: translateY(-2px);
+}
+
+.product-list {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s ease;
+}
+
+.product-list.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.product-list h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+.product-card {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.product-card.selected {
+    border-color: #3498db;
+    background: #ebf3fd;
+    transform: scale(1.02);
+}
+
+.product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.product-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.product-info h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.add-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #229954;
+}
+
+.bulk-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ecf0f1;
+}
+
+.btn-apply {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-apply:hover {
+    background-color: #2980b9;
+}
+
+.btn-clear {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-clear:hover {
+    background-color: #7f8c8d;
+}
+
+/* Animação de entrada */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 1000px;
+    }
+}
+
+.product-list.show {
+    animation: slideDown 0.4s ease forwards;
 }
 
 /* =======================NMODO DE PRODUTO============================== */

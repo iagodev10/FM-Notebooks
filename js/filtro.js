@@ -2,17 +2,17 @@
 // LISTA DE PRODUTOS COMPLETA
 // ===========================
 window.addEventListener("DOMContentLoaded", () => {
-    fetch('http://localhost:5090/produtos',{
+    fetch('http://localhost:5090/produtos', {
         method: 'GET'
-      })
+    })
         .then(response => {
-          if (!response.ok) throw new Error('Erro ao obter informações')
-          return response.json()
+            if (!response.ok) throw new Error('Erro ao obter informações')
+            return response.json()
         })
         .then(data => {
-          produtos=data
-          console.log(produtos);
-          exibirProdutos();
+            produtos = data
+            console.log(produtos);
+            exibirProdutos();
         })
         .catch(error => console.error('Erro ao obter informações', error))
     let produtos = [
@@ -204,8 +204,8 @@ window.addEventListener("DOMContentLoaded", () => {
         resultado.innerHTML = "";
         console.log('aoba');
         const filtrados = produtos.filter(p => {
-            
-            console.log(p,"olha o filtro");
+
+            console.log(p, "olha o filtro");
             const textoCombina = p.nomeProd.toLowerCase().includes(filtroTexto.toLowerCase());
             const todasSelecionadas = categoriasAtivas.includes("todas");
 
@@ -227,13 +227,19 @@ window.addEventListener("DOMContentLoaded", () => {
             const div = document.createElement("div");
             div.className = "produto";
             div.innerHTML = `
-        <a href="detalhes.html?id=${produto.idProd}" class="link-produto">
-            <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}">
-            <h3>${produto.nomeProd}</h3>
-        </a>
-        <div class="preco"><span>R$ ${produto.precoProd}</span></div>
-        <a href="detalhes.html?id=${produto.idProd}" class="ver-tudo-btn">Ver Detalhes</a>
-    `;  
+                            <a href="detalhes.html?id=${produto.idProd}" class="link-produto">
+                                <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}">
+                                    <h3>${produto.nomeProd}</h3>
+                            </a>
+                            <div class="preco"><span>R$ ${produto.precoProd}</span></div>
+                                <div class="produto-actions">
+                                    <a href="detalhes.html?id=${produto.idProd}" class="ver-detalhes-btn">Ver Detalhes</a>
+                                        <button class="add-carrinho-btn" onclick="adicionarAoCarrinho(${produto.idProd}, '${produto.nomeProd}', '${produto.precoProd}')">
+                                         <i class="fas fa-shopping-cart"></i>
+                                        Adicionar
+                                        </button>
+                            </div>
+    `;
             console.log(div);
             resultado.appendChild(div);
         });

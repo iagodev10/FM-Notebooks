@@ -62,23 +62,31 @@ header {
 }
 
 .logo {
+  display: flex;
+  align-items: center; 
+  text-decoration: none;
+  color: var(--cor-black);
+  font-family: 'Montserrat', sans-serif;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.logo-img {
+  height: 40px;  
+  width: auto;
+}
+
+.logo-text {
   font-size: 1.5rem;
   font-weight: 400;
-  color: var(--cor-black);
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  white-space: nowrap;
-  transition: color 0.3s;
 }
 
-.logo span {
-  font-weight: 700;
-}
-
+/* Hover */
 .logo:hover {
   color: var(--cor-blue);
   text-decoration: none;
 }
+
 
 .nav-list {
   list-style: none;
@@ -159,6 +167,14 @@ nav {
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.4rem;
+  }
+
+  .logo-img {
+    height: 26px; /
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
   }
 
   /* Lista de navegação estilo menu lateral */
@@ -258,7 +274,11 @@ nav {
     font-size: 1rem;
   }
 
-  .logo {
+  .logo-img {
+    height: 22px; /* reduz ainda mais em telas muito pequenas */
+  }
+
+  .logo-text {
     font-size: 1rem;
   }
 
@@ -590,8 +610,9 @@ nav {
   }
 }
 
-/* ===========PAGAMENTOS CARD======== */
-/* ===========PAGAMENTOS CARD======== */
+/* ===========================PAGAMENTO CARD============================================ */
+/* ===========================PAGAMENTO CARD============================================ */
+/* ===========================PAGAMENTO CARD============================================ */
 
 .pagamento-card {
   width: 100%;
@@ -609,6 +630,7 @@ nav {
   justify-content: center;
   background-color: var(--cor-white2);
   gap: 15px;
+  transition: transform 0.5s ease-in-out;
 }
 
 .pague-item {
@@ -639,39 +661,158 @@ nav {
   flex-shrink: 0;
 }
 
-.pague-item span {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-/* Carrossel de pagamentos apenas no mobile */
+/* Mobile (vira carrossel) */
 @media (max-width: 768px) {
   .pagamento-card {
     background-color: var(--cor-white2);
-    clip-path: none;
-    padding: 0;
+    padding: 0 10px; /* respiro lateral */
+    overflow: hidden;
   }
 
   .pagamento-card-content {
     width: 100%;
-    overflow: hidden;
-    position: relative;
     display: flex;
+    gap: 0;
     transition: transform 0.5s ease-in-out;
   }
 
   .pague-item {
     min-width: 100%;
     flex-shrink: 0;
-    transform: none;
     border-radius: 8px;
+    padding: 15px;           /* reduz padding */
+    font-size: 0.85rem;      /* fonte mais compacta */
   }
 
-  .pague-item-content {
-    transform: none;
+  .pague-item-content i {
+    font-size: 26px;         /* ícone menor */
   }
 }
 
+/* Tablet: 2 cards por vez */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pagamento-card {
+    overflow: hidden;
+  }
+
+  .pagamento-card-content {
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .pague-item {
+    min-width: 50%; /* dois cards lado a lado */
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 481px) {
+  .pagamento-card {
+    padding: 0 8px;
+  }
+
+  .pagamento-card-content {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .pague-item {
+    min-width: 85%;
+    margin: 0 auto;
+    flex-shrink: 0;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+
+  .pague-item-content i {
+    font-size: 26px;
+  }
+
+  .pague-item-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .pague-item-content p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ====== Celular pequeno (até 480px) ====== */
+@media (max-width: 480px) and (min-width: 376px) {
+  .pagamento-card {
+    padding: 0 6px;
+  }
+
+  .pagamento-card-content {
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .pague-item {
+    min-width: 88%;
+    margin: 0 auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 0.8rem;
+  }
+
+  .pague-item-content i {
+    font-size: 22px;
+  }
+
+  .pague-item-content h3 {
+    font-size: 1rem;
+  }
+
+  .pague-item-content p {
+    font-size: 0.75rem;
+  }
+}
+
+/* ====== Celular muito pequeno (até 375px / 360px) ====== */
+@media (max-width: 375px) {
+  .pagamento-card {
+    padding: 0 4px;
+  }
+
+  .pagamento-card-content {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .pague-item {
+    min-width: 92%;       /* quase 100% da tela */
+    margin: 0 auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.75rem;
+  }
+
+  .pague-item-content i {
+    font-size: 20px;
+  }
+
+  .pague-item-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .pague-item-content p {
+    font-size: 0.7rem;
+    line-height: 1.1;
+  }
+}
+
+/* ===========Produtos em destaque======== */
 /* ===========Produtos em destaque======== */
 
 .produtos-em-destaque {
@@ -1299,8 +1440,8 @@ nav {
 }
 
 .categoria {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -18,14 +18,23 @@
     <button id="btn-produtos" class="active" onclick="mostrar('produtos')">
       <i class="fas fa-box"></i> Produtos
     </button>
-    <button id="btn-promocoes" onclick="mostrar('promocoes')">
-      <i class="fas fa-tags"></i> Promoções
+
+    <button id="btn-banners" onclick="mostrar('banners')">
+      <i class="fas fa-image"></i> Banners Promocionais
     </button>
+
+    <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')">
+      <i class="fas fa-tags"></i> Produtos em Promoção
+    </button>
+
     <button><i class="fas fa-cogs"></i> Adicionar ADM</button>
 
-    <button onclick="produtoAddMostrar()" id="btn-prod-add"><i class="fa fa-add"></i>Adicionar Produto</button>
-    <button onclick="promoAddMostrar()" id="btn-promo-add" style="display: none;"><i class="fa fa-add"></i>Adicionar
-      Promoção</button>
+    <button onclick="produtoAddMostrar()" id="btn-prod-add">
+      <i class="fa fa-add"></i>Adicionar Produto
+    </button>
+    <button onclick="bannerAddMostrar()" id="btn-banner-add" style="display: none;">
+      <i class="fa fa-add"></i>Adicionar Banner
+    </button>
   </aside>
 
   <!-- HEADER -->
@@ -41,7 +50,9 @@
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
-    <!-- Produtos -->
+
+    <!-- ============================Produtos========================================= -->
+    <!-- ============================Produtos========================================= -->
     <section class="produtos-em-destaque" id="produtos">
 
       <div class="produtos" id="englobprodutos">
@@ -100,8 +111,10 @@
 
     </section>
 
-    <!-- Promoções -->
-    <section id="promocoes" class="lista" style="display: none;">
+    <!-- =======================Banners Promocionais ============================-->
+    <!-- =======================Banners Promocionais ============================-->
+
+    <section id="banners" class="lista" style="display: none;">
 
       <div class="div-promocao" id="promos">
         <div class="div-promocao-1" onclick="Promocao(1)">
@@ -110,7 +123,112 @@
         <div class="div-promocao-1">
           <img src="img/note-fones.jpg" alt="">
         </div>
+        <div class="div-promocao-1">
+          <img src="img/note-fones.jpg" alt="">
+        </div>
+        <div class="div-promocao-1">
+          <img src="img/note-fones.jpg" alt="">
+        </div>
+        <div class="div-promocao-1">
+          <img src="img/note-fones.jpg" alt="">
+        </div>
+        <div class="div-promocao-1">
+          <img src="img/note-fones.jpg" alt="">
+        </div>
       </div>
+    </section>
+
+
+    <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================-->
+    <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================-->
+
+    <section id="promocoes" class="produtos-em-promocao" style="display: none;">
+
+      <div class="action-buttons">
+        <button id="btn-remover" class="btn btn-remove">Remover da Promoção</button>
+        <button id="btn-adicionar" class="btn btn-add">Adicionar à Promoção</button>
+      </div>
+
+      <!-- Lista de produtos em promoção (para remover) -->
+      <div id="lista-remover" class="product-list hidden">
+        <h3>Produtos em Promoção</h3>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div class="bulk-actions">
+          <button id="aplicar-remocao" class="btn btn-apply">Aplicar Remoções</button>
+          <button id="limpar-remocao" class="btn btn-clear">Limpar Seleção</button>
+        </div>
+      </div>
+
+      <!-- Lista de produtos não promocionais (para adicionar) -->
+      <div id="lista-adicionar" class="product-list hidden">
+        <h3>Produtos Disponíveis</h3>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div id="card-produto-1" class="product-card" data-action="remove">
+          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
+          <div class="product-info">
+            <h4>Mochila Kross Elegance Clean Black</h4>
+            <p>Carregue seus itens com segurança, estilo e conforto.</p>
+            <span class="price">R$ 105,00</span>
+          </div>
+          <button class="action-btn remove-btn">Tirar da Promoção</button>
+        </div>
+
+        <div class="bulk-actions">
+          <button id="aplicar-adicao" class="btn btn-apply">Aplicar Adições</button>
+          <button id="limpar-adicao" class="btn btn-clear">Limpar Seleção</button>
+        </div>
+      </div>
+
     </section>
 
     <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
@@ -171,6 +289,13 @@
                 <option value="roteador-repetidores">Roteador e Repetidores</option>
                 <option value="servicos">Serviços</option>
               </select>
+
+              <label>Status de Promoção</label>
+              <select id="status_promocao" required>
+                <option value="nao">Não está em promoção</option>
+                <option value="sim">Colocar em promoção</option>
+              </select>
+
 
               <div class="container-desc">
 
@@ -360,7 +485,7 @@
   </main>
 
   <script>
-    document.getElementById('btnExcluir').addEventListener('click',excluirProd)
+    document.getElementById('btnExcluir').addEventListener('click', excluirProd)
     // GERADOR DO CÓDIGO DE ACESSO DO PRODUTO 
 
     function gerarCodigoAcessoProd() {
@@ -417,9 +542,108 @@
 
     window.onload = adicionarTabela;
 
-    // Adionar novo produto
+    
+    // Elementos principais
+    const btnRemover = document.getElementById('btn-remover');
+    const btnAdicionar = document.getElementById('btn-adicionar');
+    const listaRemover = document.getElementById('lista-remover');
+    const listaAdicionar = document.getElementById('lista-adicionar');
 
+    // Botões de ação em massa
+    const aplicarRemocao = document.getElementById('aplicar-remocao');
+    const limparRemocao = document.getElementById('limpar-remocao');
+    const aplicarAdicao = document.getElementById('aplicar-adicao');
+    const limparAdicao = document.getElementById('limpar-adicao');
 
+    // Função para mostrar/esconder listas
+    function toggleLista(lista, outraLista) {
+      // Esconde a outra lista
+      outraLista.classList.add('hidden');
+      outraLista.classList.remove('show');
+
+      // Mostra/esconde a lista atual
+      if (lista.classList.contains('hidden')) {
+        lista.classList.remove('hidden');
+        lista.classList.add('show');
+      } else {
+        lista.classList.add('hidden');
+        lista.classList.remove('show');
+      }
+    }
+
+    // Função para selecionar/deselecionar card
+    function toggleCardSelection(card) {
+      card.classList.toggle('selected');
+    }
+
+    // Função para limpar todas as seleções de uma lista
+    function limparSelecoes(lista) {
+      const cards = lista.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        card.classList.remove('selected');
+      });
+    }
+
+    // Função para aplicar ações selecionadas
+    function aplicarAcoes(lista, acao) {
+      const cardsSelecionados = lista.querySelectorAll('.product-card.selected');
+
+      if (cardsSelecionados.length === 0) {
+        alert('Nenhum produto selecionado!');
+        return;
+      }
+
+      const produtos = [];
+      cardsSelecionados.forEach(card => {
+        const nome = card.querySelector('h4').textContent;
+        produtos.push(nome);
+      });
+
+      const acaoTexto = acao === 'remove' ? 'removidos da promoção' : 'adicionados à promoção';
+      alert(`${produtos.length} produto(s) ${acaoTexto}:\n${produtos.join('\n')}`);
+
+      // Limpa as seleções após aplicar
+      limparSelecoes(lista);
+    }
+
+    // Event listeners para os botões principais
+    btnRemover.addEventListener('click', () => {
+      toggleLista(listaRemover, listaAdicionar);
+    });
+
+    btnAdicionar.addEventListener('click', () => {
+      toggleLista(listaAdicionar, listaRemover);
+    });
+
+    // Event listeners para seleção de cards
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('action-btn')) {
+        const card = e.target.closest('.product-card');
+        toggleCardSelection(card);
+      }
+    });
+
+    // Event listeners para botões de ação em massa - Lista Remover
+    aplicarRemocao.addEventListener('click', () => {
+      aplicarAcoes(listaRemover, 'remove');
+    });
+
+    limparRemocao.addEventListener('click', () => {
+      limparSelecoes(listaRemover);
+    });
+
+    // Event listeners para botões de ação em massa - Lista Adicionar
+    aplicarAdicao.addEventListener('click', () => {
+      aplicarAcoes(listaAdicionar, 'add');
+    });
+
+    limparAdicao.addEventListener('click', () => {
+      limparSelecoes(listaAdicionar);
+    });
+
+    //===================Adicionar novo produto=======================
+    // ===================Adicionar novo produto======================
+    // ==================Adicionar novo produto=======================
 
     function adicionarProduto() {
       console.log('chamou');
@@ -454,7 +678,7 @@
         body: formData
       })
         .then(res => res.json())
-        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(),window.location.reload())
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(), window.location.reload())
         .catch(err => console.error('Erro:', err));
 
     }
@@ -500,32 +724,52 @@
     let produtosData = []
 
     function mostrar(tipo) {
-      const produtos = document.getElementById("produtos")
-      const promocoes = document.getElementById("promocoes")
+      const produtos = document.getElementById("produtos");
+      const banners = document.getElementById("banners");
+      const promocoes = document.getElementById("promocoes");
 
-      const btnProdAdd = document.getElementById("btn-prod-add")
-      const btnPromoAdd = document.getElementById("btn-promo-add")
+      const btnProdAdd = document.getElementById("btn-prod-add");
+      const btnBannerAdd = document.getElementById("btn-banner-add");
 
-      const btnProdutos = document.getElementById("btn-produtos")
-      const btnPromocoes = document.getElementById("btn-promocoes")
+      const btnProdutos = document.getElementById("btn-produtos");
+      const btnBanners = document.getElementById("btn-banners");
+      const btnPromocoes = document.getElementById("btn-prod-promocoes");
 
       if (tipo === "produtos") {
-        produtos.style.display = "grid"
-        promocoes.style.display = "none"
+        produtos.style.display = "grid";
+        banners.style.display = "none";
+        promocoes.style.display = "none";
 
-        btnProdAdd.style.display = "block"
-        btnPromoAdd.style.display = "none"
+        btnProdAdd.style.display = "block";
+        btnBannerAdd.style.display = "none";
 
-        btnProdutos.classList.add("active")
-        btnPromocoes.classList.remove("active")
+        btnProdutos.classList.add("active");
+        btnBanners.classList.remove("active");
+        btnPromocoes.classList.remove("active");
 
-      } else {
-        produtos.style.display = "none"
-        promocoes.style.display = "grid"
-        btnProdAdd.style.display = "none"
-        btnPromoAdd.style.display = "block"
-        btnProdutos.classList.remove("active")
-        btnPromocoes.classList.add("active")
+      } else if (tipo === "banners") {
+        produtos.style.display = "none";
+        banners.style.display = "grid";
+        promocoes.style.display = "none";
+
+        btnProdAdd.style.display = "none";
+        btnBannerAdd.style.display = "block";
+
+        btnProdutos.classList.remove("active");
+        btnBanners.classList.add("active");
+        btnPromocoes.classList.remove("active");
+
+      } else if (tipo === "prod-promocoes") {
+        produtos.style.display = "none";
+        banners.style.display = "none";
+        promocoes.style.display = "grid";
+
+        btnProdAdd.style.display = "none";
+        btnBannerAdd.style.display = "none";
+
+        btnProdutos.classList.remove("active");
+        btnBanners.classList.remove("active");
+        btnPromocoes.classList.add("active");
       }
     }
 
@@ -564,7 +808,7 @@
         .catch(error => console.error('Erro ao obter informações', error))
     }
 
-    function promoAddMostrar() {
+    function bannerAddMostrar() {
       document.getElementById('adicionar-promo').style.display = 'block';
     }
 
@@ -583,10 +827,6 @@
 
     function fecharModalJanela() {
       document.getElementById('produto-janela').style.display = 'none';
-    }
-
-    function promoAddMostrar() {
-      document.getElementById('adicionar-promo').style.display = 'block';
     }
 
     function fecharAddPromo() {
@@ -715,7 +955,7 @@
           return response.json()
         })
         .then(data => {
-          btnEx.setAttribute('name',data.chaveAcessProd)
+          btnEx.setAttribute('name', data.chaveAcessProd)
           nome.value = data.nomeProd
           marca.value = data.marcaProd
           categoria.value = data.catProd
@@ -761,7 +1001,7 @@
         })
         .catch(error => console.error('Erro ao excluir produto', error))
     }
-    
+
   </script>
 
 </body>

@@ -9,43 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!container || total === 0) return
 
-    // Limpa interval anterior se existir
-    if (carouselInterval) {
-      clearInterval(carouselInterval)
-    }
+    // Sempre começa do primeiro
+    currentIndex = 0
+    container.style.transform = "translateX(0)"
 
-    // Só inicia o carrossel no mobile
+    if (carouselInterval) clearInterval(carouselInterval)
+
     if (window.innerWidth <= 768) {
+      // Mobile -> 1 card por vez
       carouselInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % total
         container.style.transform = `translateX(-${currentIndex * 100}%)`
-      }, 3000) // Muda a cada 3 segundos
-    } else {
-      // Remove transformação no desktop
-      container.style.transform = "translateX(0)"
-      currentIndex = 0
+      }, 3000)
+    } else if (window.innerWidth <= 1024) {
+      // Tablet -> 2 cards por vez
+      const maxIndex = Math.ceil(total / 2) - 1
+      carouselInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % (maxIndex + 1)
+        container.style.transform = `translateX(-${currentIndex * 100}%)`
+      }, 3000)
     }
   }
 
-  // Inicializa o carrossel
   initPaymentCarousel()
-
-  // Reinicializa quando a tela é redimensionada
   window.addEventListener("resize", initPaymentCarousel)
-
-  // Pausa o carrossel quando o mouse está sobre ele (apenas mobile)
-  const paymentSection = document.querySelector(".pagamento-card")
-  if (paymentSection) {
-    paymentSection.addEventListener("mouseenter", () => {
-      if (window.innerWidth <= 768 && carouselInterval) {
-        clearInterval(carouselInterval)
-      }
-    })
-
-    paymentSection.addEventListener("mouseleave", () => {
-      if (window.innerWidth <= 768) {
-        initPaymentCarousel()
-      }
-    })
-  }
 })
