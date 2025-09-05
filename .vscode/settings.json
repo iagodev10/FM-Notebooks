@@ -1,3 +1,4 @@
 {
-    "editor.inlineSuggest.suppressSuggestions": false
+    "editor.inlineSuggest.suppressSuggestions": false,
+    "liveServer.settings.port": 5501
 }
