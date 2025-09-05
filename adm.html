@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-
 <body>
-
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -22,19 +19,15 @@
       <i class="fas fa-box"></i> Produtos
     </button>
 
-
     <button id="btn-banners" onclick="mostrar('banners')">
       <i class="fas fa-image"></i> Banners Promocionais
     </button>
-
 
     <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')">
       <i class="fas fa-tags"></i> Produtos em Promoção
     </button>
 
-
     <button><i class="fas fa-cogs"></i> Adicionar ADM</button>
-
 
     <button onclick="produtoAddMostrar()" id="btn-prod-add">
       <i class="fa fa-add"></i>Adicionar Produto
@@ -43,7 +36,6 @@
       <i class="fa fa-add"></i>Adicionar Banner
     </button>
   </aside>
-
 
   <!-- HEADER -->
   <header class="admin-header">
@@ -56,10 +48,8 @@
     </div>
   </header>
 
-
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
-
 
     <!-- ============================Produtos========================================= -->
     <!-- ============================Produtos========================================= -->
@@ -137,136 +127,48 @@
 
 
       <div class="div-promocao" id="promos">
-        <div class="div-promocao-1" onclick="Promocao(1)">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
-        <div class="div-promocao-1">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
-        <div class="div-promocao-1">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
-        <div class="div-promocao-1">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
-        <div class="div-promocao-1">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
-        <div class="div-promocao-1">
-          <img src="img/note-fones.jpg" alt="">
-        </div>
+        
       </div>
     </section>
 
 
 
 
-    <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================-->
-    <!-- =======================PRODUTOS COM STATUS DE PROMOÇÃO ============================-->
-
-
-    <section id="promocoes" class="produtos-em-promocao" style="display: none;">
-
-
-      <div class="action-buttons">
-        <button id="btn-remover" class="btn btn-remove">Remover da Promoção</button>
-        <button id="btn-adicionar" class="btn btn-add">Adicionar à Promoção</button>
+    <!-- =======================PRODUTOS EM PROMOÇÕES ============================-->
+    <!-- Updated promotion cards to include product images and enhanced styling -->
+    <section id="prod-promocoes" class="promocoes-listagem" style="display: none;">
+      <div class="promocoes-grid" id="divVinculo">
+        
       </div>
-
-
-      <!-- Lista de produtos em promoção (para remover) -->
-      <div id="lista-remover" class="product-list hidden">
-        <h3>Produtos em Promoção</h3>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div class="bulk-actions">
-          <button id="aplicar-remocao" class="btn btn-apply">Aplicar Remoções</button>
-          <button id="limpar-remocao" class="btn btn-clear">Limpar Seleção</button>
-        </div>
-      </div>
-
-
-      <!-- Lista de produtos não promocionais (para adicionar) -->
-      <div id="lista-adicionar" class="product-list hidden">
-        <h3>Produtos Disponíveis</h3>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div id="card-produto-1" class="product-card" data-action="remove">
-          <img src="img/mochilas/kross-elegance.png" alt="Smartphone" class="product-image">
-          <div class="product-info">
-            <h4>Mochila Kross Elegance Clean Black</h4>
-            <p>Carregue seus itens com segurança, estilo e conforto.</p>
-            <span class="price">R$ 105,00</span>
-          </div>
-          <button class="action-btn remove-btn">Tirar da Promoção</button>
-        </div>
-
-
-        <div class="bulk-actions">
-          <button id="aplicar-adicao" class="btn btn-apply">Aplicar Adições</button>
-          <button id="limpar-adicao" class="btn btn-clear">Limpar Seleção</button>
-        </div>
-      </div>
-
-
     </section>
 
+    <!-- =======================MODAL GERENCIAR PRODUTOS DA PROMOÇÃO ============================-->
+    <!-- Enhanced modal with product images and better layout -->
+    <div id="modal-promocao-produtos" class="modal-promocao-produtos">
+      <div class="modal-content-promocao">
+        <div class="modal-header">
+          <h3 id="modal-promocao-title">Gerenciar Produtos da Promoção</h3>
+          <span class="fechar-modal" onclick="fecharModalPromocao()">&times;</span>
+        </div>
 
+        <div class="search-produtos-promocao">
+          <input type="text" id="buscar-produtos-promocao" placeholder="Pesquisar produtos..." oninput="filtrarProdutos()">
+        </div>
+
+        <div class="produtos-list-promocao" id="produtos-list-promocao">
+          <!-- Produtos serão carregados dinamicamente via JavaScript -->
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-salvar-alteracoes" onclick="salvarAlteracoesPromocaoModal()">
+            Salvar Alterações
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
     <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
     <!-- ============================ADICIONAR NOVO PRODUTO======================================== -->
 
@@ -315,8 +217,7 @@
 
 
               <label for="desc_produto">Descrição</label>
-              <textarea id="desc_produto" name="desc_produto" rows="3" required
-                placeholder="Descrição do Produto"></textarea>
+              <textarea id="desc_produto" name="desc_produto" rows="3" required placeholder="Descrição do Produto"></textarea>
 
 
 
@@ -504,7 +405,6 @@
         <span class="fechar" onclick="fecharModalJanela()">&times;</span>
         <h2>INFORMAÇÕES DO PRODUTO</h2>
 
-
         <div class="infos-janela">
 
 
@@ -537,12 +437,9 @@
 
 
         <div class="botoes-janela">
-          <button class="btn-salvar-prod" id="btnAtualizar" type="submit" onclick="">Atuaizar Produto</button>
-          <button class="btn-salvar-prod" id="btnExcluir" type="submit">Excluir Produto</button>
+          <button class="btn-salvar-prod" id="btnAtualizar" type="submit" onclick="atualizarProd()">Atualizar Produto</button>
+          <button class="btn-salvar-prod" id="btnExcluir" type="submit" onclick="excluirProd()">Excluir Produto</button>
         </div>
-
-
-      </div>
 
 
       </div>
@@ -583,15 +480,11 @@
 
 
       <div class="botoes-janela">
-        <button class="btn-salvar-prod" type="submit" onclick="">Atuaizar Promoção</button>
-        <button class="btn-salvar-prod" type="submit" onclick="">Excluir Promoção</button>
+        <button class="btn-salvar-prod" type="submit" onclick="atualizarPromo()">Atualizar Promoção</button>
+        <button class="btn-salvar-prod" type="submit" onclick="excluirPromo()">Excluir Promoção</button>
       </div>
 
 
-      </div>
-
-
-      </div>
     </section>
 
 
@@ -599,10 +492,10 @@
 
 
   <script>
-   
-    document.getElementById('btnExcluirPromo').addEventListener('click', excluirPromo)
-    document.getElementById('btnExcluir').addEventListener('click', excluirProd)
-    document.getElementById('btnAtualizar').addEventListener('click', atualizarProd)
+    let globalPromocoes;
+    document.getElementById('btnExcluirPromo').addEventListener('click', excluirPromo);
+    document.getElementById('btnExcluir').addEventListener('click', excluirProd);
+    document.getElementById('btnAtualizar').addEventListener('click', atualizarProd);
     // GERADOR DO CÓDIGO DE ACESSO DO PRODUTO
 
 
@@ -650,201 +543,12 @@
       document.querySelector('.container-descricao').appendChild(div);
     }
 
-
-    function adicionarLinha(botao) {
-      let tbody = botao.previousElementSibling.querySelector("tbody");
-      tbody.appendChild(criarLinha());
-    }
-
-
-    function excluirLinha(botao) {
-      botao.closest("tr").remove();
-    }
-
-
-    function excluirTabela(botao) {
-      botao.closest(".tabela").remove();
-    }
-
-
-    window.onload = adicionarTabela;
-
-
-   
-    // Elementos principais
-    const btnRemover = document.getElementById('btn-remover');
-    const btnAdicionar = document.getElementById('btn-adicionar');
-    const listaRemover = document.getElementById('lista-remover');
-    const listaAdicionar = document.getElementById('lista-adicionar');
-
-
-    // Botões de ação em massa
-    const aplicarRemocao = document.getElementById('aplicar-remocao');
-    const limparRemocao = document.getElementById('limpar-remocao');
-    const aplicarAdicao = document.getElementById('aplicar-adicao');
-    const limparAdicao = document.getElementById('limpar-adicao');
-
-
-    // Função para mostrar/esconder listas
-    function toggleLista(lista, outraLista) {
-      // Esconde a outra lista
-      outraLista.classList.add('hidden');
-      outraLista.classList.remove('show');
-
-
-      // Mostra/esconde a lista atual
-      if (lista.classList.contains('hidden')) {
-        lista.classList.remove('hidden');
-        lista.classList.add('show');
-      } else {
-        lista.classList.add('hidden');
-        lista.classList.remove('show');
-      }
-    }
-
-
-    // Função para selecionar/deselecionar card
-    function toggleCardSelection(card) {
-      card.classList.toggle('selected');
-    }
-
-
-    // Função para limpar todas as seleções de uma lista
-    function limparSelecoes(lista) {
-      const cards = lista.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        card.classList.remove('selected');
-      });
-    }
-
-
-    // Função para aplicar ações selecionadas
-    function aplicarAcoes(lista, acao) {
-      const cardsSelecionados = lista.querySelectorAll('.product-card.selected');
-
-
-      if (cardsSelecionados.length === 0) {
-        alert('Nenhum produto selecionado!');
-        return;
-      }
-
-
-      const produtos = [];
-      cardsSelecionados.forEach(card => {
-        const nome = card.querySelector('h4').textContent;
-        produtos.push(nome);
-      });
-
-
-      const acaoTexto = acao === 'remove' ? 'removidos da promoção' : 'adicionados à promoção';
-      alert(`${produtos.length} produto(s) ${acaoTexto}:\n${produtos.join('\n')}`);
-
-
-      // Limpa as seleções após aplicar
-      limparSelecoes(lista);
-    }
-
-
-    // Event listeners para os botões principais
-    btnRemover.addEventListener('click', () => {
-      toggleLista(listaRemover, listaAdicionar);
-    });
-
-
-    btnAdicionar.addEventListener('click', () => {
-      toggleLista(listaAdicionar, listaRemover);
-    });
-
-
-    // Event listeners para seleção de cards
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('action-btn')) {
-        const card = e.target.closest('.product-card');
-        toggleCardSelection(card);
-      }
-    });
-
-
-    // Event listeners para botões de ação em massa - Lista Remover
-    aplicarRemocao.addEventListener('click', () => {
-      aplicarAcoes(listaRemover, 'remove');
-    });
-
-
-    limparRemocao.addEventListener('click', () => {
-      limparSelecoes(listaRemover);
-    });
-
-
-    // Event listeners para botões de ação em massa - Lista Adicionar
-    aplicarAdicao.addEventListener('click', () => {
-      aplicarAcoes(listaAdicionar, 'add');
-    });
-
-
-    limparAdicao.addEventListener('click', () => {
-      limparSelecoes(listaAdicionar);
-    });
-
-
-    //===================Adicionar novo produto=======================
-    // ===================Adicionar novo produto======================
-    // ==================Adicionar novo produto=======================
-
-
-    function adicionarProduto() {
-      console.log('chamou');
-      const formData = new FormData()
-
-
-      const nomeProd = document.getElementById('nome_produto').value
-      const marcaProd = document.getElementById('marca_produto').value
-      const descProd = document.getElementById('desc_produto').value
-      console.log(descProd);
-      const precoProd = document.getElementById('preco_produto').value
-      const catProd = document.getElementById('categoria_produto').value
-      const imgProd1 = document.getElementById('img1').files[0]
-      const imgProd2 = document.getElementById('img2').files[0]
-      const imgProd3 = document.getElementById('img3').files[0]
-      const imgProd4 = document.getElementById('img4').files[0]
-      const chaveAcessProd = gerarCodigoAcessoProd()
-
-
-      if (imgProd1) formData.append('imagem1', imgProd1)
-      if (imgProd2) formData.append('imagem2', imgProd2)
-      if (imgProd3) formData.append('imagem3', imgProd3)
-      if (imgProd4) formData.append('imagem4', imgProd4)
-
-
-      formData.append('nomeProd', nomeProd)
-      formData.append('marcaProd', marcaProd)
-      formData.append('descricaoProd', descProd)
-      formData.append('precoProd', precoProd)
-      formData.append('catProd', catProd)
-      formData.append('chaveAcessProd', chaveAcessProd)
-
-
-      fetch('http://localhost:5090/add-prod', {
-        method: 'POST',
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(), window.location.reload())
-        .catch(err => console.error('Erro:', err));
-
-
-    }
-
-
-    // =================MOSTRAR IMGS DOS PRODUTOS========================
-
-
     function mostrarPreview(inputId, previewId) {
       const input = document.getElementById(inputId);
       const preview = document.getElementById(previewId);
 
 
-      input.addEventListener("change", function (event) {
+      input.addEventListener("change", function(event) {
         const arquivo = event.target.files[0];
         preview.innerHTML = ""; // Limpa a imagem anterior
 
@@ -853,7 +557,7 @@
           const reader = new FileReader();
 
 
-          reader.onload = function (e) {
+          reader.onload = function(e) {
             const img = document.createElement("img");
             img.src = e.target.result;
             img.style.maxWidth = "120px";
@@ -879,205 +583,6 @@
     mostrarPreview("img3", "preview-img3");
     mostrarPreview("img4", "preview-img4");
 
-
-
-
-    let produtosData = []
-
-
-    function mostrar(tipo) {
-      const produtos = document.getElementById("produtos");
-      const banners = document.getElementById("banners");
-      const promocoes = document.getElementById("promocoes");
-
-
-      const btnProdAdd = document.getElementById("btn-prod-add");
-      const btnBannerAdd = document.getElementById("btn-banner-add");
-
-
-      const btnProdutos = document.getElementById("btn-produtos");
-      const btnBanners = document.getElementById("btn-banners");
-      const btnPromocoes = document.getElementById("btn-prod-promocoes");
-
-
-      if (tipo === "produtos") {
-        produtos.style.display = "grid";
-        banners.style.display = "none";
-        promocoes.style.display = "none";
-
-
-        btnProdAdd.style.display = "block";
-        btnBannerAdd.style.display = "none";
-
-
-        btnProdutos.classList.add("active");
-        btnBanners.classList.remove("active");
-        btnPromocoes.classList.remove("active");
-
-
-      } else if (tipo === "banners") {
-        produtos.style.display = "none";
-        banners.style.display = "grid";
-        promocoes.style.display = "none";
-
-
-        btnProdAdd.style.display = "none";
-        btnBannerAdd.style.display = "block";
-
-
-        btnProdutos.classList.remove("active");
-        btnBanners.classList.add("active");
-        btnPromocoes.classList.remove("active");
-
-
-      } else if (tipo === "prod-promocoes") {
-        produtos.style.display = "none";
-        banners.style.display = "none";
-        promocoes.style.display = "grid";
-
-
-        btnProdAdd.style.display = "none";
-        btnBannerAdd.style.display = "none";
-
-
-        btnProdutos.classList.remove("active");
-        btnBanners.classList.remove("active");
-        btnPromocoes.classList.add("active");
-      }
-    }
-
-
-    // Função para mostrar o formulário de adicionar produto
-    function produtoAddMostrar() {
-      document.getElementById('modo-produto').style.display = 'block';
-    }
-
-
-    function fecharModalPromo() {
-      document.getElementById('modo-promo').style.display = 'none';
-    }
-    function atualizarPromo(){
-      const formData = new FormData()
-
-
-      const img=document.getElementById('imgPromoAtt').files[0]
-      const chave=document.getElementById('btnExcluirPromo').getAttribute('name')
-
-
-      formData.append('imagem',img)
- 
-      fetch('http://localhost:5090/atualizar-promo/' + chave, {
-          method: 'PUT',
-          body:formData
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao editar promoção')
-          return response.json()
-        })
-        .then(data => {
-          fecharModalPromo()
-          window.location.href = window.location.href
-          console.log("Sucesso ao editar promoção")
-        })
-        .catch(error => console.error('Erro ao editar produto', error))
-   
-    }
-    function atualizarProd(){
-      const formData = new FormData()
-
-
-      const nome = document.getElementById('nomeProdEx').value
-      const descricao = document.getElementById('descProdEx').value
-      const marca = document.getElementById('marcaProdEx').value
-      const categoria = document.getElementById('catProdEx').value
-      const preco = document.getElementById('precoProdEx').value
-      const chave=document.getElementById('btnExcluir').getAttribute('name')
-
-
-      formData.append('nomeProd',nome)
-      formData.append('descricaoProd',descricao)
-      formData.append('marcaProd',marca)
-      formData.append('catProd',categoria)
-      formData.append('preco',preco)
-   
-      const infosAtualizadas={
-        nomeProd:nome,
-        descricaoProd:descricao,
-        marcaProd:marca,
-        catProd:categoria,
-        precoProd:preco
-      }
-
-
-      fetch('http://localhost:5090/atualizar-prod/' + chave, {
-          method: 'PUT',
-          body:JSON.stringify(infosAtualizadas),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao editar produto')
-          return response.json()
-        })
-        .then(data => {
-          fecharModalJanela()
-          window.location.href = window.location.href
-          console.log("Sucesso ao editar produto")
-        })
-        .catch(error => console.error('Erro ao editar produto', error))
-   
-    }
- function addPromo(){
-      console.log('chamou o addProd');
-      const formData=new FormData()
-
-
-      const imgPromo=document.getElementById('img-promo-add').files[0]
-      const chaveAcess=gerarCodigoAcessoProd()
-      console.log(imgPromo);
-      console.log(chaveAcess);
-      if (imgPromo) formData.append('imagem', imgPromo)
-      formData.append('chaveAcessPromo',chaveAcess)
-      console.log(formData);
-      fetch('http://localhost:5090/add-promo', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data =>
-          {
-            if(fecharAddPromo()){
-              window.location.reload();
-            }
-          }
-         
-        )
-        .catch(err => console.error('Erro:', err));
-
-
-    }
-    function excluirPromo(e) {
-
-
-      console.log('///////');
-      const chave = e.currentTarget.getAttribute('name')
-
-
-      fetch('http://localhost:5090/delete-promo/' + chave, {
-          method: 'DELETE',
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao excluir promoção')
-          return response.json()
-        })
-        .then(data => {
-          fecharModalPromo()
-          window.location.href = window.location.href
-          console.log("Sucesso ao excluir promção")
-        })
-        .catch(error => console.error('Erro ao excluir produto', error))
-    }
     function Promocao(e) {
 
 
@@ -1089,56 +594,97 @@
 
 
       fetch('http://localhost:5090/get-infos-promo/' + chave, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter informações')
           return response.json()
         })
         .then(data => {
+         
           btnSalvar.setAttribute('name', data.chaveAcessPromo)
           btnExcluir.setAttribute('name', data.chaveAcessPromo)
           img1.src = data.urlImgPromo
         })
         .catch(error => console.error('Erro ao obter informações', error))
     }
+    function fecharModalPromo() {
+      document.getElementById('modo-promo').style.display = 'none';
+    }
+    function Produto(e) {
+      const img1 = document.getElementById('img1Ex')
+      const img2 = document.getElementById('img2Ex')
+      const img3 = document.getElementById('img3Ex')
+      const img4 = document.getElementById('img4Ex')
+      const chave = e.currentTarget.getAttribute('name')
+      const nome = document.getElementById('nomeProdEx')
+      const descricao = document.getElementById('descProdEx')
+      const marca = document.getElementById('marcaProdEx')
+      const categoria = document.getElementById('catProdEx')
+      const preco = document.getElementById('precoProdEx')
+      const btnEx = document.getElementById('btnExcluir')
 
 
-    function bannerAddMostrar() {
-      document.getElementById('adicionar-promo').style.display = 'block';
+      document.getElementById('produto-janela').style.display = 'block';
+
+
+      fetch('http://localhost:5090/get-infos/' + chave, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          btnEx.setAttribute('name', data.chaveAcessProd)
+          nome.value = data.nomeProd
+          marca.value = data.marcaProd
+          categoria.value = data.catProd
+          preco.value = data.precoProd
+          descricao.value = data.descricaoProd
+          img1.src = data.urlImgProd1
+          if (data.urlImgProd2 != null) {
+            img2.src = data.urlImgProd2
+          } else {
+            img2.style.display = 'none'
+          }
+          if (data.urlImgProd3) {
+            img3.src = data.urlImgProd3
+          } else {
+            img3.style.display = 'none'
+          }
+          if (data.urlImgProd4) {
+            img4.src = data.urlImgProd4
+          } else {
+            img4.style.display = 'none'
+          }
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
+    }
+
+    function adicionarLinha(botao) {
+      let tbody = botao.previousElementSibling.querySelector("tbody");
+      tbody.appendChild(criarLinha());
     }
 
 
-    function cancelarProduto() {
-      document.getElementById('modo-produto').style.display = 'none';
-      document.getElementById('form-produto-add').reset();
-      document.getElementById('preview-img1').innerHTML = '';
-      document.getElementById('preview-img2').innerHTML = '';
-      document.getElementById('preview-img3').innerHTML = '';
-      document.getElementById('preview-img4').innerHTML = '';
+    function excluirLinha(botao) {
+      botao.closest("tr").remove();
     }
 
 
-    function fecharModal() {
-      document.getElementById('modo-produto').style.display = 'none';
+    function excluirTabela(botao) {
+      botao.closest(".tabela").remove();
     }
 
 
-    function fecharModalJanela() {
-      document.getElementById('produto-janela').style.display = 'none';
-    }
-
-
-    function fecharAddPromo() {
-      document.getElementById('adicionar-promo').style.display = 'none';
-      return true
-    }
-
-
-
+    window.onload = adicionarTabela;
 
     function renderizarProdutos(produtosFiltrados) {
       const englobprodutos = document.getElementById('englobprodutos')
@@ -1186,22 +732,24 @@
     document.addEventListener('DOMContentLoaded', () => {
       const englobpromos = document.getElementById('promos')
       const inputBusca = document.getElementById('inputS')
+      const divVinculoEnglob=document.getElementById('divVinculo')
 
 
 
 
       fetch('http://localhost:5090/produtos', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter produtos')
           return response.json()
         })
         .then(data => {
           produtosData = data;
+          console.log(produtosData);
           renderizarProdutos(produtosData)
         })
         .catch(error => console.error('Fetch error (produtos):', error))
@@ -1210,32 +758,57 @@
 
 
       fetch('http://localhost:5090/promocoes', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter promocoes')
           return response.json()
         })
         .then(data => {
+          globalPromocoes=data
           data.forEach(promo => {
-            const imgPromo = document.createElement('img')
-            imgPromo.src = promo.urlImgPromo
+            const imgPromoBanner = document.createElement('img')
+            imgPromoBanner.src = promo.urlImgPromo
 
+            const imgPromoVinculo = document.createElement('img')
+            imgPromoVinculo.src = promo.urlImgPromo
+            imgPromoVinculo.className="promocao-image"
+
+            const spanVinculo=document.createElement('span')
+            spanVinculo.className='promocao-title'
+            spanVinculo.innerText="Texto Teste"
+          
 
             const divPromo = document.createElement('div')
             divPromo.className = 'div-promocao-1'
             divPromo.setAttribute('name', promo.chaveAcessPromo)
             divPromo.addEventListener('click', Promocao)
-            divPromo.appendChild(imgPromo)
+            divPromo.appendChild(imgPromoBanner)
+          
             englobpromos.appendChild(divPromo)
+
+            const divPromoVinculo = document.createElement('div')
+            const divContentVinculo=document.createElement('div')
+
+            divContentVinculo.className='promocao-content'
+            divPromoVinculo.className = 'promocao-card'
+
+            divPromoVinculo.setAttribute('name', promo.nomePromocao)
+
+            divContentVinculo.appendChild(imgPromoVinculo)
+            divContentVinculo.appendChild(spanVinculo)
+            divPromoVinculo.appendChild(divContentVinculo)
+            divPromoVinculo.addEventListener('click',abrirModalPromocao)
+            divVinculoEnglob.appendChild(divPromoVinculo)
           })
         })
         .catch(error => console.error('Erro ao obter promocoes', error))
 
-
+        
+    
 
 
       inputBusca.addEventListener('input', (event) => {
@@ -1252,72 +825,371 @@
     })
 
 
-    // ===================MOSTRAR INFORMAÇÕES DO PRODUTO ESPECÍFICO=============
-    function Produto(e) {
-      const img1 = document.getElementById('img1Ex')
-      const img2 = document.getElementById('img2Ex')
-      const img3 = document.getElementById('img3Ex')
-      const img4 = document.getElementById('img4Ex')
-      const chave = e.currentTarget.getAttribute('name')
-      const nome = document.getElementById('nomeProdEx')
-      const descricao = document.getElementById('descProdEx')
-      const marca = document.getElementById('marcaProdEx')
-      const categoria = document.getElementById('catProdEx')
-      const preco = document.getElementById('precoProdEx')
-      const btnEx = document.getElementById('btnExcluir')
+    // Elementos principais
+    const btnRemover = document.getElementById('btn-remover');
+    const btnAdicionar = document.getElementById('btn-adicionar');
+    const listaRemover = document.getElementById('lista-remover');
+    const listaAdicionar = document.getElementById('lista-adicionar');
 
 
-      document.getElementById('produto-janela').style.display = 'block';
+    // Botões de ação em massa
+    const aplicarRemocao = document.getElementById('aplicar-remocao');
+    const limparRemocao = document.getElementById('limpar-remocao');
+    const aplicarAdicao = document.getElementById('aplicar-adicao');
+    const limparAdicao = document.getElementById('limpar-adicao');
 
 
-      fetch('http://localhost:5090/get-infos/' + chave, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+    // Função para mostrar/esconder listas
+    function mostrar(tipo) {
+  const produtos = document.getElementById("produtos");
+  const banners = document.getElementById("banners");
+  const promocoes = document.getElementById("prod-promocoes");
+
+  const btnProdAdd = document.getElementById("btn-prod-add");
+  const btnBannerAdd = document.getElementById("btn-banner-add");
+
+  const btnProdutos = document.getElementById("btn-produtos");
+  const btnBanners = document.getElementById("btn-banners");
+  const btnPromocoes = document.getElementById("btn-prod-promocoes");
+
+  // Esconde todas as seções
+  produtos.style.display = "none";
+  banners.style.display = "none";
+  promocoes.style.display = "none";
+
+  // Remove o "active" de todos os botões
+  btnProdutos.classList.remove("active");
+  btnBanners.classList.remove("active");
+  btnPromocoes.classList.remove("active");
+
+  // Esconde os botões de adicionar
+  btnProdAdd.style.display = "none";
+  btnBannerAdd.style.display = "none";
+
+  // Mostra apenas a seção escolhida
+  if (tipo === "produtos") {
+    produtos.style.display = "block";
+    btnProdutos.classList.add("active");
+    btnProdAdd.style.display = "block";
+  } else if (tipo === "banners") {
+    banners.style.display = "block";
+    btnBanners.classList.add("active");
+    btnBannerAdd.style.display = "block";
+  } else if (tipo === "prod-promocoes") {
+    promocoes.style.display = "block";
+    btnPromocoes.classList.add("active");
+  }
+}
+
+
+    let promocaoAtualModal = '';
+    let produtosAlteradosModal = new Set();
+
+    // Dados de exemplo dos produtos
+    const produtosDisponiveisModal = [{
+        id: 1,
+        nome: 'Notebook Gamer Acer Nitro 5',
+        descricao: 'Intel Core i5, 8GB RAM, GTX 1650',
+        preco: 'R$ 2.899,00',
+        imagem: 'img/noteboooooo.jpg',
+        naPromocao: false
+      },
+      {
+        id: 2,
+        nome: 'Mochila Kross Elegance Clean Black',
+        descricao: 'Carregue seus itens com segurança, estilo e conforto',
+        preco: 'R$ 105,00',
+        imagem: 'img/mochilas/kross-elegance.png',
+        naPromocao: true
+      },
+      {
+        id: 3,
+        nome: 'Mouse Gamer Logitech G502',
+        descricao: 'Sensor HERO 25K, RGB, 11 botões programáveis',
+        preco: 'R$ 299,00',
+        imagem: 'img/noteboooooo.jpg',
+        naPromocao: false
+      },
+      {
+        id: 4,
+        nome: 'Headset Gamer HyperX Cloud II',
+        descricao: 'Som surround 7.1, microfone removível',
+        preco: 'R$ 459,00',
+        imagem: 'img/noteboooooo.jpg',
+        naPromocao: true
+      },
+      {
+        id: 5,
+        nome: 'Teclado Mecânico Redragon Kumara',
+        descricao: 'Switch Blue, LED RGB, layout ABNT2',
+        preco: 'R$ 189,00',
+        imagem: 'img/noteboooooo.jpg',
+        naPromocao: false
+      }
+    ];
+
+    function abrirModalPromocao(e) {
+      promocaoAtualModal = e.currentTarget.getAttribute('name');
+      console.log(promocaoAtualModal);
+      const modal = document.getElementById('modal-promocao-produtos');
+      modal.style.display = 'flex';
+      modal.classList.add('show');
+      carregarProdutosModal();
+    }
+
+    function fecharModalPromocao() {
+      const modal = document.getElementById('modal-promocao-produtos');
+      modal.style.display = 'none';
+      modal.classList.remove('show');
+      produtosAlteradosModal.clear();
+      document.getElementById('buscar-produtos-promocao').value = '';
+    }
+
+    document.getElementById('modal-promocao-produtos').addEventListener('click', function(e) {
+      if (e.target === this) {
+        fecharModalPromocao();
+      }
+    });
+
+    function carregarProdutosModal() {
+  const grid = document.getElementById('produtos-list-promocao');
+  grid.innerHTML = '';
+
+  produtosDisponiveisModal.forEach(produto => {
+    const produtoItem = document.createElement('div');
+    produtoItem.className = 'produto-item';
+    produtoItem.dataset.produtoId = produto.id;
+
+    const button = document.createElement('button');
+    button.className = produto.naPromocao ? 'btn-adicionar adicionado' : 'btn-adicionar';
+    button.textContent = produto.naPromocao ? 'Remover da promoção' : 'Adicionar à promoção';
+
+    // Aqui está a chave → o botão muda ao clicar
+    button.addEventListener('click', () => toggleProdutoPromocao(produto.id));
+
+    produtoItem.innerHTML = `
+      <div class="produto-imagem">
+        <img src="${produto.imagem}" alt="${produto.nome}" class="produto-img">
+      </div>
+      <div class="produto-info">
+        <div class="produto-nome">${produto.nome}</div>
+        <div class="produto-descricao">${produto.descricao}</div>
+        <div class="produto-preco">${produto.preco}</div>
+      </div>
+    `;
+
+    produtoItem.querySelector('.produto-info').appendChild(button);
+    grid.appendChild(produtoItem);
+  });
+}
+
+function toggleProdutoPromocao(produtoId) {
+  const produto = produtosDisponiveisModal.find(p => p.id === produtoId);
+  if (!produto) return;
+
+  // alterna status
+  produto.naPromocao = !produto.naPromocao;
+
+  // registra alteração
+  produtosAlteradosModal.add(produtoId);
+
+  // re-renderiza para atualizar o botão
+  carregarProdutosModal();
+}
+
+
+    function filtrarProdutos() {
+      const busca = document.getElementById('buscar-produtos-promocao').value.toLowerCase();
+      const items = document.querySelectorAll('.produto-item');
+
+      items.forEach(item => {
+        const nome = item.querySelector('.produto-nome').textContent.toLowerCase();
+        const preco = item.querySelector('.produto-preco').textContent.toLowerCase();
+
+        if (nome.includes(busca) || preco.includes(busca)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
         }
-      })
+      });
+    }
+
+    function salvarAlteracoesPromocaoModal() {
+      if (produtosAlteradosModal.size === 0) {
+        alert('Nenhuma alteração foi feita.');
+        return;
+      }
+
+      // Simular salvamento
+      console.log(`Salvando alterações para a promoção: ${promocaoAtualModal}`);
+      console.log('Produtos alterados:', Array.from(produtosAlteradosModal));
+
+      alert(`Alterações salvas com sucesso para a promoção "${promocaoAtualModal}"!`);
+      fecharModalPromocao();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('modal-promocao-produtos');
+        if (modal.classList.contains('show')) {
+          fecharModalPromocao();
+        }
+      }
+    });
+
+    function produtoAddMostrar() {
+      document.getElementById('modo-produto').style.display = 'block';
+    }
+
+    function bannerAddMostrar() {
+      document.getElementById('adicionar-promo').style.display = 'block';
+    }
+
+    function fecharModal() {
+      document.getElementById('modo-produto').style.display = 'none';
+    }
+
+    function fecharAddPromo() {
+      document.getElementById('adicionar-promo').style.display = 'none';
+    }
+
+    function fecharModalJanela() {
+      document.getElementById('produto-janela').style.display = 'none';
+    }
+
+    function fecharModalJanelaPromo() {
+      document.getElementById('promocao-janela').style.display = 'none';
+    }
+
+    function adicionarProduto() {
+      console.log('chamou');
+      const formData = new FormData()
+
+
+      const nomeProd = document.getElementById('nome_produto').value
+      const marcaProd = document.getElementById('marca_produto').value
+      const descProd = document.getElementById('desc_produto').value
+      console.log(descProd);
+      const precoProd = document.getElementById('preco_produto').value
+      const catProd = document.getElementById('categoria_produto').value
+      const imgProd1 = document.getElementById('img1').files[0]
+      const imgProd2 = document.getElementById('img2').files[0]
+      const imgProd3 = document.getElementById('img3').files[0]
+      const imgProd4 = document.getElementById('img4').files[0]
+      const chaveAcessProd = gerarCodigoAcessoProd()
+
+
+      if (imgProd1) formData.append('imagem1', imgProd1)
+      if (imgProd2) formData.append('imagem2', imgProd2)
+      if (imgProd3) formData.append('imagem3', imgProd3)
+      if (imgProd4) formData.append('imagem4', imgProd4)
+
+
+      formData.append('nomeProd', nomeProd)
+      formData.append('marcaProd', marcaProd)
+      formData.append('descricaoProd', descProd)
+      formData.append('precoProd', precoProd)
+      formData.append('catProd', catProd)
+      formData.append('chaveAcessProd', chaveAcessProd)
+
+
+      fetch('http://localhost:5090/add-prod', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(), window.location.reload())
+        .catch(err => console.error('Erro:', err));
+
+
+    }
+
+    function atualizarProd() {
+      const formData = new FormData()
+
+
+      const nome = document.getElementById('nomeProdEx').value
+      const descricao = document.getElementById('descProdEx').value
+      const marca = document.getElementById('marcaProdEx').value
+      const categoria = document.getElementById('catProdEx').value
+      const preco = document.getElementById('precoProdEx').value
+      const chave = document.getElementById('btnExcluir').getAttribute('name')
+
+
+      formData.append('nomeProd', nome)
+      formData.append('descricaoProd', descricao)
+      formData.append('marcaProd', marca)
+      formData.append('catProd', categoria)
+      formData.append('preco', preco)
+
+      const infosAtualizadas = {
+        nomeProd: nome,
+        descricaoProd: descricao,
+        marcaProd: marca,
+        catProd: categoria,
+        precoProd: preco
+      }
+
+
+      fetch('http://localhost:5090/atualizar-prod/' + chave, {
+          method: 'PUT',
+          body: JSON.stringify(infosAtualizadas),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
-          if (!response.ok) throw new Error('Erro ao obter informações')
+          if (!response.ok) throw new Error('Erro ao editar produto')
           return response.json()
         })
         .then(data => {
-          btnEx.setAttribute('name', data.chaveAcessProd)
-          nome.value = data.nomeProd
-          marca.value = data.marcaProd
-          categoria.value = data.catProd
-          preco.value = data.precoProd
-          descricao.value = data.descricaoProd
-          img1.src = data.urlImgProd1
-          if (data.urlImgProd2 != null) {
-            img2.src = data.urlImgProd2
-          } else {
-            img2.style.display = 'none'
-          }
-          if (data.urlImgProd3) {
-            img3.src = data.urlImgProd3
-          } else {
-            img3.style.display = 'none'
-          }
-          if (data.urlImgProd4) {
-            img4.src = data.urlImgProd4
-          } else {
-            img4.style.display = 'none'
-          }
+          fecharModalJanela()
+          window.location.href = window.location.href
+          console.log("Sucesso ao editar produto")
         })
-        .catch(error => console.error('Erro ao obter informações', error))
+        .catch(error => console.error('Erro ao editar produto', error))
+
     }
 
+    function addPromo() {
+      console.log('chamou o addProd');
+      const formData = new FormData()
+
+
+      const imgPromo = document.getElementById('img-promo-add').files[0]
+      const chaveAcess = gerarCodigoAcessoProd()
+      console.log(imgPromo);
+      console.log(chaveAcess);
+      if (imgPromo) formData.append('imagem', imgPromo)
+      formData.append('chaveAcessPromo', chaveAcess)
+      console.log(formData);
+      fetch('http://localhost:5090/add-promo', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            
+              window.location.reload();
+            
+          }
+
+        )
+        .catch(err => console.error('Erro:', err));
+
+
+    }
 
     function excluirProd(e) {
       const chave = e.currentTarget.getAttribute('name')
 
 
       fetch('http://localhost:5090/delete-prod/' + chave, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao excluir produto')
           return response.json()
@@ -1330,12 +1202,133 @@
         .catch(error => console.error('Erro ao excluir produto', error))
     }
 
+    function atualizarPromo() {
+      const formData = new FormData()
 
+
+      const img = document.getElementById('imgPromoAtt').files[0]
+      const chave = document.getElementById('btnExcluirPromo').getAttribute('name')
+
+
+      formData.append('imagem', img)
+
+      fetch('http://localhost:5090/atualizar-promo/' + chave, {
+          method: 'PUT',
+          body: formData
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao editar promoção')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalPromo()
+          window.location.href = window.location.href
+          console.log("Sucesso ao editar promoção")
+        })
+        .catch(error => console.error('Erro ao editar produto', error))
+
+    }
+
+    function atualizarProd() {
+      const formData = new FormData()
+
+
+      const nome = document.getElementById('nomeProdEx').value
+      const descricao = document.getElementById('descProdEx').value
+      const marca = document.getElementById('marcaProdEx').value
+      const categoria = document.getElementById('catProdEx').value
+      const preco = document.getElementById('precoProdEx').value
+      const chave = document.getElementById('btnExcluir').getAttribute('name')
+
+
+      formData.append('nomeProd', nome)
+      formData.append('descricaoProd', descricao)
+      formData.append('marcaProd', marca)
+      formData.append('catProd', categoria)
+      formData.append('preco', preco)
+
+      const infosAtualizadas = {
+        nomeProd: nome,
+        descricaoProd: descricao,
+        marcaProd: marca,
+        catProd: categoria,
+        precoProd: preco
+      }
+
+
+      fetch('http://localhost:5090/atualizar-prod/' + chave, {
+          method: 'PUT',
+          body: JSON.stringify(infosAtualizadas),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao editar produto')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalJanela()
+          window.location.href = window.location.href
+          console.log("Sucesso ao editar produto")
+        })
+        .catch(error => console.error('Erro ao editar produto', error))
+
+    }
+
+    function excluirPromo(e) {
+
+
+      console.log('///////');
+      const chave = e.currentTarget.getAttribute('name')
+
+
+      fetch('http://localhost:5090/delete-promo/' + chave, {
+          method: 'DELETE',
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao excluir promoção')
+          return response.json()
+        })
+        .then(data => {
+          fecharModalPromo()
+          window.location.href = window.location.href
+          console.log("Sucesso ao excluir promção")
+        })
+        .catch(error => console.error('Erro ao excluir produto', error))
+    }
+
+    function addPromo() {
+      console.log('chamou o addProd');
+      const formData = new FormData()
+
+
+      const imgPromo = document.getElementById('img-promo-add').files[0]
+      const chaveAcess = gerarCodigoAcessoProd()
+      console.log(imgPromo);
+      console.log(chaveAcess);
+      if (imgPromo) formData.append('imagem', imgPromo)
+      formData.append('nomePromocao',"Teste Temporário")
+      formData.append('chaveAcessPromo', chaveAcess)
+      console.log(formData);
+      fetch('http://localhost:5090/add-promo', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+        
+              window.location.reload();
+           
+          }
+
+        )
+        .catch(err => console.error('Erro:', err));
+
+
+    }
   </script>
-
 
 </body>
 
-
 </html>
-
