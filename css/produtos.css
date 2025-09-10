@@ -40,11 +40,48 @@ body {
   justify-content: center;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .whats-fixed:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whats-fixed img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+/* Responsividade do WhatsApp */
+@media (max-width: 768px) {
+  .whats-fixed {
+    width: 55px;
+    height: 55px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .whats-fixed img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whats-fixed {
+    width: 50px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .whats-fixed img {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 /* =================== HEADER BASEADO NO INDEX =================== */
@@ -59,31 +96,38 @@ header {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--cor-black);
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
-  white-space: nowrap;
-  transition: color 0.3s;
-}
-
-.logo span {
-  font-weight: 700;
-  color: var(--cor-black);
+  transition: transform 0.3s ease;
 }
 
 .logo:hover {
-  color: var(--cor-black);
+  transform: scale(1.05);
   text-decoration: none;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-black);
+  font-family: "Montserrat", sans-serif;
+  white-space: nowrap;
 }
 
 /* =================== BARRA DE PESQUISA INTEGRADA =================== */
 .search-wrap {
   position: relative;
   flex: 1;
-  max-width: 350px;
-  margin: 0 20px;
+  max-width: 400px;
+  margin: 0 30px;
 }
 
 .search-wrap input {
@@ -93,11 +137,14 @@ header {
   border-radius: 25px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
 }
 
 .search-wrap input:focus {
   border-color: var(--cor-blue);
+  background: var(--cor-white);
+  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
 }
 
 .search-wrap i {
@@ -107,6 +154,11 @@ header {
   transform: translateY(-50%);
   color: #666;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-wrap input:focus + i {
+  color: var(--cor-blue);
 }
 
 /* =================== NAVEGAÇÃO BASEADA NO INDEX =================== */
@@ -114,7 +166,7 @@ header {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
   margin: 0;
   padding: 0;
 }
@@ -133,18 +185,6 @@ header {
   color: var(--cor-blue);
 }
 
-/* Link carrinho dentro da lista */
-.nav-list li.nav-cart {
-  margin-left: 24px;
-}
-
-.nav-list li.nav-cart a {
-  font-size: 1.4rem;
-}
-
-.nav-list li.nav-cart a:hover {
-  color: var(--cor-blue);
-}
 
 /* Menu hamburguer - escondido no desktop */
 .mobile-menu {
@@ -153,9 +193,9 @@ header {
 }
 
 .mobile-menu div {
-  width: 32px;
+  width: 28px;
   height: 2px;
-  margin: 8px;
+  margin: 6px;
   background: var(--cor-black);
   transition: 0.3s;
 }
@@ -163,12 +203,14 @@ header {
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 0 20px;
+  justify-content: space-between;
+  padding: 0 30px;
   height: 8vh;
   position: relative;
   width: 80%;
   margin: auto;
+  max-width: 1200px;
+  gap: 20px;
 }
 
 /* =================== OVERLAY =================== */
@@ -196,8 +238,22 @@ nav {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--cor-black);
-  margin: 40px 0;
+  margin: 50px 0 40px 0;
   font-family: "Montserrat", sans-serif;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.title-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
+  border-radius: 2px;
 }
 
 /* =================== BOTÃO TOGGLE FILTRO =================== */
@@ -352,21 +408,39 @@ nav {
 
 .produto {
   background: var(--cor-white);
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 20px;
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 400px;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+}
+
+.produto::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .produto:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 82, 204, 0.15);
+}
+
+.produto:hover::before {
+  transform: scaleX(1);
 }
 
 .produto img {
@@ -376,6 +450,12 @@ nav {
   object-fit: contain;
   margin: 0 auto 15px auto;
   display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.produto:hover img {
+  transform: scale(1.05);
 }
 
 .produto h3 {
@@ -421,21 +501,23 @@ nav {
   background: linear-gradient(135deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
   color: var(--cor-white);
   border: none;
-  padding: 10px 16px;
+  padding: 12px 20px;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
   text-decoration: none;
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.3);
 }
 
 .ver-detalhes-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 82, 204, 0.4);
   text-decoration: none;
   color: var(--cor-white);
 }
@@ -444,21 +526,23 @@ nav {
   background: linear-gradient(135deg, var(--cor-success) 0%, var(--cor-success-hover) 100%);
   color: var(--cor-white);
   border: none;
-  padding: 10px 16px;
+  padding: 12px 20px;
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
-  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
 }
 
 .add-carrinho-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
   background: linear-gradient(135deg, var(--cor-success-hover) 0%, #1e7e34 100%);
 }
 
@@ -748,7 +832,7 @@ footer {
   .mobile-menu {
     display: block;
     position: absolute;
-    left: 20px;
+    left: 30px;
     top: auto;
     z-index: 1100;
   }
@@ -758,7 +842,15 @@ footer {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.4rem;
+  }
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
   }
 
   /* Barra de pesquisa reposicionada para mobile */
@@ -769,24 +861,25 @@ footer {
     right: 20px;
     max-width: none;
     margin: 0;
-    padding: 10px 0;
+    padding: 20px 0;
     background: var(--cor-white);
     border-bottom: 1px solid var(--cor-linha-cinza);
     z-index: 999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   /* Ajustar altura do body para acomodar pesquisa */
   body {
-    padding-top: calc(8vh + 60px);
+    padding-top: calc(8vh + 90px);
   }
 
   /* Lista de navegação estilo menu lateral */
   .nav-list {
     position: fixed;
-    top: calc(8vh + 60px);
+    top: calc(8vh + 90px);
     right: 0;
     width: 60vw;
-    height: calc(92vh - 60px);
+    height: calc(92vh - 90px);
     background: var(--cor-white);
     flex-direction: column;
     align-items: center;
@@ -815,20 +908,16 @@ footer {
     transform: translateX(0);
   }
 
-  /* Oculta o link do carrinho dentro da lista */
-  .nav-list li.nav-cart {
-    display: none;
-  }
 
   /* Ícone do carrinho fixo no header, canto direito */
   nav::after {
     content: "\f07a";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--cor-black);
     position: absolute;
-    right: 20px;
+    right: 30px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -845,8 +934,8 @@ footer {
     transform: translateX(-100%);
     width: 100%;
     max-width: 320px;
-    top: calc(8vh + 60px);
-    height: calc(100vh - 8vh - 60px);
+    top: calc(8vh + 90px);
+    height: calc(100vh - 8vh - 90px);
   }
 
   .filtro-fi.active {
@@ -877,24 +966,35 @@ footer {
   }
 
   .produto {
-    padding: 15px;
-    min-height: 380px;
+    padding: 18px;
+    min-height: 400px;
   }
 
   .produto img {
     height: 180px;
   }
 
+  .produto h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  .produto .preco {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
   /* Ajustando botões para mobile */
   .produto-actions {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .ver-detalhes-btn,
   .add-carrinho-btn {
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
   }
 
   /* Footer responsivo */
@@ -944,28 +1044,45 @@ footer {
   }
 
   .mobile-menu div {
-    width: 28px;
+    width: 26px;
     height: 2px;
-    margin: 6px;
+    margin: 5px;
   }
 
   .title-title {
     font-size: 2rem;
-    margin: 30px 0;
+    margin: 40px 0 30px 0;
+    padding-bottom: 15px;
+  }
+
+  .title-title::after {
+    width: 60px;
+    height: 3px;
   }
 
   /* Produtos em uma coluna em telas muito pequenas */
   .produtos {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 18px;
   }
 
   .produto {
-    min-height: 360px;
+    min-height: 380px;
+    padding: 16px;
   }
 
   .produto img {
-    height: 160px;
+    height: 170px;
+  }
+
+  .produto h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .produto .preco {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
   }
 
   #resultado-div {
@@ -990,16 +1107,32 @@ footer {
   .mobile-menu div {
     width: 24px;
     height: 2px;
-    margin: 7px;
+    margin: 5px;
   }
 
   .produto {
-    padding: 12px;
-    min-height: 340px;
+    padding: 14px;
+    min-height: 360px;
   }
 
   .produto img {
-    height: 140px;
+    height: 150px;
+  }
+
+  .produto h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .produto .preco {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+
+  .ver-detalhes-btn,
+  .add-carrinho-btn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
   }
 }
 
