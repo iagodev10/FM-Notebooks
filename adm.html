@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADM FM-NOTEBOOKS 2</title>
+  <title>ADM FM-NOTEBOOKS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/adm.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -127,7 +127,7 @@
 
 
       <div class="div-promocao" id="promos">
-        
+
       </div>
     </section>
 
@@ -138,7 +138,7 @@
     <!-- Updated promotion cards to include product images and enhanced styling -->
     <section id="prod-promocoes" class="promocoes-listagem" style="display: none;">
       <div class="promocoes-grid" id="divVinculo">
-        
+
       </div>
     </section>
 
@@ -160,7 +160,7 @@
         </div>
 
         <div class="modal-footer">
-          <button class="btn-salvar-alteracoes" onclick="salvarAlteracoesPromocaoModal()">
+          <button class="btn-salvar-alteracoes" id="btnSalvarVinculo">
             Salvar Alterações
           </button>
         </div>
@@ -493,6 +493,7 @@
 
   <script>
     let globalPromocoes;
+    document.getElementById('btnSalvarVinculo').addEventListener('click', salvarAlteracoesPromocaoModal)
     document.getElementById('btnExcluirPromo').addEventListener('click', excluirPromo);
     document.getElementById('btnExcluir').addEventListener('click', excluirProd);
     document.getElementById('btnAtualizar').addEventListener('click', atualizarProd);
@@ -604,16 +605,18 @@
           return response.json()
         })
         .then(data => {
-         
+
           btnSalvar.setAttribute('name', data.chaveAcessPromo)
           btnExcluir.setAttribute('name', data.chaveAcessPromo)
           img1.src = data.urlImgPromo
         })
         .catch(error => console.error('Erro ao obter informações', error))
     }
+
     function fecharModalPromo() {
       document.getElementById('modo-promo').style.display = 'none';
     }
+
     function Produto(e) {
       const img1 = document.getElementById('img1Ex')
       const img2 = document.getElementById('img2Ex')
@@ -728,11 +731,11 @@
       })
     }
 
-
+    let listaPraVinc;
     document.addEventListener('DOMContentLoaded', () => {
       const englobpromos = document.getElementById('promos')
       const inputBusca = document.getElementById('inputS')
-      const divVinculoEnglob=document.getElementById('divVinculo')
+      const divVinculoEnglob = document.getElementById('divVinculo')
 
 
 
@@ -749,7 +752,10 @@
         })
         .then(data => {
           produtosData = data;
-          console.log(produtosData);
+          listaPraVinc = data;
+          console.log('listaVinc', listaPraVinc);
+          carregarProdsVinc()
+
           renderizarProdutos(produtosData)
         })
         .catch(error => console.error('Fetch error (produtos):', error))
@@ -768,47 +774,47 @@
           return response.json()
         })
         .then(data => {
-          globalPromocoes=data
+          globalPromocoes = data
           data.forEach(promo => {
             const imgPromoBanner = document.createElement('img')
             imgPromoBanner.src = promo.urlImgPromo
 
             const imgPromoVinculo = document.createElement('img')
             imgPromoVinculo.src = promo.urlImgPromo
-            imgPromoVinculo.className="promocao-image"
+            imgPromoVinculo.className = "promocao-image"
 
-            const spanVinculo=document.createElement('span')
-            spanVinculo.className='promocao-title'
-            spanVinculo.innerText="Texto Teste"
-          
+            const spanVinculo = document.createElement('span')
+            spanVinculo.className = 'promocao-title'
+            spanVinculo.innerText = "Texto Teste"
+
 
             const divPromo = document.createElement('div')
             divPromo.className = 'div-promocao-1'
             divPromo.setAttribute('name', promo.chaveAcessPromo)
             divPromo.addEventListener('click', Promocao)
             divPromo.appendChild(imgPromoBanner)
-          
+
             englobpromos.appendChild(divPromo)
 
             const divPromoVinculo = document.createElement('div')
-            const divContentVinculo=document.createElement('div')
+            const divContentVinculo = document.createElement('div')
 
-            divContentVinculo.className='promocao-content'
+            divContentVinculo.className = 'promocao-content'
             divPromoVinculo.className = 'promocao-card'
 
-            divPromoVinculo.setAttribute('name', promo.nomePromocao)
+
+            divPromoVinculo.setAttribute('name', promo.idPromo)
 
             divContentVinculo.appendChild(imgPromoVinculo)
             divContentVinculo.appendChild(spanVinculo)
             divPromoVinculo.appendChild(divContentVinculo)
-            divPromoVinculo.addEventListener('click',abrirModalPromocao)
+            divPromoVinculo.addEventListener('click', abrirModalPromocao)
             divVinculoEnglob.appendChild(divPromoVinculo)
           })
         })
         .catch(error => console.error('Erro ao obter promocoes', error))
 
-        
-    
+
 
 
       inputBusca.addEventListener('input', (event) => {
@@ -841,107 +847,87 @@
 
     // Função para mostrar/esconder listas
     function mostrar(tipo) {
-  const produtos = document.getElementById("produtos");
-  const banners = document.getElementById("banners");
-  const promocoes = document.getElementById("prod-promocoes");
+      const produtos = document.getElementById("produtos");
+      const banners = document.getElementById("banners");
+      const promocoes = document.getElementById("prod-promocoes");
 
-  const btnProdAdd = document.getElementById("btn-prod-add");
-  const btnBannerAdd = document.getElementById("btn-banner-add");
+      const btnProdAdd = document.getElementById("btn-prod-add");
+      const btnBannerAdd = document.getElementById("btn-banner-add");
 
-  const btnProdutos = document.getElementById("btn-produtos");
-  const btnBanners = document.getElementById("btn-banners");
-  const btnPromocoes = document.getElementById("btn-prod-promocoes");
+      const btnProdutos = document.getElementById("btn-produtos");
+      const btnBanners = document.getElementById("btn-banners");
+      const btnPromocoes = document.getElementById("btn-prod-promocoes");
 
-  // Esconde todas as seções
-  produtos.style.display = "none";
-  banners.style.display = "none";
-  promocoes.style.display = "none";
+      // Esconde todas as seções
+      produtos.style.display = "none";
+      banners.style.display = "none";
+      promocoes.style.display = "none";
 
-  // Remove o "active" de todos os botões
-  btnProdutos.classList.remove("active");
-  btnBanners.classList.remove("active");
-  btnPromocoes.classList.remove("active");
+      // Remove o "active" de todos os botões
+      btnProdutos.classList.remove("active");
+      btnBanners.classList.remove("active");
+      btnPromocoes.classList.remove("active");
 
-  // Esconde os botões de adicionar
-  btnProdAdd.style.display = "none";
-  btnBannerAdd.style.display = "none";
+      // Esconde os botões de adicionar
+      btnProdAdd.style.display = "none";
+      btnBannerAdd.style.display = "none";
 
-  // Mostra apenas a seção escolhida
-  if (tipo === "produtos") {
-    produtos.style.display = "block";
-    btnProdutos.classList.add("active");
-    btnProdAdd.style.display = "block";
-  } else if (tipo === "banners") {
-    banners.style.display = "block";
-    btnBanners.classList.add("active");
-    btnBannerAdd.style.display = "block";
-  } else if (tipo === "prod-promocoes") {
-    promocoes.style.display = "block";
-    btnPromocoes.classList.add("active");
-  }
-}
+      // Mostra apenas a seção escolhida
+      if (tipo === "produtos") {
+        produtos.style.display = "block";
+        btnProdutos.classList.add("active");
+        btnProdAdd.style.display = "block";
+      } else if (tipo === "banners") {
+        banners.style.display = "block";
+        btnBanners.classList.add("active");
+        btnBannerAdd.style.display = "block";
+      } else if (tipo === "prod-promocoes") {
+        promocoes.style.display = "block";
+        btnPromocoes.classList.add("active");
+      }
+    }
 
 
     let promocaoAtualModal = '';
-    let produtosAlteradosModal = new Set();
+    let produtosAlteradosModal = []
 
     // Dados de exemplo dos produtos
-    const produtosDisponiveisModal = [{
-        id: 1,
-        nome: 'Notebook Gamer Acer Nitro 5',
-        descricao: 'Intel Core i5, 8GB RAM, GTX 1650',
-        preco: 'R$ 2.899,00',
-        imagem: 'img/noteboooooo.jpg',
-        naPromocao: false
-      },
-      {
-        id: 2,
-        nome: 'Mochila Kross Elegance Clean Black',
-        descricao: 'Carregue seus itens com segurança, estilo e conforto',
-        preco: 'R$ 105,00',
-        imagem: 'img/mochilas/kross-elegance.png',
-        naPromocao: true
-      },
-      {
-        id: 3,
-        nome: 'Mouse Gamer Logitech G502',
-        descricao: 'Sensor HERO 25K, RGB, 11 botões programáveis',
-        preco: 'R$ 299,00',
-        imagem: 'img/noteboooooo.jpg',
-        naPromocao: false
-      },
-      {
-        id: 4,
-        nome: 'Headset Gamer HyperX Cloud II',
-        descricao: 'Som surround 7.1, microfone removível',
-        preco: 'R$ 459,00',
-        imagem: 'img/noteboooooo.jpg',
-        naPromocao: true
-      },
-      {
-        id: 5,
-        nome: 'Teclado Mecânico Redragon Kumara',
-        descricao: 'Switch Blue, LED RGB, layout ABNT2',
-        preco: 'R$ 189,00',
-        imagem: 'img/noteboooooo.jpg',
-        naPromocao: false
-      }
-    ];
+    const produtosDisponiveisModal = [];
+
+    function carregarProdsVinc() {
+
+
+      listaPraVinc.forEach((prodVinc) => {
+        console.log('prod', prodVinc);
+        const infosPraAddListVin = {
+          id: prodVinc.idProd,
+          nome: prodVinc.nomeProd,
+          preco: prodVinc.precoProd,
+          imagem: prodVinc.urlImgProd1,
+          descricao: prodVinc.descricaoProd,
+          idPromo: null
+        }
+
+
+        produtosDisponiveisModal.push(infosPraAddListVin)
+      })
+    }
 
     function abrirModalPromocao(e) {
       promocaoAtualModal = e.currentTarget.getAttribute('name');
       console.log(promocaoAtualModal);
+      document.getElementById('btnSalvarVinculo').setAttribute('name', promocaoAtualModal)
       const modal = document.getElementById('modal-promocao-produtos');
       modal.style.display = 'flex';
       modal.classList.add('show');
-      carregarProdutosModal();
+      carregarProdutosModal(promocaoAtualModal);
     }
 
     function fecharModalPromocao() {
       const modal = document.getElementById('modal-promocao-produtos');
       modal.style.display = 'none';
       modal.classList.remove('show');
-      produtosAlteradosModal.clear();
+      produtosAlteradosModal.length = 0
       document.getElementById('buscar-produtos-promocao').value = '';
     }
 
@@ -951,23 +937,31 @@
       }
     });
 
-    function carregarProdutosModal() {
-  const grid = document.getElementById('produtos-list-promocao');
-  grid.innerHTML = '';
+    function carregarProdutosModal(idPromo) {
+      const grid = document.getElementById('produtos-list-promocao');
+      grid.innerHTML = '';
 
-  produtosDisponiveisModal.forEach(produto => {
-    const produtoItem = document.createElement('div');
-    produtoItem.className = 'produto-item';
-    produtoItem.dataset.produtoId = produto.id;
+      produtosDisponiveisModal.forEach(produto => {
+        const produtoItem = document.createElement('div');
+        produtoItem.className = 'produto-item';
+        produtoItem.dataset.produtoId = produto.id;
 
-    const button = document.createElement('button');
-    button.className = produto.naPromocao ? 'btn-adicionar adicionado' : 'btn-adicionar';
-    button.textContent = produto.naPromocao ? 'Remover da promoção' : 'Adicionar à promoção';
+        const button = document.createElement('button');
+        console.log("NOME>>", produto.nome, "IDPromo>>>>", produto.idPromo, "IDPROD>>", produto.id);
+        if (produto.idPromo == idPromo) {
+          button.className = 'btn-adicionar adicionado'
+          button.textContent = 'Remover da promoção'
+        } else {
+          button.className = 'btn-adicionar'
+          button.textContent = 'Adicionar à promoção'
+        }
 
-    // Aqui está a chave → o botão muda ao clicar
-    button.addEventListener('click', () => toggleProdutoPromocao(produto.id));
 
-    produtoItem.innerHTML = `
+        // Aqui está a chave → o botão muda ao clicar
+
+        button.addEventListener('click', () => toggleProdutoPromocao(produto.id, idPromo));
+
+        produtoItem.innerHTML = `
       <div class="produto-imagem">
         <img src="${produto.imagem}" alt="${produto.nome}" class="produto-img">
       </div>
@@ -978,24 +972,31 @@
       </div>
     `;
 
-    produtoItem.querySelector('.produto-info').appendChild(button);
-    grid.appendChild(produtoItem);
-  });
-}
+        produtoItem.querySelector('.produto-info').appendChild(button);
+        grid.appendChild(produtoItem);
+      });
+    }
 
-function toggleProdutoPromocao(produtoId) {
-  const produto = produtosDisponiveisModal.find(p => p.id === produtoId);
-  if (!produto) return;
+    function toggleProdutoPromocao(produtoId, promoId) {
+      console.log("Toggleprod>>", produtoId);
+      console.log("TogglePromo>>", promoId);
+      const produto = produtosDisponiveisModal.find(p => p.id === produtoId);
+      if (!produto) return;
 
-  // alterna status
-  produto.naPromocao = !produto.naPromocao;
+      // alterna status
+      if (produto.idPromo != null) {
+        produto.idPromo = null
+      } else {
+        produto.idPromo = promoId;
+      }
 
-  // registra alteração
-  produtosAlteradosModal.add(produtoId);
 
-  // re-renderiza para atualizar o botão
-  carregarProdutosModal();
-}
+      // registra alteração
+      produtosAlteradosModal.push(produtoId);
+
+      // re-renderiza para atualizar o botão
+      carregarProdutosModal(promoId);
+    }
 
 
     function filtrarProdutos() {
@@ -1014,17 +1015,33 @@ function toggleProdutoPromocao(produtoId) {
       });
     }
 
-    function salvarAlteracoesPromocaoModal() {
-      if (produtosAlteradosModal.size === 0) {
+    function salvarAlteracoesPromocaoModal(e) {
+      const idPromo = e.currentTarget.getAttribute('name')
+      console.log("VER>>",idPromo);
+      if (produtosAlteradosModal.length === 0) {
         alert('Nenhuma alteração foi feita.');
         return;
       }
+      const infos = {
+        idPromo: idPromo,
+        array: produtosAlteradosModal
+      }
+      fetch('http://localhost:5090/vinc-promo/', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(infos)
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao vincular produtos')
+          return response.json()
+        })
+        .then(data => {
+          console.log("Sucesso ao vincular produtos")
+        })
+        .catch(error => console.error('Erro ao editar produto', error))
 
-      // Simular salvamento
-      console.log(`Salvando alterações para a promoção: ${promocaoAtualModal}`);
-      console.log('Produtos alterados:', Array.from(produtosAlteradosModal));
-
-      alert(`Alterações salvas com sucesso para a promoção "${promocaoAtualModal}"!`);
       fecharModalPromocao();
     }
 
@@ -1098,9 +1115,9 @@ function toggleProdutoPromocao(produtoId) {
           body: formData
         })
         .then(res => res.json())
-        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(), window.location.reload())
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal())
         .catch(err => console.error('Erro:', err));
-
+        window.location.reload()
 
     }
 
@@ -1169,9 +1186,9 @@ function toggleProdutoPromocao(produtoId) {
         })
         .then(res => res.json())
         .then(data => {
-            
-              window.location.reload();
-            
+
+            window.location.reload();
+
           }
 
         )
@@ -1308,7 +1325,7 @@ function toggleProdutoPromocao(produtoId) {
       console.log(imgPromo);
       console.log(chaveAcess);
       if (imgPromo) formData.append('imagem', imgPromo)
-      formData.append('nomePromocao',"Teste Temporário")
+      formData.append('nomePromocao', "Teste Temporário")
       formData.append('chaveAcessPromo', chaveAcess)
       console.log(formData);
       fetch('http://localhost:5090/add-promo', {
@@ -1317,9 +1334,9 @@ function toggleProdutoPromocao(produtoId) {
         })
         .then(res => res.json())
         .then(data => {
-        
-              window.location.reload();
-           
+
+            window.location.reload();
+
           }
 
         )
