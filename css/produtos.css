@@ -352,7 +352,8 @@ nav {
 }
 
 .input-checkbox-categoria,
-.input-checkbox-marca {
+.input-checkbox-marca,
+.input-checkbox-promocao {
   display: none;
 }
 
@@ -382,12 +383,14 @@ nav {
 }
 
 .input-checkbox-categoria:checked + .custom-checkbox,
-.input-checkbox-marca:checked + .custom-checkbox {
+.input-checkbox-marca:checked + .custom-checkbox,
+.input-checkbox-promocao:checked + .custom-checkbox {
   border-color: var(--cor-blue);
 }
 
 .input-checkbox-categoria:checked + .custom-checkbox::after,
-.input-checkbox-marca:checked + .custom-checkbox::after {
+.input-checkbox-marca:checked + .custom-checkbox::after,
+.input-checkbox-promocao:checked + .custom-checkbox::after{
   opacity: 1;
 }
 

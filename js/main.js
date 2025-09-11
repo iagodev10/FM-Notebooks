@@ -65,3 +65,4 @@ $('#carousel').owlCarousel({
     $('.intro-content .intro-price').addClass('fadeInUp animated').show();
   });
   
+
