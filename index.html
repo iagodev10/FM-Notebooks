@@ -59,12 +59,12 @@
   <!-- ====================HEADER======================= -->
   <header>
 
-    <nav>
-      <div class="mobile-menu">
+    <nav role="navigation" aria-label="Principal">
+      <button class="mobile-menu" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu de navegação">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
-      </div>
+      </button>
 
       <a href="index.html" class="logo">
         <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img">
@@ -72,12 +72,12 @@
       </a>
 
 
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produtos.html">Loja</a></li>
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="contatos.html">Contatos</a></li>
-        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
+      <ul class="nav-list" id="primary-navigation" role="menu">
+        <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+        <li role="none"><a role="menuitem" href="produtos.html">Loja</a></li>
+        <li role="none"><a role="menuitem" href="servicos.html">Serviços</a></li>
+        <li role="none"><a role="menuitem" href="contatos.html">Contatos</a></li>
+        <li role="none"><a role="menuitem" href="#" class="nav-cart" aria-label="Carrinho"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
       </ul>
     </nav>
 
