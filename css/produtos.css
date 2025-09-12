@@ -1,4 +1,6 @@
 /* =================== VARIÁVEIS CSS =================== */
+@import url('./base-responsive.css');
+
 :root {
   --cor-blue: #0052cc;
   --cor-blue-dark: #1c7ed6;
@@ -267,14 +269,25 @@ nav {
   font-weight: 600;
   margin: 20px auto;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all var(--transition-normal);
   font-size: 0.95rem;
   gap: 8px;
   align-items: center;
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  box-shadow: var(--shadow);
 }
 
-#toggle-filtro:hover {
+#toggle-filtro:hover,
+#toggle-filtro:focus {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+#toggle-filtro:focus {
+  outline: 2px solid var(--cor-white);
+  outline-offset: 2px;
 }
 
 #toggle-filtro i {
@@ -400,24 +413,24 @@ nav {
 
 .produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .produto {
   background: var(--cor-white);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 25px;
   text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
+  min-height: 450px;
   position: relative;
   overflow: hidden;
 }
@@ -435,8 +448,8 @@ nav {
 }
 
 .produto:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 82, 204, 0.15);
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 82, 204, 0.2);
 }
 
 .produto:hover::before {
@@ -501,48 +514,53 @@ nav {
   background: linear-gradient(135deg, var(--cor-blue) 0%, var(--cor-blue-dark) 100%);
   color: var(--cor-white);
   border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
+  padding: 14px 24px;
+  border-radius: 30px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 0.95rem;
   text-decoration: none;
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 82, 204, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .ver-detalhes-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 82, 204, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 82, 204, 0.4);
   text-decoration: none;
   color: var(--cor-white);
+  background: linear-gradient(135deg, var(--cor-blue-dark) 0%, #002d7a 100%);
 }
 
 .add-carrinho-btn {
   background: linear-gradient(135deg, var(--cor-success) 0%, var(--cor-success-hover) 100%);
   color: var(--cor-white);
   border: none;
-  padding: 12px 20px;
-  border-radius: 25px;
+  padding: 14px 24px;
+  border-radius: 30px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 0.95rem;
   flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .add-carrinho-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   background: linear-gradient(135deg, var(--cor-success-hover) 0%, #1e7e34 100%);
 }
 

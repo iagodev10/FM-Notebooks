@@ -33,57 +33,61 @@
   <div class="click-closed overlay"></div>
 
   <!-- WhatsApp Fixo -->
-  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" aria-label="WhatsApp">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco via WhatsApp">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width="32" height="32">
   </a>
 
   <!-- HEADER / NAV baseado no index -->
-  <header>
-    <nav>
-      <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
+  <header role="banner">
+    <!-- Skip link para acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <nav role="navigation" aria-label="Navegação principal">
+      <button class="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-list">
+        <div class="line1" aria-hidden="true"></div>
+        <div class="line2" aria-hidden="true"></div>
+        <div class="line3" aria-hidden="true"></div>
+      </button>
 
-      <a href="index.html" class="logo">
-        <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img">
+      <a href="index.html" class="logo" aria-label="FM Notebooks - Página inicial">
+        <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img" width="45" height="45">
         <span class="logo-text">Notebooks</span>
       </a>
 
       <!-- Barra de pesquisa integrada -->
-      <div class="search-wrap" role="search">
-        <input id="input-busca" type="text" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
+      <div class="search-wrap" role="search" aria-label="Pesquisar produtos">
+        <input id="input-busca" type="text" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos" autocomplete="off">
         <i class="fa fa-search" aria-hidden="true"></i>
       </div>
 
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produtos.html">Loja</a></li>
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="contatos.html">Contatos</a></li>
+      <ul class="nav-list" id="nav-list" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="produtos.html" role="menuitem" aria-current="page">Loja</a></li>
+        <li role="none"><a href="servicos.html" role="menuitem">Serviços</a></li>
+        <li role="none"><a href="contatos.html" role="menuitem">Contatos</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Conteúdo -->
-  <div id="resultado"></div>
+  <main id="main-content" role="main">
+    <div id="resultado" aria-live="polite" aria-label="Resultados da pesquisa"></div>
 
-  <h1 class="title-title">Todos os Produtos</h1>
+    <h1 class="title-title">Todos os Produtos</h1>
 
-  <!-- Botão para mobile (mostrar/ocultar filtro) -->
-  <button id="toggle-filtro" class="toggle-filtro-btn">
-    <i class="fas fa-filter"></i> Mostrar Filtros
-  </button>
+    <!-- Botão para mobile (mostrar/ocultar filtro) -->
+    <button id="toggle-filtro" class="toggle-filtro-btn" aria-label="Mostrar filtros de produtos" aria-expanded="false" aria-controls="filtro-fi">
+      <i class="fas fa-filter" aria-hidden="true"></i> Mostrar Filtros
+    </button>
 
-  <!-- Filtro -->
-  <aside class="filtro-fi" aria-label="Filtros de produtos">
-    <div class="filtro-header">
-      <h3>Filtrar</h3>
-      <button class="close-filtro" aria-label="Fechar filtros">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+    <!-- Filtro -->
+    <aside class="filtro-fi" id="filtro-fi" aria-label="Filtros de produtos">
+      <div class="filtro-header">
+        <h3>Filtrar</h3>
+        <button class="close-filtro" aria-label="Fechar filtros">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
 
     <p class="filtro-fi-p">Categoria</p>
 
@@ -187,9 +191,10 @@
     </label>
   </aside>
 
-  <!-- Lista de Produtos -->
-  <main id="resultado-div">
-    <div class="produtos" id="lista-produtos"></div>
+    <!-- Lista de Produtos -->
+    <section id="resultado-div" aria-label="Lista de produtos">
+      <div class="produtos" id="lista-produtos" role="grid" aria-label="Produtos disponíveis"></div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -301,6 +306,9 @@
 
   <!-- main-produtos.js -->
   <script src="js/main-produtos.js"></script>
+  
+  <!-- accessibility.js para melhorias de acessibilidade -->
+  <script src="js/accessibility.js"></script>
 </body>
 
 </html>

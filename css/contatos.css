@@ -1,4 +1,5 @@
 @import url("../css/index.css");
+@import url('./base-responsive.css');
 
 :root{
   --cor-blue: #0052cc;
@@ -66,9 +67,15 @@
 .mapa {
   width: 60%;
   height: 500px;
-  border-radius: var(--radius);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mapa:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
 }
 
 .map {

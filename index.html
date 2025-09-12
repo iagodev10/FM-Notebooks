@@ -49,38 +49,38 @@
 <body>
 
   <!-- WhatsApp Fixo -->
-  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco via WhatsApp">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width="32" height="32">
   </a>
 
-  <div class="click-closed"></div>
+  <div class="click-closed overlay"></div>
 
   <!-- ====================HEADER======================= -->
   <!-- ====================HEADER======================= -->
-  <header>
+  <header role="banner">
+    <!-- Skip link para acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-    <nav>
-      <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
+    <nav role="navigation" aria-label="Navegação principal">
+      <button class="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-list">
+        <div class="line1" aria-hidden="true"></div>
+        <div class="line2" aria-hidden="true"></div>
+        <div class="line3" aria-hidden="true"></div>
+      </button>
 
-      <a href="index.html" class="logo">
-        <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img">
+      <a href="index.html" class="logo" aria-label="FM Notebooks - Página inicial">
+        <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img" width="40" height="40">
         <span class="logo-text">Notebooks</span>
       </a>
 
-
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produtos.html">Loja</a></li>
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="contatos.html">Contatos</a></li>
-        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
+      <ul class="nav-list" id="nav-list" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem" aria-current="page">Home</a></li>
+        <li role="none"><a href="produtos.html" role="menuitem">Loja</a></li>
+        <li role="none"><a href="servicos.html" role="menuitem">Serviços</a></li>
+        <li role="none"><a href="contatos.html" role="menuitem">Contatos</a></li>
+        <li role="none" class="nav-cart"><a href="#" class="nav-cart" role="menuitem" aria-label="Carrinho de compras"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
       </ul>
     </nav>
-
   </header>
 
   <!--/ Carousel Star /-->
@@ -160,7 +160,7 @@
   <!-- ==========Pagamentos========= -->
   <!-- ==========Pagamentos========= -->
 
-  <section class="pagamento-card">
+  <section class="pagamento-card" onclick="MostraMais()">
     <div class="pagamento-card-content">
       <div class="pague-item">
         <div class="pague-item-content">
@@ -796,6 +796,9 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
   <script src="js/carousel-pagamentos.js"></script>
+  
+  <!-- accessibility.js para melhorias de acessibilidade -->
+  <script src="js/accessibility.js"></script>
 
 </body>
 

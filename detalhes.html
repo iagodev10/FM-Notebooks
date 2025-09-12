@@ -48,28 +48,37 @@
 
 <body>
 
+    <!-- WhatsApp Fixo -->
+    <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco via WhatsApp">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width="32" height="32">
+    </a>
+
+    <div class="click-closed overlay"></div>
 
     <!-- ====================HEADER======================= -->
     <!-- ====================HEADER======================= -->
-    <header>
-        <nav>
-            <a href="index.html" class="logo">
-                <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img">
+    <header role="banner">
+        <!-- Skip link para acessibilidade -->
+        <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+        
+        <nav role="navigation" aria-label="Navegação principal">
+            <a href="index.html" class="logo" aria-label="FM Notebooks - Página inicial">
+                <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img" width="40" height="40">
                 <span class="logo-text">Notebooks</span>
             </a>
 
-            <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
+            <button class="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-list">
+                <div class="line1" aria-hidden="true"></div>
+                <div class="line2" aria-hidden="true"></div>
+                <div class="line3" aria-hidden="true"></div>
+            </button>
 
-            <ul class="nav-list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Loja</a></li>
-                <li><a href="sobre.html">Sobre Nós</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="contatos.html">Contatos</a></li>
+            <ul class="nav-list" id="nav-list" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                <li role="none"><a href="produtos.html" role="menuitem" aria-current="page">Loja</a></li>
+                <li role="none"><a href="sobre.html" role="menuitem">Sobre Nós</a></li>
+                <li role="none"><a href="servicos.html" role="menuitem">Serviços</a></li>
+                <li role="none"><a href="contatos.html" role="menuitem">Contatos</a></li>
             </ul>
         </nav>
     </header>
@@ -77,7 +86,8 @@
     <!-- ========================PRODUTO================================ -->
     <!-- ========================PRODUTO================================ -->
 
-    <section class="produto-detalhes container-detalhes">
+    <main id="main-content" role="main">
+        <section class="produto-detalhes container-detalhes" aria-label="Detalhes do produto">
 
         <div class="galeria">
 
@@ -263,6 +273,9 @@
             });
         });
     </script>
+
+    <!-- Scripts de acessibilidade -->
+    <script src="js/accessibility.js"></script>
 
 </body>
 

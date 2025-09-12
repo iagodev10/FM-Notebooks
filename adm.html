@@ -14,42 +14,42 @@
 <body>
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <button id="btn-produtos" class="active" onclick="mostrar('produtos')">
-      <i class="fas fa-box"></i> Produtos
+  <aside class="sidebar" role="navigation" aria-label="Menu de administração">
+    <button id="btn-produtos" class="active" onclick="mostrar('produtos')" aria-label="Gerenciar produtos">
+      <i class="fas fa-box" aria-hidden="true"></i> Produtos
     </button>
 
-    <button id="btn-banners" onclick="mostrar('banners')">
-      <i class="fas fa-image"></i> Banners Promocionais
+    <button id="btn-banners" onclick="mostrar('banners')" aria-label="Gerenciar banners promocionais">
+      <i class="fas fa-image" aria-hidden="true"></i> Banners Promocionais
     </button>
 
-    <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')">
-      <i class="fas fa-tags"></i> Produtos em Promoção
+    <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')" aria-label="Gerenciar produtos em promoção">
+      <i class="fas fa-tags" aria-hidden="true"></i> Produtos em Promoção
     </button>
 
-    <button><i class="fas fa-cogs"></i> Adicionar ADM</button>
+    <button aria-label="Adicionar administrador"><i class="fas fa-cogs" aria-hidden="true"></i> Adicionar ADM</button>
 
-    <button onclick="produtoAddMostrar()" id="btn-prod-add">
-      <i class="fa fa-add"></i>Adicionar Produto
+    <button onclick="produtoAddMostrar()" id="btn-prod-add" aria-label="Adicionar novo produto">
+      <i class="fa fa-add" aria-hidden="true"></i>Adicionar Produto
     </button>
-    <button onclick="bannerAddMostrar()" id="btn-banner-add" style="display: none;">
-      <i class="fa fa-add"></i>Adicionar Banner
+    <button onclick="bannerAddMostrar()" id="btn-banner-add" style="display: none;" aria-label="Adicionar novo banner">
+      <i class="fa fa-add" aria-hidden="true"></i>Adicionar Banner
     </button>
   </aside>
 
   <!-- HEADER -->
-  <header class="admin-header">
+  <header class="admin-header" role="banner">
     <div class="header-content">
       <div class="logo">FM<span>Notebooks</span></div>
-      <div class="search-box">
-        <input id="inputS" type="text" placeholder="Buscar...">
-        <i class="fas fa-search"></i>
+      <div class="search-box" role="search" aria-label="Buscar produtos">
+        <input id="inputS" type="text" placeholder="Buscar..." aria-label="Campo de busca">
+        <i class="fas fa-search" aria-hidden="true"></i>
       </div>
     </div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main>
+  <main role="main" id="main-content">
 
     <!-- ============================Produtos========================================= -->
     <!-- ============================Produtos========================================= -->
