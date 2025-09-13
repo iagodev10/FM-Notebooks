@@ -11,10 +11,58 @@ window.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             produtos = data
-            console.log(produtos);
+            console.log(data);
             exibirProdutos();
         })
         .catch(error => console.error('Erro ao obter informações', error))
+
+        fetch('http://localhost:5090/promocoes', {
+        method: 'GET'
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao obter informações')
+            return response.json()
+        })
+        .then(data => {
+            const divLista=document.getElementById('listaPromos')
+            data.forEach((promo)=>{
+                const label=document.createElement('label')
+                label.className='label-filtro'
+
+                const input=document.createElement('input')
+                input.type='checkbox'
+                input.className='input-checkbox-promocao'
+                input.name=promo.idPromo
+
+                const span=document.createElement('span')
+                span.className='custom-checkbox'
+
+                const span2=document.createElement('span')
+                span2.className='texto-label'
+                span2.innerText=promo.nomePromocao
+
+                label.appendChild(input)
+                label.appendChild(span)
+                label.appendChild(span2)
+                divLista.appendChild(label)
+
+                input.addEventListener("change", e => {
+                    const promocao = String(e.target.getAttribute('name'));
+        
+                    if (e.target.checked) {
+                        if (!promocoesAtivas.includes(promocao)) {
+                            promocoesAtivas.push(promocao);
+                        }
+                    } else {
+                        promocoesAtivas = promocoesAtivas.filter(m => m !== promocao);
+                    }
+                    exibirProdutos();
+                });
+            })  
+         
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
+        
     let produtos = [
         // Mochilas
         /*
@@ -190,6 +238,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let filtroTexto = "";           // Texto atual de busca
     let categoriasAtivas = ["todas"]; // Categorias ativas
     let marcasAtivas = [];
+    let promocoesAtivas=[];
 
     // Elementos
     const busca = document.getElementById("input-busca");
@@ -197,15 +246,15 @@ window.addEventListener("DOMContentLoaded", () => {
     const checkboxesCategoria = document.querySelectorAll(".input-checkbox-categoria");
     const checkboxesMarca = document.querySelectorAll(".input-checkbox-marca");
 
+    
     // ===========================
     // FUNÇÃO DE EXIBIÇÃO
     // ===========================
     function exibirProdutos() {
         resultado.innerHTML = "";
-        console.log('aoba');
         const filtrados = produtos.filter(p => {
 
-            console.log(p, "olha o filtro");
+
             const textoCombina = p.nomeProd.toLowerCase().includes(filtroTexto.toLowerCase());
             const todasSelecionadas = categoriasAtivas.includes("todas");
 
@@ -214,8 +263,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
             // MARCA
             const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marcaProd);
+            
+            //PROMOCAO
+            const promocaoCombina = 
+    promocoesAtivas.length === 0 || 
+    (p.idPromoVinc && promocoesAtivas.includes(String(p.idPromoVinc)));
 
-            return textoCombina && categoriaCombina && marcaCombina;
+
+            return textoCombina && categoriaCombina && marcaCombina && promocaoCombina;
         });
 
         if (filtrados.length === 0) {
@@ -240,7 +295,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                         </button>
                             </div>
     `;
-            console.log(div);
+    
             resultado.appendChild(div);
         });
     }
@@ -315,6 +370,7 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+ 
     // ===========================
     // LER CATEGORIA DA URL
     // ===========================
@@ -323,7 +379,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (categoriaInicial) {
         categoriasAtivas = [categoriaInicial];
-        checkboxes.forEach(box => {
+        checkboxesCategoria.forEach(box => {
             box.checked = (box.getAttribute("data-categoria") === categoriaInicial);
         });
     }

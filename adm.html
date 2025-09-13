@@ -362,9 +362,17 @@
 
         <h2>ADICIONAR NOVA PROMOÇÃO</h2>
 
+        <div class="styleNomePromoAdd">
+          <div class="styleDoisPromoAdd">
+            <label>Nome da Promoção</label>
+            <input class="inputNomePromoAdd" type="text" placeholder="Nome da Promoção" id="nome_promocao" required>
+          </div>
+
+        </div>
 
         <div class="promocao-add">
           <h3>Inserir Nova Imagem</h3>
+
 
 
           <div class="promocao-img">
@@ -785,7 +793,7 @@
 
             const spanVinculo = document.createElement('span')
             spanVinculo.className = 'promocao-title'
-            spanVinculo.innerText = "Texto Teste"
+            spanVinculo.innerText = promo.nomePromocao
 
 
             const divPromo = document.createElement('div')
@@ -905,7 +913,7 @@
           preco: prodVinc.precoProd,
           imagem: prodVinc.urlImgProd1,
           descricao: prodVinc.descricaoProd,
-          idPromo: null
+          idPromo: prodVinc.idPromoVinc
         }
 
 
@@ -1017,7 +1025,7 @@
 
     function salvarAlteracoesPromocaoModal(e) {
       const idPromo = e.currentTarget.getAttribute('name')
-      console.log("VER>>",idPromo);
+      console.log("VER>>", idPromo);
       if (produtosAlteradosModal.length === 0) {
         alert('Nenhuma alteração foi feita.');
         return;
@@ -1117,7 +1125,7 @@
         .then(res => res.json())
         .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal())
         .catch(err => console.error('Erro:', err));
-        window.location.reload()
+      window.location.reload()
 
     }
 
@@ -1174,11 +1182,14 @@
 
 
       const imgPromo = document.getElementById('img-promo-add').files[0]
+      const nomePromo=document.getElementById('nome_promocao').value
       const chaveAcess = gerarCodigoAcessoProd()
       console.log(imgPromo);
       console.log(chaveAcess);
       if (imgPromo) formData.append('imagem', imgPromo)
       formData.append('chaveAcessPromo', chaveAcess)
+      formData.append('nomePromocao', nomePromo)
+
       console.log(formData);
       fetch('http://localhost:5090/add-promo', {
           method: 'POST',
@@ -1315,35 +1326,7 @@
         .catch(error => console.error('Erro ao excluir produto', error))
     }
 
-    function addPromo() {
-      console.log('chamou o addProd');
-      const formData = new FormData()
-
-
-      const imgPromo = document.getElementById('img-promo-add').files[0]
-      const chaveAcess = gerarCodigoAcessoProd()
-      console.log(imgPromo);
-      console.log(chaveAcess);
-      if (imgPromo) formData.append('imagem', imgPromo)
-      formData.append('nomePromocao', "Teste Temporário")
-      formData.append('chaveAcessPromo', chaveAcess)
-      console.log(formData);
-      fetch('http://localhost:5090/add-promo', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-
-            window.location.reload();
-
-          }
-
-        )
-        .catch(err => console.error('Erro:', err));
-
-
-    }
+    
   </script>
 
 </body>

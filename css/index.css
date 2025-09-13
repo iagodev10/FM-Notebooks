@@ -175,11 +175,6 @@ header {
 .mobile-menu {
   display: none;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
-  z-index: 1100;
-  position: relative;
 }
 
 .mobile-menu div {
@@ -207,6 +202,15 @@ nav {
   padding: 0 20px;
   height: 8vh;
   position: relative;
+}
+
+/* Acessibilidade: foco visível */
+.mobile-menu:focus-visible,
+.nav-list a:focus-visible,
+.logo:focus-visible,
+nav::after:focus-visible {
+  outline: 3px solid var(--cor-blue);
+  outline-offset: 3px;
 }
 
 /* =================== OVERLAY =================== */
@@ -291,12 +295,10 @@ nav {
     border-radius: 0 0 0 20px;
   }
 
-  /* Links visíveis e com espaçamento no menu lateral */
+  /* Links com estado inicial oculto para animação em cascata */
   .nav-list li {
-    margin: 20px 0;
+    margin: 16px 0;
     opacity: 1 !important;
-    width: 100%;
-    text-align: center;
   }
 
   .nav-list li a {
@@ -320,6 +322,11 @@ nav {
   /* Lista ativa (menu aberto) */
   .nav-list.active {
     transform: translateX(0);
+  }
+
+  /* Quando ativo, garanta visibilidade caso animações estejam desabilitadas */
+  .nav-list.active li {
+    opacity: 1;
   }
 
   /* Oculta o link do carrinho dentro da lista */
@@ -360,6 +367,34 @@ nav {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* Redução de movimento: desabilitar animações/transições não essenciais */
+@media (prefers-reduced-motion: reduce) {
+  .nav-list {
+    transition: none;
+  }
+
+  .nav-list li {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .owl-carousel .owl-nav,
+  .owl-carousel .owl-dot,
+  .btn,
+  .div-promocao-1 img,
+  .div-promocao-2 img,
+  .produto,
+  .marcas-track {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Evitar rolagem do fundo quando menu mobile estiver aberto */
+body.menu-open {
+  overflow: hidden;
 }
 
 /* Efeito do menu hambúrguer ativo */

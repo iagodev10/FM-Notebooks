@@ -8,29 +8,40 @@ class MobileNavbar {
         this.isOpen = false;
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleOverlayClick = this.handleOverlayClick.bind(this);
-        this.handleEscape = this.handleEscape.bind(this);
     }
 
     animateLinks() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         this.navLinks.forEach((link, index) => {
-            link.style.animation = "";
-            setTimeout(() => {
-                link.style.animation = `navLinkFade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards ${index * 0.1 + 0.2}s`;
-            }, 50);
+            link.style.animation
+                ? (link.style.animation = "")
+                : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
         });
     }
 
-    openMenu() {
-        this.navList.classList.add(this.activeClass);
-        this.mobileMenu.classList.add(this.activeClass);
-        this.mobileMenu.setAttribute('aria-expanded', 'true');
-        if (this.overlay) {
-            this.overlay.classList.add(this.activeClass);
-        }
-        document.body.style.overflow = 'hidden';
-        this.isOpen = true;
+    handleClick() {
+        this.navList.classList.toggle(this.activeClass);
+        this.mobileMenu.classList.toggle(this.activeClass);
         this.animateLinks();
+
+        // Gerenciar foco
+        if (isOpen) {
+            this.restoreFocusElement = document.activeElement;
+            const firstLink = this.navList.querySelector('a, button');
+            if (firstLink) {
+                firstLink.focus({ preventScroll: true });
+            }
+            document.addEventListener('keydown', this.handleKeydown);
+            document.addEventListener('click', this.handleOutsideClick);
+            document.addEventListener('focus', this.trapFocus, true);
+        } else {
+            document.removeEventListener('keydown', this.handleKeydown);
+            document.removeEventListener('click', this.handleOutsideClick);
+            document.removeEventListener('focus', this.trapFocus, true);
+            if (this.restoreFocusElement && this.restoreFocusElement.focus) {
+                this.restoreFocusElement.focus({ preventScroll: true });
+            }
+        }
     }
 
     closeMenu() {
@@ -81,6 +92,51 @@ class MobileNavbar {
         document.addEventListener('keydown', this.handleEscape);
     }
 
+    handleKeydown(event) {
+        const isOpen = this.navList.classList.contains(this.activeClass);
+        if (!isOpen) return;
+
+        // Fechar com ESC
+        if (event.key === 'Escape') {
+            this.handleClick();
+            return;
+        }
+    }
+
+    handleOutsideClick(event) {
+        const isOpen = this.navList.classList.contains(this.activeClass);
+        if (!isOpen) return;
+        const clickInsideMenu = this.navList.contains(event.target) || this.mobileMenu.contains(event.target);
+        if (!clickInsideMenu) {
+            this.handleClick();
+        }
+    }
+
+    trapFocus(event) {
+        const isOpen = this.navList.classList.contains(this.activeClass);
+        if (!isOpen) return;
+        const focusable = this.navList.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]');
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        // Se foco saiu do menu, puxar de volta
+        if (!this.navList.contains(event.target)) {
+            first.focus({ preventScroll: true });
+        }
+
+        // Laço com Tab/Shift+Tab
+        if (event.type === 'keydown' && event.key === 'Tab') {
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+    }
+
     init() {
         if (this.mobileMenu) {
             this.addClickEvent();
@@ -120,3 +176,4 @@ $('#carousel').owlCarousel({
     $('.intro-content .intro-price').addClass('fadeInUp animated').show();
   });
   
+
