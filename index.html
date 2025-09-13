@@ -57,27 +57,28 @@
 
   <!-- ====================HEADER======================= -->
   <!-- ====================HEADER======================= -->
-  <header>
+  <header role="banner">
+    <!-- Skip link para acessibilidade -->
+    <!-- <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a> -->
 
-    <nav>
-      <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
+    <nav role="navigation" aria-label="Navegação principal">
+      <button class="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-list">
+        <div class="line1" aria-hidden="true"></div>
+        <div class="line2" aria-hidden="true"></div>
+        <div class="line3" aria-hidden="true"></div>
+      </button>
 
       <a href="index.html" class="logo" aria-label="FM Notebooks - Página inicial">
         <img src="img/logoFM.png" alt="FM Notebooks" class="logo-img" width="40" height="40">
         <span class="logo-text">Notebooks</span>
       </a>
 
-
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="produtos.html">Loja</a></li>
-        <li><a href="servicos.html">Serviços</a></li>
-        <li><a href="contatos.html">Contatos</a></li>
-        <li><a href="#" class="nav-cart"><i class="fas fa-shopping-cart"></i></a></li>
+      <ul class="nav-list" id="nav-list" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem" aria-current="page">Home</a></li>
+        <li role="none"><a href="produtos.html" role="menuitem">Loja</a></li>
+        <li role="none"><a href="servicos.html" role="menuitem">Serviços</a></li>
+        <li role="none"><a href="contatos.html" role="menuitem">Contatos</a></li>
+        <li role="none" class="nav-cart"><a href="#" class="nav-cart" role="menuitem" aria-label="Carrinho de compras"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
       </ul>
     </nav>
   </header>
@@ -160,44 +161,75 @@
   <!-- ==========Pagamentos========= -->
 
   <section class="pagamento-card" onclick="MostraMais()">
-    <div class="pagamento-card-content">
-      <div class="pague-item">
-        <div class="pague-item-content">
-          <i class="fa fa-shield-alt"></i>
-          <div>
-            <strong>Garantia Estendida</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
-              Segurança extra em seus produtos com planos exclusivos e confiáveis.
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="pagamento-card-content">
 
-      <div class="pague-item">
-        <div class="pague-item-content">
-          <i class="fa fa-credit-card"></i>
-          <div>
-            <strong>Parcelamento em 12x</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
-              Pague em até 12 parcelas sem juros no cartão de crédito.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="pague-item">
-        <div class="pague-item-content">
-          <i class="fa fa-tools"></i>
-          <div>
-            <strong>Assistência Técnica</strong>
-            <p style="color: #666; font-size: 0.9rem; margin: 2px 0 0;">
-              Serviço autorizado para reparo e manutenção com alto padrão de qualidade.
-            </p>
-          </div>
+    <!-- Garantia Estendida -->
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <i class="fa fa-shield-alt"></i>
+        <div>
+          <strong>Garantia Estendida</strong>
+          <p>
+            Segurança extra em seus produtos com planos exclusivos e confiáveis.
+          </p>
         </div>
       </div>
     </div>
-  </section>
+
+    <!-- Escolha como Pagar -->
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <i class="fa fa-credit-card"></i>
+        <div>
+          <strong>Escolha como Pagar</strong>
+          <p>
+            Com o Pix facilitado, você paga com cartão, boleto ou Pix.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assistência Técnica -->
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <i class="fa fa-tools"></i>
+        <div>
+          <strong>Assistência Técnica</strong>
+          <p>
+            Escolhemos os melhores técnicos para quem deseja qualidade.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrega Rápida -->
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <i class="fa fa-truck"></i>
+        <div>
+          <strong>Entrega Rápida</strong>
+          <p>
+            Receba seus produtos com rapidez, agilidade e total segurança.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Novidades e Promoções -->
+    <div class="pague-item">
+      <div class="pague-item-content">
+        <i class="fa fa-tags"></i>
+        <div>
+          <strong>Novidades e Promoções</strong>
+          <p>
+            Descontos exclusivos e lançamentos especiais para clientes cadastrados.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 

@@ -1,5 +1,5 @@
-@import url('../assets/fonts/fonts.css');
-@import url('./base-responsive.css');
+@import url("../assets/fonts/fonts.css");
+@import url("./base-responsive.css");
 
 :root {
   --cor-black: #000;
@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 500;
 }
 
@@ -71,7 +71,7 @@ body {
     bottom: 15px;
     right: 15px;
   }
-  
+
   .whats-fixed img {
     width: 28px;
     height: 28px;
@@ -85,15 +85,12 @@ body {
     bottom: 10px;
     right: 10px;
   }
-  
+
   .whats-fixed img {
     width: 24px;
     height: 24px;
   }
 }
-
-
-
 
 /*-----------------HEADER------------------*/
 /*-----------------HEADER------------------*/
@@ -109,16 +106,16 @@ header {
 
 .logo {
   display: flex;
-  align-items: center; 
+  align-items: center;
   text-decoration: none;
   color: var(--cor-black);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   transition: color 0.3s;
   white-space: nowrap;
 }
 
 .logo-img {
-  height: 40px;  
+  height: 40px;
   width: auto;
 }
 
@@ -132,7 +129,6 @@ header {
   color: var(--cor-blue);
   text-decoration: none;
 }
-
 
 .nav-list {
   list-style: none;
@@ -166,7 +162,6 @@ header {
   font-size: 1.4rem;
 }
 
-
 .nav-list li.nav-cart a:hover {
   color: var(--cor-blue);
 }
@@ -175,6 +170,11 @@ header {
 .mobile-menu {
   display: none;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 1100;
+  position: relative;
 }
 
 .mobile-menu div {
@@ -202,15 +202,6 @@ nav {
   padding: 0 20px;
   height: 8vh;
   position: relative;
-}
-
-/* Acessibilidade: foco visível */
-.mobile-menu:focus-visible,
-.nav-list a:focus-visible,
-.logo:focus-visible,
-nav::after:focus-visible {
-  outline: 3px solid var(--cor-blue);
-  outline-offset: 3px;
 }
 
 /* =================== OVERLAY =================== */
@@ -295,10 +286,12 @@ nav::after:focus-visible {
     border-radius: 0 0 0 20px;
   }
 
-  /* Links com estado inicial oculto para animação em cascata */
+  /* Links visíveis e com espaçamento no menu lateral */
   .nav-list li {
-    margin: 16px 0;
+    margin: 20px 0;
     opacity: 1 !important;
+    width: 100%;
+    text-align: center;
   }
 
   .nav-list li a {
@@ -324,11 +317,6 @@ nav::after:focus-visible {
     transform: translateX(0);
   }
 
-  /* Quando ativo, garanta visibilidade caso animações estejam desabilitadas */
-  .nav-list.active li {
-    opacity: 1;
-  }
-
   /* Oculta o link do carrinho dentro da lista */
   .nav-list li.nav-cart {
     display: none;
@@ -336,7 +324,7 @@ nav::after:focus-visible {
 
   /* Ícone do carrinho fixo no header, canto direito */
   nav::after {
-    content: '\f07a';
+    content: "\f07a";
     /* unicode ícone shopping-cart FontAwesome */
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
@@ -367,34 +355,6 @@ nav::after:focus-visible {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-/* Redução de movimento: desabilitar animações/transições não essenciais */
-@media (prefers-reduced-motion: reduce) {
-  .nav-list {
-    transition: none;
-  }
-
-  .nav-list li {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .owl-carousel .owl-nav,
-  .owl-carousel .owl-dot,
-  .btn,
-  .div-promocao-1 img,
-  .div-promocao-2 img,
-  .produto,
-  .marcas-track {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* Evitar rolagem do fundo quando menu mobile estiver aberto */
-body.menu-open {
-  overflow: hidden;
 }
 
 /* Efeito do menu hambúrguer ativo */
@@ -462,7 +422,6 @@ body.menu-open {
     width: 100vw;
   }
 }
-
 
 /* ==================CARROSSEL============== */
 /* ==================CARROSSEL============== */
@@ -534,25 +493,25 @@ body.menu-open {
   .intro-carousel {
     height: 50vh;
   }
-  
+
   .carousel-item-a {
     height: 50vh;
   }
-  
+
   .intro-body {
     margin-top: 100px;
     text-align: center;
   }
-  
+
   .intro-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .intro-subtitle {
     font-size: 1.2rem;
   }
-  
+
   .price-a {
     padding: 10px 25px;
     font-size: 0.9rem;
@@ -563,25 +522,25 @@ body.menu-open {
   .intro-carousel {
     height: 45vh;
   }
-  
+
   .carousel-item-a {
     height: 45vh;
   }
-  
+
   .intro-body {
     margin-top: 80px;
     padding: 0 10px;
   }
-  
+
   .intro-title {
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
+
   .intro-subtitle {
     font-size: 1rem;
   }
-  
+
   .price-a {
     padding: 8px 20px;
     font-size: 0.85rem;
@@ -797,7 +756,6 @@ body.menu-open {
   transition: transform 0.3s ease;
 }
 
-
 .div-promocao-2:hover img {
   transform: scale(1.05);
 }
@@ -851,199 +809,101 @@ body.menu-open {
 
 .pagamento-card {
   width: 100%;
-  margin: auto;
-  margin-top: 40px;
+  margin: 40px auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .pagamento-card-content {
-  width: 80%;
+  width: 90%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  background-color: var(--cor-white2);
-  gap: 15px;
-  transition: transform 0.5s ease-in-out;
+  gap: 18px;
+  flex-wrap: wrap; /* quebra linha em telas menores */
 }
 
+/* ====== Cada Card ====== */
 .pague-item {
-  font-size: 0.95rem;
-  font-family: "Montserrat", sans-serif;
-  padding: 20px 30px;
-  border: 2px solid var(--cor-blue);
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+  padding: 22px 20px;
+  background-color: #fff;
+  border: 2px solid #007bff;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background-color: white;
+  gap: 12px;
   cursor: pointer;
-  transform: skewX(-20deg);
+  transform: skewX(-12deg);
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+.pague-item:hover {
+  background-color: #f5f9ff;
+  transform: skewX(-12deg) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* ====== Conteúdo interno ====== */
 .pague-item-content {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  transform: skewX(20deg);
+  align-items: flex-start;
+  gap: 12px;
+  transform: skewX(12deg);
 }
 
 .pague-item-content i {
   font-size: 32px;
   color: #007bff;
-  margin-right: 10px;
   flex-shrink: 0;
 }
 
-/* Mobile (vira carrossel) */
+.pague-item-content strong {
+  font-size: 1rem;
+  color: #222;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pague-item-content p {
+  color: #555;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ====== Responsividade ====== */
+
+/* Tablet: 2 por linha */
+@media (max-width: 1024px) {
+  .pagamento-card-content {
+    justify-content: center;
+  }
+
+  .pague-item {
+    max-width: 45%;
+  }
+}
+
+/* Mobile: 1 por linha */
 @media (max-width: 768px) {
-  .pagamento-card {
-    background-color: var(--cor-white2);
-    padding: 0 10px; /* respiro lateral */
-    overflow: hidden;
-  }
-
   .pagamento-card-content {
-    width: 100%;
-    display: flex;
-    gap: 0;
-    transition: transform 0.5s ease-in-out;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .pague-item {
-    min-width: 100%;
-    flex-shrink: 0;
-    border-radius: 8px;
-    padding: 15px;           /* reduz padding */
-    font-size: 0.85rem;      /* fonte mais compacta */
+    max-width: 100%;
+    transform: skewX(-8deg);
   }
 
-  .pague-item-content i {
-    font-size: 26px;         /* ícone menor */
-  }
-}
-
-/* Tablet: 2 cards por vez */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .pagamento-card {
-    overflow: hidden;
-  }
-
-  .pagamento-card-content {
-    width: 100%;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .pague-item {
-    min-width: 50%; /* dois cards lado a lado */
-    flex-shrink: 0;
-  }
-}
-
-@media (max-width: 767px) and (min-width: 481px) {
-  .pagamento-card {
-    padding: 0 8px;
-  }
-
-  .pagamento-card-content {
-    width: 100%;
-    display: flex;
-    gap: 8px;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .pague-item {
-    min-width: 85%;
-    margin: 0 auto;
-    flex-shrink: 0;
-    border-radius: 12px;
-    padding: 16px;
-    font-size: 0.9rem;
-  }
-
-  .pague-item-content i {
-    font-size: 26px;
-  }
-
-  .pague-item-content h3 {
-    font-size: 1.15rem;
-  }
-
-  .pague-item-content p {
-    font-size: 0.85rem;
-  }
-}
-
-/* ====== Celular pequeno (até 480px) ====== */
-@media (max-width: 480px) and (min-width: 376px) {
-  .pagamento-card {
-    padding: 0 6px;
-  }
-
-  .pagamento-card-content {
-    width: 100%;
-    display: flex;
-    gap: 6px;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .pague-item {
-    min-width: 88%;
-    margin: 0 auto;
-    flex-shrink: 0;
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 0.8rem;
-  }
-
-  .pague-item-content i {
-    font-size: 22px;
-  }
-
-  .pague-item-content h3 {
-    font-size: 1rem;
-  }
-
-  .pague-item-content p {
-    font-size: 0.75rem;
-  }
-}
-
-/* ====== Celular muito pequeno (até 375px / 360px) ====== */
-@media (max-width: 375px) {
-  .pagamento-card {
-    padding: 0 4px;
-  }
-
-  .pagamento-card-content {
-    width: 100%;
-    display: flex;
-    gap: 4px;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .pague-item {
-    min-width: 92%;       /* quase 100% da tela */
-    margin: 0 auto;
-    flex-shrink: 0;
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 0.75rem;
-  }
-
-  .pague-item-content i {
-    font-size: 20px;
-  }
-
-  .pague-item-content h3 {
-    font-size: 0.95rem;
-  }
-
-  .pague-item-content p {
-    font-size: 0.7rem;
-    line-height: 1.1;
+  .pague-item-content {
+    transform: skewX(8deg);
   }
 }
 
@@ -1065,7 +925,7 @@ body.menu-open {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 40px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #111;
   text-align: center;
 }
@@ -1150,7 +1010,7 @@ body.menu-open {
   font-size: 1.3rem;
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   .produtos {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1253,7 +1113,7 @@ body.menu-open {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--cor-black);
     text-align: center;
   }
@@ -1311,7 +1171,7 @@ body.menu-open {
   }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
   .produtos {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1320,7 +1180,7 @@ body.menu-open {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--cor-black);
     text-align: center;
   }
@@ -1383,7 +1243,7 @@ body.menu-open {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--cor-black);
     text-align: center;
   }
@@ -1462,10 +1322,12 @@ body.menu-open {
   z-index: 1;
   border-radius: 25px;
   color: #fff;
-  background-image: linear-gradient(to bottom,
-      var(--fancy-button-gradient-0) 0%,
-      var(--fancy-button-gradient-50) 50%,
-      var(--fancy-button-gradient-100) 100%);
+  background-image: linear-gradient(
+    to bottom,
+    var(--fancy-button-gradient-0) 0%,
+    var(--fancy-button-gradient-50) 50%,
+    var(--fancy-button-gradient-100) 100%
+  );
   box-shadow:
     0px 4px 12px rgba(9, 12, 60, 0.15),
     0px 2px 8px rgba(9, 12, 60, 0.15),
@@ -1509,9 +1371,7 @@ body.menu-open {
   border-radius: inherit;
   overflow: hidden;
   position: relative;
-  background-image: linear-gradient(to bottom,
-      var(--fancy-button-shine-top),
-      transparent 8px);
+  background-image: linear-gradient(to bottom, var(--fancy-button-shine-top), transparent 8px);
   background-position: 0 -6px;
   background-repeat: no-repeat;
   z-index: 1;
@@ -1525,9 +1385,7 @@ body.menu-open {
   transform: translateX(-50%);
   border-radius: 50%;
   background-color: var(--fancy-button-shine-bottom);
-  transition:
-    opacity 0.25s,
-    transform 0.25s;
+  transition: opacity 0.25s, transform 0.25s;
   will-change: transform;
 }
 
@@ -1631,8 +1489,6 @@ body.menu-open {
   }
 }
 
-
-
 /* =============CATEGORIA============== */
 /* =============CATEGORIA============== */
 
@@ -1653,7 +1509,7 @@ body.menu-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .categoria-produtos h2 {
@@ -1661,7 +1517,7 @@ body.menu-open {
   font-weight: 600;
   letter-spacing: 1.2;
   margin-bottom: 150px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--cor-black);
   text-align: center;
 }
@@ -1699,7 +1555,6 @@ body.menu-open {
   transform: translate(-50%, -50%);
   transition: transform 0.3s ease;
 }
-
 
 .categoria:hover img {
   transform: translate(-50%, -50%) scale(1.1);
@@ -1741,7 +1596,7 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
   }
 
   .categoria-produtos h2 {
@@ -1749,7 +1604,7 @@ body.menu-open {
     font-weight: 600;
     letter-spacing: 1.2;
     margin-bottom: 70px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--cor-black);
     text-align: center;
   }
@@ -1792,7 +1647,7 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
   }
 
   .categoria-produtos h2 {
@@ -1800,7 +1655,7 @@ body.menu-open {
     font-weight: 600;
     letter-spacing: 1.2;
     margin-bottom: 70px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--cor-black);
     text-align: center;
   }
@@ -1832,7 +1687,6 @@ body.menu-open {
     text-align: center;
   }
 }
-
 
 /* ==============PAGAMENTO MODAL================= */
 /* ==============PAGAMENTO MODAL================= */
@@ -2080,7 +1934,6 @@ body.menu-open {
     height: 60px;
   }
 }
-
 
 /* ========REDES SOCIAS=========== */
 /* ========REDES SOCIAS=========== */
@@ -2558,7 +2411,6 @@ body.menu-open {
   }
 }
 
-
 /* <!-- =======VITRINE DE OPORTUNIDADES=========== -->
   <!-- =======VITRINE DE OPORTUNIDADES=========== --> */
 
@@ -2679,8 +2531,6 @@ body.menu-open {
     animation-duration: 24s;
   }
 }
-
-
 
 /* ==================FOOTER================================ */
 /* ==================FOOTER================================ */
@@ -2844,7 +2694,6 @@ footer {
   text-decoration: none;
 }
 
-
 .social-icon-img {
   width: 24px;
   height: 24px;
@@ -2884,7 +2733,7 @@ footer {
 .footer-extra-area-titulo h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #ecf0f1;
+  color: var(--cor-white2);
   margin: 0;
 }
 
