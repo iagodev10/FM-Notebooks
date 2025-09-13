@@ -1,36 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let currentIndex = 0
-  let carouselInterval
+const carrosselContent = document.querySelector(".carrossel-content");
+const cards = document.querySelectorAll(".pague-item");
 
-  function initPaymentCarousel() {
-    const container = document.querySelector(".pagamento-card-content")
-    const items = document.querySelectorAll(".pague-item")
-    const total = items.length
+let index = 0;
+const tempo = 3000; // tempo em ms (3 segundos)
 
-    if (!container || total === 0) return
+function updateCarrossel() {
+  carrosselContent.style.transform = `translateX(${-index * 100}%)`;
+}
 
-    // Sempre começa do primeiro
-    currentIndex = 0
-    container.style.transform = "translateX(0)"
-
-    if (carouselInterval) clearInterval(carouselInterval)
-
-    if (window.innerWidth <= 768) {
-      // Mobile -> 1 card por vez
-      carouselInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % total
-        container.style.transform = `translateX(-${currentIndex * 100}%)`
-      }, 3000)
-    } else if (window.innerWidth <= 1024) {
-      // Tablet -> 2 cards por vez
-      const maxIndex = Math.ceil(total / 2) - 1
-      carouselInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % (maxIndex + 1)
-        container.style.transform = `translateX(-${currentIndex * 100}%)`
-      }, 3000)
-    }
+function autoSlide() {
+  index++;
+  if (index >= cards.length) {
+    index = 0; // volta para o primeiro
   }
+  updateCarrossel();
+}
 
-  initPaymentCarousel()
-  window.addEventListener("resize", initPaymentCarousel)
-})
+setInterval(autoSlide, tempo);

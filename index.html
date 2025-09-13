@@ -23,17 +23,25 @@
   <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Main Stylesheet File -->
   <link href="css/index.css" rel="stylesheet">
+
+  <!-- ==================CARRINHO====================== -->
+  <link rel="stylesheet" href="css/carrinho.css">
+  <script src="js/carrinho.js" defer></script>
+
 
   <!-- =======================================================
     Theme Name: EstateAgency  ''
@@ -46,7 +54,8 @@
 <body>
 
   <!-- WhatsApp Fixo -->
-  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco via WhatsApp">
+  <a href="https://wa.me/553492088233" class="whats-fixed" target="_blank" rel="noopener noreferrer"
+    aria-label="Fale conosco via WhatsApp">
     <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp" width="32" height="32">
   </a>
 
@@ -75,7 +84,8 @@
         <li role="none"><a href="produtos.html" role="menuitem">Loja</a></li>
         <li role="none"><a href="servicos.html" role="menuitem">Serviços</a></li>
         <li role="none"><a href="contatos.html" role="menuitem">Contatos</a></li>
-        <li role="none" class="nav-cart"><a href="#" class="nav-cart" role="menuitem" aria-label="Carrinho de compras"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
+        <li role="none" class="nav-cart"><a href="#" class="nav-cart" role="menuitem"
+            aria-label="Carrinho de compras"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a></li>
       </ul>
     </nav>
   </header>
@@ -158,75 +168,77 @@
   <!-- ==========Pagamentos========= -->
 
   <section class="pagamento-card" onclick="MostraMais()">
-  <div class="pagamento-card-content">
+    <div class="pagamento-card-content">
 
-    <!-- Garantia Estendida -->
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <i class="fa fa-shield-alt"></i>
-        <div>
-          <strong>Garantia Estendida</strong>
-          <p>
-            Segurança extra em seus produtos com planos exclusivos e confiáveis.
-          </p>
+      <!-- Garantia Estendida -->
+      <div class="pague-item">
+        <div class="pague-item-content">
+          <i class="fa fa-shield-alt"></i>
+          <div>
+            <strong>Garantia Estendida</strong>
+            <p>
+              Segurança extra em seus produtos com planos exclusivos e confiáveis.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Escolha como Pagar -->
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <i class="fa fa-credit-card"></i>
-        <div>
-          <strong>Escolha como Pagar</strong>
-          <p>
-            Com o Pix facilitado, você paga com cartão, boleto ou Pix.
-          </p>
+      <!-- Escolha como Pagar -->
+      <div class="pague-item">
+        <div class="pague-item-content">
+          <i class="fa fa-credit-card"></i>
+          <div>
+            <strong>Escolha como Pagar</strong>
+            <p>
+              Com o Pix facilitado, você paga com cartão, boleto ou Pix.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Assistência Técnica -->
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <i class="fa fa-tools"></i>
-        <div>
-          <strong>Assistência Técnica</strong>
-          <p>
-            Escolhemos os melhores técnicos para quem deseja qualidade.
-          </p>
+      <!-- Assistência Técnica -->
+      <div class="pague-item">
+        <div class="pague-item-content">
+          <i class="fa fa-tools"></i>
+          <div>
+            <strong>Assistência Técnica</strong>
+            <p>
+              Escolhemos os melhores técnicos para quem deseja qualidade.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Entrega Rápida -->
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <i class="fa fa-truck"></i>
-        <div>
-          <strong>Entrega Rápida</strong>
-          <p>
-            Receba seus produtos com rapidez, agilidade e total segurança.
-          </p>
+      <!-- Entrega Rápida -->
+      <div class="pague-item">
+        <div class="pague-item-content">
+          <i class="fa fa-truck"></i>
+          <div>
+            <strong>Entrega Rápida</strong>
+            <p>
+              Receba seus produtos com rapidez, agilidade e total segurança.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Novidades e Promoções -->
-    <div class="pague-item">
-      <div class="pague-item-content">
-        <i class="fa fa-tags"></i>
-        <div>
-          <strong>Novidades e Promoções</strong>
-          <p>
-            Descontos exclusivos e lançamentos especiais para clientes cadastrados.
-          </p>
+      <!-- Novidades e Promoções -->
+      <div class="pague-item">
+        <div class="pague-item-content">
+          <i class="fa fa-tags"></i>
+          <div>
+            <strong>Novidades e Promoções</strong>
+            <p>
+              Descontos exclusivos e lançamentos especiais para clientes cadastrados.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
+    </div>
+  </section>
+
+
 
 
 
@@ -311,7 +323,7 @@
     <h2>Promoções</h2>
 
     <div class="produtos" id="divPromocao">
-    
+
     </div>
     <button class="btn">
       <a href="produtos.html"><span>Ver Todos</span></a>
@@ -724,19 +736,86 @@
     </div>
   </section>
 
-  <!-- ============Pagamento Modal=================== -->
-  <div class="produto">
-    <img src="img/noteboooooo.jpg" alt="Fitboot Inspire">
-    <h3>Fitboot Inspire, tracker de frequência cardíaca</h3>
-  </div>
+
+
+
+  <!-- ========================CARRINHO================================ -->
+  <!-- ========================CARRINHO================================ -->
+
+  <section class="carrinho" id="carrinho-overlay">
+    <div class="content-carrinho">
+      <button id="fechar-carrinho">×</button>
+
+      <h2>Seu Carrinho</h2>
+
+      <div id="cart-items">
+
+        <div class="items-add">
+
+          <div class="cart-vazio" style="display: none;">
+            <p>Seu carrinho está vazio.</p>
+          </div>
+
+          <div class="item">
+
+            <div class="item-cont">
+
+              <div class="item-img">
+                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
+              </div>
+
+              <div class="item-desc">
+                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
+                <span>R$ 297,20</span>
+              </div>
+
+            </div>
+
+            <div class="item-add-or-delete">
+              <div class="quantidade-container">
+                <!-- Botão de diminuir quantidade -->
+                <button class="quantidade-btn diminuir">-</button>
+
+                <!-- Campo de quantidade -->
+                <input type="number" class="item-quantidade" value="1" min="1">
+
+                <!-- Botão de aumentar quantidade -->
+                <button class="quantidade-btn aumentar">+</button>
+              </div>
+
+              <!-- Botão de remover com ícone de lixeira -->
+              <button class="remover-item">
+                <i class="fa fa-trash"></i> Remover
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cart-total">
+
+        Total: <span id="cart-total">R$0,00</span>
+      </div>
+
+      <button id="checkout" class="checkout-btn">Finalizar Compra</button>
+
+    </div>
+  </section>
+
+
+
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       fetch('http://localhost:5090/promocoes/', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter informações')
           return response.json()
@@ -751,16 +830,16 @@
             const img = document.createElement('img')
             img.src = promo.urlImgPromo
             img.alt = promo.nomePromocao
-            img.setAttribute('id','imgPromocaoIndex')
+            img.setAttribute('id', 'imgPromocaoIndex')
 
-            const h3=document.createElement('h3')
-            h3.innerText=promo.nomePromocao
-            h3.setAttribute('id','tituloPromocao')
+            const h3 = document.createElement('h3')
+            h3.innerText = promo.nomePromocao
+            h3.setAttribute('id', 'tituloPromocao')
 
             divPromo.append(img)
             divPromo.append(h3)
             divPromocoes.append(divPromo)
-            
+
           });
 
         })
@@ -771,6 +850,35 @@
 
     })
 
+    //    <!-- ========================CARRINHO================================ -->
+    // <!-- ========================CARRINHO================================ -->
+
+    const carrinho = document.getElementById('carrinho-overlay');
+    const abrirBtn = document.querySelector('.nav-cart a');
+    const fecharBtn = document.getElementById('fechar-carrinho');
+
+
+
+    // abrir
+    abrirBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      carrinho.classList.add('ativo');
+    });
+
+    // fechar
+    fecharBtn.addEventListener('click', () => {
+      carrinho.classList.remove('ativo');
+    });
+
+    // fechar clicando no fundo
+    carrinho.addEventListener('click', (e) => {
+      if (e.target === carrinho) {
+        carrinho.classList.remove('ativo');
+      }
+    });
+
+    //    <!-- ========================CARRINHO================================ -->
+    // <!-- ========================CARRINHO================================ -->
 
 
     function MostraMais() {
@@ -781,7 +889,7 @@
       document.getElementById("modal-pagamento").style.display = "none";
     }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       const modal = document.getElementById("modal-pagamento");
       if (event.target === modal) {
         modal.style.display = "none";
@@ -823,7 +931,7 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
   <script src="js/carousel-pagamentos.js"></script>
-  
+
   <!-- accessibility.js para melhorias de acessibilidade -->
   <script src="js/accessibility.js"></script>
 
