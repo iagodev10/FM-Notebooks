@@ -988,19 +988,36 @@
     function toggleProdutoPromocao(produtoId, promoId) {
       console.log("Toggleprod>>", produtoId);
       console.log("TogglePromo>>", promoId);
+      let status;
       const produto = produtosDisponiveisModal.find(p => p.id === produtoId);
       if (!produto) return;
 
       // alterna status
       if (produto.idPromo != null) {
+        status=false
         produto.idPromo = null
       } else {
+        status=true
         produto.idPromo = promoId;
       }
-
+      const prodModificado={
+          id:produtoId,
+          status:status
+      }
 
       // registra alteração
-      produtosAlteradosModal.push(produtoId);
+      let achou=0;
+      for(const prod of produtosAlteradosModal){
+        if(prod.id==prodModificado.id){
+          prod.status=prodModificado.status
+          achou=1;
+          break;
+        }
+      }
+      if(achou==0){
+        produtosAlteradosModal.push(prodModificado);
+      }
+      
 
       // re-renderiza para atualizar o botão
       carregarProdutosModal(promoId);
