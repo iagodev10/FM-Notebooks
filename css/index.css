@@ -921,6 +921,34 @@ nav {
   margin-bottom: 50px;
 }
 
+.promocoes-em-destaque{
+  width: 90%;
+  margin: auto;
+  background: var(--cor-white);
+  padding: 50px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.promocoes-em-destaque h2 {
+  margin-top: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  font-family: 'Montserrat', sans-serif;
+  color: #111;
+  text-align: center;
+}
+#tituloPromocao{
+ 
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+
+  min-height: 48px;
+}
 .produtos-em-destaque h2 {
   font-size: 2.2rem;
   font-weight: 700;
@@ -951,8 +979,23 @@ nav {
   border: 2px solid transparent;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
+.promocao{
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(15px, 3vw, 20px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
 .produto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
+  border-color: var(--cor-blue);
+}
+.promocao:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
   border-color: var(--cor-blue);
@@ -962,8 +1005,15 @@ nav {
   transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
+.promocao:hover {
+  transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
 
 .produto:nth-child(6n) {
+  border-right: none;
+}
+.promocao:nth-child(6n) {
   border-right: none;
 }
 
@@ -973,6 +1023,18 @@ nav {
   height: 140px;
   object-fit: contain;
   margin: 25px auto 10px auto;
+  display: block;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+}
+#imgPromocaoIndex{
+  width: 100%;
+ margin-bottom: 2rem;
+ margin-top: 2rem;
+  height: 140px;
+  object-fit: contain;
+
   display: block;
   background: #fff;
   border-radius: 0;
