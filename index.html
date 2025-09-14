@@ -259,55 +259,10 @@
   <!-- Produtos em destaque -->
   <!-- Produtos em destaque -->
   <section class="produtos-em-destaque">
-    <h2>Mais vendidos</h2>
+    <h2 id="divFlexNome">Mais vendidos</h2>
 
-    <div class="produtos">
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Fitboot Inspire">
-        <h3>Fitboot Inspire, tracker de frequência cardíaca</h3>
-        <div class="preco">
-          <span class="preco-antigo">R$ 600,00</span>
-          <span class="preco-novo">R$ 585,00</span>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Notebook Gamer">
-        <h3>Laptop para games JP 15.6'', 256 GB</h3>
-        <div class="preco">
-          <span class="preco-antigo">R$ 600,00</span>
-          <span class="preco-novo">R$ 585,00</span>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Drone Quadcopter">
-        <h3>Drone Quadcopter HKI Tech, câmera 360 e controle</h3>
-        <div class="preco">
-          <span class="preco-novo">R$ 600,00</span>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Smartphone Z Pixel Max">
-        <h3>Smartphone Z Pixel Max 128 GB, desbloqueado</h3>
-        <div class="preco">
-          <span class="preco-antigo">R$ 600,00</span>
-          <span class="preco-novo">R$ 585,00</span>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Headphone In-ear">
-        <h3>Headphone In-ear wireless, cancelamento de ruído</h3>
-        <div class="preco">
-          <span class="preco-antigo">R$ 600,00</span>
-          <span class="preco-novo">R$ 585,00</span>
-        </div>
-      </div>
-      <div class="produto">
-        <img src="img/noteboooooo.jpg" alt="Óculos VR Safay">
-        <h3>Óculos VR Safay GEN 2, 256 GB, controladores de toque</h3>
-        <div class="preco">
-          <span class="preco-novo">R$ 600,00</span>
-        </div>
-      </div>
+    <div class="produtos" id="prodSecaoFlex">
+      
     </div>
     <button class="btn">
       <a href="produtos.html"><span>Ver Todos</span></a>
@@ -845,7 +800,69 @@
         })
         .catch(error => console.error('Erro ao obter informações', error))
 
+        fetch('http://localhost:5090/get-divflex/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          console.log('div',data);
+          document.getElementById('divFlexNome').innerText=data.div.nomeSecaoFlex
 
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
+
+
+
+
+        fetch('http://localhost:5090/get-prods-divflex/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          const divEnglob=document.getElementById('prodSecaoFlex')
+          console.log(divEnglob);
+         console.log(data.produtos);
+         data.produtos.map((prod)=>{
+          const div=document.createElement('div')
+          div.className='produto'
+
+          const img=document.createElement("img")
+          img.src=prod.urlImgProd1
+          img.alt=prod.nomeProd
+
+          const h3=document.createElement('h3')
+          h3.innerText=prod.nomeProd
+
+          const divPreco=document.createElement('div')
+          divPreco.className='preco'
+
+          const span=document.createElement('span')
+          span.className='preco-novo'
+          span.innerText=`R$ ${prod.precoProd}`
+
+          div.appendChild(img)
+          div.appendChild(h3)
+          divPreco.appendChild(span)
+          div.appendChild(divPreco)
+          console.log(div);
+          divEnglob.appendChild(div)
+         })
+          
+
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
 
 
     })
