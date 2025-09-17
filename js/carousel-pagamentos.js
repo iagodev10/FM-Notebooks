@@ -1,19 +1,47 @@
-const carrosselContent = document.querySelector(".carrossel-content");
-const cards = document.querySelectorAll(".pague-item");
+// Carousel de cartões de pagamento (mobile)
+// Só ativa em telas pequenas e quando a estrutura existe
+(function initPagamentoCarousel() {
+  const content = document.querySelector('.pagamento-card-content');
+  const items = document.querySelectorAll('.pague-item');
 
-let index = 0;
-const tempo = 3000; // tempo em ms (3 segundos)
+  if (!content || items.length === 0) return;
 
-function updateCarrossel() {
-  carrosselContent.style.transform = `translateX(${-index * 100}%)`;
-}
+  // Evita conflito com CSS de layout em desktop: ativa só em mobile
+  const isMobile = () => window.innerWidth <= 768;
+  let index = 0;
+  let intervalId = null;
 
-function autoSlide() {
-  index++;
-  if (index >= cards.length) {
-    index = 0; // volta para o primeiro
+  function applyTransform() {
+    content.style.transform = `translateX(-${index * 100}%)`;
+    content.style.transition = 'transform 0.4s ease';
   }
-  updateCarrossel();
-}
 
-setInterval(autoSlide, tempo);
+  function start() {
+    if (!isMobile() || intervalId) return;
+    intervalId = setInterval(() => {
+      index = (index + 1) % items.length;
+      applyTransform();
+    }, 3000);
+  }
+
+  function stop() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+      content.style.transform = '';
+      content.style.transition = '';
+    }
+  }
+
+  // Inicializa conforme o tamanho da tela
+  function handleResize() {
+    if (isMobile()) {
+      start();
+    } else {
+      stop();
+    }
+  }
+
+  window.addEventListener('resize', handleResize);
+  handleResize();
+})();

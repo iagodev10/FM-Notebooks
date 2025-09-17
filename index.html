@@ -244,7 +244,7 @@
 
   <!-- Section cards de promoção -->
   <!-- Section cards de promoção -->
-  <section class="promocao">
+  <section class="promocao-hero">
     <div class="div-promocao">
       <div class="div-promocao-1">
         <img src="img/note-fones.jpg" alt="">
@@ -914,24 +914,7 @@
     }
 
 
-    let currentIndex = 0;
-
-    function startCarousel() {
-      const container = document.querySelector('.pagamento-card-content');
-      const items = document.querySelectorAll('.pague-item');
-      const total = items.length;
-
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % total;
-        container.style.transform = `translateX(-${currentIndex * 100}%)`;
-      }, 2000);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.innerWidth <= 768) {
-        startCarousel();
-      }
-    });
+    // Carousel de pagamentos movido para js/carousel-pagamentos.js
   </script>
 
   <!-- JavaScrnoteboooooo.jpg-->
