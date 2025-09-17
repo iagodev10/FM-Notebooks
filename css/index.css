@@ -711,7 +711,7 @@ nav {
 /* ==================Section cards de promoção =======================*/
 /* =================Section cards de promoção ========================*/
 
-.promocao {
+section.promocao {
   width: 100%;
   height: auto;
   padding-top: 50px;
@@ -981,7 +981,7 @@ nav {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.promocao {
+.promocoes-em-destaque .produtos .promocao {
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -999,7 +999,7 @@ nav {
   border-color: var(--cor-blue);
 }
 
-.promocao:hover {
+.promocoes-em-destaque .produtos .promocao:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
   border-color: var(--cor-blue);
@@ -1010,7 +1010,7 @@ nav {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
-.promocao:hover {
+.promocoes-em-destaque .produtos .promocao:hover {
   transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
@@ -1019,7 +1019,7 @@ nav {
   border-right: none;
 }
 
-.promocao:nth-child(6n) {
+.promocoes-em-destaque .produtos .promocao:nth-child(6n) {
   border-right: none;
 }
 
