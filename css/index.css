@@ -906,9 +906,7 @@ nav {
 
 
 /* ===========Produtos em destaque======== */
-/* ===========Produtos em destaque======== */
-
-.produtos-em-destaque {
+.produtos-em-destaque, .promocoes-em-destaque {
   width: 90%;
   margin: auto;
   background: var(--cor-white);
@@ -919,38 +917,7 @@ nav {
   margin-bottom: 50px;
 }
 
-.promocoes-em-destaque {
-  width: 90%;
-  margin: auto;
-  background: var(--cor-white);
-  padding: 50px 0 30px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
-}
-
-.promocoes-em-destaque h2 {
-  margin-top: 2rem;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-  font-family: 'Montserrat', sans-serif;
-  color: #111;
-  text-align: center;
-}
-
-#tituloPromocao {
-
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #222;
-  text-align: center;
-
-  min-height: 48px;
-}
-
-.produtos-em-destaque h2 {
+.produtos-em-destaque h2, .promocoes-em-destaque h2 {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 40px;
@@ -959,17 +926,16 @@ nav {
   text-align: center;
 }
 
-.produtos {
+.produtos, .promocoes {
   width: 95%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  overflow: hidden;
   margin-bottom: 30px;
   padding: 20px;
 }
 
-.produto {
+.produto, .promocao {
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -979,77 +945,26 @@ nav {
   transition: all 0.3s ease;
   border: 2px solid transparent;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: 300px; /* altura fixa para padronizar igual ao exemplo */
 }
 
-.promocao {
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(15px, 3vw, 20px);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.produto:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
+.produto:hover, .promocao:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
   border-color: var(--cor-blue);
 }
 
-.promocao:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 82, 204, 0.15);
-  border-color: var(--cor-blue);
-}
-
-.produto:hover {
-  transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-}
-
-.promocao:hover {
-  transform: translateY(-8px) scale(1.03) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-}
-
-.produto:nth-child(6n) {
-  border-right: none;
-}
-
-.promocao:nth-child(6n) {
-  border-right: none;
-}
-
-.produto img {
+.produto img, .promocao img {
   width: 100%;
   max-width: 140px;
   height: 140px;
   object-fit: contain;
-  margin: 25px auto 10px auto;
+  margin: 15px auto 10px auto;
   display: block;
-  background: #fff;
-  border-radius: 0;
-  box-shadow: none;
 }
 
-#imgPromocaoIndex {
-  width: 100%;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  height: 140px;
-  object-fit: contain;
-
-  display: block;
-  background: #fff;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.produto h3 {
-  font-size: 1.2rem;
+.produto h3, .promocao h3 {
+  font-size: 1.1rem;
   font-weight: 500;
   color: #222;
   text-align: center;
@@ -1057,439 +972,240 @@ nav {
   min-height: 48px;
 }
 
-.preco {
+.preco-add, .preco-add-promocao {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  padding-left: 15px;
-  margin-bottom: 10px;
+  padding: 0 15px;
+  margin-top: auto;
 }
 
-.preco-antigo {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 1.1rem;
-}
-
-.preco-novo {
+.preco-novo, .preco-novo-promocao {
   color: var(--cor-blue);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+}
+
+.add-btn, .add-btn-promocao {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cor-blue);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-btn:hover, .add-btn-promocao:hover {
+  background: #0056b3;
+}
+
+/* Botão animado azul */
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: dodgerblue; /* Alterado para azul */
+  box-shadow: 0 0 0 2px dodgerblue; /* Alterado para azul */
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none; /* Remove sublinhado */
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: dodgerblue; /* Alterado para azul */
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: dodgerblue; /* Alterado para azul */
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #212121;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px dodgerblue; /* Alterado para azul */
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .produtos, .promocoes  {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .produtos {
+  .produtos, .promocoes {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .produto:nth-child(2n) {
-    border-right: none;
+  .produto, .promocao {
+    height: 280px;
   }
 
-  .produto h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #222;
-    text-align: center;
-    margin: 0 10px 10px 10px;
-    min-height: 48px;
-  }
-
-  .preco-antigo {
-    text-decoration: line-through;
-    color: #999;
+  .produto h3, .promocao h3 {
     font-size: 1rem;
   }
 
-  .preco-novo {
-    color: var(--cor-blue);
-    font-weight: 700;
+  .preco-novo, .preco-novo-promocao {
     font-size: 1rem;
-  }
-
-  .produto img {
-    width: 100%;
-    max-width: 160px;
-    height: 160px;
-    object-fit: contain;
-    margin: 10px auto auto;
-    display: block;
-    background: #fff;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .btn {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .produtos {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .produto:nth-child(2n) {
-    border-right: none;
-  }
-
-  .produto h3 {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #222;
-    text-align: center;
-    margin: 0 10px 10px 10px;
-    min-height: 48px;
-  }
-
-  .preco-antigo {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 1.3rem;
-  }
-
-  .preco-novo {
-    color: var(--cor-blue);
-    font-weight: 700;
-    font-size: 1.5rem;
-  }
-
-  .produto img {
-    width: 100%;
-    max-width: 180px;
-    height: 180px;
-    object-fit: contain;
-    margin: 10px auto auto;
-    display: block;
-    background: #fff;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .btn {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .produtos {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .produtos-em-destaque h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-family: "Montserrat", sans-serif;
-    color: var(--cor-black);
-    text-align: center;
-  }
-
-  .produtos {
-    width: 100%;
-    display: grid;
-    gap: 10px;
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
-
-  .produtos-em-destaque {
-    width: 100%;
-    margin: auto;
-    background: var(--cor-white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-
-  .produto {
-    padding: 0;
-  }
-
-  .produto h3 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #222;
-    text-align: left;
-    margin: 0 10px 10px 10px;
-    min-height: 48px;
-  }
-
-  .preco {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-
-  .preco-antigo {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 0.70rem;
-  }
-
-  .preco-novo {
-    color: var(--cor-blue);
-    font-weight: 700;
-    font-size: 0.80rem;
   }
 }
 
 @media (max-width: 480px) {
-  .produtos {
+  .produtos, .promocoes {
+    grid-template-columns: 1fr;
+  }
+
+  .produto, .promocao {
+    height: auto;
+  }
+}
+
+/* Desktop grande (até 1400px) */
+@media (max-width: 1400px) {
+  .produtos, .promocoes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Notebook/Médio (até 1024px) */
+@media (max-width: 1024px) {
+  .produtos, .promocoes  {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .produto, .promocao {
+    height: 280px;
+  }
+}
+
+/* Tablet (até 768px) */
+@media (max-width: 768px) {
+  .produtos, .promocoes {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .produtos-em-destaque h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-family: "Montserrat", sans-serif;
-    color: var(--cor-black);
-    text-align: center;
+  .produto, .promocao {
+    height: 260px;
+    padding: 12px;
   }
 
-  .produtos {
-    width: 100%;
-    display: grid;
-    gap: 10px;
-    overflow: hidden;
-    margin-bottom: 30px;
+  .produto h3, .promocao h3 {
+    font-size: 0.95rem;
+    min-height: 42px;
   }
 
-  .produtos-em-destaque {
-    width: 100%;
-    margin: auto;
-    background: var(--cor-white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
+  .preco-novo, .preco-novo-promocao {
+    font-size: 1rem;
   }
 
-  .produto {
-    padding: 0;
-  }
-
-  .produto h3 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #222;
-    text-align: left;
-    margin: 0 10px 10px 10px;
-    min-height: 48px;
-  }
-
-  .preco {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-
-  .preco-antigo {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 0.70rem;
-  }
-
-  .preco-novo {
-    color: var(--cor-blue);
-    font-weight: 700;
-    font-size: 0.80rem;
+  .add-btn, .add-btn-promocao {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 374px) {
-  .produtos-em-destaque h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-family: "Montserrat", sans-serif;
-    color: var(--cor-black);
-    text-align: center;
+/* Celular (até 480px) */
+@media (max-width: 480px) {
+  .produtos, .promocoes {
+    grid-template-columns: 1fr;
   }
 
-  .produtos {
-    width: 100%;
-    display: grid;
-    gap: 10px;
-    overflow: hidden;
-    margin-bottom: 30px;
+  .produto, .promocao {
+    height: auto;
+    padding: 15px;
   }
 
-  .produtos-em-destaque {
-    width: 100%;
-    margin: auto;
-    background: var(--cor-white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
+  .produto img, .promocao img {
+    max-width: 120px;
+    height: 120px;
   }
 
-  .produto {
-    padding: 0;
+  .produto h3, .promocao h3 {
+    font-size: 0.9rem;
   }
 
-  .produto h3 {
-    font-size: 0.80rem;
-    font-weight: 500;
-    color: #222;
-    text-align: left;
-    margin: 0 10px 10px 10px;
-    min-height: 48px;
+  .preco-novo, .preco-novo-promocao {
+    font-size: 0.95rem;
   }
 
-  .preco {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 10px;
-    padding: 0;
-  }
-
-  .preco-antigo {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 0.60rem;
-  }
-
-  .preco-novo {
-    color: var(--cor-blue);
-    font-weight: 700;
-    font-size: 0.70rem;
+  .add-btn, .add-btn-promocao {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
   }
 }
 
-/* From Uiverse.io by Codecite */
-.btn {
-  --fancy-button-gradient-0: var(--cor-blue);
-  --fancy-button-gradient-50: var(--cor-blue);
-  --fancy-button-gradient-100: #6eafff;
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 21px;
-  text-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.2);
-  padding: 0;
-  margin: 0;
-  appearance: none;
-  border: none;
-  outline: none;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  z-index: 1;
-  border-radius: 25px;
-  color: #fff;
-  background-image: linear-gradient(to bottom,
-      var(--fancy-button-gradient-0) 0%,
-      var(--fancy-button-gradient-50) 50%,
-      var(--fancy-button-gradient-100) 100%);
-  box-shadow:
-    0px 4px 12px rgba(9, 12, 60, 0.15),
-    0px 2px 8px rgba(9, 12, 60, 0.15),
-    0px 1px 3px var(--fancy-button-inner-shadow-top-lg),
-    inset 0px 1px 1px var(--fancy-button-inner-shadow-top),
-    inset 0px -1px 3px var(--fancy-button-inner-shadow-bottom);
-}
 
-.btn:before,
-.btn:after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-  will-change: transform;
-}
-
-.btn:before {
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--fancy-button-shine-top);
-  width: 96px;
-  height: 6px;
-  top: -3px;
-  opacity: 0.6;
-  filter: blur(6px);
-  transition: opacity 0.25s;
-}
-
-.btn:after {
-  inset: 0;
-  background-size: cover;
-  z-index: 2;
-  opacity: 0.3;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-.btn span {
-  display: block;
-  padding: 12px 24px;
-  border-radius: inherit;
-  overflow: hidden;
-  position: relative;
-  background-image: linear-gradient(to bottom, var(--fancy-button-shine-top), transparent 8px);
-  background-position: 0 -6px;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
-.btn span:before,
-.btn span:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background-color: var(--fancy-button-shine-bottom);
-  transition: opacity 0.25s, transform 0.25s;
-  will-change: transform;
-}
-
-.btn span:before {
-  width: 92px;
-  height: 8px;
-  bottom: -4px;
-  opacity: 0.75;
-  filter: blur(6px);
-}
-
-.btn span:after {
-  width: 112px;
-  height: 1px;
-  bottom: 0;
-  opacity: 0.9;
-  filter: blur(1px);
-}
-
-.btn:hover span:before {
-  opacity: 0.8;
-}
-
-.btn:hover span:before {
-  transform: translateX(-50%) scale(1.25);
-}
-
-.btn:hover span:after {
-  opacity: 1;
-}
-
-.btn a {
-  color: inherit;
-  text-decoration: none;
-  width: 100%;
-  height: 100%;
-}
 
 /* <!-- =============BENEFÍCIOS============== -->
   <!-- =============BENEFÍCIOS============== --> */
