@@ -14,37 +14,51 @@
 <body>
 
   <!-- SIDEBAR -->
-  <aside class="sidebar" role="navigation" aria-label="Menu de administração">
-    <button style="align-text: left;" id="btn-produtos" onclick="mostrar('produtos')" aria-label="Gerenciar produtos">
-      <i class="fas fa-box" aria-hidden="true"></i> Produtos
-    </button>
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Menu de administração">
+    <div class="sidebar-header">
+      <div class="logo-mobile">FM<span>Notebooks</span></div>
+      <button class="close-sidebar" id="close-sidebar" aria-label="Fechar menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <button style="align-text: left;" id="btn-produtos" onclick="mostrar('produtos')" aria-label="Gerenciar produtos">
+        <i class="fas fa-box" aria-hidden="true"></i> <span>Produtos</span>
+      </button>
 
-    <button id="btn-banners" onclick="mostrar('banners')" aria-label="Gerenciar banners promocionais">
-      <i class="fas fa-image" aria-hidden="true"></i> Banners Promocionais
-    </button>
+      <button id="btn-banners" onclick="mostrar('banners')" aria-label="Gerenciar banners promocionais">
+        <i class="fas fa-image" aria-hidden="true"></i> <span>Banners Promocionais</span>
+      </button>
 
-    <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')" aria-label="Gerenciar produtos em promoção">
-      <i class="fas fa-tags" aria-hidden="true"></i> Produtos em Promoção
-    </button>
+      <button id="btn-prod-promocoes" onclick="mostrar('prod-promocoes')" aria-label="Gerenciar produtos em promoção">
+        <i class="fas fa-tags" aria-hidden="true"></i> <span>Produtos em Promoção</span>
+      </button>
 
-    <button id="btn-secao-flexivel" class="active" onclick="mostrar('secao-flexivel')" aria-label="Gerenciar seção flexível">
-      <i class="fas fa-layer-group" aria-hidden="true"></i> Seção Flexível
-    </button>
+      <button id="btn-secao-flexivel" class="active" onclick="mostrar('secao-flexivel')" aria-label="Gerenciar seção flexível">
+        <i class="fas fa-layer-group" aria-hidden="true"></i> <span>Seção Flexível</span>
+      </button>
 
-    <button aria-label="Adicionar administrador">
-      <i class="fas fa-cogs" aria-hidden="true"></i> Adicionar ADM
-    </button>
-    <button onclick="produtoAddMostrar()" id="btn-prod-add" aria-label="Adicionar novo produto">
-      <i class="fa fa-add" aria-hidden="true"></i>Adicionar Produto
-    </button>
-    <button onclick="bannerAddMostrar()" id="btn-banner-add" style="display: none;" aria-label="Adicionar novo banner">
-      <i class="fa fa-add" aria-hidden="true"></i>Adicionar Banner
-    </button>
+      <button aria-label="Adicionar administrador">
+        <i class="fas fa-cogs" aria-hidden="true"></i> <span>Adicionar ADM</span>
+      </button>
+      
+      <button onclick="produtoAddMostrar()" id="btn-prod-add" aria-label="Adicionar novo produto">
+        <i class="fa fa-add" aria-hidden="true"></i> <span>Adicionar Produto</span>
+      </button>
+      
+      <button onclick="bannerAddMostrar()" id="btn-banner-add" style="display: none;" aria-label="Adicionar novo banner">
+        <i class="fa fa-add" aria-hidden="true"></i> <span>Adicionar Banner</span>
+      </button>
+    </nav>
   </aside>
 
   <!-- HEADER -->
   <header class="admin-header" role="banner">
     <div class="header-content">
+      <button class="toggle-sidebar" id="toggle-sidebar" aria-label="Abrir menu">
+        <i class="fas fa-bars"></i>
+      </button>
       <div class="logo">FM<span>Notebooks</span></div>
       <div class="search-box" role="search" aria-label="Buscar produtos">
         <input id="inputS" type="text" placeholder="Buscar..." aria-label="Campo de busca">
@@ -497,6 +511,40 @@
 
 
   <script>
+    // Controle da sidebar responsiva
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleSidebar = document.getElementById('toggle-sidebar');
+      const closeSidebar = document.getElementById('close-sidebar');
+      const sidebar = document.getElementById('sidebar');
+      
+      // Abrir sidebar
+      toggleSidebar.addEventListener('click', function() {
+        sidebar.classList.add('active');
+      });
+      
+      // Fechar sidebar
+      closeSidebar.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+      });
+      
+      // Fechar sidebar ao clicar em um item do menu em telas pequenas
+      const sidebarButtons = sidebar.querySelectorAll('button');
+      sidebarButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          if (window.innerWidth <= 992) {
+            sidebar.classList.remove('active');
+          }
+        });
+      });
+      
+      // Ajustar sidebar ao redimensionar a tela
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+    
     let globalPromocoes;
     document.getElementById('btnSalvarVinculo').addEventListener('click', salvarAlteracoesPromocaoModal)
     document.getElementById('btnExcluirPromo').addEventListener('click', excluirPromo);

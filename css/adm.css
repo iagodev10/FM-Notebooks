@@ -26,6 +26,13 @@ body {
   padding: 0;
   display: flex;
   overflow-x: hidden;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  body {
+    margin-left: 0;
+  }
 }
 
 .inputNomePromoAdd{
@@ -69,12 +76,48 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 70px;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
   z-index: 99;
   transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--cor-linha-cinza);
+}
+
+.logo-mobile {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cor-black);
+  display: none;
+}
+
+.logo-mobile span {
+  color: var(--cor-black);
+  font-weight: 500;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--cor-black);
+  cursor: pointer;
+  display: none;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
 }
 
 .sidebar button {
@@ -84,6 +127,7 @@ body {
   font-size: 1rem;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   background: none;
   border: none;
   text-align: left;
@@ -95,6 +139,12 @@ body {
   overflow: hidden;
 }
 
+.sidebar button i {
+  margin-right: 12px;
+  min-width: 20px;
+  text-align: center;
+}
+
 .sidebar button:hover,
 .sidebar button.active {
   background: linear-gradient(135deg, var(--cor-blue) 0%, #003d99 100%);
@@ -102,6 +152,16 @@ body {
   font-weight: 600;
   transform: translateX(8px);
   box-shadow: 0 4px 15px rgba(0, 82, 204, 0.3);
+}
+
+.toggle-sidebar {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--cor-blue);
+  cursor: pointer;
+  margin-right: 15px;
 }
 
 .sidebar button i {
@@ -126,6 +186,29 @@ body {
   z-index: 100;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
+  transition: left 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .admin-header {
+    left: 0;
+  }
+  
+  .toggle-sidebar {
+    display: block;
+  }
+  
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  .logo-mobile, .close-sidebar {
+    display: block;
+  }
 }
 
 .header-content {
