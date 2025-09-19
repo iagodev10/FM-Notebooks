@@ -15,7 +15,7 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar" role="navigation" aria-label="Menu de administração">
-    <button id="btn-produtos" class="active" onclick="mostrar('produtos')" aria-label="Gerenciar produtos">
+    <button style="align-text: left;" id="btn-produtos" onclick="mostrar('produtos')" aria-label="Gerenciar produtos">
       <i class="fas fa-box" aria-hidden="true"></i> Produtos
     </button>
 
@@ -27,8 +27,13 @@
       <i class="fas fa-tags" aria-hidden="true"></i> Produtos em Promoção
     </button>
 
-    <button aria-label="Adicionar administrador"><i class="fas fa-cogs" aria-hidden="true"></i> Adicionar ADM</button>
+    <button id="btn-secao-flexivel" class="active" onclick="mostrar('secao-flexivel')" aria-label="Gerenciar seção flexível">
+      <i class="fas fa-layer-group" aria-hidden="true"></i> Seção Flexível
+    </button>
 
+    <button aria-label="Adicionar administrador">
+      <i class="fas fa-cogs" aria-hidden="true"></i> Adicionar ADM
+    </button>
     <button onclick="produtoAddMostrar()" id="btn-prod-add" aria-label="Adicionar novo produto">
       <i class="fa fa-add" aria-hidden="true"></i>Adicionar Produto
     </button>
@@ -51,69 +56,61 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <main role="main" id="main-content">
 
+    <!-- ============================SEÇÃO FLEXÍVEL========================================= -->
+    <section class="secao-flexivel" id="secao-flexivel">
+      
+      <!-- Campo Nome da Seção -->
+      <div class="secao-config">
+        <div class="config-header">
+          <h2><i class="fas fa-layer-group"></i> Configuração da Seção</h2>
+        </div>
+        
+        <div class="nome-secao-container">
+          <label for="nome-secao">Nome da Seção</label>
+          <input type="text" id="nome-secao" placeholder="Nome será preenchido pelo backend..." readonly>
+          <button class="btn-editar" onclick="editarNomeSecao()">
+            <i class="fas fa-edit"></i> Editar
+          </button>
+        </div>
+      </div>
+
+      <!-- Pesquisa de Produtos -->
+      <div class="produtos-search-container">
+        <div class="search-header">
+          <h3><i class="fas fa-search"></i> Pesquisar Produtos</h3>
+        </div>
+        
+        <div class="search-produtos-flexivel">
+          <input type="text" id="buscar-produtos-flexivel" placeholder="Digite para pesquisar produtos..." oninput="filtrarProdutosFlexivel()">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+
+      <!-- Lista de Produtos -->
+      <div class="produtos-flexivel-container">
+        <div class="produtos-flexivel-header">
+          <h3><i class="fas fa-boxes"></i> Produtos Disponíveis</h3>
+          <span class="produtos-count" id="produtos-count">0 produtos encontrados</span>
+        </div>
+        
+        <div class="produtos-flexivel-grid" id="produtos-flexivel-grid">
+          <!-- Produtos serão carregados dinamicamente via JavaScript -->
+        </div>
+      </div>
+
+    </section>
+
+   
+   
+
     <!-- ============================Produtos========================================= -->
     <!-- ============================Produtos========================================= -->
     <section class="produtos-em-destaque" id="produtos">
 
+      <div id="englobprodutos">
 
-      <div class="produtos" id="englobprodutos">
-        <div class="produto" onclick="Produto(1)">
-          <img src="img/noteboooooo.jpg" alt="Fitboot Inspire">
-          <h3>Fitboot Inspire, tracker de frequência cardíaca</h3>
-          <div class="preco">
-            <span class="preco-antigo">R$ 600,00</span>
-            <span class="preco-novo">R$ 585,00</span>
-          </div>
-        </div>
-
-
-        <div class="produto">
-          <img src="img/noteboooooo.jpg" alt="Notebook Gamer">
-          <h3>Laptop para games JP 15.6'', 256 GB</h3>
-          <div class="preco">
-            <span class="preco-antigo">R$ 600,00</span>
-            <span class="preco-novo">R$ 585,00</span>
-          </div>
-        </div>
-
-
-        <div class="produto">
-          <img src="img/noteboooooo.jpg" alt="Drone Quadcopter">
-          <h3>Drone Quadcopter HKI Tech, câmera 360 e controle</h3>
-          <div class="preco">
-            <span class="preco-novo">R$ 600,00</span>
-          </div>
-        </div>
-
-
-        <div class="produto">
-          <img src="img/noteboooooo.jpg" alt="Smartphone Z Pixel Max">
-          <h3>Smartphone Z Pixel Max 128 GB, desbloqueado</h3>
-          <div class="preco">
-            <span class="preco-antigo">R$ 600,00</span>
-            <span class="preco-novo">R$ 585,00</span>
-          </div>
-        </div>
-
-
-        <div class="produto">
-          <img src="img/noteboooooo.jpg" alt="Headphone In-ear">
-          <h3>Headphone In-ear wireless, cancelamento de ruído</h3>
-          <div class="preco">
-            <span class="preco-antigo">R$ 600,00</span>
-            <span class="preco-novo">R$ 585,00</span>
-          </div>
-        </div>
-
-
-        <div class="produto">
-          <img src="img/noteboooooo.jpg" alt="Óculos VR Safay">
-          <h3>Óculos VR Safay GEN 2, 256 GB, controladores de toque</h3>
-          <div class="preco">
-            <span class="preco-novo">R$ 600,00</span>
-          </div>
-        </div>
       </div>
+      
 
 
     </section>
@@ -698,11 +695,13 @@
     window.onload = adicionarTabela;
 
     function renderizarProdutos(produtosFiltrados) {
+      console.log(produtosFiltrados);
       const englobprodutos = document.getElementById('englobprodutos')
       englobprodutos.innerHTML = ''
-
+      
 
       produtosFiltrados.forEach(produto => {
+      console.log('oiiiiiiiiiiiiiiiiiiiiii');
         const imgProd = document.createElement('img')
         imgProd.src = produto.urlImgProd1
         imgProd.alt = produto.nomeProd
@@ -731,22 +730,32 @@
         divProd.appendChild(divPreco)
         divProd.addEventListener('click', Produto)
         divProd.setAttribute('name', produto.chaveAcessProd)
-
-
-
-
+       
         englobprodutos.appendChild(divProd)
       })
     }
 
     let listaPraVinc;
+    let produtosFiltradosFlex;
     document.addEventListener('DOMContentLoaded', () => {
+      mostrar('produtos');
       const englobpromos = document.getElementById('promos')
       const inputBusca = document.getElementById('inputS')
       const divVinculoEnglob = document.getElementById('divVinculo')
 
 
-
+      fetch('http://localhost:5090/get-divflex', {
+          method: 'GET'
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter produtos')
+          return response.json()
+        })
+        .then(data => {
+          console.log(data);
+          preecherNomeSecao(data.div.nomeSecaoFlex)
+        })
+        .catch(error => console.error('Fetch error (produtos):', error))
 
       fetch('http://localhost:5090/produtos', {
           method: 'GET',
@@ -761,10 +770,12 @@
         .then(data => {
           produtosData = data;
           listaPraVinc = data;
+          produtosFiltradosFlex=data;
           console.log('listaVinc', listaPraVinc);
           carregarProdsVinc()
-
+          console.log(produtosData);
           renderizarProdutos(produtosData)
+          renderizarProdutosFlexivel(data)
         })
         .catch(error => console.error('Fetch error (produtos):', error))
 
@@ -854,47 +865,7 @@
 
 
     // Função para mostrar/esconder listas
-    function mostrar(tipo) {
-      const produtos = document.getElementById("produtos");
-      const banners = document.getElementById("banners");
-      const promocoes = document.getElementById("prod-promocoes");
-
-      const btnProdAdd = document.getElementById("btn-prod-add");
-      const btnBannerAdd = document.getElementById("btn-banner-add");
-
-      const btnProdutos = document.getElementById("btn-produtos");
-      const btnBanners = document.getElementById("btn-banners");
-      const btnPromocoes = document.getElementById("btn-prod-promocoes");
-
-      // Esconde todas as seções
-      produtos.style.display = "none";
-      banners.style.display = "none";
-      promocoes.style.display = "none";
-
-      // Remove o "active" de todos os botões
-      btnProdutos.classList.remove("active");
-      btnBanners.classList.remove("active");
-      btnPromocoes.classList.remove("active");
-
-      // Esconde os botões de adicionar
-      btnProdAdd.style.display = "none";
-      btnBannerAdd.style.display = "none";
-
-      // Mostra apenas a seção escolhida
-      if (tipo === "produtos") {
-        produtos.style.display = "block";
-        btnProdutos.classList.add("active");
-        btnProdAdd.style.display = "block";
-      } else if (tipo === "banners") {
-        banners.style.display = "block";
-        btnBanners.classList.add("active");
-        btnBannerAdd.style.display = "block";
-      } else if (tipo === "prod-promocoes") {
-        promocoes.style.display = "block";
-        btnPromocoes.classList.add("active");
-      }
-    }
-
+    
 
     let promocaoAtualModal = '';
     let produtosAlteradosModal = []
@@ -906,7 +877,7 @@
 
 
       listaPraVinc.forEach((prodVinc) => {
-        console.log('prod', prodVinc);
+      
         const infosPraAddListVin = {
           id: prodVinc.idProd,
           nome: prodVinc.nomeProd,
@@ -1344,6 +1315,344 @@
     }
 
     
+    // Dados simulados de produtos (normalmente viriam do backend)
+const produtosMock = [
+  {
+    id: 1,
+    nome: "Notebook Gamer Acer Nitro 5",
+    preco: "R$ 3.299,00",
+    imagem: "/notebook-gamer-acer.jpg",
+    vinculado: false,
+  },
+  {
+    id: 2,
+    nome: "MacBook Air M2 13 polegadas",
+    preco: "R$ 8.999,00",
+    imagem: "/macbook-air-m2.png",
+    vinculado: true,
+  },
+  {
+    id: 3,
+    nome: "Dell Inspiron 15 3000",
+    preco: "R$ 2.199,00",
+    imagem: "/dell-inspiron-laptop.png",
+    vinculado: false,
+  },
+  {
+    id: 4,
+    nome: "Lenovo ThinkPad E14",
+    preco: "R$ 4.599,00",
+    imagem: "/lenovo-thinkpad-business.jpg",
+    vinculado: true,
+  },
+  {
+    id: 5,
+    nome: "HP Pavilion Gaming 15",
+    preco: "R$ 3.799,00",
+    imagem: "/hp-pavilion-gaming.jpg",
+    vinculado: false,
+  },
+  {
+    id: 6,
+    nome: "ASUS VivoBook 15",
+    preco: "R$ 2.899,00",
+    imagem: "/asus-vivobook-laptop.jpg",
+    vinculado: false,
+  },
+]
+
+
+
+function preecherNomeSecao(nome){
+  console.log(nome);
+  document.getElementById('nome-secao').value=nome
+}
+
+function configurarEventos() {
+  // Evento de pesquisa
+  const inputPesquisa = document.getElementById("buscar-produtos-flexivel")
+  if (inputPesquisa) {
+    inputPesquisa.addEventListener("input", filtrarProdutosFlexivel)
+  }
+
+  const globalSearch = document.getElementById("inputS")
+  if (globalSearch) {
+    globalSearch.addEventListener("input", handleGlobalSearch)
+  }
+}
+
+function mostrar(secao) {
+  document.getElementById('btn-prod-add').style.display='none'
+  document.getElementById('btn-banner-add').style.display='none'
+
+
+  const sections = ["produtos", "banners", "prod-promocoes", "secao-flexivel"]
+  sections.forEach((sectionId) => {
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.style.display = "none"
+    }
+  })
+
+
+  document.querySelectorAll(".sidebar button").forEach((btn) => {
+    btn.classList.remove("active")
+  })
+
+
+  const btnAtivo = document.getElementById(`btn-${secao}`)
+  if (btnAtivo) {
+    btnAtivo.classList.add("active")
+  }
+
+
+  const targetSection = document.getElementById(secao)
+  if (targetSection) {
+    targetSection.style.display = "block"
+    console.log("SEÇÂO: ",secao);
+  
+    if (secao === "secao-flexivel") {
+      document.getElementById('englobprodutos').style.display='none'
+      renderizarProdutosFlexivel()
+    }
+    else if(secao == "produtos"){
+      document.getElementById('englobprodutos').style.display='block'
+     console.log(document.getElementById('btn-prod-add'));
+      document.getElementById('btn-prod-add').style.display='block'
+    }
+    else if(secao == "banners"){
+     console.log(document.getElementById('btn-banner-add'));
+      document.getElementById('btn-banner-add').style.display='block'
+    }
+  }
+
+  updatePageTitle(secao)
+}
+
+
+
+function handleGlobalSearch(event) {
+  const termo = event.target.value.toLowerCase().trim()
+  console.log("[v0] Busca global:", termo)
+
+
+  const currentSection = document.querySelector('section:not([style*="display: none"])')
+  if (currentSection && currentSection.id === "secao-flexivel") {
+    document.getElementById("buscar-produtos-flexivel").value = termo
+    filtrarProdutosFlexivel()
+  }
+}
+
+function updatePageTitle(secao) {
+  const titles = {
+    produtos: "Gerenciamento de Produtos",
+    banners: "Banners Promocionais",
+    "prod-promocoes": "Produtos em Promoção",
+    "secao-flexivel": "Seção Flexível",
+  }
+
+  const title = titles[secao] || "Administração"
+  document.title = `ADM FM-NOTEBOOKS - ${title}`
+}
+
+function setupMobileNavigation() {
+
+  if (window.innerWidth <= 768) {
+ 
+  }
+}
+
+function editarNomeSecao() {
+  const input = document.getElementById("nome-secao")
+  const isReadonly = input.hasAttribute("readonly")
+
+  if (isReadonly) {
+    input.removeAttribute("readonly")
+    input.focus()
+    input.style.backgroundColor = "var(--cor-white)"
+    input.style.borderColor = "var(--cor-blue)"
+
+ 
+    const btn = document.querySelector(".btn-editar")
+    btn.innerHTML = '<i class="fas fa-save"></i> Salvar'
+    btn.onclick = salvarNomeSecao
+  }
+}
+
+function salvarNomeSecao() {
+  const input = document.getElementById("nome-secao")
+  const novoNome = input.value
+
+  if (novoNome === "") {
+    alert("Por favor, insira um nome para a seção.")
+    return
+  }
+
+  // Aqui você faria a requisição para o backend
+ 
+
+  fetch('http://localhost:5090/atualizar-divflex/' +novoNome, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao atualizar nome')
+          return response.json()
+        })
+        .then(data => {
+          console.log("Sucesso ao atalizar nome")
+          window.location.reload();
+        })
+        .catch(error => console.error('Erro ao atualizar nome', error))
+  // Simular salvamento
+
+}
+
+function filtrarProdutosFlexivel() {
+  const termo = document.getElementById("buscar-produtos-flexivel").value.toLowerCase().trim()
+  let produtosAFiltrar;
+  console.log("[v0] Filtrando produtos com termo:", termo)
+
+  if (termo === "") {
+    produtosAFiltrar=produtosFiltradosFlex
+
+  } else {
+    produtosAFiltrar = produtosFiltradosFlex.filter((produto) => produto.nomeProd.toLowerCase().includes(termo))
+  }
+
+  renderizarProdutosFlexivel(produtosAFiltrar)
+}
+
+function renderizarProdutosFlexivel(prods) {
+  console.log("RENFLEX=>>", prods);
+  const container = document.getElementById("produtos-flexivel-grid")
+  const contador = document.getElementById("produtos-count")
+
+  // Atualizar contador
+  contador.textContent = `${prods.length} produto${prods.length !== 1 ? "s" : ""} encontrado${prods.length !== 1 ? "s" : ""}`
+
+  if (prods.length === 0) {
+    container.innerHTML = `
+      <div class="produtos-vazio" style="grid-column: 1 / -1;">
+        <i class="fas fa-search"></i>
+        <h4>Nenhum produto encontrado</h4>
+        <p>Tente ajustar os termos de pesquisa ou verifique se há produtos cadastrados no sistema.</p>
+      </div>
+    `
+    return
+  }
+
+  container.innerHTML = prods
+    .map(
+      (produto) => `
+    <div class="produto-card" data-id="${produto.idProd}">
+      <div class="produto-imagem">
+        <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}" class="produto-img">
+      </div>
+      <div class="produto-info">
+        <h4 class="produto-nome">${produto.nomeProd}</h4>
+        <div class="produto-preco">${produto.precoProd}</div>
+        <div class="produto-acoes">
+          ${
+            produto.statusVincSecaoFlex
+              ? `<button class="btn-desvincular" onclick="desvincularProduto(${produto.idProd})">
+                 <i class="fas fa-unlink"></i> Desvincular
+               </button>`
+              : `<button class="btn-vincular" onclick="vincularProduto(${produto.idProd})">
+                 <i class="fas fa-link"></i> Vincular
+               </button>`
+          }
+        </div>
+      </div>
+    </div>
+  `,
+    )
+    .join("")
+
+  console.log("[v0] Produtos renderizados:", prods.length)
+}
+
+function vincularProduto(id) {
+  console.log("[v0] Vinculando produto ID:", id)
+
+  
+  // Encontrar produto e atualizar status
+  
+  const produto = produtosFiltradosFlex.find((p) => p.idProd === id)
+  if (produto) {
+    produto.statusVincSecaoFlex = true
+
+    // Atualizar também na lista filtrada
+    const produtoFiltrado = produtosFiltradosFlex.find((p) => p.idProd === id)
+    if (produtoFiltrado) {
+      produtoFiltrado.statusVincSecaoFlex = true
+    }
+
+    // Re-renderizar
+    renderizarProdutosFlexivel(produtosFiltradosFlex)
+
+    // Aqui você faria a requisição para o backend
+    // fetch('/api/produtos/vincular', { method: 'POST', body: JSON.stringify({id}) })
+    fetch('http://localhost:5090/vincular-divflex/' +id, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao vincular à div')
+          return response.json()
+        })
+        .then(data => {
+          console.log("Sucesso ao vincular à div")
+      
+        })
+        .catch(error => console.error('Erro ao vincular à div', error))
+    console.log("[v0] Produto vinculado com sucesso")
+  }
+}
+
+function desvincularProduto(id) {
+  console.log("[v0] Desvinculando produto ID:", id)
+
+  // Encontrar produto e atualizar status
+  const produto = produtosFiltradosFlex.find((p) => p.idProd === id)
+  if (produto) {
+    produto.statusVincSecaoFlex = false
+
+    // Atualizar também na lista filtrada
+    const produtoFiltrado = produtosFiltradosFlex.find((p) => p.idProd === id)
+    if (produtoFiltrado) {
+      produtoFiltrado.statusVincSecaoFlex = false
+    }
+
+    // Re-renderizar
+    renderizarProdutosFlexivel(produtosFiltradosFlex)
+
+    fetch('http://localhost:5090/desvincular-divflex/' +id, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao desvincular à div')
+          return response.json()
+        })
+        .then(data => {
+          console.log("Sucesso ao desvincular à div")
+      
+        })
+        .catch(error => console.error('Erro ao desvincular à div', error))
+    // Aqui você faria a requisição para o backend
+    // fetch('/api/produtos/desvincular', { method: 'POST', body: JSON.stringify({id}) })
+
+    console.log("[v0] Produto desvinculado com sucesso")
+  }
+}
+
   </script>
 
 </body>
