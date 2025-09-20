@@ -3,17 +3,22 @@ class ProfessionalNavigation {
     this.mobileMenu = document.querySelector(".mobile-menu")
     this.mobileNavOverlay = document.querySelector(".mobile-nav-overlay")
     this.mobileNav = document.querySelector(".mobile-nav")
-    this.navLinks = document.querySelectorAll(".mobile-nav a")
+    this.navLinks = document.querySelectorAll(".nav-list a")
     this.overlay = document.querySelector(".overlay")
     this.filterToggle = document.querySelector("#toggle-filtro")
     this.filterPanel = document.querySelector(".filtro-fi")
     this.filterClose = document.querySelector(".close-filtro")
     this.searchInputs = document.querySelectorAll("#input-busca, #input-busca-mobile")
-    this.searchButtons = document.querySelectorAll(".search-btn")
+    this.searchButtons = document.querySelectorAll(".search-btn, .search-btn-mobile")
     this.cartLinks = document.querySelectorAll(".cart-link")
+    this.mobileSearchOverlay = document.querySelector(".mobile-search-overlay")
+    this.mobileSearchTrigger = document.querySelector(".mobile-search-trigger")
+    this.closeMobileSearch = document.querySelector(".close-mobile-search")
+    this.contadorProdutos = document.getElementById("contador-produtos")
 
     this.isMenuOpen = false
     this.isFilterOpen = false
+    this.isMobileSearchOpen = false
 
     this.init()
   }
@@ -26,19 +31,25 @@ class ProfessionalNavigation {
     this.setupKeyboardNavigation()
     this.setupResponsiveAdjustments()
     this.updateCartDisplay()
+    this.setupMobileSearch()
   }
 
   setupMobileMenu() {
-    if (this.mobileMenu && this.mobileNavOverlay && this.mobileNav) {
+    if (this.mobileMenu) {
       this.mobileMenu.addEventListener("click", (e) => {
         e.preventDefault()
         this.toggleMobileMenu()
       })
+    }
 
+    const navList = document.querySelector(".nav-list")
+    if (navList) {
       // Close menu when clicking overlay
-      this.mobileNavOverlay.addEventListener("click", () => {
-        this.closeMobileMenu()
-      })
+      if (this.overlay) {
+        this.overlay.addEventListener("click", () => {
+          this.closeMobileMenu()
+        })
+      }
 
       // Close menu when clicking nav links
       this.navLinks.forEach((link) => {
@@ -59,23 +70,42 @@ class ProfessionalNavigation {
 
   openMobileMenu() {
     this.isMenuOpen = true
-    this.mobileMenu.classList.add("active")
-    this.mobileNavOverlay.classList.add("active")
-    this.mobileNav.classList.add("active")
+    const navList = document.querySelector(".nav-list")
 
-    this.mobileMenu.setAttribute("aria-expanded", "true")
+    if (this.mobileMenu) {
+      this.mobileMenu.classList.add("active")
+      this.mobileMenu.setAttribute("aria-expanded", "true")
+    }
+
+    if (this.overlay) {
+      this.overlay.classList.add("active")
+    }
+
+    if (navList) {
+      navList.classList.add("active")
+    }
+
     document.body.style.overflow = "hidden"
-
     this.animateNavLinks()
   }
 
   closeMobileMenu() {
     this.isMenuOpen = false
-    this.mobileMenu.classList.remove("active")
-    this.mobileNavOverlay.classList.remove("active")
-    this.mobileNav.classList.remove("active")
+    const navList = document.querySelector(".nav-list")
 
-    this.mobileMenu.setAttribute("aria-expanded", "false")
+    if (this.mobileMenu) {
+      this.mobileMenu.classList.remove("active")
+      this.mobileMenu.setAttribute("aria-expanded", "false")
+    }
+
+    if (this.overlay) {
+      this.overlay.classList.remove("active")
+    }
+
+    if (navList) {
+      navList.classList.remove("active")
+    }
+
     document.body.style.overflow = ""
   }
 
@@ -171,13 +201,11 @@ class ProfessionalNavigation {
   }
 
   updateCartDisplay() {
-    const carrinho = JSON.parse(localStorage.getItem("carrinho") || "[]")
-    const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0)
-
+    // Cart functionality disabled - just keep the icon visible
     const cartCounts = document.querySelectorAll(".cart-count")
     cartCounts.forEach((count) => {
-      count.textContent = totalItens
-      count.style.display = totalItens > 0 ? "flex" : "none"
+      count.textContent = "0"
+      count.style.display = "none"
     })
   }
 
@@ -235,6 +263,7 @@ class ProfessionalNavigation {
         case "Escape":
           this.closeMobileMenu()
           this.closeFilter()
+          this.closeMobileSearchModal()
           break
         case "/":
           if (e.ctrlKey || e.metaKey) {
@@ -272,18 +301,19 @@ class ProfessionalNavigation {
   }
 
   updateBodyPadding() {
-    const isMobile = window.innerWidth <= 768
+    const isMobile = window.innerWidth <= 992
     if (isMobile) {
-      document.body.style.paddingTop = "120px" // navbar + search
+      document.body.style.paddingTop = "80px" // header mobile
     } else {
-      document.body.style.paddingTop = "70px" // navbar only
+      document.body.style.paddingTop = "100px" // header desktop
     }
   }
 
   handleResize() {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 992) {
       this.closeMobileMenu()
       this.closeFilter()
+      this.closeMobileSearchModal()
     }
   }
 
@@ -301,6 +331,92 @@ class ProfessionalNavigation {
     localStorage.removeItem("carrinho")
     this.updateCartDisplay()
     window.dispatchEvent(new CustomEvent("cartUpdated"))
+  }
+
+  // Atualizar contador de produtos
+  updateProductsCounter(count) {
+    if (this.contadorProdutos) {
+      const text = count === 1 ? "produto encontrado" : "produtos encontrados"
+      this.contadorProdutos.textContent = `${count} ${text}`
+    }
+  }
+
+  // Mostrar/ocultar loading
+  toggleLoading(show = true) {
+    const loadingContainer = document.getElementById("loading-produtos")
+    const produtosGrid = document.getElementById("lista-produtos")
+    
+    if (loadingContainer && produtosGrid) {
+      if (show) {
+        loadingContainer.style.display = "flex"
+        produtosGrid.style.display = "none"
+      } else {
+        loadingContainer.style.display = "none"
+        produtosGrid.style.display = "grid"
+      }
+    }
+  }
+
+  // Mostrar mensagem de nenhum produto
+  showNoProducts(show = true) {
+    const noProductsMessage = document.getElementById("no-products")
+    const produtosGrid = document.getElementById("lista-produtos")
+    
+    if (noProductsMessage && produtosGrid) {
+      if (show) {
+        noProductsMessage.style.display = "flex"
+        produtosGrid.style.display = "none"
+      } else {
+        noProductsMessage.style.display = "none"
+        produtosGrid.style.display = "grid"
+      }
+    }
+  }
+
+  setupMobileSearch() {
+    // Botão de pesquisa no header mobile (ícone de lupa)
+    if (this.mobileSearchTrigger) {
+      this.mobileSearchTrigger.addEventListener("click", (e) => {
+        e.preventDefault()
+        this.openMobileSearch()
+      })
+    }
+
+    // Fechar pesquisa mobile
+    if (this.closeMobileSearch && this.mobileSearchOverlay) {
+      this.closeMobileSearch.addEventListener("click", () => {
+        this.closeMobileSearchModal()
+      })
+
+      // Fechar ao clicar no overlay
+      this.mobileSearchOverlay.addEventListener("click", (e) => {
+        if (e.target === this.mobileSearchOverlay) {
+          this.closeMobileSearchModal()
+        }
+      })
+    }
+  }
+
+  openMobileSearch() {
+    this.isMobileSearchOpen = true
+    if (this.mobileSearchOverlay) {
+      this.mobileSearchOverlay.classList.add("active")
+      document.body.style.overflow = "hidden"
+
+      // Focar no input de pesquisa
+      const mobileSearchInput = document.querySelector("#input-busca-mobile")
+      if (mobileSearchInput) {
+        setTimeout(() => mobileSearchInput.focus(), 100)
+      }
+    }
+  }
+
+  closeMobileSearchModal() {
+    this.isMobileSearchOpen = false
+    if (this.mobileSearchOverlay) {
+      this.mobileSearchOverlay.classList.remove("active")
+      document.body.style.overflow = ""
+    }
   }
 }
 
@@ -324,4 +440,9 @@ if (typeof window.mobileNavbar === "undefined") {
       console.log("Sistema de navegação já inicializado")
     },
   }
+}
+
+window.adicionarAoCarrinho = (id, nome, preco) => {
+  // Cart functionality disabled
+  console.log(`Cart functionality disabled for product: ${nome}`)
 }
