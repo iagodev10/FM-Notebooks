@@ -121,7 +121,7 @@
     <!-- ============================Produtos========================================= -->
     <section class="produtos-em-destaque" id="produtos">
 
-      <div id="englobprodutos">
+      <div id="englobprodutos" class="englobprodutos">
 
       </div>
       
@@ -242,8 +242,8 @@
                 <option value="fones-headset">Fones e Headset</option>
                 <option value="mochilas">Mochilas</option>
                 <option value="mouse">Mouse</option>
-                <option value="mouse-pad">Mouse Pad</option>
-                <option value="pendrive">Pendrive</option>
+                <option value="mousepads">Mouse Pad</option>
+                <option value="pendrives">Pendrive</option>
                 <option value="roteador-repetidores">Roteador e Repetidores</option>
                 <option value="servicos">Serviços</option>
               </select>
@@ -1528,6 +1528,7 @@ function editarNomeSecao() {
 }
 
 function salvarNomeSecao() {
+
   const input = document.getElementById("nome-secao")
   const novoNome = input.value
 

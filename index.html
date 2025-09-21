@@ -244,14 +244,9 @@
 
   <!-- Section cards de promoção -->
   <!-- Section cards de promoção -->
-  <section class="promocao">
-    <div class="div-promocao">
-      <div class="div-promocao-1">
-        <img src="img/note-fones.jpg" alt="">
-      </div>
-      <div class="div-promocao-2">
-        <img src="img/note-fones.jpg" alt="">
-      </div>
+  <section class="promocao" id="sumir">
+    <div class="div-promocao" id="englobTopPromos">
+     
     </div>
   </section>
 
@@ -259,105 +254,11 @@
   <!-- Produtos em destaque -->
   <!-- Produtos em destaque -->
   <section class="produtos-em-destaque">
-    <h2>Mais vendidos</h2>
+    <h2 id="divFlexNome">Mais vendidos</h2>
 
-    <div class="produtos">
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Notebook AVELL C65">
-        </div>
-        <div class="produto-info">
-          <h3>Notebook AVELL C65</h3>
-          <div class="produto-preco">
-            <span>R$: 7900,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Fone 3.5mm HAVIT">
-        </div>
-        <div class="produto-info">
-          <h3>Fone 3.5mm HAVIT</h3>
-          <div class="produto-preco">
-            <span>R$: 390,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Roteador Mercusys">
-        </div>
-        <div class="produto-info">
-          <h3>Roteador Mercusys</h3>
-          <div class="produto-preco">
-            <span>R$: 590,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Monitor Levell C85">
-        </div>
-        <div class="produto-info">
-          <h3>Monitor Levell C85</h3>
-          <div class="produto-preco">
-            <span>R$: 2300,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Notebook AVELL C65">
-        </div>
-        <div class="produto-info">
-          <h3>Notebook AVELL C65</h3>
-          <div class="produto-preco">
-            <span>R$: 7900,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Notebook AVELL C65">
-        </div>
-        <div class="produto-info">
-          <h3>Notebook AVELL C65</h3>
-          <div class="produto-preco">
-            <span>R$: 7900,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Notebook AVELL C65">
-        </div>
-        <div class="produto-info">
-          <h3>Notebook AVELL C65</h3>
-          <div class="produto-preco">
-            <span>R$: 7900,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
-      <div class="produto-card">
-        <div class="produto-imagem">
-          <img src="img/noteboooooo-removebg-preview.png" alt="Notebook AVELL C65">
-        </div>
-        <div class="produto-info">
-          <h3>Notebook AVELL C65</h3>
-          <div class="produto-preco">
-            <span>R$: 7900,00</span>
-          </div>
-          <button class="add-to-cart">+</button>
-        </div>
-      </div>
+    <div class="produtos" id="prodSecaoFlex">
+      
+      
     </div>
     <a href="produtos.html" class="ver-todos-btn">Ver todos</a>
       
@@ -902,8 +803,209 @@
         })
         .catch(error => console.error('Erro ao obter informações', error))
 
+        fetch('http://localhost:5090/get-divflex/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          data.forEach(promo => {
+            const divPromocoes = document.getElementById('divPromocao')
+          let tops=0;
+          const secaoPromos = document.getElementById("secaoPromos")
+          const englobTopPromos=document.getElementById('englobTopPromos')
+
+            const divPromo = document.createElement('div')
+            divPromo.className = 'promocao'
+          if (data.length === 0) {
+            secaoPromos.style.display = "none"
+          }
+          else {
+            data.forEach(promo => {
+              if (tops<2) {
+               
+                const promoTop=document.createElement('div')
+                promoTop.className='div-promocao-1'
+
+            const img = document.createElement('img')
+            img.src = promo.urlImgPromo
+            img.alt = promo.nomePromocao
+            img.setAttribute('id', 'imgPromocaoIndex')
+                const imgPromoTop=document.createElement('img')
+                imgPromoTop.src=promo.urlImgPromo
+              
+
+            const h3 = document.createElement('h3')
+            h3.innerText = promo.nomePromocao
+            h3.setAttribute('id', 'tituloPromocao')
+                promoTop.appendChild(imgPromoTop)
+
+                englobTopPromos.appendChild(promoTop)
+             
+
+              }
+
+              const divPromocoes = document.getElementById('divPromocao')
+
+              const divPromo = document.createElement('div')
+              divPromo.className = 'promocao'
+
+            divPromo.append(img)
+            divPromo.append(h3)
+            divPromocoes.append(divPromo)
+              const img = document.createElement('img')
+              img.src = promo.urlImgPromo
+              img.alt = promo.nomePromocao
+              img.setAttribute('id', 'imgPromocaoIndex')
+
+              const h3 = document.createElement('h3')
+              h3.innerText = promo.nomePromocao
+              h3.setAttribute('id', 'tituloPromocao')
+
+              divPromo.append(img)
+              divPromo.append(h3)
+              divPromocoes.append(divPromo)
+              tops++;
+            });
+          }
+
+          });
+
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
 
 
+
+
+        fetch('http://localhost:5090/get-prods-divflex/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          
+          const divEnglob=document.getElementById('prodSecaoFlex')
+          console.log(divEnglob);
+         console.log(data.produtos);
+         data.produtos.map((prod)=>{
+          if(prod){
+            const div=document.createElement('div')
+          div.className='produto-card'
+
+          const divProdImg=document.createElement('div')
+          divProdImg.className='produto-imagem'
+
+          const img=document.createElement("img")
+          img.src=prod.urlImgProd1
+          img.alt=prod.nomeProd
+
+          divProdImg.appendChild(img)
+
+          const divProdInfo=document.createElement('div')
+          divProdInfo.className='produto-info'
+
+          const h3=document.createElement('h3')
+          h3.innerText=prod.nomeProd
+
+          const divPreco=document.createElement('div')
+          divPreco.className='produto-preco'
+
+          const span=document.createElement('span')
+          span.className='preco-novo'
+          span.innerText=`R$ ${prod.precoProd}`
+          
+          const botaoAddCar=document.createElement('button')
+          botaoAddCar.className='add-to-cart'
+          botaoAddCar.innerText="+"
+
+          divProdInfo.appendChild(h3)
+          divPreco.appendChild(span)
+          divProdInfo.appendChild(divPreco)
+          divProdInfo.appendChild(botaoAddCar)
+
+          div.appendChild(divProdImg)
+          div.appendChild(divProdInfo)
+          
+          divEnglob.appendChild(div)
+          }
+          
+
+         })
+          
+
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
+
+        fetch('http://localhost:5090/promocoes/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) throw new Error('Erro ao obter informações')
+          return response.json()
+        })
+        .then(data => {
+          let tops=0;
+          const secaoPromos = document.getElementById("secaoPromos")
+          const englobTopPromos=document.getElementById('englobTopPromos')
+
+          if (data.length === 0) {
+            secaoPromos.style.display = "none"
+          }
+          else {
+            data.forEach(promo => {
+              if (tops<2) {
+               
+                const promoTop=document.createElement('div')
+                promoTop.className='div-promocao-1'
+
+                const imgPromoTop=document.createElement('img')
+                imgPromoTop.src=promo.urlImgPromo
+              
+
+                promoTop.appendChild(imgPromoTop)
+
+                englobTopPromos.appendChild(promoTop)
+             
+
+              }
+
+              const divPromocoes = document.getElementById('divPromocao')
+
+              const divPromo = document.createElement('div')
+              divPromo.className = 'promocao'
+
+              const img = document.createElement('img')
+              img.src = promo.urlImgPromo
+              img.alt = promo.nomePromocao
+              img.setAttribute('id', 'imgPromocaoIndex')
+
+              const h3 = document.createElement('h3')
+              h3.innerText = promo.nomePromocao
+              h3.setAttribute('id', 'tituloPromocao')
+
+              divPromo.append(img)
+              divPromo.append(h3)
+              divPromocoes.append(divPromo)
+              tops++;
+            });
+          }
+
+
+        })
+        .catch(error => console.error('Erro ao obter informações', error))
 
     })
 

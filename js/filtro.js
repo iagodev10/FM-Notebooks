@@ -68,6 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Erro ao obter promoções:", error))
 
+    /*
   const produtosLocais = [
     // Mochilas
     {
@@ -239,7 +240,7 @@ window.addEventListener("DOMContentLoaded", () => {
       idPromoVinc: null,
     },
   ]
-
+*/
   let produtos = []
   let filtroTexto = "" // Texto atual de busca
   let categoriasAtivas = ["todas"] // Categorias ativas
@@ -268,18 +269,25 @@ window.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       resultado.innerHTML = ""
       const filtrados = produtos.filter((p) => {
+        console.log("PROMOS ATIVAS",promocoesAtivas);
+        console.log("DO PROD",p.catProd);
+        console.log("DO PROD",p.marcaProd);
+        console.log("ATIVO: "+categoriasAtivas);
+        console.log("ATIVO: "+marcasAtivas);
+        
         const textoCombina = p.nomeProd.toLowerCase().includes(filtroTexto.toLowerCase())
         const todasSelecionadas = categoriasAtivas.includes("todas")
 
         //CATEGORIA
-        const categoriaCombina = todasSelecionadas || categoriasAtivas.includes(p.catProd)
+        const categoriaCombina = todasSelecionadas || categoriasAtivas.includes(p.catProd.toLowerCase())
 
         // MARCA
-        const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marcaProd)
+        const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marcaProd.toLowerCase())
 
         //PROMOCAO
         const promocaoCombina =
-          promocoesAtivas.length === 0 || (p.idPromoVinc && promocoesAtivas.includes(String(p.idPromoVinc)))
+  promocoesAtivas.length === 0 || (p.idPromoVinc && promocoesAtivas.includes(String(p.idPromoVinc)))
+
 
         return textoCombina && categoriaCombina && marcaCombina && promocaoCombina
       })
@@ -307,7 +315,7 @@ window.addEventListener("DOMContentLoaded", () => {
         div.className = "produto"
         div.innerHTML = `
                 <div class="produto-imagem">
-                    <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}" loading="lazy">
+                    <img src="${produto.urlImgProd1}" alt="${produto.nomeProd}">
                 </div>
                 <div class="produto-info">
                     <h3>${produto.nomeProd}</h3>
