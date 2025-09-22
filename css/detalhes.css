@@ -102,34 +102,128 @@
     gap: 15px;
     margin-top: 15px;
     flex-wrap: wrap;
-}
-
-.btn-verde {
-    background-color: var(--cor-blue);
-    color: #fff;
-    padding: 12px 18px;
-    border: none;
+  }
+  
+  /* Botão fancy original com pequenas adaptações para ícone */
+  .fancy {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #000;
     cursor: pointer;
-    font-size: 1.1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.3s ease-in-out;
-    border-radius: 8px;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    /* espaço entre ícone e texto */
-}
-
-.btn-verde i {
+    gap: 8px; /* espaço entre ícone e texto */
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 1.25em 2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 13px;
+  }
+  
+  .fancy i {
     font-size: 1.2rem;
-}
+    display: inline-block;
+  }
 
-.btn-verde:hover {
-    background-color: #28a745;
-    color: var(--cor-white2);
-}
-
+  
+  .fancy .text {
+    font-size: 1.125em;
+    line-height: 1.33333em;
+    padding-left: 0;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, left 0.3s ease-out;
+    z-index: 1;
+  }
+  
+  .fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+    z-index: 1;
+  }
+  
+  .fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition: width 0.5s ease-out, right 0.3s ease-out;
+    z-index: 1;
+  }
+  
+  /* Hover */
+  .fancy:hover {
+    color: white;
+    background: black;
+  }
+  
+  .fancy:hover::before {
+    width: 0.9375rem;
+    background: white;
+  }
+  
+  .fancy:hover .text {
+    color: white;
+    padding-left: 0.5em; /* Pequena animação no texto ao hover */
+  }
+  
+  .fancy:hover .top-key {
+    left: -2px;
+    width: 0;
+  }
+  
+  .fancy:hover .bottom-key-1,
+  .fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .botoes-compra {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .fancy {
+      width: 100%;
+      justify-content: center;
+      padding: 1em 0;
+    }
+  }
+  
 /* ==================ESPECIFICAÇÕES=========================== */
 
 .especificacoes {
