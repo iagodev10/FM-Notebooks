@@ -244,9 +244,9 @@
 
   <!-- Section cards de promoção -->
   <!-- Section cards de promoção -->
-  <section class="promocao" id="sumir">
-    <div class="div-promocao" id="englobTopPromos">
-     
+  <section class="promocao1" id="sumir">
+    <div class="div-promocao1" id="englobTopPromos">
+
     </div>
   </section>
 
@@ -257,11 +257,25 @@
     <h2 id="divFlexNome">Mais vendidos</h2>
 
     <div class="produtos" id="prodSecaoFlex">
-      
-      
+
+
     </div>
-    <a href="produtos.html" class="ver-todos-btn">Ver todos</a>
-      
+
+    <a href="produtos.html" class="animated-button">
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+      <span class="text">Modern Button</span>
+      <span class="circle"></span>
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+    </a>
+
 
   </section>
 
@@ -275,9 +289,22 @@
     <div class="produtos" id="divPromocao">
 
     </div>
-    <button class="btn">
-      <a href="produtos.html"><span>Ver Todos</span></a>
-    </button>
+
+    <a href="produtos.html" class="animated-button">
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+      <span class="text">Modern Button</span>
+      <span class="circle"></span>
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+    </a>
+
 
   </section>
 
@@ -405,9 +432,24 @@
         <p>Mouses</p>
       </div>
     </div>
-    <button class="btn">
-      <a href="produtos.html"><span>Ver Todos</span></a>
-    </button>
+
+
+    <a href="produtos.html" class="animated-button">
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+      <span class="text">Modern Button</span>
+      <span class="circle"></span>
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+    </a>
+
+
   </section>
 
   <!-- =======REDES SOCIAS=========== -->
@@ -803,76 +845,76 @@
         })
         .catch(error => console.error('Erro ao obter informações', error))
 
-        fetch('http://localhost:5090/get-divflex/', {
+      fetch('http://localhost:5090/get-divflex/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
       })
-      .then(response => {
+        .then(response => {
           if (!response.ok) throw new Error('Erro ao obter informações')
           return response.json()
         })
         .then(data => {
           data.forEach(promo => {
             const divPromocoes = document.getElementById('divPromocao')
-          let tops=0;
-          const secaoPromos = document.getElementById("secaoPromos")
-          const englobTopPromos=document.getElementById('englobTopPromos')
+            let tops = 0;
+            const secaoPromos = document.getElementById("secaoPromos")
+            const englobTopPromos = document.getElementById('englobTopPromos')
 
             const divPromo = document.createElement('div')
             divPromo.className = 'promocao'
-          if (data.length === 0) {
-            secaoPromos.style.display = "none"
-          }
-          else {
-            data.forEach(promo => {
-              if (tops<2) {
-               
-                const promoTop=document.createElement('div')
-                promoTop.className='div-promocao-1'
+            if (data.length === 0) {
+              secaoPromos.style.display = "none"
+            }
+            else {
+              data.forEach(promo => {
+                if (tops < 2) {
 
-            const img = document.createElement('img')
-            img.src = promo.urlImgPromo
-            img.alt = promo.nomePromocao
-            img.setAttribute('id', 'imgPromocaoIndex')
-                const imgPromoTop=document.createElement('img')
-                imgPromoTop.src=promo.urlImgPromo
-              
+                  const promoTop = document.createElement('div')
+                  promoTop.className = 'div-promocao-1'
 
-            const h3 = document.createElement('h3')
-            h3.innerText = promo.nomePromocao
-            h3.setAttribute('id', 'tituloPromocao')
-                promoTop.appendChild(imgPromoTop)
+                  const img = document.createElement('img')
+                  img.src = promo.urlImgPromo
+                  img.alt = promo.nomePromocao
+                  img.setAttribute('id', 'imgPromocaoIndex')
+                  const imgPromoTop = document.createElement('img')
+                  imgPromoTop.src = promo.urlImgPromo
 
-                englobTopPromos.appendChild(promoTop)
-             
 
-              }
+                  const h3 = document.createElement('h3')
+                  h3.innerText = promo.nomePromocao
+                  h3.setAttribute('id', 'tituloPromocao')
+                  promoTop.appendChild(imgPromoTop)
 
-              const divPromocoes = document.getElementById('divPromocao')
+                  englobTopPromos.appendChild(promoTop)
 
-              const divPromo = document.createElement('div')
-              divPromo.className = 'promocao'
 
-            divPromo.append(img)
-            divPromo.append(h3)
-            divPromocoes.append(divPromo)
-              const img = document.createElement('img')
-              img.src = promo.urlImgPromo
-              img.alt = promo.nomePromocao
-              img.setAttribute('id', 'imgPromocaoIndex')
+                }
 
-              const h3 = document.createElement('h3')
-              h3.innerText = promo.nomePromocao
-              h3.setAttribute('id', 'tituloPromocao')
+                const divPromocoes = document.getElementById('divPromocao')
 
-              divPromo.append(img)
-              divPromo.append(h3)
-              divPromocoes.append(divPromo)
-              tops++;
-            });
-          }
+                const divPromo = document.createElement('div')
+                divPromo.className = 'promocao'
+
+                divPromo.append(img)
+                divPromo.append(h3)
+                divPromocoes.append(divPromo)
+                const img = document.createElement('img')
+                img.src = promo.urlImgPromo
+                img.alt = promo.nomePromocao
+                img.setAttribute('id', 'imgPromocaoIndex')
+
+                const h3 = document.createElement('h3')
+                h3.innerText = promo.nomePromocao
+                h3.setAttribute('id', 'tituloPromocao')
+
+                divPromo.append(img)
+                divPromo.append(h3)
+                divPromocoes.append(divPromo)
+                tops++;
+              });
+            }
 
           });
 
@@ -882,7 +924,7 @@
 
 
 
-        fetch('http://localhost:5090/get-prods-divflex/', {
+      fetch('http://localhost:5090/get-prods-divflex/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -893,92 +935,92 @@
           return response.json()
         })
         .then(data => {
-          
-          const divEnglob=document.getElementById('prodSecaoFlex')
+
+          const divEnglob = document.getElementById('prodSecaoFlex')
           console.log(divEnglob);
-         console.log(data.produtos);
-         data.produtos.map((prod)=>{
-          if(prod){
-            const div=document.createElement('div')
-          div.className='produto-card'
+          console.log(data.produtos);
+          data.produtos.map((prod) => {
+            if (prod) {
+              const div = document.createElement('div')
+              div.className = 'produto-card'
 
-          const divProdImg=document.createElement('div')
-          divProdImg.className='produto-imagem'
+              const divProdImg = document.createElement('div')
+              divProdImg.className = 'produto-imagem'
 
-          const img=document.createElement("img")
-          img.src=prod.urlImgProd1
-          img.alt=prod.nomeProd
+              const img = document.createElement("img")
+              img.src = prod.urlImgProd1
+              img.alt = prod.nomeProd
 
-          divProdImg.appendChild(img)
+              divProdImg.appendChild(img)
 
-          const divProdInfo=document.createElement('div')
-          divProdInfo.className='produto-info'
+              const divProdInfo = document.createElement('div')
+              divProdInfo.className = 'produto-info'
 
-          const h3=document.createElement('h3')
-          h3.innerText=prod.nomeProd
+              const h3 = document.createElement('h3')
+              h3.innerText = prod.nomeProd
 
-          const divPreco=document.createElement('div')
-          divPreco.className='produto-preco'
+              const divPreco = document.createElement('div')
+              divPreco.className = 'produto-preco'
 
-          const span=document.createElement('span')
-          span.className='preco-novo'
-          span.innerText=`R$ ${prod.precoProd}`
-          
-          const botaoAddCar=document.createElement('button')
-          botaoAddCar.className='add-to-cart'
-          botaoAddCar.innerText="+"
+              const span = document.createElement('span')
+              span.className = 'preco-novo'
+              span.innerText = `R$ ${prod.precoProd}`
 
-          divProdInfo.appendChild(h3)
-          divPreco.appendChild(span)
-          divProdInfo.appendChild(divPreco)
-          divProdInfo.appendChild(botaoAddCar)
+              const botaoAddCar = document.createElement('button')
+              botaoAddCar.className = 'add-to-cart'
+              botaoAddCar.innerText = "+"
 
-          div.appendChild(divProdImg)
-          div.appendChild(divProdInfo)
-          
-          divEnglob.appendChild(div)
-          }
-          
+              divProdInfo.appendChild(h3)
+              divPreco.appendChild(span)
+              divProdInfo.appendChild(divPreco)
+              divProdInfo.appendChild(botaoAddCar)
 
-         })
-          
+              div.appendChild(divProdImg)
+              div.appendChild(divProdInfo)
+
+              divEnglob.appendChild(div)
+            }
+
+
+          })
+
 
         })
         .catch(error => console.error('Erro ao obter informações', error))
 
-        fetch('http://localhost:5090/promocoes/', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
+      fetch('http://localhost:5090/promocoes/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
         .then(response => {
           if (!response.ok) throw new Error('Erro ao obter informações')
           return response.json()
         })
         .then(data => {
-          let tops=0;
+          let tops = 0;
           const secaoPromos = document.getElementById("secaoPromos")
-          const englobTopPromos=document.getElementById('englobTopPromos')
+          const englobTopPromos = document.getElementById('englobTopPromos')
 
           if (data.length === 0) {
             secaoPromos.style.display = "none"
           }
           else {
             data.forEach(promo => {
-              if (tops<2) {
-               
-                const promoTop=document.createElement('div')
-                promoTop.className='div-promocao-1'
+              if (tops < 2) {
 
-                const imgPromoTop=document.createElement('img')
-                imgPromoTop.src=promo.urlImgPromo
-              
+                const promoTop = document.createElement('div')
+                promoTop.className = 'div-promocao-1'
+
+                const imgPromoTop = document.createElement('img')
+                imgPromoTop.src = promo.urlImgPromo
+
 
                 promoTop.appendChild(imgPromoTop)
 
                 englobTopPromos.appendChild(promoTop)
-             
+
 
               }
 
@@ -1026,7 +1068,7 @@
         });
       });
     }
-    
+
     // Adiciona evento de clique aos ícones do carrinho no menu
     if (carrinhoIcons && carrinho) {
       carrinhoIcons.forEach(icon => {
@@ -1037,7 +1079,7 @@
         });
       });
     }
-    
+
     // Adiciona evento de clique ao ícone do carrinho no modo responsivo (pseudo-elemento ::after)
     if (navElement && carrinho) {
       navElement.addEventListener('click', (e) => {
@@ -1045,7 +1087,7 @@
         // Calculando a posição do clique em relação ao elemento nav
         const navRect = navElement.getBoundingClientRect();
         const clickX = e.clientX - navRect.left;
-        
+
         // Se o clique foi na área direita do nav (onde está o ícone do carrinho)
         if (clickX > navRect.width - 60) {
           e.preventDefault();
