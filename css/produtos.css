@@ -73,6 +73,47 @@
 /* =================== BARRA DE PESQUISA NO HEADER =================== */
 /* =================== HEADER E NAVEGAÇÃO =================== */
 
+/* Fix header layout for mobile */
+@media (max-width: 991px) {
+  nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: "menu logo search cart";
+    align-items: center;
+    padding: 0 15px;
+    height: 8vh;
+    position: relative;
+  }
+  
+  .mobile-menu {
+    grid-area: menu;
+    justify-self: start;
+  }
+  
+  .logo {
+    grid-area: logo;
+    justify-self: center;
+    position: static;
+    transform: none;
+  }
+  
+  .mobile-search-trigger {
+    grid-area: search;
+    justify-self: end;
+    margin-right: 10px; /* Space from cart */
+  }
+  
+  /* Reserve space for nav::after cart icon */
+  nav::after {
+    grid-area: cart;
+    justify-self: end;
+    position: static !important;
+    transform: none !important;
+    right: auto !important;
+    top: auto !important;
+  }
+}
+
 /* Botão de pesquisa mobile */
 .mobile-search-trigger {
   background: none;
@@ -96,36 +137,11 @@
   color: var(--cor-primary);
 }
 
-/* Carrinho mobile */
+/* =================== CART VISIBILITY FIXES =================== */
+
+/* Hide the mobile cart element on produtos page - use nav::after instead */
 .mobile-cart {
-  display: flex;
-  align-items: center;
-}
-
-.mobile-cart .cart-link {
-  color: var(--cor-text-primary);
-  font-size: 1.2rem;
-  padding: 8px;
-  border-radius: var(--radius);
-  transition: all var(--transition-fast);
-  min-height: var(--touch-target-min);
-  min-width: var(--touch-target-min);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-cart .cart-link:hover {
-  background: var(--cor-gray-100);
-  color: var(--cor-primary);
-  text-decoration: none;
-}
-
-/* Esconder carrinho mobile em desktop */
-@media (min-width: 992px) {
-  .mobile-cart {
-    display: none !important;
-  }
+  display: none !important;
 }
 
 /* Esconder carrinho desktop em mobile */
@@ -644,6 +660,125 @@
   font-size: 20px;
   font-weight: bold;
   line-height: 1;
+}
+
+/* =================== FOOTER RESPONSIVE ALIGNMENT FIX =================== */
+
+/* Fix footer alignment in responsive mode - force vertical centering */
+@media (max-width: 768px) {
+  footer {
+    text-align: center !important;
+  }
+  
+  .footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 30px !important;
+  }
+  
+  .footer-content-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  .footer-brand {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .footer-brand h4 {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+  
+  .footer-brand p {
+    text-align: center !important;
+    margin: 10px auto !important;
+    max-width: 300px !important;
+  }
+  
+  .footer-content-call {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .footer-nav,
+  .footer-contact,
+  .footer-social {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .footer-nav h4,
+  .footer-contact h4,
+  .footer-social h4 {
+    text-align: center !important;
+    margin: 0 auto 15px auto !important;
+  }
+  
+  .footer-nav h4::after,
+  .footer-contact h4::after,
+  .footer-social h4::after {
+    margin: 5px auto 0 auto !important;
+  }
+  
+  .footer-links {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .footer-contact ul {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .footer-social-icons {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .footer-extra-area {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  .footer-extra-area-titulo {
+    text-align: center !important;
+  }
+  
+  .footer-extra-area-content {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .footer-copyright {
+    text-align: center !important;
+    margin: 20px auto 0 auto !important;
+  }
 }
 
 /* =================== WHATSAPP FIXO =================== */
