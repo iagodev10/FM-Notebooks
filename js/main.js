@@ -113,3 +113,4 @@ $(".intro-carousel").on("translated.owl.carousel", () => {
   $(".intro-content .intro-title").addClass("zoomIn animated").show()
   $(".intro-content .intro-price").addClass("fadeInUp animated").show()
 })
+

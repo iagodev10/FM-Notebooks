@@ -372,6 +372,82 @@
     </div>
   </footer>
 
+  <section class="carrinho" id="carrinho-overlay">
+    <div class="content-carrinho">
+      <button id="fechar-carrinho">×</button>
+
+      <h2>Seu Carrinho</h2>
+
+      <div id="cart-items">
+        <div class="items-add">
+
+          <div class="cart-vazio" style="display: none;">
+            <p>Seu carrinho está vazio.</p>
+          </div>
+
+          <div class="item">
+            <div class="item-cont">
+              <div class="item-img">
+                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
+              </div>
+              <div class="item-desc">
+                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
+                <span>R$ 297,20</span>
+              </div>
+            </div>
+            <div class="item-add-or-delete">
+              <div class="quantidade-container">
+                <button class="quantidade-btn diminuir">-</button>
+                <input type="number" class="item-quantidade" value="1" min="1">
+                <button class="quantidade-btn aumentar">+</button>
+              </div>
+              <button class="remover-item">
+                <i class="fa fa-trash"></i> Remover
+              </button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="item-cont">
+              <div class="item-img">
+                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
+              </div>
+              <div class="item-desc">
+                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
+                <span>R$ 297,20</span>
+              </div>
+            </div>
+            <div class="item-add-or-delete">
+              <div class="quantidade-container">
+                <button class="quantidade-btn diminuir">-</button>
+                <input type="number" class="item-quantidade" value="2" min="1">
+                <button class="quantidade-btn aumentar">+</button>
+              </div>
+              <button class="remover-item">
+                <i class="fa fa-trash"></i> Remover
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cart-total">
+          <div class="total-info">
+            <span>Total: R$ 594,40</span>
+          </div>
+          <button class="btn-finalizar" onclick="finalizarCompra()">
+            Finalizar Compra
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+
+
+  </script>
+
   <!-- SCRIPTS -->
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>

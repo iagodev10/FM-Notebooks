@@ -797,7 +797,7 @@
           <div class="total-info">
             <span>Total: R$ 594,40</span>
           </div>
-          <button class="btn-finalizar">
+          <button class="btn-finalizar" onclick="finalizarCompra()">
             Finalizar Compra
           </button>
         </div>
@@ -809,6 +809,116 @@
 
 
   <script>
+    function finalizarCompra() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  // monta a mensagem
+  let mensagem = "Olá, tudo bem? Gostaria de finalizar minha compra:\n\n";
+  carrinho.forEach(item => {
+    mensagem += `• ${item.quantidade}x ${item.nome}\n`;
+  });
+
+  // telefone de destino (substitua pelo seu!)
+  const telefone = "5534998723042"; 
+
+  // gera o link para WhatsApp
+  const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+  // abre o WhatsApp
+  window.open(url, "_blank");
+}
+    // ============ LocalStorage helpers ============
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
+
+function setCarrinho(carrinho) {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+// ============ Alterações no carrinho ============
+function removerDoCarrinho(id) {
+  let carrinho = getCarrinho().filter(p => p.id !== id);
+  setCarrinho(carrinho);
+  renderCarrinho();
+}
+
+function alterarQuantidade(id, delta) {
+  let carrinho = getCarrinho().map(p => {
+    if (p.id === id) {
+      p.quantidade = Math.max(1, p.quantidade + delta);
+    }
+    return p;
+  });
+  setCarrinho(carrinho);
+  renderCarrinho();
+}
+
+// ============ Renderização ============
+function renderCarrinho() {
+  const carrinho = getCarrinho();
+  const container = document.querySelector(".items-add");
+  const vazio = document.querySelector(".cart-vazio");
+  const totalEl = document.querySelector(".cart-total .total-info span");
+
+  if (!container) return;
+  container.innerHTML = "";
+
+  if (carrinho.length === 0) {
+    if (vazio) vazio.style.display = "block";
+    if (totalEl) totalEl.textContent = "Total: R$ 0,00";
+    return;
+  } else {
+    if (vazio) vazio.style.display = "none";
+  }
+
+  let total = 0;
+
+  carrinho.forEach(produto => {
+    total += produto.preco * produto.quantidade;
+
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <div class="item-cont">
+        <div class="item-img">
+          <img src="${produto.img}" alt="${produto.nome}">
+        </div>
+        <div class="item-desc">
+          <p>${produto.nome}</p>
+          <span>R$ ${produto.preco.toFixed(2)}</span>
+        </div>
+      </div>
+      <div class="item-add-or-delete">
+        <div class="quantidade-container">
+          <button class="quantidade-btn diminuir">-</button>
+          <input type="text" class="item-quantidade" value="${produto.quantidade}" min="1">
+          <button class="quantidade-btn aumentar">+</button>
+        </div>
+        <button class="remover-item"><i class="fa fa-trash"></i> Remover</button>
+      </div>
+    `;
+
+    // Eventos
+    div.querySelector(".diminuir").addEventListener("click", () => alterarQuantidade(produto.id, -1));
+    div.querySelector(".aumentar").addEventListener("click", () => alterarQuantidade(produto.id, 1));
+    div.querySelector(".remover-item").addEventListener("click", () => removerDoCarrinho(produto.id));
+
+    container.appendChild(div);
+  });
+
+  if (totalEl) totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+// ============ Inicialização ============
+document.addEventListener("DOMContentLoaded", () => {
+  renderCarrinho();
+});
+
     document.addEventListener('DOMContentLoaded', () => {
       fetch('http://localhost:5090/promocoes/', {
         method: 'GET',

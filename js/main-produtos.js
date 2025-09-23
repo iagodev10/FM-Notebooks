@@ -442,7 +442,4 @@ if (typeof window.mobileNavbar === "undefined") {
   }
 }
 
-window.adicionarAoCarrinho = (id, nome, preco) => {
-  // Cart functionality disabled
-  console.log(`Cart functionality disabled for product: ${nome}`)
-}
+
