@@ -106,11 +106,11 @@
   
   /* Botão fancy original com pequenas adaptações para ícone */
   .fancy {
-    background-color: transparent;
+    background-color: black;
     border: 2px solid #000;
     border-radius: 0;
     box-sizing: border-box;
-    color: #000;
+    color: white;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -145,7 +145,7 @@
     transition: all 0.3s ease-in-out;
     text-transform: uppercase;
     text-decoration: none;
-    color: black;
+    color: white;
     position: relative;
     z-index: 2;
   }
@@ -156,7 +156,7 @@
     top: -2px;
     left: 0.625rem;
     position: absolute;
-    background: #e8e8e8;
+    background: #000000;
     transition: width 0.5s ease-out, left 0.3s ease-out;
     z-index: 1;
   }
@@ -167,7 +167,7 @@
     right: 1.875rem;
     bottom: -2px;
     position: absolute;
-    background: #e8e8e8;
+    background: blue;
     transition: width 0.5s ease-out, right 0.3s ease-out;
     z-index: 1;
   }
@@ -178,24 +178,24 @@
     right: 0.625rem;
     bottom: -2px;
     position: absolute;
-    background: #e8e8e8;
+    background: blue;
     transition: width 0.5s ease-out, right 0.3s ease-out;
     z-index: 1;
   }
   
   /* Hover */
   .fancy:hover {
-    color: white;
-    background: black;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
   }
   
   .fancy:hover::before {
     width: 0.9375rem;
-    background: white;
+    background: black;
   }
   
   .fancy:hover .text {
-    color: white;
+    color: black;
     padding-left: 0.5em; /* Pequena animação no texto ao hover */
   }
   
