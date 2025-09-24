@@ -1,5 +1,5 @@
 {
     "editor.inlineSuggest.suppressSuggestions": false,
-    "liveServer.settings.port": 5501,
+    "liveServer.settings.port": 5502,
     "CodeGPT.apiKey": "OpenAI"
 }
