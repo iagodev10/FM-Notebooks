@@ -190,7 +190,8 @@ class AccessibilityManager {
    * Prende o foco dentro de um modal
    */
   trapFocus(modal) {
-    const focusableElements = modal.querySelectorAll(this.getFocusableElements().join(', '));
+    const focusableElements = this.getFocusableElements().filter(el => modal.contains(el));
+
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 

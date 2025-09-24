@@ -6,7 +6,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
     const fecharCarrinho = document.getElementById('fechar-carrinho');
     const navElement = document.querySelector('nav');
 
-    // Adiciona evento de clique aos botões de abrir carrinho
+  
     if (carrinhoButtons && carrinho) {
       carrinhoButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -17,7 +17,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       });
     }
 
-    // Adiciona evento de clique aos ícones do carrinho no menu
+  
     if (carrinhoIcons && carrinho) {
       carrinhoIcons.forEach(icon => {
         icon.addEventListener('click', (e) => {
@@ -28,15 +28,14 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       });
     }
 
-    // Adiciona evento de clique ao ícone do carrinho no modo responsivo (pseudo-elemento ::after)
+  
     if (navElement && carrinho) {
       navElement.addEventListener('click', (e) => {
-        // Verifica se o clique foi no pseudo-elemento ::after (ícone do carrinho)
-        // Calculando a posição do clique em relação ao elemento nav
+       
         const navRect = navElement.getBoundingClientRect();
         const clickX = e.clientX - navRect.left;
 
-        // Se o clique foi na área direita do nav (onde está o ícone do carrinho)
+       
         if (clickX > navRect.width - 60) {
           e.preventDefault();
           carrinho.style.display = 'flex';
@@ -58,7 +57,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       const vazio = document.querySelector(".cart-vazio");
       const totalEl = document.querySelector(".cart-total .total-info span");
     
-      if (!container) return; // carrinho não está na página
+      if (!container) return; 
       container.innerHTML = "";
     
       if (carrinho.length === 0) {
@@ -96,7 +95,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
           </div>
         `;
     
-        // Eventos
+      
         div.querySelector(".diminuir").addEventListener("click", () => alterarQuantidade(produto.id, -1));
         div.querySelector(".aumentar").addEventListener("click", () => alterarQuantidade(produto.id, 1));
         div.querySelector(".remover-item").addEventListener("click", () => removerDoCarrinho(produto.id));
@@ -108,7 +107,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
     }
 
 
-    // Fecha carrinho ao clicar fora dele
+  
     if (carrinho) {
       carrinho.addEventListener('click', (e) => {
         if (e.target === carrinho) {
@@ -118,7 +117,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       });
     }
 
-    // Utilidades para Local Storage
+ 
 function getCarrinho() {
   return JSON.parse(localStorage.getItem("carrinho")) || [];
 }
@@ -127,7 +126,7 @@ function setCarrinho(carrinho) {
   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 }
 
-// Adicionar produto ao carrinho
+
 function adicionarAoCarrinho(produto) {
  
   let carrinho = getCarrinho();
@@ -143,7 +142,7 @@ function adicionarAoCarrinho(produto) {
   renderCarrinho();
 }
 
-// Remover item
+
 function removerDoCarrinho(id) {
   let carrinho = getCarrinho().filter(p => p.id !== id);
   const prod=getCarrinho().filter(p => p.id == id);
@@ -152,7 +151,7 @@ function removerDoCarrinho(id) {
   renderCarrinho();
 }
 
-// Alterar quantidade
+
 function alterarQuantidade(id, delta) {
   let carrinho = getCarrinho();
   carrinho = carrinho.map(p => {
@@ -173,19 +172,19 @@ function finalizarCompra() {
     return;
   }
 
-  // monta a mensagem
+
   let mensagem = "Olá, tudo bem? Gostaria de finalizar minha compra:\n\n";
   carrinho.forEach(item => {
     mensagem += `• ${item.quantidade}x ${item.nome}\n`;
   });
 
-  // telefone de destino (substitua pelo seu!)
+ 
   const telefone = "5534998723042"; 
 
-  // gera o link para WhatsApp
+ 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
-  // abre o WhatsApp
+ 
   window.open(url, "_blank");
 }
 
@@ -193,6 +192,7 @@ function finalizarCompra() {
 // ===========================
 // LISTA DE PRODUTOS COMPLETA
 // ===========================
+
 window.addEventListener("DOMContentLoaded", () => {
   renderCarrinho();
   fetch("http://localhost:5090/produtos", {
@@ -261,182 +261,10 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Erro ao obter promoções:", error))
 
-    /*
-  const produtosLocais = [
-    // Mochilas
-    {
-      idProd: 1,
-      nomeProd: "Mochila Kross Elegance Clean Black",
-      descricao: "Carregue seus itens com segurança, estilo e conforto.",
-      precoProd: "105,00",
-      catProd: "mochilas",
-      marcaProd: "Kross",
-      urlImgProd1: "/mochila-preta-elegante.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 2,
-      nomeProd: "Mochila Lenovo Casual B210",
-      descricao: "Praticidade e estilo para o dia a dia.",
-      precoProd: "122,00",
-      catProd: "mochilas",
-      marcaProd: "Lenovo",
-      urlImgProd1: "/mochila-lenovo-casual.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 3,
-      nomeProd: "Mochila Kross Elegance Redemption",
-      descricao: "Mochila Redemption para Notebook - Estilo e resistência.",
-      precoProd: "205,00",
-      catProd: "mochilas",
-      marcaProd: "Kross",
-      urlImgProd1: "/mochila-gamer-redemption.jpg",
-      idPromoVinc: null,
-    },
-
-    // Mouse Pads
-    {
-      idProd: 4,
-      nomeProd: "Mouse Pad Gamer LED MP003",
-      descricao: "Antiderrapante, LED RGB e superfície extra grande.",
-      precoProd: "155,90",
-      catProd: "mousepads",
-      marcaProd: "Bright",
-      urlImgProd1: "/mousepad-gamer-led-rgb.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 5,
-      nomeProd: "Mouse Pad Bright Tapete Office",
-      descricao: "Desempenho e estilo elegante para escritórios.",
-      precoProd: "95,00",
-      catProd: "mousepads",
-      marcaProd: "Bright",
-      urlImgProd1: "/mousepad-office-elegante.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 6,
-      nomeProd: "Mouse Pad Bright League of Legends",
-      descricao: "Tamanho grande (70x30 cm) com estampa temática.",
-      precoProd: "55,90",
-      catProd: "mousepads",
-      marcaProd: "Bright",
-      urlImgProd1: "/mousepad-league-of-legends.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 7,
-      nomeProd: "Mouse Pad Bright Game Arme",
-      descricao: "Superfície ampla (70x30 cm) com tema camuflado.",
-      precoProd: "55,90",
-      catProd: "mousepads",
-      marcaProd: "Bright",
-      urlImgProd1: "/mousepad-camuflado-militar.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 8,
-      nomeProd: "Mouse Pad Bright Ergonômico",
-      descricao: "Superfície confortável com apoio de pulso.",
-      precoProd: "32,00",
-      catProd: "mousepads",
-      marcaProd: "Bright",
-      urlImgProd1: "/mousepad-ergonomico-apoio-pulso.jpg",
-      idPromoVinc: null,
-    },
-
-    // Mouses
-    {
-      idProd: 9,
-      nomeProd: "Mouse Gamer Acer Nitro NMW200",
-      descricao: "Desempenho elevado para jogos.",
-      precoProd: "212,00",
-      catProd: "mouses",
-      marcaProd: "Acer",
-      urlImgProd1: "/mouse-gamer-acer-nitro.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 10,
-      nomeProd: "Mouse Logitech Sem-Fio M185 AZUL",
-      descricao: "Conforto e precisão sem fio.",
-      precoProd: "129,90",
-      catProd: "mouses",
-      marcaProd: "Logitech",
-      urlImgProd1: "/mouse-logitech-azul-wireless.jpg",
-      idPromoVinc: null,
-    },
-
-    // Combos
-    {
-      idProd: 19,
-      nomeProd: "Combo Teclado e Mouse Sem Fio Bright",
-      descricao: "Conectividade 2.4GHz sem fio com conforto.",
-      precoProd: "119,90",
-      catProd: "combos",
-      marcaProd: "Bright",
-      urlImgProd1: "/combo-teclado-mouse-wireless.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 20,
-      nomeProd: "Kit Gamer Kross Mouse + Teclado",
-      descricao: "Combo gamer completo com 5 itens.",
-      precoProd: "199,99",
-      catProd: "combos",
-      marcaProd: "Kross",
-      urlImgProd1: "/kit-gamer-teclado-mouse-headset.jpg",
-      idPromoVinc: null,
-    },
-
-    // Headphones
-    {
-      idProd: 23,
-      nomeProd: "Headphone JBL Tune 500 Preto",
-      descricao: "Som JBL Pure Bass com design dobrável.",
-      precoProd: "199,20",
-      catProd: "headphones",
-      marcaProd: "JBL",
-      urlImgProd1: "/headphone-jbl-tune-500-preto.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 24,
-      nomeProd: "Headset JBL Quantum 100",
-      descricao: "Som envolvente com microfone destacável.",
-      precoProd: "237,42",
-      catProd: "headphones",
-      marcaProd: "JBL",
-      urlImgProd1: "/headset-jbl-quantum-gamer.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 25,
-      nomeProd: "Headphone JBL Tune 520BT Bluetooth",
-      descricao: "Fones sem fio com 57h de bateria.",
-      precoProd: "297,20",
-      catProd: "headphones",
-      marcaProd: "JBL",
-      urlImgProd1: "/headphone-jbl-bluetooth-wireless.jpg",
-      idPromoVinc: null,
-    },
-    {
-      idProd: 26,
-      nomeProd: "Fone de Ouvido Bluetooth JBL TUNE 520BT Branco",
-      descricao: "Som potente com estilo elegante.",
-      precoProd: "297,20",
-      catProd: "headphones",
-      marcaProd: "JBL",
-      urlImgProd1: "/placeholder.svg?height=200&width=280",
-      idPromoVinc: null,
-    },
-  ]
-*/
+    
   let produtos = []
-  let filtroTexto = "" // Texto atual de busca
-  let categoriasAtivas = ["todas"] // Categorias ativas
+  let filtroTexto = "" 
+  let categoriasAtivas = ["todas"] 
   let marcasAtivas = []
   let promocoesAtivas = []
 
@@ -453,12 +281,12 @@ window.addEventListener("DOMContentLoaded", () => {
   function exibirProdutos() {
     if (!resultado) return
 
-    // Mostrar loading
+    
     if (window.fmNavigation) {
       window.fmNavigation.toggleLoading(true)
     }
 
-    // Aguardar um pouco para mostrar o loading
+  
     setTimeout(() => {
       resultado.innerHTML = ""
       const filtrados = produtos.filter((p) => {
@@ -485,7 +313,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return textoCombina && categoriaCombina && marcaCombina && promocaoCombina
       })
 
-      // Ocultar loading
+    
       if (window.fmNavigation) {
         window.fmNavigation.toggleLoading(false)
         window.fmNavigation.updateProductsCounter(filtrados.length)
@@ -562,7 +390,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function setupSearch(input) {
     if (!input) return
 
-    // Real-time search
+  
     input.addEventListener("input", (e) => {
       filtroTexto = e.target.value.trim()
       exibirProdutos()
@@ -573,7 +401,7 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     })
 
-    // Search on Enter
+ 
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         e.preventDefault()
@@ -582,7 +410,7 @@ window.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Setup search for both inputs
+
   setupSearch(busca)
   setupSearch(buscaMobile)
 
@@ -671,14 +499,14 @@ window.addEventListener("DOMContentLoaded", () => {
   // ===========================
   // INICIALIZAR
   // ===========================
-  // Aguardar um pouco para garantir que os produtos foram carregados
+ 
   setTimeout(() => {
     if (produtos.length === 0) {
       produtos = produtosLocais
     }
     exibirProdutos()
     
-    // Garantir que o contador seja atualizado
+   
     if (window.fmNavigation) {
       window.fmNavigation.updateProductsCounter(produtos.length)
     }
