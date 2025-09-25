@@ -35,6 +35,7 @@
   <!-- Main Stylesheet File -->
   <link href="css/contatos.css" rel="stylesheet">
   <link href="css/chatbot.css" rel="stylesheet">
+  <link href="css/carrinho.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: EstateAgency  ''
@@ -341,55 +342,13 @@
             <p>Seu carrinho está vazio.</p>
           </div>
 
-          <div class="item">
-            <div class="item-cont">
-              <div class="item-img">
-                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
-              </div>
-              <div class="item-desc">
-                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
-                <span>R$ 297,20</span>
-              </div>
-            </div>
-            <div class="item-add-or-delete">
-              <div class="quantidade-container">
-                <button class="quantidade-btn diminuir">-</button>
-                <input type="number" class="item-quantidade" value="1" min="1">
-                <button class="quantidade-btn aumentar">+</button>
-              </div>
-              <button class="remover-item">
-                <i class="fa fa-trash"></i> Remover
-              </button>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-cont">
-              <div class="item-img">
-                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
-              </div>
-              <div class="item-desc">
-                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
-                <span>R$ 297,20</span>
-              </div>
-            </div>
-            <div class="item-add-or-delete">
-              <div class="quantidade-container">
-                <button class="quantidade-btn diminuir">-</button>
-                <input type="number" class="item-quantidade" value="2" min="1">
-                <button class="quantidade-btn aumentar">+</button>
-              </div>
-              <button class="remover-item">
-                <i class="fa fa-trash"></i> Remover
-              </button>
-            </div>
-          </div>
+          
 
         </div>
 
         <div class="cart-total">
           <div class="total-info">
-            <span>Total: R$ 594,40</span>
+            <span>Total: R$ 0,00</span>
           </div>
           <button class="btn-finalizar" onclick="finalizarCompra">
             Finalizar Compra
@@ -400,284 +359,198 @@
   </section>
 
   <script>
-    /* ======= Carrinho (localStorage) - versão robusta ======= */
-    (function () {
-      // ---------- helpers ----------
-      const LS_KEY = 'carrinho';
-      const overlay = document.getElementById('carrinho-overlay');
-      const containerSelector = '.items-add';
-      const totalSelector = '.cart-total .total-info span';
-      const vazioSelector = '.cart-vazio';
+     let totalEl = document.querySelector(".cart-total .total-info span");
+const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
+    const carrinhoIcons = document.querySelectorAll('.nav-cart a');
+    const carrinho = document.getElementById('carrinho-overlay');
     
-      function getCarrinho() {
-        try {
-          return JSON.parse(localStorage.getItem(LS_KEY)) || [];
-        } catch (e) {
-          console.error('Erro lendo localStorage:', e);
-          return [];
-        }
-      }
-    
-      function setCarrinho(carrinho) {
-        localStorage.setItem(LS_KEY, JSON.stringify(carrinho));
-      }
-    
-      function formatBRL(value) {
-        const n = Number(value) || 0;
-        return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-      }
-    
-      // ---------- operações ----------
-      function adicionarAoCarrinho(produtoRaw) {
-        if (!produtoRaw) return console.warn('produto inválido ao adicionar');
-        const produto = {
-          id: String(produtoRaw.id),
-          nome: produtoRaw.nome || produtoRaw.nomeProd || 'Produto',
-          preco: Number(produtoRaw.preco) || Number(produtoRaw.precoProd) || 0,
-          img: produtoRaw.img || produtoRaw.urlImgProd1 || ''
-        };
-    
-        const carrinho = getCarrinho();
-        const idx = carrinho.findIndex(p => String(p.id) === produto.id);
-        if (idx >= 0) {
-          carrinho[idx].quantidade = (Number(carrinho[idx].quantidade) || 1) + 1;
-        } else {
-          carrinho.push({ ...produto, quantidade: 1 });
-        }
-        setCarrinho(carrinho);
-        renderCarrinho();
-      }
-    
-      function removerDoCarrinho(id) {
-        const sid = String(id);
-        const carrinho = getCarrinho().filter(p => String(p.id) !== sid);
-        setCarrinho(carrinho);
-        renderCarrinho();
-      }
-    
-      function alterarQuantidade(id, delta) {
-        const sid = String(id);
-        const carrinho = getCarrinho().map(p => {
-          if (String(p.id) === sid) {
-            const nova = Math.max(1, (Number(p.quantidade) || 1) + delta);
-            return { ...p, quantidade: nova };
-          }
-          return p;
+    const fecharCarrinho = document.getElementById('fechar-carrinho');
+    const navElement = document.querySelector('nav');
+
+  
+    if (carrinhoButtons && carrinho) {
+      carrinhoButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          carrinho.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
         });
-        setCarrinho(carrinho);
-        renderCarrinho();
-      }
-    
-      function setQuantidade(id, quantidade) {
-        const sid = String(id);
-        const carrinho = getCarrinho().map(p => {
-          if (String(p.id) === sid) {
-            return { ...p, quantidade: Math.max(1, Number(quantidade) || 1) };
-          }
-          return p;
+      });
+    }
+
+  
+    if (carrinhoIcons && carrinho) {
+      carrinhoIcons.forEach(icon => {
+        icon.addEventListener('click', (e) => {
+          e.preventDefault();
+          carrinho.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
         });
-        setCarrinho(carrinho);
-        renderCarrinho();
-      }
-    
-      // ---------- render ----------
-      function renderCarrinho() {
-        const carrinho = getCarrinho();
-        const container = document.querySelector(containerSelector);
-        const vazio = document.querySelector(vazioSelector);
-        const totalEl = document.querySelector(totalSelector);
-    
-        if (!container) {
-          // Se a página não tem a área do carrinho (ex.: páginas que não usam o mesmo layout)
-          console.warn('Container do carrinho não encontrado:', containerSelector);
-          return;
-        }
-    
-        container.innerHTML = '';
-    
-        if (!carrinho || carrinho.length === 0) {
-          if (vazio) vazio.style.display = 'block';
-          if (totalEl) totalEl.textContent = 'Total: R$ 0,00';
-          return;
-        } else {
-          if (vazio) vazio.style.display = 'none';
-        }
-    
-        let total = 0;
-    
-        carrinho.forEach(item => {
-          const precoNum = Number(item.preco) || 0;
-          const qtd = Number(item.quantidade) || 1;
-          total += precoNum * qtd;
-    
-          const div = document.createElement('div');
-          div.className = 'item';
-          div.setAttribute('data-id', String(item.id));
-          div.innerHTML = `
-            <div class="item-cont">
-              <div class="item-img">
-                <img src="${item.img || 'img/placeholder.png'}" alt="${escapeHtml(item.nome)}">
-              </div>
-              <div class="item-desc">
-                <p>${escapeHtml(item.nome)}</p>
-                <span>${formatBRL(precoNum)}</span>
-              </div>
-            </div>
-            <div class="item-add-or-delete">
-              <div class="quantidade-container">
-                <button class="quantidade-btn diminuir" aria-label="Diminuir quantidade">-</button>
-                <input type="text" class="item-quantidade" value="${qtd}" min="1" aria-label="Quantidade do item">
-                <button class="quantidade-btn aumentar" aria-label="Aumentar quantidade">+</button>
-              </div>
-              <button class="remover-item" aria-label="Remover item"><i class="fa fa-trash"></i> Remover</button>
-            </div>
-          `;
-          container.appendChild(div);
-        });
-    
-        if (totalEl) totalEl.textContent = `Total: ${formatBRL(total)}`;
-      }
-    
-      // Pequena sanitação para evitar XSS em nomes (string simples)
-      function escapeHtml(str) {
-        return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      }
-    
-      // ---------- event delegation (quantidade e remover) ----------
-      function bindCartEvents() {
-        const container = document.querySelector(containerSelector);
-        if (!container) return;
-    
-        container.addEventListener('click', (e) => {
-          const btn = e.target.closest('.quantidade-btn, .remover-item');
-          if (!btn) return;
-    
-          const itemEl = btn.closest('.item');
-          const id = itemEl?.getAttribute('data-id');
-          if (!id) return console.warn('ID do item não encontrado no DOM');
-    
-          if (btn.classList.contains('diminuir')) alterarQuantidade(id, -1);
-          else if (btn.classList.contains('aumentar')) alterarQuantidade(id, 1);
-          else if (btn.classList.contains('remover-item')) removerDoCarrinho(id);
-        });
-    
-        // tratar alteração manual de input
-        container.addEventListener('change', (e) => {
-          if (e.target.classList.contains('item-quantidade')) {
-            const itemEl = e.target.closest('.item');
-            const id = itemEl?.getAttribute('data-id');
-            const val = parseInt(e.target.value, 10) || 1;
-            if (id) setQuantidade(id, val);
-          }
-        });
-      }
-    
-      // ---------- hooks de UI (abrir/fechar overlay e botões adicionar) ----------
-      function bindUI() {
-        // abrir carrinho por links com .nav-cart a ou .abrir-carrinho
-        document.querySelectorAll('.nav-cart a, .abrir-carrinho').forEach(el => {
-          el.addEventListener('click', (ev) => {
-            ev.preventDefault();
-            openCart();
-          });
-        });
-    
-        // fechar
-        const fechar = document.getElementById('fechar-carrinho');
-        if (fechar) fechar.addEventListener('click', closeCart);
-    
-        // fechar clicando fora do conteúdo
-        if (overlay) {
-          overlay.addEventListener('click', (ev) => {
-            if (ev.target === overlay) closeCart();
-          });
-        }
-    
-        // adicionar ao carrinho: procura data-* no botão. Ao gerar cards, defina:
-        // <button class="add-carrinho-btn" data-id="..." data-nome="..." data-preco="..." data-img="...">Adicionar</button>
-        document.querySelectorAll('.add-carrinho-btn').forEach(btn => {
-          // habilita caso esteja desabilitado
-          btn.disabled = false;
-          btn.addEventListener('click', () => {
-            const id = btn.dataset.id || btn.getAttribute('data-id');
-            const nome = btn.dataset.nome || btn.getAttribute('data-nome') || btn.dataset.nomeprod;
-            const preco = btn.dataset.preco || btn.getAttribute('data-preco') || btn.dataset.precoprod;
-            const img = btn.dataset.img || btn.getAttribute('data-img');
-    
-            if (!id) {
-              // tenta pegar dados do elemento pai (se você renderizou o card dinamicamente, coloque data-* no card)
-              const card = btn.closest('.produto, .produto-card');
-              if (card) {
-                const cid = card.dataset.id || card.getAttribute('data-id');
-                if (cid) {
-                  adicionarAoCarrinho({ id: cid, nome: card.dataset.nome || card.getAttribute('data-nome'), preco: card.dataset.preco || card.getAttribute('data-preco'), img: card.dataset.img || card.getAttribute('data-img') });
-                  return;
-                }
-              }
-              return console.warn('Botão add-carrinho sem data-id; ajuste a geração do card para incluir data-id');
-            }
-    
-            adicionarAoCarrinho({ id, nome, preco, img });
-          });
-        });
-      }
-    
-      function openCart() {
-        if (!overlay) return;
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        renderCarrinho();
-      }
-    
-      function closeCart() {
-        if (!overlay) return;
-        overlay.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    
-      // ---------- inicialização ----------
-      document.addEventListener('DOMContentLoaded', () => {
-        try {
-          bindCartEvents();
-          bindUI();
-          renderCarrinho();
-        } catch (err) {
-          console.error('Erro inicializando carrinho:', err);
+      });
+    }
+
+  
+    if (navElement && carrinho) {
+      navElement.addEventListener('click', (e) => {
+       
+        const navRect = navElement.getBoundingClientRect();
+        const clickX = e.clientX - navRect.left;
+
+       
+        if (clickX > navRect.width - 60) {
+          e.preventDefault();
+          carrinho.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
         }
       });
-    
-      // export pra console pra facilitar debug (opcional)
-      window.__carrinho_debug = {
-        getCarrinho,
-        setCarrinho,
-        adicionarAoCarrinho,
-        removerDoCarrinho,
-        renderCarrinho
-      };
-    })();
+    }
 
-    function finalizarCompra() {
+    if (fecharCarrinho && carrinho) {
+      fecharCarrinho.addEventListener('click', () => {
+        carrinho.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+    }
+
+    function renderCarrinho() {
+      const carrinho = getCarrinho();
+      const container = document.querySelector(".items-add");
+      const vazio = document.querySelector(".cart-vazio");
+      const totalEl = document.querySelector(".cart-total .total-info span");
+    
+      if (!container) return; 
+      container.innerHTML = "";
+      console.log('CAR',carrinho);
+      if (carrinho.length === 0) {
+        if (vazio) vazio.style.display = "block";
+        if (totalEl) totalEl.textContent = "Total: R$ 0,00";
+        return;
+      } else {
+        if (vazio) vazio.style.display = "none";
+      }
+    
+      let total = 0;
+    
+      carrinho.forEach(produto => {
+        total += produto.preco * produto.quantidade;
+    
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div class="item-cont">
+            <div class="item-img">
+              <img src="${produto.img}" alt="${produto.nome}">
+            </div>
+            <div class="item-desc">
+              <p>${produto.nome}</p>
+              <span>R$ ${produto.preco.toFixed(2)}</span>
+            </div>
+          </div>
+          <div class="item-add-or-delete">
+            <div class="quantidade-container">
+              <button class="quantidade-btn diminuir">-</button>
+              <input type="text" class="item-quantidade" value="${produto.quantidade}" min="1">
+              <button class="quantidade-btn aumentar">+</button>
+            </div>
+            <button class="remover-item"><i class="fa fa-trash"></i> Remover</button>
+          </div>
+        `;
+    
+      
+        div.querySelector(".diminuir").addEventListener("click", () => alterarQuantidade(produto.id, -1));
+        div.querySelector(".aumentar").addEventListener("click", () => alterarQuantidade(produto.id, 1));
+        div.querySelector(".remover-item").addEventListener("click", () => removerDoCarrinho(produto.id));
+    
+        container.appendChild(div);
+      });
+      console.log(totalEl);
+      if (totalEl) totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+
+  
+    if (carrinho) {
+      carrinho.addEventListener('click', (e) => {
+        if (e.target === carrinho) {
+          carrinho.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+
+ 
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
+
+function setCarrinho(carrinho) {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+
+function adicionarAoCarrinho(produto) {
+ 
+  let carrinho = getCarrinho();
+
+  const existente = carrinho.find(p => p.id === produto.id);
+  if (existente) {
+    existente.quantidade += 1;
+  } else {
+    carrinho.push({ ...produto, quantidade: 1 });
+  }
+
+  setCarrinho(carrinho);
+  renderCarrinho();
+}
+
+
+function removerDoCarrinho(id) {
+  let carrinho = getCarrinho().filter(p => p.id !== id);
+  const prod=getCarrinho().filter(p => p.id == id);
+  totalEl-=prod.precoProd
+  setCarrinho(carrinho);
+  renderCarrinho();
+}
+
+
+function alterarQuantidade(id, delta) {
+  let carrinho = getCarrinho();
+  carrinho = carrinho.map(p => {
+    if (p.id === id) {
+      p.quantidade = Math.max(1, p.quantidade + delta);
+    }
+    return p;
+  });
+  setCarrinho(carrinho);
+  renderCarrinho();
+}
+
+
+function finalizarCompra() {
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   if (carrinho.length === 0) {
     alert("Seu carrinho está vazio!");
     return;
   }
 
-  // monta a mensagem
+
   let mensagem = "Olá, tudo bem? Gostaria de finalizar minha compra:\n\n";
   carrinho.forEach(item => {
     mensagem += `• ${item.quantidade}x ${item.nome}\n`;
   });
 
-  // telefone de destino (substitua pelo seu!)
+ 
   const telefone = "5534998723042"; 
 
-  // gera o link para WhatsApp
+ 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
-  // abre o WhatsApp
+ 
   window.open(url, "_blank");
 }
+document.addEventListener('DOMContentLoaded',()=>{
+  renderCarrinho()
+})
     </script>
   
   <!-- accessibility.js para melhorias de acessibilidade -->
