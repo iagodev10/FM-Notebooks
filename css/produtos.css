@@ -80,7 +80,7 @@
     grid-template-columns: auto 1fr auto auto;
     grid-template-areas: "menu logo search cart";
     align-items: center;
-    padding: 0 15px;
+    padding: 0 10px; /* Reduzido de 15px para 10px */
     height: 8vh;
     position: relative;
   }
@@ -88,6 +88,7 @@
   .mobile-menu {
     grid-area: menu;
     justify-self: start;
+    margin-left: 5px; /* Adiciona margem para mover mais para a esquerda */
   }
   
   .logo {
@@ -111,6 +112,45 @@
     transform: none !important;
     right: auto !important;
     top: auto !important;
+  }
+}
+
+/* Ajustes adicionais para dispositivos móveis menores */
+@media (max-width: 480px) {
+  nav {
+    padding: 0 8px;
+  }
+  
+  .mobile-menu {
+    margin-left: 2px;
+    padding: 6px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .logo-img {
+    height: 24px;
+  }
+}
+
+@media (max-width: 374px) {
+  nav {
+    padding: 0 5px;
+  }
+  
+  .mobile-menu {
+    margin-left: 0;
+    padding: 5px;
+  }
+  
+  .logo {
+    font-size: 1.1rem;
+  }
+  
+  .logo-img {
+    height: 22px;
   }
 }
 

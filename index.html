@@ -287,6 +287,88 @@
     </div>
   </section>
 
+  <!-- ==========Carousel de Pagamentos (Mobile)========= -->
+  <!-- ==========Carousel de Pagamentos (Mobile)========= -->
+  <section class="pagamento-carousel">
+    <div class="carousel-container">
+      <div class="carousel-track" id="carousel-track">
+        <!-- Slide 1 - Garantia Estendida -->
+        <div class="carousel-slide">
+          <div class="pague-item">
+            <div class="pague-item-content">
+              <i class="fa fa-shield-alt"></i>
+              <div>
+                <strong>Garantia Estendida</strong>
+                <p>Segurança extra em seus produtos com planos exclusivos e confiáveis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 - Escolha como Pagar -->
+        <div class="carousel-slide">
+          <div class="pague-item">
+            <div class="pague-item-content">
+              <i class="fa fa-credit-card"></i>
+              <div>
+                <strong>Escolha como Pagar</strong>
+                <p>Com o Pix facilitado, você paga com cartão, boleto ou Pix.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 - Assistência Técnica -->
+        <div class="carousel-slide">
+          <div class="pague-item">
+            <div class="pague-item-content">
+              <i class="fa fa-tools"></i>
+              <div>
+                <strong>Assistência Técnica</strong>
+                <p>Escolhemos os melhores técnicos para quem deseja qualidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 - Entrega Rápida -->
+        <div class="carousel-slide">
+          <div class="pague-item">
+            <div class="pague-item-content">
+              <i class="fa fa-truck"></i>
+              <div>
+                <strong>Entrega Rápida</strong>
+                <p>Receba seus produtos com rapidez, agilidade e total segurança.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5 - Novidades e Promoções -->
+        <div class="carousel-slide">
+          <div class="pague-item">
+            <div class="pague-item-content">
+              <i class="fa fa-tags"></i>
+              <div>
+                <strong>Novidades e Promoções</strong>
+                <p>Descontos exclusivos e lançamentos especiais para clientes cadastrados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores do carousel -->
+    <div class="carousel-indicators" id="carousel-indicators">
+      <div class="carousel-indicator active" data-slide="0"></div>
+      <div class="carousel-indicator" data-slide="1"></div>
+      <div class="carousel-indicator" data-slide="2"></div>
+      <div class="carousel-indicator" data-slide="3"></div>
+      <div class="carousel-indicator" data-slide="4"></div>
+    </div>
+  </section>
+
 
 
 
@@ -793,7 +875,7 @@
             <p>Seu carrinho está vazio.</p>
           </div>
 
-          
+
 
         </div>
 
@@ -885,7 +967,7 @@
       let total = 0;
 
       carrinho.forEach(produto => {
-       
+
         total += produto.preco * produto.quantidade;
 
         const div = document.createElement("div");
@@ -928,13 +1010,13 @@
 
     function adicionarAoCarrinho(produto) {
       console.log('chamou');
-      
-        const prod={
-            id:produto.idProd,
-            nome:produto.nomeProd,
-            preco:produto.precoProd,
-            img:produto.urlImgProd1
-        }
+
+      const prod = {
+        id: produto.idProd,
+        nome: produto.nomeProd,
+        preco: produto.precoProd,
+        img: produto.urlImgProd1
+      }
       let carrinho = getCarrinho();
 
       const existente = carrinho.find(p => p.id === prod.id);
@@ -1043,7 +1125,7 @@
           return response.json()
         })
         .then(data => {
-          
+
           const divEnglob = document.getElementById('prodSecaoFlex')
           console.log(divEnglob);
           console.log(data.produtos);
@@ -1077,7 +1159,7 @@
               const botaoAddCar = document.createElement('button')
               botaoAddCar.className = 'add-to-cart'
               botaoAddCar.innerText = "+"
-              botaoAddCar.addEventListener('click',()=>adicionarAoCarrinho(prod))
+              botaoAddCar.addEventListener('click', () => adicionarAoCarrinho(prod))
 
               divProdInfo.appendChild(h3)
               divPreco.appendChild(span)
@@ -1159,14 +1241,14 @@
 
     })
 
-   
+
     const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
     const carrinhoIcons = document.querySelectorAll('.nav-cart a');
     const carrinho = document.getElementById('carrinho-overlay');
     const fecharCarrinho = document.getElementById('fechar-carrinho');
     const navElement = document.querySelector('nav');
 
-   
+
     if (carrinhoButtons && carrinho) {
       carrinhoButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -1188,14 +1270,14 @@
       });
     }
 
-   
+
     if (navElement && carrinho) {
       navElement.addEventListener('click', (e) => {
-       
+
         const navRect = navElement.getBoundingClientRect();
         const clickX = e.clientX - navRect.left;
 
-       
+
         if (clickX > navRect.width - 60) {
           e.preventDefault();
           carrinho.style.display = 'flex';
@@ -1256,7 +1338,8 @@
       }
     });
 
-   
+
+
 
 
   </script>

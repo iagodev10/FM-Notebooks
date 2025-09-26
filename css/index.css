@@ -235,7 +235,7 @@ nav {
   .mobile-menu {
     display: block;
     position: absolute;
-    left: 20px;
+    left: 15px;
     top: auto;
     z-index: 1100;
     background: none;
@@ -400,6 +400,11 @@ nav {
     font-size: 1rem;
   }
 
+  .mobile-menu {
+    left: 10px; /* Move ainda mais para a esquerda em telas muito pequenas */
+    padding: 6px;
+  }
+
   .mobile-menu div {
     width: 24px;
     height: 2px;
@@ -420,6 +425,10 @@ nav {
 
   .logo {
     font-size: 1.3rem;
+  }
+
+  .mobile-menu {
+    left: 12px; /* Ajuste para telas médias de celular */
   }
 
   .nav-list {
@@ -840,7 +849,7 @@ nav {
   background-color: #fff;
   border: 2px solid #007bff;
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Garante que todos tenham a mesma altura */
   justify-content: center;
   gap: 12px;
   cursor: pointer;
@@ -848,6 +857,7 @@ nav {
   transition: all 0.3s ease;
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-height: 140px; /* Altura mínima para uniformidade */
 }
 
 .pague-item:hover {
@@ -862,19 +872,31 @@ nav {
   align-items: flex-start;
   gap: 12px;
   transform: skewX(12deg);
+  width: 100%;
+  height: 100%;
+}
+
+.pague-item-content div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .pague-item-content i {
   font-size: 32px;
   color: #007bff;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .pague-item-content strong {
   font-size: 1rem;
   color: #222;
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .pague-item-content p {
@@ -882,6 +904,7 @@ nav {
   font-size: 0.85rem;
   line-height: 1.4;
   margin: 0;
+  flex: 1; /* Ocupa o espaço restante */
 }
 
 /* ====== Responsividade ====== */
@@ -890,23 +913,219 @@ nav {
 @media (max-width: 1024px) {
   .pagamento-card-content {
     justify-content: center;
+    gap: 15px;
   }
 
   .pague-item {
-    max-width: 45%;
+    flex: 1;
+    min-width: 280px;
+    max-width: 320px;
+    min-height: 160px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .pague-item-content {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .pague-item-content div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .pague-item-content strong {
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .pague-item-content p {
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
   }
 }
 
-/* Mobile: 1 por linha */
+/* Tablet pequeno: layout responsivo */
 @media (max-width: 768px) {
+  .pagamento-card-content {
+    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .pague-item {
+    flex: none;
+    min-width: auto;
+    max-width: none;
+    min-height: 140px;
+    padding: 16px 14px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .pague-item-content {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    height: 100%;
+  }
+
+  .pague-item-content div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .pague-item-content strong {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .pague-item-content p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin: 0;
+    flex: 1;
+  }
+
+  .pague-item-content i {
+    font-size: 24px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}
+
+/* ===========================PAGAMENTO CARD CAROUSEL (Mobile)============================================ */
+/* ===========================PAGAMENTO CARD CAROUSEL (Mobile)============================================ */
+/* ===========================PAGAMENTO CARD CAROUSEL (Mobile)============================================ */
+
+/* Carousel para dispositivos móveis (abaixo de 768px) */
+.pagamento-carousel {
+  width: 100%;
+  margin: 40px auto;
+  display: none; /* Escondido por padrão */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 90%;
+  max-width: 350px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 500%; /* 5 cards × 100% */
+}
+
+.carousel-slide {
+  width: 20%; /* 100% / 5 cards */
+  flex-shrink: 0;
+  padding: 0 5px;
+}
+
+.carousel-slide .pague-item {
+  width: 100%;
+  margin: 0;
+  min-width: auto;
+  max-width: none;
+  transform: none; /* Remove o skew no carousel */
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 140px;
+}
+
+.carousel-slide .pague-item:hover {
+  transform: scale(1.02);
+}
+
+.carousel-slide .pague-item-content {
+  transform: none; /* Remove o skew reverso */
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.carousel-slide .pague-item-content i {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.carousel-slide .pague-item-content strong {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.carousel-slide .pague-item-content p {
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Indicadores do carousel */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.carousel-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: #007bff;
+}
+
+/* Mobile: mostrar carousel, esconder grid */
+@media (max-width: 767px) {
   .pagamento-card {
     display: none;
   }
-}
 
-/* ===========================Pagamento CARD CAROUSSEL============================================ */
-/* ===========================Pagamento CARD CAROUSSEL============================================ */
-/* ===========================Pagamento CARD CAROUSSEL============================================ */
+  .pagamento-carousel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-slide .pague-item-content i {
+    font-size: 32px;
+  }
+
+  .carousel-slide .pague-item-content strong {
+    font-size: 0.95rem;
+  }
+
+  .carousel-slide .pague-item-content p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-slide .pague-item {
+    padding: 16px;
+    min-height: 130px;
+  }
+}
 
 
 /* ===========Produtos em destaque======== */
@@ -2377,7 +2596,7 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 16px 28px;
-  background: linear-gradient(135deg, #3d20c0 0%, #4832c7 100%); /* Ajustei para uma transição mais suave de verde */
+  background: var(--cor-blue);
   color: white;
   font-size: 18px;
   font-weight: 600;
@@ -2388,15 +2607,37 @@ nav {
   white-space: nowrap;
   width: auto;
   max-width: fit-content;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 82, 204, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.botao-fm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .botao-fm:hover {
-  background: linear-gradient(135deg, #32c772 0%, #20c05a 100%); /* Mais suave e com troca de cores */
-  transform: translateY(-4px); /* Maior efeito de "elevação" */
-  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4); /* Maior sombra */
+  background: #003d99;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 82, 204, 0.4);
   text-decoration: none;
-  opacity: 0.9; /* Diminui a opacidade para um efeito mais suave */
+  color: white;
+}
+
+.botao-fm:hover::before {
+  left: 100%;
+}
+
+.botao-fm:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 82, 204, 0.3);
 }
 
 
