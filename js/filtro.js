@@ -296,10 +296,10 @@ window.addEventListener("DOMContentLoaded", () => {
       resultado.innerHTML = ""
       const filtrados = produtos.filter((p) => {
         console.log("PROMOS ATIVAS",promocoesAtivas);
-        console.log("DO PROD",p.catProd);
-        console.log("DO PROD",p.marcaProd);
-        console.log("ATIVO: "+categoriasAtivas);
-        console.log("ATIVO: "+marcasAtivas);
+        console.log("DO CATPROD",p.catProd);
+        console.log("DO MARCAPROD",p.marcaProd);
+        console.log("ATIVOCAT: "+categoriasAtivas);
+        console.log("ATIVOMARCA: "+marcasAtivas);
         
         const textoCombina = p.nomeProd.toLowerCase().includes(filtroTexto.toLowerCase())
         const todasSelecionadas = categoriasAtivas.includes("todas")
@@ -309,7 +309,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // MARCA
         const marcaCombina = marcasAtivas.length === 0 || marcasAtivas.includes(p.marcaProd.toLowerCase())
-
+        
         //PROMOCAO
         const promocaoCombina =
   promocoesAtivas.length === 0 || (p.idPromoVinc && promocoesAtivas.includes(String(p.idPromoVinc)))

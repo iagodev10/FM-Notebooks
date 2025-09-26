@@ -864,7 +864,9 @@
 
     // ============ Renderização ============
     function renderCarrinho() {
+      console.log('rendeu');
       const carrinho = getCarrinho();
+      console.log(carrinho);
       const container = document.querySelector(".items-add");
       const vazio = document.querySelector(".cart-vazio");
       const totalEl = document.querySelector(".cart-total .total-info span");
@@ -883,6 +885,7 @@
       let total = 0;
 
       carrinho.forEach(produto => {
+       
         total += produto.preco * produto.quantidade;
 
         const div = document.createElement("div");
@@ -923,41 +926,33 @@
       renderCarrinho();
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      fetch('http://localhost:5090/promocoes/', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+    function adicionarAoCarrinho(produto) {
+      console.log('chamou');
+      
+        const prod={
+            id:produto.idProd,
+            nome:produto.nomeProd,
+            preco:produto.precoProd,
+            img:produto.urlImgProd1
         }
-      })
-        .then(response => {
-          if (!response.ok) throw new Error('Erro ao obter informações')
-          return response.json()
-        })
-        .then(data => {
-          data.forEach(promo => {
-            const divPromocoes = document.getElementById('divPromocao')
+      let carrinho = getCarrinho();
 
-            const divPromo = document.createElement('div')
-            divPromo.className = 'promocao'
+      const existente = carrinho.find(p => p.id === prod.id);
+      if (existente) {
+        existente.quantidade += 1;
+      } else {
+        console.log('addeu');
+        carrinho.push({
+          ...prod,
+          quantidade: 1
+        });
+        console.log(carrinho);
+      }
+      setCarrinho(carrinho);
+      renderCarrinho()
+    }
 
-            const img = document.createElement('img')
-            img.src = promo.urlImgPromo
-            img.alt = promo.nomePromocao
-            img.setAttribute('id', 'imgPromocaoIndex')
-
-            const h3 = document.createElement('h3')
-            h3.innerText = promo.nomePromocao
-            h3.setAttribute('id', 'tituloPromocao')
-
-            divPromo.append(img)
-            divPromo.append(h3)
-            divPromocoes.append(divPromo)
-
-          });
-
-        })
-        .catch(error => console.error('Erro ao obter informações', error))
+    document.addEventListener('DOMContentLoaded', () => {
 
       fetch('http://localhost:5090/get-divflex/', {
         method: 'GET',
@@ -1048,7 +1043,7 @@
           return response.json()
         })
         .then(data => {
-
+          
           const divEnglob = document.getElementById('prodSecaoFlex')
           console.log(divEnglob);
           console.log(data.produtos);
@@ -1082,6 +1077,7 @@
               const botaoAddCar = document.createElement('button')
               botaoAddCar.className = 'add-to-cart'
               botaoAddCar.innerText = "+"
+              botaoAddCar.addEventListener('click',()=>adicionarAoCarrinho(prod))
 
               divProdInfo.appendChild(h3)
               divPreco.appendChild(span)
@@ -1260,6 +1256,7 @@
       }
     });
 
+   
 
 
   </script>
