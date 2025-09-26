@@ -793,49 +793,7 @@
             <p>Seu carrinho está vazio.</p>
           </div>
 
-          <div class="item">
-            <div class="item-cont">
-              <div class="item-img">
-                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
-              </div>
-              <div class="item-desc">
-                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
-                <span>R$ 297,20</span>
-              </div>
-            </div>
-            <div class="item-add-or-delete">
-              <div class="quantidade-container">
-                <button class="quantidade-btn diminuir">-</button>
-                <input type="number" class="item-quantidade" value="1" min="1">
-                <button class="quantidade-btn aumentar">+</button>
-              </div>
-              <button class="remover-item">
-                <i class="fa fa-trash"></i> Remover
-              </button>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-cont">
-              <div class="item-img">
-                <img src="img/headphones/jbl-520bt-white-removebg-preview.png" alt="">
-              </div>
-              <div class="item-desc">
-                <p>Fone de Ouvido Bluetooth JBL TUNE 520BT Branco</p>
-                <span>R$ 297,20</span>
-              </div>
-            </div>
-            <div class="item-add-or-delete">
-              <div class="quantidade-container">
-                <button class="quantidade-btn diminuir">-</button>
-                <input type="number" class="item-quantidade" value="2" min="1">
-                <button class="quantidade-btn aumentar">+</button>
-              </div>
-              <button class="remover-item">
-                <i class="fa fa-trash"></i> Remover
-              </button>
-            </div>
-          </div>
+          
 
         </div>
 
@@ -1205,14 +1163,14 @@
 
     })
 
-    // Carrinho functionality
+   
     const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
     const carrinhoIcons = document.querySelectorAll('.nav-cart a');
     const carrinho = document.getElementById('carrinho-overlay');
     const fecharCarrinho = document.getElementById('fechar-carrinho');
     const navElement = document.querySelector('nav');
 
-    // Adiciona evento de clique aos botões de abrir carrinho
+   
     if (carrinhoButtons && carrinho) {
       carrinhoButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -1234,15 +1192,14 @@
       });
     }
 
-    // Adiciona evento de clique ao ícone do carrinho no modo responsivo (pseudo-elemento ::after)
+   
     if (navElement && carrinho) {
       navElement.addEventListener('click', (e) => {
-        // Verifica se o clique foi no pseudo-elemento ::after (ícone do carrinho)
-        // Calculando a posição do clique em relação ao elemento nav
+       
         const navRect = navElement.getBoundingClientRect();
         const clickX = e.clientX - navRect.left;
 
-        // Se o clique foi na área direita do nav (onde está o ícone do carrinho)
+       
         if (clickX > navRect.width - 60) {
           e.preventDefault();
           carrinho.style.display = 'flex';

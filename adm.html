@@ -249,12 +249,7 @@
               </select>
 
 
-              <label>Status de Promoção</label>
-              <select id="status_promocao" required>
-                <option value="nao">Não está em promoção</option>
-                <option value="sim">Colocar em promoção</option>
-              </select>
-
+           
 
 
 
@@ -264,7 +259,7 @@
                 <div class="container-descricao"></div>
 
 
-                <button onclick="adicionarTabela()">Adicionar Tabela</button>
+                
               </div>
 
 
@@ -579,12 +574,12 @@
 
       div.innerHTML = `
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-      <label><strong>Título da Tabela:</strong></label>
+      <label><strong>Especificações técnicas:</strong></label>
       <button class="btn btn-excluir-tabela" onclick="excluirTabela(this)">Excluir Tabela</button>
     </div>
-    <input type="text" placeholder="Digite o título" style="width:100%; margin-bottom:8px;">
+   
     <table>
-      <tbody></tbody>
+      <tbody id="tabelaEspecificacoes"></tbody>
     </table>
     <button class="btn" onclick="adicionarLinha(this)">Adicionar Linha</button>
   `;
@@ -1123,8 +1118,24 @@
     }
 
     function adicionarProduto() {
-      console.log('chamou');
+      
       const formData = new FormData()
+
+      let especificacoesTecnicas=[]
+
+      const tbody=document.getElementById('tabelaEspecificacoes')
+
+      const trs=tbody.querySelectorAll('tr')
+      console.log(trs);
+      trs.forEach((linha)=>{
+        const celulas=linha.querySelectorAll('td')
+        console.log(celulas);
+        
+        especificacoesTecnicas.push({
+          atributo:celulas[0].childNodes[0].value,
+          valor:celulas[1].childNodes[0].value
+        })
+      })
 
 
       const nomeProd = document.getElementById('nome_produto').value
@@ -1152,16 +1163,16 @@
       formData.append('precoProd', precoProd)
       formData.append('catProd', catProd)
       formData.append('chaveAcessProd', chaveAcessProd)
-
+      formData.append('especicficacoesTecnicas', JSON.stringify(especificacoesTecnicas))
 
       fetch('http://localhost:5090/add-prod', {
           method: 'POST',
           body: formData
         })
         .then(res => res.json())
-        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal())
+        .then(data => document.getElementById('btn-salvar-prod').style.display = 'block', fecharModal(),window.location.reload())
         .catch(err => console.error('Erro:', err));
-      window.location.reload()
+     
 
     }
 
@@ -1213,7 +1224,7 @@
     }
 
     function addPromo() {
-      console.log('chamou o addProd');
+    
       const formData = new FormData()
 
 

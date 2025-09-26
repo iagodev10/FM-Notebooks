@@ -69,8 +69,10 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       }
     
       let total = 0;
-    
+      
+      console.log(carrinho);
       carrinho.forEach(produto => {
+        console.log(produto.preco);
         total += produto.preco * produto.quantidade;
     
         const div = document.createElement("div");
@@ -117,7 +119,7 @@ const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
       });
     }
 
- 
+  
 function getCarrinho() {
   return JSON.parse(localStorage.getItem("carrinho")) || [];
 }
@@ -261,6 +263,9 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Erro ao obter promoções:", error))
 
+    function abrirDetalhes(chaveAcesso) {
+      window.location.href = "detalhes.html?id=" + chaveAcesso;
+    }
     
   let produtos = []
   let filtroTexto = "" 
@@ -342,12 +347,13 @@ window.addEventListener("DOMContentLoaded", () => {
                     <h3>${produto.nomeProd}</h3>
                     <div class="preco"><span>R$ ${produto.precoProd}</span></div>
                     <div class="produto-actions">
-                        <a href="detalhes.html?id=${produto.idProd}" class="comprar-btn" aria-label="Comprar ${produto.nomeProd}">Comprar</a>
+                        <a href="detalhes.html?id=${produto.chaveAcessProd}" class="comprar-btn" aria-label="Comprar ${produto.nomeProd}" onclick=abrirDetalhes(${produto.chaveAcessProd})>Comprar</a>
                         <button class="add-carrinho-btn" aria-label="Adicionar ${produto.nomeProd} ao carrinho" disabled>
                         </button>
                     </div>
                 </div>
             `
+           
             const btn = div.querySelector(".add-carrinho-btn");
             btn.disabled = false;
     
@@ -366,7 +372,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 img: produto.urlImgProd1
               });
             });
-
+        
+          
         resultado.appendChild(div)
 
         // Animação de entrada

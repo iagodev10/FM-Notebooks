@@ -350,7 +350,7 @@
           <div class="total-info">
             <span>Total: R$ 0,00</span>
           </div>
-          <button class="btn-finalizar" onclick="finalizarCompra">
+          <button id="botaoFinalizar" class="btn-finalizar" >
             Finalizar Compra
           </button>
         </div>
@@ -363,10 +363,11 @@
 const carrinhoButtons = document.querySelectorAll('.abrir-carrinho');
     const carrinhoIcons = document.querySelectorAll('.nav-cart a');
     const carrinho = document.getElementById('carrinho-overlay');
-    
+    const btnFinalizar=document.getElementById('botaoFinalizar')
     const fecharCarrinho = document.getElementById('fechar-carrinho');
     const navElement = document.querySelector('nav');
 
+    btnFinalizar.addEventListener('click',finalizarCompra)
   
     if (carrinhoButtons && carrinho) {
       carrinhoButtons.forEach(button => {
@@ -527,6 +528,7 @@ function alterarQuantidade(id, delta) {
 
 
 function finalizarCompra() {
+  console.log('chamou');
   const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
   if (carrinho.length === 0) {
     alert("Seu carrinho está vazio!");
@@ -551,6 +553,7 @@ function finalizarCompra() {
 document.addEventListener('DOMContentLoaded',()=>{
   renderCarrinho()
 })
+
     </script>
   
   <!-- accessibility.js para melhorias de acessibilidade -->
